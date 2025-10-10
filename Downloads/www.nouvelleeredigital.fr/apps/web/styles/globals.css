@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base (petits détails "premium") */
+@layer base {
+  :root { color-scheme: light dark; }
+  ::selection { background: rgba(139,92,246,.12); }
+  html { @apply h-full antialiased; }
+  body { @apply h-full bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50; }
+}
+
+/* Utilitaires maison */
+@layer utilities {
+  .container-hero { @apply mx-auto max-w-6xl px-6; }
+  .muted { @apply text-zinc-600 dark:text-zinc-400; }
+}
+
+/* Composants réutilisables */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5 transition focus:outline-none active:scale-[.98];
+  }
+
+  .btn-primary {
+    @apply btn text-white;
+    background-color: #8B5CF6;
+    box-shadow: 0 10px 30px rgba(0,0,0,.06);
+  }
+
+  .btn-primary:hover {
+    background-color: #7C3AED;
+  }
+
+  .btn-primary:focus {
+    box-shadow: 0 0 0 6px rgba(139,92,246,.08);
+  }
+
+  .btn-neutral {
+    @apply btn border border-zinc-300 bg-white text-zinc-900 hover:bg-zinc-50 dark:bg-zinc-900 dark:text-zinc-100 dark:border-zinc-800;
+  }
+
+  .btn-ghost {
+    @apply btn text-zinc-700 hover:bg-zinc-50 dark:text-zinc-200 dark:hover:bg-zinc-800/50;
+  }
+
+  .link {
+    @apply underline hover:no-underline;
+    color: #8B5CF6;
+    text-decoration-color: rgba(139,92,246,0.3);
+  }
+
+  .link:hover {
+    color: #7C3AED;
+    text-decoration-color: #7C3AED;
+  }
+
+  .card {
+    @apply rounded-2xl border border-zinc-200 bg-white p-6 dark:bg-zinc-900/60 dark:border-zinc-800;
+    box-shadow: 0 10px 30px rgba(0,0,0,.06);
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-zinc-300 bg-white px-4 py-2.5
+           placeholder:text-zinc-400 focus:outline-none
+           dark:bg-zinc-900 dark:border-zinc-800;
+  }
+
+  .input:focus {
+    border-color: #8B5CF6;
+    box-shadow: 0 0 0 4px rgba(139,92,246,.12);
+  }
+}
+
+/* Prose overrides */
+@import "./prose.css";

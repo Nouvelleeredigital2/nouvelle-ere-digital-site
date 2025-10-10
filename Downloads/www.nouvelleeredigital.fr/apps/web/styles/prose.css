@@ -1,0 +1,7 @@
+/***** Minimal prose styling for content blocks *****/
+.prose h1{font-size:2rem;line-height:1.2;margin:0 0 1rem}
+.prose h2{font-size:1.5rem;line-height:1.25;margin:2rem 0 0.75rem}
+.prose p{margin:0.75rem 0;color:inherit}
+.prose a{color:var(--color-primary);text-underline-offset:2px}
+.prose ul{list-style:disc;margin-left:1.25rem}
+.prose li{margin:0.25rem 0}
