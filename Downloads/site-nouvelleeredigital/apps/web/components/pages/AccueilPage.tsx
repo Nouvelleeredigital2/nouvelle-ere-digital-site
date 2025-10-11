@@ -191,10 +191,10 @@ export function AccueilPage() {
       <AnimatedSection variant="light" className="py-16">
         <div className="max-w-6xl mx-auto">
           <div className="relative">
-            <div className="aspect-[16/9] rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-zinc-800 dark:to-zinc-900">
+            <div className="aspect-[16/9] rounded-2xl overflow-hidden bg-gray-50 dark:bg-zinc-800">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center space-y-4">
-                  <div className="w-24 h-24 mx-auto bg-gradient-to-br from-brand-500 to-brand-700 rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-lg">
+                  <div className="w-24 h-24 mx-auto bg-brand-600 rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-lg">
                     N
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Innovation & Créativité</h3>
@@ -207,7 +207,7 @@ export function AccueilPage() {
           </div>
         </div>
       </AnimatedSection>
-      <AnimatedSection variant="gradient" className="py-16">
+      <AnimatedSection variant="light" className="py-16">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -321,7 +321,7 @@ export function AccueilPage() {
       </AnimatedSection>
 
       {/* CTA Section */}
-      <AnimatedSection variant="gradient" className="py-24 relative overflow-hidden">
+      <AnimatedSection variant="light" className="py-24 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <svg width="100%" height="100%" className="w-full h-full">
@@ -335,18 +335,18 @@ export function AccueilPage() {
         </div>
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             Prêt à Démarrer Votre Projet ?
           </h2>
-          <p className="text-xl text-white/90 mb-12 leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed">
             Transformons vos idées en expériences digitales exceptionnelles.
             Contactez-nous dès aujourd'hui pour un devis gratuit.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button size="lg" asChild className="bg-white text-gray-900 hover:bg-white/90 text-lg px-8 py-4 shadow-xl">
+            <Button size="lg" asChild className="bg-brand-600 text-white hover:bg-brand-700 text-lg px-8 py-4 shadow-xl">
               <a href="/contact">Démarrer Maintenant</a>
             </Button>
-            <Button size="lg" variant="outline" asChild className="border-white text-white hover:bg-white hover:text-gray-900 text-lg px-8 py-4">
+            <Button size="lg" variant="outline" asChild className="border-brand-600 text-brand-600 hover:bg-brand-50 dark:border-brand-400 dark:text-brand-400 dark:hover:bg-brand-900 text-lg px-8 py-4">
               <a href="/expertises">En Savoir Plus</a>
             </Button>
           </div>
