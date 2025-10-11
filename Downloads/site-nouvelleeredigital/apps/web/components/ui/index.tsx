@@ -4,7 +4,6 @@ export { ServiceCard, ServiceGrid } from "./ServiceCard";
 export { AnimatedSection } from "./AnimatedSection";
 export { Testimonials, TestimonialsSection } from "./Testimonials";
 
-export { JourneyComposer } from './JourneyComposer';
 export { BundleCard } from './BundleCard';
 export { BundleSelector } from './BundleSelector';
 export { CategoryFilterChips } from './CategoryFilterChips';

@@ -1,6 +1,6 @@
 "use client";
 
-import { Universe3D } from "@/components/ui/Universe3D";
+import { LazyUniverse3DWrapper } from "@/components/ui/LazyUniverse3D";
 import { ThemeSection } from "@/components/layout/ThemeSection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
@@ -130,7 +130,7 @@ export function AccueilPage() {
       {console.log('AccueilPage: Rendering AccueilPage')}
       {/* Universe 3D Section */}
       <div className="relative">
-        <Universe3D services={universeServices} />
+        <LazyUniverse3DWrapper services={universeServices} />
       </div>
 
       {/* Rest of the page content... */}

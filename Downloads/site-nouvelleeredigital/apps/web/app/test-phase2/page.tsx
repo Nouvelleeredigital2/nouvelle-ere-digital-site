@@ -1,25 +1,5 @@
 import React from 'react';
-import { Universe3D } from '@/components/ui/Universe3D';
-import { JourneyComposer } from '@/components/ui/JourneyComposer';
-
-const modules = [
-  {
-    id: 'strategy-digitale',
-    name: 'Stratégie Digitale',
-    description: 'Définition de la stratégie digitale globale',
-    categoryId: 'communication',
-    price: 1500,
-    duration: '2 semaines',
-  },
-  {
-    id: 'production-video',
-    name: 'Production Vidéo',
-    description: 'Création de contenu vidéo professionnel',
-    categoryId: 'audiovisuel',
-    price: 2500,
-    duration: '1 mois',
-  },
-];
+import { LazyUniverse3DWrapper } from '@/components/ui/LazyUniverse3D';
 
 const universeServices = [
   {
@@ -46,15 +26,10 @@ export default function TestPage() {
       <h1 className="text-3xl font-bold">Test des Composants Phase 2</h1>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-4">Universe3D (Ex-Canvas3D_NED)</h2>
+        <h2 className="text-2xl font-semibold mb-4">Universe3D avec Lazy-Loading</h2>
         <div style={{ height: '600px' }}>
-          <Universe3D services={universeServices} />
+          <LazyUniverse3DWrapper services={universeServices} />
         </div>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">JourneyComposer</h2>
-        <JourneyComposer modules={modules} />
       </section>
     </div>
   );

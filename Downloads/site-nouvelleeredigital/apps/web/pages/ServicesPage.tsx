@@ -79,8 +79,8 @@ const ServicesPage = () => {
           onAdd={handleServiceAdd}
         />
         <ServiceDetailSheet
-          service={services.find(s => s.id === selectedServiceId)!}
-          isOpen={isSheetOpen && selectedServiceId !== null}
+          service={services.find(s => s.id === selectedServiceId) || services[0]}
+          isOpen={isSheetOpen && selectedServiceId !== null && services.some(s => s.id === selectedServiceId)}
           onClose={() => setIsSheetOpen(false)}
           onSelect={(id) => handleServiceSelect(id)}
         />

@@ -5,13 +5,6 @@ import { CompatibilityIndicator } from './CompatibilityIndicator';
 import { TrajectoireIAOverlay } from './TrajectoireIAOverlay';
 import { GridLayout } from './GridLayout';
 
-import React, { useState, useCallback } from 'react';
-import { DragCanvas } from './DragCanvas';
-import { ModuleCard } from './ModuleCard';
-import { CompatibilityIndicator } from './CompatibilityIndicator';
-import { TrajectoireIAOverlay } from './TrajectoireIAOverlay';
-import { GridLayout } from './GridLayout';
-
 interface Module {
   id: string;
   name: string;
@@ -215,7 +208,6 @@ export const JourneyComposer: React.FC<JourneyComposerProps> = ({
         <h3 className="text-lg font-bold mb-4">Récapitulatif</h3>
         <div className="mb-4">
           <CompatibilityIndicator
-            modules={selectedModules}
             compatibility={{ score: selectedModules.length > 2 ? 90 : 60, status: selectedModules.length > 2 ? 'high' : 'medium' }}
           />
         </div>
