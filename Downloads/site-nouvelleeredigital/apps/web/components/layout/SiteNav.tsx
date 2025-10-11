@@ -39,7 +39,7 @@ const navItems: NavItem[] = [
     label: "Réalisations",
     children: [
       { label: "Références & Projets", href: "/references" },
-      { label: "Études de cas", href: "/references" },
+      { label: "Études de cas", href: "/etudes-de-cas" },
       { label: "Témoignages clients", href: "/conclusion" },
       { label: "Solutions IA (Showroom IA)", href: "/solutions-ia" }
     ]
