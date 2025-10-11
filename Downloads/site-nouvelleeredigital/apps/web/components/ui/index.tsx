@@ -1,13 +1,4 @@
-// Animation Components
-export {
-  FadeIn,
-  SlideUp,
-  ScaleIn,
-  StaggerContainer,
-  StaggerItem,
-  Parallax,
-  FloatingAnimation
-} from "../animations";
+export { Carousel3DBundles } from './Carousel3DBundles';
 
 // UI Components - Anciens
 export { HeroSection } from "./HeroSection";
@@ -15,9 +6,7 @@ export { ServiceCard, ServiceGrid } from "./ServiceCard";
 export { AnimatedSection } from "./AnimatedSection";
 export { Testimonials, TestimonialsSection } from "./Testimonials";
 
-// Nouveaux composants ajoutés pour uniformisation
-export { AISummaryPanel } from './AISummaryPanel';
-export { AnalyticsTracker } from './AnalyticsTracker';
+export { JourneyComposer } from './JourneyComposer';
 export { BundleCard } from './BundleCard';
 export { BundleSelector } from './BundleSelector';
 export { CategoryFilterChips } from './CategoryFilterChips';

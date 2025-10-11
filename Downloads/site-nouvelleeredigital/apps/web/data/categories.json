@@ -1,0 +1,46 @@
+{
+  "categories": [
+    {
+      "id": "communication",
+      "name": "Communication",
+      "description": "Stratégies de communication digitale et offline",
+      "icon": "/icons/planet-primary.svg",
+      "color": "#ff6b6b"
+    },
+    {
+      "id": "audiovisuel",
+      "name": "Audiovisuel",
+      "description": "Production vidéo et contenu multimédia",
+      "icon": "/icons/planet-secondary.svg",
+      "color": "#4ecdc4"
+    },
+    {
+      "id": "evenementiel",
+      "name": "Événementiel",
+      "description": "Organisation d'événements et activations",
+      "icon": "/icons/orbit.svg",
+      "color": "#ffd93d"
+    },
+    {
+      "id": "design",
+      "name": "Design",
+      "description": "Création graphique et identité visuelle",
+      "icon": "/icons/planet-primary.svg",
+      "color": "#ff6b6b"
+    },
+    {
+      "id": "web",
+      "name": "Web",
+      "description": "Développement web et applications",
+      "icon": "/icons/planet-secondary.svg",
+      "color": "#4ecdc4"
+    },
+    {
+      "id": "ia",
+      "name": "IA",
+      "description": "Intelligence artificielle et automatisation",
+      "icon": "/icons/orbit.svg",
+      "color": "#ffd93d"
+    }
+  ]
+}

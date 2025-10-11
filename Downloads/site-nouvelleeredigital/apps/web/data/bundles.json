@@ -1,0 +1,28 @@
+{
+  "bundles": [
+    {
+      "id": "conference-pro",
+      "name": "Conference Pro",
+      "description": "Pack complet pour conférences professionnelles",
+      "modules": ["strategy-digitale", "production-video", "organisation-evenement"],
+      "price": 8000,
+      "discount": 10
+    },
+    {
+      "id": "impact-stage",
+      "name": "Impact Stage",
+      "description": "Solution événementielle avec identité visuelle",
+      "modules": ["identite-visuelle", "organisation-evenement", "integration-ia"],
+      "price": 12000,
+      "discount": 15
+    },
+    {
+      "id": "digital-presence",
+      "name": "Présence Digitale",
+      "description": "Pack web et communication digitale",
+      "modules": ["developpement-web", "strategy-digitale", "production-video"],
+      "price": 9000,
+      "discount": 12
+    }
+  ]
+}
