@@ -1,8 +1,7 @@
-"use client";
-
 import { HeroDuoTone } from "@/components/ui/HeroDuoTone";
 import { GalaxyRibbon } from "@/components/ui/GalaxyRibbon";
 import { PlanetBadge } from "@/components/ui/PlanetBadge";
+import { OrbitBreadcrumbs } from '@/components/ui/OrbitBreadcrumbs';
 import { LazyUniverse3DWrapper } from "@/components/ui/LazyUniverse3D";
 import { ThemeSection } from "@/components/layout/ThemeSection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -130,26 +129,18 @@ export function AccueilPage() {
   return (
     <>
       {console.log('AccueilPage: Rendering AccueilPage')}
-      {/* Hero Section for Impact */}
-      <div className="h-screen flex items-center justify-center relative">
-        <HeroDuoTone
-          src="/images/hero-background.jpg"
-          alt="Hero image pour Nouvelle Ère Digital"
-          primaryColor="#f87171"
-          secondaryColor="#60a5fa"
-          variant="overlay"
-          className="absolute inset-0"
-        />
-        <div className="text-center text-white z-10">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">Nouvelle Ère Digital</h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+      {/* Hero Section like other pages */}
+      <AnimatedSection variant="gradient" className="text-center py-20">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">Nouvelle Ère Digital</h1>
+          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
             Simplifier, innover et valoriser l'humain dans chaque projet numérique.
           </p>
           <Button size="lg" asChild className="bg-white text-gray-900 hover:bg-white/90">
             <a href="#services">Découvrir Nos Services</a>
           </Button>
         </div>
-      </div>
+      </AnimatedSection>
 
       {/* Universe 3D Section */}
       <div className="relative">
