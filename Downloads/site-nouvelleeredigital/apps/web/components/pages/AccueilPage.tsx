@@ -1,7 +1,6 @@
 "use client";
 
-import { Canvas3D_NED } from "@/components/ui/Canvas3D_NED";
-import { Carousel3DBundles } from "@/components/ui/Carousel3DBundles";
+import { Universe3D } from "@/components/ui/Universe3D";
 import { ThemeSection } from "@/components/layout/ThemeSection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
@@ -131,7 +130,7 @@ export function AccueilPage() {
       {console.log('AccueilPage: Rendering AccueilPage')}
       {/* Universe 3D Section */}
       <div className="relative">
-        <Canvas3D_NED services={universeServices} />
+        <Universe3D services={universeServices} />
       </div>
 
       {/* Rest of the page content... */}

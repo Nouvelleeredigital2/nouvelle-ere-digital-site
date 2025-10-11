@@ -1,5 +1,3 @@
-export { Carousel3DBundles } from './Carousel3DBundles';
-
 // UI Components - Anciens
 export { HeroSection } from "./HeroSection";
 export { ServiceCard, ServiceGrid } from "./ServiceCard";

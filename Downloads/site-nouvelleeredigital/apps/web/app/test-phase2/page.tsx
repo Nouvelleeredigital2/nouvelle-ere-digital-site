@@ -1,7 +1,6 @@
 import React from 'react';
-import { Canvas3D_NED } from '@/components/ui/Canvas3D_NED';
+import { Universe3D } from '@/components/ui/Universe3D';
 import { JourneyComposer } from '@/components/ui/JourneyComposer';
-import { Carousel3DBundles } from '@/components/ui/Carousel3DBundles';
 
 const modules = [
   {
@@ -22,24 +21,22 @@ const modules = [
   },
 ];
 
-const bundles = [
+const universeServices = [
   {
-    id: 'conference-pro',
-    name: 'Conference Pro',
-    description: 'Pack complet pour conférences professionnelles',
-    modules: ['strategy-digitale', 'production-video'],
-    price: 8000,
-    discount: 10,
-    color: '#ff6b6b',
+    name: "Communication",
+    color: 0xf87171,
+    colorHex: "#f87171",
+    desc: "Stratégies créatives & storytelling digital",
+    position: [0, 10, 0] as [number, number, number],
+    features: ["SEO/SEA", "Réseaux sociaux", "Content marketing", "Analytics"]
   },
   {
-    id: 'impact-stage',
-    name: 'Impact Stage',
-    description: 'Solution événementielle avec identité visuelle',
-    modules: ['organisation-evenement', 'identite-visuelle'],
-    price: 12000,
-    discount: 15,
-    color: '#4ecdc4',
+    name: "Audiovisuel",
+    color: 0x60a5fa,
+    colorHex: "#60a5fa",
+    desc: "Production vidéo & contenus immersifs",
+    position: [8.7, 5, -5] as [number, number, number],
+    features: ["Vidéo corporate", "Motion design", "Photographie", "Post-production"]
   },
 ];
 
@@ -49,18 +46,15 @@ export default function TestPage() {
       <h1 className="text-3xl font-bold">Test des Composants Phase 2</h1>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-4">Canvas3D_NED</h2>
-        <Canvas3D_NED width="800px" height="400px" />
+        <h2 className="text-2xl font-semibold mb-4">Universe3D (Ex-Canvas3D_NED)</h2>
+        <div style={{ height: '600px' }}>
+          <Universe3D services={universeServices} />
+        </div>
       </section>
 
       <section>
         <h2 className="text-2xl font-semibold mb-4">JourneyComposer</h2>
         <JourneyComposer modules={modules} />
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Carousel3DBundles</h2>
-        <Carousel3DBundles bundles={bundles} />
       </section>
     </div>
   );
