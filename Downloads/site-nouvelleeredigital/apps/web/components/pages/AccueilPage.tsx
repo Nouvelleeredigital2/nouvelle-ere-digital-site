@@ -1,12 +1,14 @@
 "use client";
 
+import { HeroDuoTone } from "@/components/ui/HeroDuoTone";
+import { GalaxyRibbon } from "@/components/ui/GalaxyRibbon";
+import { PlanetBadge } from "@/components/ui/PlanetBadge";
 import { LazyUniverse3DWrapper } from "@/components/ui/LazyUniverse3D";
 import { ThemeSection } from "@/components/layout/ThemeSection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { HeroSection } from "@/components/ui/HeroSection";
 import { AnimatedSection, SectionHeader } from "@/components/ui/AnimatedSection";
-import { ServiceCard, ServiceGrid } from "@/components/ui/ServiceCard";
 import { StaggerContainer, StaggerItem, FadeIn } from "@/components/animations";
 import {
   Camera,
@@ -128,6 +130,27 @@ export function AccueilPage() {
   return (
     <>
       {console.log('AccueilPage: Rendering AccueilPage')}
+      {/* Hero Section for Impact */}
+      <div className="h-screen flex items-center justify-center relative">
+        <HeroDuoTone
+          src="/images/hero-background.jpg"
+          alt="Hero image pour Nouvelle Ère Digital"
+          primaryColor="#f87171"
+          secondaryColor="#60a5fa"
+          variant="overlay"
+          className="absolute inset-0"
+        />
+        <div className="text-center text-white z-10">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6">Nouvelle Ère Digital</h1>
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+            Simplifier, innover et valoriser l'humain dans chaque projet numérique.
+          </p>
+          <Button size="lg" asChild className="bg-white text-gray-900 hover:bg-white/90">
+            <a href="#services">Découvrir Nos Services</a>
+          </Button>
+        </div>
+      </div>
+
       {/* Universe 3D Section */}
       <div className="relative">
         <LazyUniverse3DWrapper services={universeServices} />
@@ -204,25 +227,51 @@ export function AccueilPage() {
       </AnimatedSection>
 
       {/* Services Section */}
-      <AnimatedSection
-        variant="animated"
-        className="py-24"
-        showFloatingElements={true}
-      >
-        <div className="max-w-7xl mx-auto">
-          <SectionHeader
-            title="Nos Expertises Intégrées"
-            subtitle="Une approche globale"
-            description="Découvrez nos six pôles d'expertise interconnectés pour une stratégie digitale complète et performante."
-            align="center"
-            size="lg"
-          />
+      <GalaxyRibbon
+        content={
+          <AnimatedSection
+            variant="animated"
+            className="py-24"
+            showFloatingElements={true}
+          >
+            <div className="max-w-7xl mx-auto">
+              <SectionHeader
+                title="Nos Expertises Intégrées"
+                subtitle="Une approche globale"
+                description="Découvrez nos six pôles d'expertise interconnectés pour une stratégie digitale complète et performante."
+                align="center"
+                size="lg"
+              />
 
-          <FadeIn className="mt-16">
-            <ServiceGrid services={services} columns={3} />
-          </FadeIn>
-        </div>
-      </AnimatedSection>
+              <FadeIn className="mt-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {services.map((service, index) => (
+                    <div key={index} className="relative bg-white dark:bg-zinc-800 rounded-lg shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+                      <PlanetBadge
+                        label={service.title}
+                        planet={{ name: 'Service', color: '#f87171', size: 24 }}
+                        className="absolute -top-2 -left-2 z-10"
+                      />
+                      <div className="flex items-center mb-4">
+                        {service.icon}
+                        <h3 className="text-xl font-bold ml-3">{service.title}</h3>
+                      </div>
+                      <p className="text-gray-600 dark:text-gray-300 mb-4">{service.description}</p>
+                      <ul className="text-sm text-gray-500 dark:text-gray-400">
+                        {service.features.map((feature, i) => (
+                          <li key={i}>• {feature}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+            </div>
+          </AnimatedSection>
+        }
+        variant="cosmic"
+        className="py-8"
+      />
 
       {/* Values Section */}
       <AnimatedSection variant="light" className="py-24">
