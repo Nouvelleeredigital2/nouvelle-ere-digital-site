@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Badge } from './Badge';
@@ -79,22 +81,24 @@ export const H2Chips: React.FC<H2ChipsProps> = ({
       onFocus={() => setState('focus')}
       onBlur={() => setState('default')}
     >
-      {visibleChips.map((chip) => (
-        <Badge
+      {chips.map((chip) => (
+        <span
           key={chip.id}
           className={cn(
             sizes[size],
             variants[variant],
             selectedIds.includes(chip.id) && 'selected',
-            'cursor-pointer'
+            'cursor-pointer inline-block'
           )}
           onClick={() => handleSelect(chip.id)}
           role="listitem"
           aria-level={chip.level}
           aria-label={`Titre ${chip.level}: ${chip.label}`}
         >
-          H{chip.level}: {chip.label}
-        </Badge>
+          <Badge>
+            H{chip.level}: {chip.label}
+          </Badge>
+        </span>
       ))}
     </div>
   );

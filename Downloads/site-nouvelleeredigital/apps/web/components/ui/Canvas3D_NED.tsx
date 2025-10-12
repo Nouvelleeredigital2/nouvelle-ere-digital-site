@@ -1,9 +1,11 @@
-import React, { useRef, useState } from 'react';
+"use client";
+
+import React, { useRef, useState, Suspense } from 'react';
 import { Canvas, useFrame, ThreeElements } from '@react-three/fiber';
 import { OrbitControls, Text, Sphere } from '@react-three/drei';
 import * as THREE from 'three';
 
-interface PlanetProps extends ThreeElements['mesh'] {
+interface PlanetProps {
   position: [number, number, number];
   color: string;
   name: string;
@@ -40,15 +42,17 @@ function Planet({ position, color, name, onClick }: PlanetProps) {
           emissiveIntensity={hovered ? 0.5 : 0.2}
         />
       </mesh>
-      <Text
-        position={[0, -1, 0]}
-        fontSize={0.2}
-        color="white"
-        anchorX="center"
-        anchorY="middle"
-      >
-        {name}
-      </Text>
+      <Suspense fallback={null}>
+        <Text
+          position={[0, -1, 0]}
+          fontSize={0.2}
+          color="white"
+          anchorX="center"
+          anchorY="middle"
+        >
+          {name}
+        </Text>
+      </Suspense>
     </group>
   );
 }
@@ -100,12 +104,14 @@ export const Canvas3D_NED: React.FC<Canvas3D_NEDProps> = ({
 }) => {
   return (
     <div style={{ width, height }} className={className}>
-      <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} />
-        <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
-        <OrbitingPlanets />
-      </Canvas>
+      <Suspense fallback={<div>Loading 3D Scene...</div>}>
+        <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
+          <ambientLight intensity={0.5} />
+          <pointLight position={[10, 10, 10]} />
+          <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
+          <OrbitingPlanets />
+        </Canvas>
+      </Suspense>
     </div>
   );
 };

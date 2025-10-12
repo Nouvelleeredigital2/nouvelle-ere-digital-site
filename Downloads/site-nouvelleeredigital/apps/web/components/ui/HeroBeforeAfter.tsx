@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Media } from './Media';
@@ -78,14 +80,14 @@ export const HeroBeforeAfter: React.FC<HeroBeforeAfterProps> = ({
       onBlur={() => setState('default')}
     >
       <div className="relative">
-        <Media src={before.image} alt={before.title} className="w-full h-full object-cover" />
+        <Media type="image" src={before.image} alt={before.title} className="w-full h-full object-cover" />
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <Text size="lg" className="text-white font-bold">{before.title}</Text>
           {before.description && <Text className="text-white mt-2">{before.description}</Text>}
         </div>
       </div>
       <div className="relative">
-        <Media src={after.image} alt={after.title} className="w-full h-full object-cover" />
+        <Media type="image" src={after.image} alt={after.title} className="w-full h-full object-cover" />
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <Text size="lg" className="text-white font-bold">{after.title}</Text>
           {after.description && <Text className="text-white mt-2">{after.description}</Text>}

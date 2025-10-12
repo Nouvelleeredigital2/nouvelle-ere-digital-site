@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Media } from './Media';
@@ -77,16 +79,20 @@ export const HeroCollage: React.FC<HeroCollageProps> = ({
       onBlur={() => setState('default')}
     >
       {items.map((item) => (
-        <Media
+        <div
           key={item.id}
-          src={item.src}
-          alt={item.alt}
           className={cn(
             'w-full h-auto object-cover rounded cursor-pointer',
             item.position && `absolute left-${item.position.x} top-${item.position.y}`
           )}
           onClick={() => onSelect?.(item.id)}
-        />
+        >
+          <Media
+            type="image"
+            src={item.src}
+            alt={item.alt}
+          />
+        </div>
       ))}
     </div>
   );

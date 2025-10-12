@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Badge } from './Badge';
@@ -82,21 +84,23 @@ export const CategoryFilterChips: React.FC<CategoryFilterChipsProps> = ({
       onBlur={() => setState('default')}
     >
       {visibleCategories.map((category) => (
-        <Badge
+        <span
           key={category.id}
           className={cn(
             sizes[size],
             variants[variant],
             selectedIds.includes(category.id) && 'selected',
-            'cursor-pointer'
+            'cursor-pointer inline-block'
           )}
           onClick={() => handleSelect(category.id)}
           role="checkbox"
           aria-checked={selectedIds.includes(category.id)}
           aria-label={`${category.label} (${category.count || 0})`}
         >
-          {category.label} {category.count && `(${category.count})`}
-        </Badge>
+          <Badge>
+            {category.label} {category.count && `(${category.count})`}
+          </Badge>
+        </span>
       ))}
       {onClear && (
         <button

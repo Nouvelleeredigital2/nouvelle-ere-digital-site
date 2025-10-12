@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { Media } from './Media';
@@ -86,10 +88,10 @@ export const HeroCinemagraph: React.FC<HeroCinemagraphProps> = ({
       onFocus={() => setState('focus')}
       onBlur={() => setState('default')}
     >
-      <Media src={src} alt={alt} className="w-full h-96 object-cover" ref={videoRef} />
+      <Media type="video" src={src} alt={alt} className="w-full h-96 object-cover" />
       {(title || subtitle) && (
         <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50">
-          {title && <Text size="2xl" className="text-white font-bold mb-2">{title}</Text>}
+          {title && <Text size="lg" className="text-white font-bold mb-2">{title}</Text>}
           {subtitle && <Text size="lg" className="text-white">{subtitle}</Text>}
         </div>
       )}

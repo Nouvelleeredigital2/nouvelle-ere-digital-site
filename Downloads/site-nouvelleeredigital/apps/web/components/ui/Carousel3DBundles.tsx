@@ -1,4 +1,6 @@
-import React, { useRef, useState } from 'react';
+"use client";
+
+import React, { useRef, useState, Suspense } from 'react';
 import { Canvas, useFrame, ThreeElements } from '@react-three/fiber';
 import { OrbitControls, Text, Box } from '@react-three/drei';
 import * as THREE from 'three';
@@ -49,33 +51,39 @@ function BundleCard3D({ bundle, position, onClick }: BundleCard3DProps) {
           emissiveIntensity={hovered ? 0.3 : 0.1}
         />
       </mesh>
-      <Text
-        position={[0, 2, 0.15]}
-        fontSize={0.3}
-        color="black"
-        anchorX="center"
-        anchorY="middle"
-      >
-        {bundle.name}
-      </Text>
-      <Text
-        position={[0, 1.5, 0.15]}
-        fontSize={0.15}
-        color="gray"
-        anchorX="center"
-        anchorY="middle"
-      >
-        {bundle.price}€ (-{bundle.discount}%)
-      </Text>
-      <Text
-        position={[0, 1, 0.15]}
-        fontSize={0.1}
-        color="black"
-        anchorX="center"
-        anchorY="middle"
-      >
-        {bundle.description}
-      </Text>
+      <Suspense fallback={null}>
+        <Text
+          position={[0, 2, 0.15]}
+          fontSize={0.3}
+          color="black"
+          anchorX="center"
+          anchorY="middle"
+        >
+          {bundle.name}
+        </Text>
+      </Suspense>
+      <Suspense fallback={null}>
+        <Text
+          position={[0, 1.5, 0.15]}
+          fontSize={0.15}
+          color="gray"
+          anchorX="center"
+          anchorY="middle"
+        >
+          {bundle.price}€ (-{bundle.discount}%)
+        </Text>
+      </Suspense>
+      <Suspense fallback={null}>
+        <Text
+          position={[0, 1, 0.15]}
+          fontSize={0.1}
+          color="black"
+          anchorX="center"
+          anchorY="middle"
+        >
+          {bundle.description}
+        </Text>
+      </Suspense>
     </group>
   );
 }
@@ -126,12 +134,14 @@ export const Carousel3DBundles: React.FC<Carousel3DBundlesProps> = ({
 }) => {
   return (
     <div style={{ width, height }} className={className}>
-      <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} />
-        <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
-        <Carousel3D bundles={bundles} onBundleSelect={onSelect} />
-      </Canvas>
+      <Suspense fallback={<div>Loading 3D Carousel...</div>}>
+        <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
+          <ambientLight intensity={0.5} />
+          <pointLight position={[10, 10, 10]} />
+          <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
+          <Carousel3D bundles={bundles} onBundleSelect={onSelect} />
+        </Canvas>
+      </Suspense>
     </div>
   );
 };

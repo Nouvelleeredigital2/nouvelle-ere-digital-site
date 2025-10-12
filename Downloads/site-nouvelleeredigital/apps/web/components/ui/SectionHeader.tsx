@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Text } from './Text';
@@ -81,7 +83,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
       onBlur={() => setState('default')}
     >
       <div>
-        <Text size={size === 'sm' ? 'lg' : size === 'md' ? 'xl' : '2xl'} className="font-bold">
+        <Text size={size === 'sm' ? 'lg' : 'lg'} className="font-bold">
           {title}
         </Text>
         {subtitle && (
@@ -92,13 +94,15 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
       </div>
       <div className="flex items-center gap-2">
         {actions.map((action) => (
-          <Badge
+          <span
             key={action.id}
-            className="cursor-pointer"
+            className="cursor-pointer inline-block"
             onClick={() => handleAction(action.id)}
           >
-            {action.label}
-          </Badge>
+            <Badge>
+              {action.label}
+            </Badge>
+          </span>
         ))}
         {onCollapse && (
           <button onClick={onCollapse} className="text-gray-500">

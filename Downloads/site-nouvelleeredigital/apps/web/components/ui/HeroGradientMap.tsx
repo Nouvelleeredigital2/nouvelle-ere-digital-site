@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Media } from './Media';
@@ -67,7 +69,7 @@ export const HeroGradientMap: React.FC<HeroGradientMapProps> = ({
       onFocus={() => setState('focus')}
       onBlur={() => setState('default')}
     >
-      <Media src={src} alt={alt} className="w-full h-96 object-cover" />
+      <Media type="image" src={src} alt={alt} className="w-full h-96 object-cover" />
       {gradients.map((gradient, index) => (
         <div
           key={index}

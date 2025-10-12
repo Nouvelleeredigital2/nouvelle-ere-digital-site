@@ -1,8 +1,10 @@
+"use client";
+
 import React, { useState, Suspense, lazy } from 'react';
 import { cn } from '@/lib/utils';
 
 // Lazy load the heavy SVG component
-const TrajectoireSVG = lazy(() => import('./TrajectoireSVG'));
+const TrajectoireSVG = lazy(() => import('./TrajectoireSVG').then(module => ({ default: module.TrajectoireSVG })));
 
 type Variant = 'line' | 'path' | 'animated';
 type Size = 'sm' | 'md' | 'lg';

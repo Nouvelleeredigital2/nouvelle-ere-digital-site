@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from './Button';
@@ -86,11 +88,10 @@ export const ConsentManager: React.FC<ConsentManagerProps> = ({
                   onChange={() => handleSelect(category.id)}
                   className="mt-1"
                   disabled={category.required}
-                  aria-describedby={`${category.id}-desc`}
                 />
                 <div>
                   <Text size="base" className="font-medium">{category.label}</Text>
-                  <Text size="sm" className="text-muted" id={`${category.id}-desc`}>
+                  <Text size="sm" className="text-muted">
                     {category.description}
                   </Text>
                 </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { KPI } from './KPI';
@@ -94,10 +96,11 @@ export const H2Metrics: React.FC<H2MetricsProps> = ({
           aria-label={`Métrique ${metric.level}: ${metric.label} - ${metric.value} ${metric.unit || ''}`}
         >
           <KPI
-            label={`${metric.label} (H${metric.level})`}
-            value={metric.value}
-            unit={metric.unit}
-            size={size}
+            items={[{
+              label: `${metric.label} (H${metric.level})`,
+              value: metric.value,
+              unit: metric.unit
+            }]}
           />
         </div>
       ))}
