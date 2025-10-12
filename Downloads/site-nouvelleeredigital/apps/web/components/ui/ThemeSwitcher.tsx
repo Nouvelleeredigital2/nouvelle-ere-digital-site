@@ -11,7 +11,7 @@ interface ThemeSwitcherProps {
 }
 
 export const ThemeSwitcher = ({ className = '' }: ThemeSwitcherProps) => {
-  const { theme, setTheme, currentTheme } = useTheme();
+  const { theme, setTheme, currentTheme, openCustomizer } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
   const themeOptions = [
@@ -31,10 +31,9 @@ export const ThemeSwitcher = ({ className = '' }: ThemeSwitcherProps) => {
     }
   ];
 
-  const openCustomizer = () => {
+  const openCustomizerHandler = () => {
     // Ouvrir le personnaliseur avancé
-    const event = new CustomEvent('open-style-customizer');
-    window.dispatchEvent(event);
+    openCustomizer();
     setIsOpen(false);
   };
 
@@ -134,7 +133,7 @@ export const ThemeSwitcher = ({ className = '' }: ThemeSwitcherProps) => {
               {/* Bouton personnalisé */}
               <div className="p-2">
                 <motion.button
-                  onClick={openCustomizer}
+                  onClick={openCustomizerHandler}
                   className="w-full flex items-center gap-3 px-3 py-2 rounded-md bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 transition-all"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

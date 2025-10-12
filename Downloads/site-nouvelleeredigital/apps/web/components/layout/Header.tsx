@@ -6,8 +6,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { SiteNav } from "./SiteNav";
 import { Button } from "../ui/Button";
+import { useStyle } from "@/contexts/StyleContext";
 
 export const Header = () => {
+  const { config } = useStyle();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -20,17 +22,30 @@ export const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const getHeaderStyles = () => {
+    return {
+      backgroundColor: scrolled
+        ? `${config.mode === 'dark' ? '#18181b' : '#ffffff'}e6`
+        : `${config.mode === 'dark' ? '#18181b' : '#ffffff'}cc`,
+      backdropFilter: 'blur(12px)',
+      boxShadow: scrolled ? `0 4px 6px -1px ${config.primaryColor}20` : 'none',
+      borderBottom: `1px solid ${config.mode === 'dark' ? '#3f3f46' : '#e4e4e7'}80`,
+      borderRadius: scrolled ? '0' : config.borderRadius === 'none' ? '0' :
+                   config.borderRadius === 'small' ? '0.25rem' :
+                   config.borderRadius === 'medium' ? '0.5rem' :
+                   config.borderRadius === 'large' ? '0.75rem' : '1rem',
+      transition: 'all 0.5s ease',
+    };
+  };
+
   return (
     <>
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.25, 0.25, 0.75] }}
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-white/90 dark:bg-zinc-900/90 backdrop-blur-lg shadow-lg"
-            : "bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md"
-        } border-b border-gray-200/50 dark:border-zinc-700/50`}
+        className="fixed top-0 left-0 w-full z-50"
+        style={getHeaderStyles()}
       >
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
@@ -46,7 +61,7 @@ export const Header = () => {
             }}
             className="absolute inset-0 opacity-5"
             style={{
-              backgroundImage: `radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.3) 1px, transparent 0)`,
+              backgroundImage: `radial-gradient(circle at 1px 1px, ${config.primaryColor}30 1px, transparent 0)`,
               backgroundSize: '30px 30px'
             }}
           />
@@ -70,15 +85,41 @@ export const Header = () => {
                     repeatType: "reverse",
                     ease: "easeInOut"
                   }}
-                  className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg"
+                  style={{
+                    background: `linear-gradient(135deg, ${config.primaryColor}, ${config.secondaryColor})`,
+                    borderRadius: config.borderRadius === 'none' ? '0' :
+                                 config.borderRadius === 'small' ? '0.25rem' :
+                                 config.borderRadius === 'medium' ? '0.5rem' :
+                                 config.borderRadius === 'large' ? '0.75rem' : '1rem',
+                  }}
                 >
                   N
                 </motion.div>
                 <div className="hidden sm:block">
-                  <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  <span
+                    className="text-xl font-bold bg-clip-text text-transparent"
+                    style={{
+                      background: `linear-gradient(90deg, ${config.primaryColor}, ${config.secondaryColor})`,
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      fontFamily: config.bodyFont === 'inter' ? 'Inter, sans-serif' :
+                                 config.bodyFont === 'roboto' ? 'Roboto, sans-serif' :
+                                 config.bodyFont === 'playfair' ? 'Playfair Display, serif' : 'JetBrains Mono, monospace',
+                    }}
+                  >
                     Nouvelle Ère
                   </span>
-                  <span className="block text-sm text-gray-600 dark:text-gray-400 font-medium">
+                  <span
+                    className="block text-sm font-medium"
+                    style={{
+                      color: config.mode === 'dark' ? '#a1a1aa' : '#52525b',
+                      fontFamily: config.bodyFont === 'inter' ? 'Inter, sans-serif' :
+                                 config.bodyFont === 'roboto' ? 'Roboto, sans-serif' :
+                                 config.bodyFont === 'playfair' ? 'Playfair Display, serif' : 'JetBrains Mono, monospace',
+                    }}
+                  >
                     Digital
                   </span>
                 </div>
@@ -102,10 +143,22 @@ export const Header = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="hidden lg:flex items-center gap-4"
             >
-              <Button variant="outline" size="sm" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:scale-105 active:scale-95 transition-transform">
+              <Button
+                variant="outline"
+                size="sm"
+                className="hover:scale-105 active:scale-95 transition-transform"
+                style={{
+                  color: config.mode === 'dark' ? '#a1a1aa' : '#52525b',
+                  borderColor: config.primaryColor,
+                }}
+              >
                 Nous rejoindre
               </Button>
-              <Button variant="primary" size="sm" className="bg-brand-600 hover:bg-brand-700 text-white shadow-lg hover:scale-105 active:scale-95 transition-transform">
+              <Button
+                variant="primary"
+                size="sm"
+                className="hover:scale-105 active:scale-95 transition-transform"
+              >
                 Démarrer un projet
               </Button>
             </motion.div>
@@ -113,7 +166,15 @@ export const Header = () => {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setOpen(!open)}
-              className="lg:hidden relative w-10 h-10 rounded-xl bg-gray-100 dark:bg-zinc-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors hover:scale-105 active:scale-95"
+              className="lg:hidden relative w-10 h-10 rounded-xl flex items-center justify-center transition-colors hover:scale-105 active:scale-95"
+              style={{
+                backgroundColor: config.mode === 'dark' ? '#27272a' : '#f4f4f5',
+                color: config.mode === 'dark' ? '#a1a1aa' : '#52525b',
+                borderRadius: config.borderRadius === 'none' ? '0' :
+                             config.borderRadius === 'small' ? '0.25rem' :
+                             config.borderRadius === 'medium' ? '0.5rem' :
+                             config.borderRadius === 'large' ? '0.75rem' : '1rem',
+              }}
               aria-label="Menu"
             >
               <AnimatePresence mode="wait">
@@ -151,15 +212,19 @@ export const Header = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: [0.25, 0.25, 0.25, 0.75] }}
-              className="lg:hidden bg-white dark:bg-zinc-900 border-t border-gray-200 dark:border-zinc-700 overflow-hidden"
+              className="lg:hidden overflow-hidden"
+              style={{
+                backgroundColor: config.mode === 'dark' ? '#18181b' : '#ffffff',
+                borderTop: `1px solid ${config.mode === 'dark' ? '#3f3f46' : '#e4e4e7'}`,
+              }}
             >
               <div className="px-4 py-6 space-y-4">
                 <SiteNav mobile />
-                <div className="flex flex-col gap-3 pt-4 border-t border-gray-200 dark:border-zinc-700">
+                <div className="flex flex-col gap-3 pt-4 border-t" style={{ borderColor: config.mode === 'dark' ? '#3f3f46' : '#e4e4e7' }}>
                   <Button variant="ghost" size="sm" className="justify-start">
                     Nous rejoindre
                   </Button>
-                  <Button variant="primary" size="sm" className="bg-brand-600 hover:bg-brand-700 text-white">
+                  <Button variant="primary" size="sm">
                     Démarrer un projet
                   </Button>
                 </div>

@@ -18,6 +18,10 @@ interface ThemeContextType {
   currentTheme: Theme;
   customTheme?: Theme; // Pour les thèmes personnalisés
   setCustomTheme: (theme: Theme) => void;
+  // État pour le personnaliseur
+  isCustomizerOpen: boolean;
+  openCustomizer: () => void;
+  closeCustomizer: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -25,6 +29,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<ThemeName>('galaxy'); // Thème par défaut
   const [customTheme, setCustomThemeState] = useState<Theme | undefined>(undefined);
+  const [isCustomizerOpen, setIsCustomizerOpen] = useState(false);
 
   // Charger le thème personnalisé depuis localStorage au montage
   useEffect(() => {
@@ -76,13 +81,19 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('custom-theme', JSON.stringify(newCustomTheme));
   };
 
+  const openCustomizer = () => setIsCustomizerOpen(true);
+  const closeCustomizer = () => setIsCustomizerOpen(false);
+
   const value = useMemo(() => ({
     theme,
     setTheme,
     currentTheme: customTheme || themes[theme],
     customTheme,
     setCustomTheme,
-  }), [theme, customTheme]);
+    isCustomizerOpen,
+    openCustomizer,
+    closeCustomizer,
+  }), [theme, customTheme, isCustomizerOpen]);
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }

@@ -7,9 +7,8 @@ import { Footer } from "@/components/layout/Footer";
 import { ServiceModalProvider } from "@/components/context/ServiceModalProvider";
 import { ServiceModal } from "@/components/modals/ServiceModal";
 import { StyleProvider } from "@/contexts/StyleContext";
-import { StyleCustomizer } from "@/components/ui/StyleCustomizer";
 import { ThemeProvider } from "@/components/context/ThemeProvider";
-import { ThemeCustomizer } from "@/components/ui/ThemeCustomizer";
+import { ThemeCustomizerWrapper } from "@/components/ui/ThemeCustomizerWrapper";
 
 export const metadata: Metadata = siteDefaults.metadata;
 
@@ -25,8 +24,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Footer />
               <ServiceModal />
             </ServiceModalProvider>
-            <StyleCustomizer /> {/* Menu flottant */}
-            <ThemeCustomizer isOpen={false} onClose={() => {}} /> {/* Personnaliseur avancé */}
+            {/* <StyleCustomizer /> */} {/* Menu flottant - temporairement désactivé */}
+            <ThemeCustomizerWrapper /> {/* Personnaliseur avancé */}
           </StyleProvider>
         </ThemeProvider>
       </body>

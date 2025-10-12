@@ -15,9 +15,11 @@ import {
   MapPin,
   ArrowUp
 } from "lucide-react";
+import { useStyle } from "@/contexts/StyleContext";
 
 /** Site footer with legal and socials placeholders */
 export function Footer() {
+  const { config } = useStyle();
   const year = new Date().getFullYear();
 
   const socialLinks = [
@@ -44,8 +46,18 @@ export function Footer() {
     { label: "Intelligence artificielle", href: "/intelligence-artificielle" },
   ];
 
+  const getFooterStyles = () => {
+    return {
+      background: `linear-gradient(135deg, ${config.mode === 'dark' ? '#18181b' : '#27272a'}, ${config.mode === 'dark' ? '#0f172a' : '#1e293b'})`,
+      borderRadius: config.borderRadius === 'none' ? '0' :
+                   config.borderRadius === 'small' ? '0.25rem' :
+                   config.borderRadius === 'medium' ? '0.5rem' :
+                   config.borderRadius === 'large' ? '0.75rem' : '1rem',
+    };
+  };
+
   return (
-    <footer className="relative bg-gradient-to-br from-zinc-900 via-zinc-800 to-black text-white overflow-hidden">
+    <footer className="relative text-white overflow-hidden" style={getFooterStyles()}>
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <motion.div
@@ -60,7 +72,7 @@ export function Footer() {
           }}
           className="absolute inset-0 opacity-5"
           style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.3) 1px, transparent 0)`,
+            backgroundImage: `radial-gradient(circle at 1px 1px, ${config.primaryColor}30 1px, transparent 0)`,
             backgroundSize: '40px 40px'
           }}
         />
@@ -88,35 +100,62 @@ export function Footer() {
                     repeatType: "reverse",
                     ease: "easeInOut"
                   }}
-                  className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg"
+                  className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg"
+                  style={{
+                    background: `linear-gradient(135deg, ${config.primaryColor}, ${config.secondaryColor})`,
+                    borderRadius: config.borderRadius === 'none' ? '0' :
+                                 config.borderRadius === 'small' ? '0.25rem' :
+                                 config.borderRadius === 'medium' ? '0.5rem' :
+                                 config.borderRadius === 'large' ? '0.75rem' : '1rem',
+                  }}
                 >
                   N
                 </motion.div>
                 <div>
-                  <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                  <h3
+                    className="text-2xl font-bold bg-clip-text text-transparent"
+                    style={{
+                      background: `linear-gradient(90deg, ${config.primaryColor}, ${config.secondaryColor})`,
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
                     Nouvelle Ère Digital
                   </h3>
-                  <p className="text-gray-400 text-sm">Agence créative & technologique</p>
+                  <p
+                    className="text-sm"
+                    style={{
+                      color: config.mode === 'dark' ? '#a1a1aa' : '#d1d5db',
+                    }}
+                  >
+                    Agence créative & technologique
+                  </p>
                 </div>
               </div>
 
-              <p className="text-gray-300 leading-relaxed max-w-md">
+              <p
+                className="leading-relaxed max-w-md"
+                style={{
+                  color: config.mode === 'dark' ? '#d1d5db' : '#a1a1aa',
+                }}
+              >
                 De l'idée à l'impact : nous créons des expériences de marque engageantes,
                 mesurables et humaines. Simplifier, innover et valoriser l'humain dans chaque projet numérique.
               </p>
 
               {/* Contact Info */}
               <div className="space-y-3">
-                <div className="flex items-center space-x-3 text-gray-300">
-                  <Mail size={16} className="text-blue-400" />
+                <div className="flex items-center space-x-3" style={{ color: config.mode === 'dark' ? '#d1d5db' : '#a1a1aa' }}>
+                  <Mail size={16} style={{ color: config.primaryColor }} />
                   <span className="text-sm">contact@nouvelleeredigital.fr</span>
                 </div>
-                <div className="flex items-center space-x-3 text-gray-300">
-                  <Phone size={16} className="text-blue-400" />
+                <div className="flex items-center space-x-3" style={{ color: config.mode === 'dark' ? '#d1d5db' : '#a1a1aa' }}>
+                  <Phone size={16} style={{ color: config.primaryColor }} />
                   <span className="text-sm">+33 1 23 45 67 89</span>
                 </div>
-                <div className="flex items-center space-x-3 text-gray-300">
-                  <MapPin size={16} className="text-blue-400" />
+                <div className="flex items-center space-x-3" style={{ color: config.mode === 'dark' ? '#d1d5db' : '#a1a1aa' }}>
+                  <MapPin size={16} style={{ color: config.primaryColor }} />
                   <span className="text-sm">Paris, France</span>
                 </div>
               </div>
@@ -126,7 +165,12 @@ export function Footer() {
           {/* Quick Links */}
           <FadeIn delay={0.2}>
             <div className="space-y-6">
-              <h4 className="text-lg font-semibold text-white">Navigation</h4>
+              <h4
+                className="text-lg font-semibold"
+                style={{ color: config.primaryColor }}
+              >
+                Navigation
+              </h4>
               <ul className="space-y-3">
                 {quickLinks.map((link, index) => (
                   <motion.li
@@ -137,9 +181,18 @@ export function Footer() {
                   >
                     <a
                       href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors duration-300 text-sm flex items-center group"
+                      className="transition-colors duration-300 text-sm flex items-center group"
+                      style={{
+                        color: config.mode === 'dark' ? '#a1a1aa' : '#6b7280',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = config.primaryColor;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = config.mode === 'dark' ? '#a1a1aa' : '#6b7280';
+                      }}
                     >
-                      <span className="w-0 group-hover:w-2 h-px bg-blue-400 mr-0 group-hover:mr-2 transition-all duration-300" />
+                      <span className="w-0 group-hover:w-2 h-px mr-0 group-hover:mr-2 transition-all duration-300" style={{ backgroundColor: config.primaryColor }} />
                       {link.label}
                     </a>
                   </motion.li>
@@ -151,7 +204,12 @@ export function Footer() {
           {/* Services */}
           <FadeIn delay={0.3}>
             <div className="space-y-6">
-              <h4 className="text-lg font-semibold text-white">Expertises</h4>
+              <h4
+                className="text-lg font-semibold"
+                style={{ color: config.primaryColor }}
+              >
+                Expertises
+              </h4>
               <ul className="space-y-3">
                 {services.map((service, index) => (
                   <motion.li
@@ -162,9 +220,18 @@ export function Footer() {
                   >
                     <a
                       href={service.href}
-                      className="text-gray-400 hover:text-white transition-colors duration-300 text-sm flex items-center group"
+                      className="transition-colors duration-300 text-sm flex items-center group"
+                      style={{
+                        color: config.mode === 'dark' ? '#a1a1aa' : '#6b7280',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = config.secondaryColor;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = config.mode === 'dark' ? '#a1a1aa' : '#6b7280';
+                      }}
                     >
-                      <span className="w-0 group-hover:w-2 h-px bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300" />
+                      <span className="w-0 group-hover:w-2 h-px mr-0 group-hover:mr-2 transition-all duration-300" style={{ backgroundColor: config.secondaryColor }} />
                       {service.label}
                     </a>
                   </motion.li>
@@ -180,21 +247,52 @@ export function Footer() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-2xl p-8 border border-blue-500/20"
+            className="rounded-2xl p-8"
+            style={{
+              background: `linear-gradient(135deg, ${config.primaryColor}15, ${config.secondaryColor}15)`,
+              border: `1px solid ${config.primaryColor}30`,
+              borderRadius: config.borderRadius === 'none' ? '0' :
+                           config.borderRadius === 'small' ? '0.25rem' :
+                           config.borderRadius === 'medium' ? '0.5rem' :
+                           config.borderRadius === 'large' ? '0.75rem' : '1rem',
+            }}
           >
             <div className="max-w-2xl mx-auto text-center">
-              <h4 className="text-2xl font-bold text-white mb-4">
+              <h4
+                className="text-2xl font-bold mb-4"
+                style={{ color: config.primaryColor }}
+              >
                 Restons en contact
               </h4>
-              <p className="text-gray-300 mb-6">
+              <p
+                className="mb-6"
+                style={{
+                  color: config.mode === 'dark' ? '#d1d5db' : '#6b7280',
+                }}
+              >
                 Recevez nos dernières actualités, tendances et insights du numérique
               </p>
               <div className="text-center">
-                <p className="text-gray-400 mb-4">📧 contact@nouvelleeredigital.fr</p>
+                <p
+                  className="mb-4"
+                  style={{
+                    color: config.mode === 'dark' ? '#a1a1aa' : '#6b7280',
+                  }}
+                >
+                  📧 contact@nouvelleeredigital.fr
+                </p>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white rounded-lg font-medium transition-all duration-300 shadow-lg"
+                  className="px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg hover:scale-105 active:scale-95"
+                  style={{
+                    backgroundColor: config.primaryColor,
+                    color: '#ffffff',
+                    borderRadius: config.borderRadius === 'none' ? '0' :
+                                 config.borderRadius === 'small' ? '0.25rem' :
+                                 config.borderRadius === 'medium' ? '0.5rem' :
+                                 config.borderRadius === 'large' ? '0.75rem' : '1rem',
+                  }}
                   onClick={() => window.location.href = 'mailto:contact@nouvelleeredigital.fr'}
                 >
                   Nous contacter
@@ -205,7 +303,7 @@ export function Footer() {
         </FadeIn>
 
         {/* Social Links & Legal */}
-        <div className="flex flex-col lg:flex-row justify-between items-center pt-8 border-t border-zinc-700">
+        <div className="flex flex-col lg:flex-row justify-between items-center pt-8" style={{ borderTop: `1px solid ${config.mode === 'dark' ? '#3f3f46' : '#e4e4e7'}` }}>
           <FadeIn delay={0.5}>
             <div className="flex items-center space-x-6 mb-6 lg:mb-0">
               {socialLinks.map((social, index) => (
@@ -218,7 +316,23 @@ export function Footer() {
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   whileHover={{ scale: 1.2, y: -2 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300"
+                  className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
+                  style={{
+                    backgroundColor: `${config.mode === 'dark' ? '#ffffff' : '#000000'}15`,
+                    color: config.mode === 'dark' ? '#a1a1aa' : '#6b7280',
+                    borderRadius: config.borderRadius === 'none' ? '0' :
+                                 config.borderRadius === 'small' ? '0.25rem' :
+                                 config.borderRadius === 'medium' ? '0.5rem' :
+                                 config.borderRadius === 'large' ? '0.75rem' : '1rem',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = `${config.primaryColor}30`;
+                    e.currentTarget.style.color = config.primaryColor;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = `${config.mode === 'dark' ? '#ffffff' : '#000000'}15`;
+                    e.currentTarget.style.color = config.mode === 'dark' ? '#a1a1aa' : '#6b7280';
+                  }}
                 >
                   <social.icon size={18} />
                 </motion.a>
@@ -228,12 +342,12 @@ export function Footer() {
 
           <FadeIn delay={0.6}>
             <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-8">
-              <nav className="flex gap-6 text-sm text-gray-400">
-                <a href="#" className="hover:text-white transition-colors">Mentions légales</a>
-                <a href="#" className="hover:text-white transition-colors">Confidentialité</a>
-                <a href="#" className="hover:text-white transition-colors">CGV</a>
+              <nav className="flex gap-6 text-sm" style={{ color: config.mode === 'dark' ? '#a1a1aa' : '#6b7280' }}>
+                <a href="#" className="hover:text-white transition-colors" style={{ color: config.mode === 'dark' ? '#a1a1aa' : '#6b7280' }}>Mentions légales</a>
+                <a href="#" className="hover:text-white transition-colors" style={{ color: config.mode === 'dark' ? '#a1a1aa' : '#6b7280' }}>Confidentialité</a>
+                <a href="#" className="hover:text-white transition-colors" style={{ color: config.mode === 'dark' ? '#a1a1aa' : '#6b7280' }}>CGV</a>
               </nav>
-              <p className="text-sm text-gray-500">© {year} Nouvelle Ère Digital. Tous droits réservés.</p>
+              <p className="text-sm" style={{ color: config.mode === 'dark' ? '#6b7280' : '#9ca3af' }}>© {year} Nouvelle Ère Digital. Tous droits réservés.</p>
             </div>
           </FadeIn>
         </div>
@@ -245,7 +359,14 @@ export function Footer() {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.3 }}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-brand-600 hover:bg-brand-700 rounded-full flex items-center justify-center text-white shadow-lg z-40 hover:scale-110 active:scale-95"
+        className="fixed bottom-8 right-8 w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg z-40 hover:scale-110 active:scale-95"
+        style={{
+          backgroundColor: config.primaryColor,
+          borderRadius: config.borderRadius === 'none' ? '0' :
+                       config.borderRadius === 'small' ? '0.25rem' :
+                       config.borderRadius === 'medium' ? '0.5rem' :
+                       config.borderRadius === 'large' ? '0.75rem' : '1rem',
+        }}
         aria-label="Retour en haut"
       >
         <ArrowUp size={20} />
