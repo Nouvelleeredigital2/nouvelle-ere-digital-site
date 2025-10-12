@@ -12,6 +12,32 @@
   --color-orbit: #ffd93d;
   --animation-orbit-duration: 10s;
   --animation-pulse-slow: 2s;
+
+  /* Variables CSS du système de thèmes */
+  --color-primary: #8b5cf6;
+  --color-secondary: #3b82f6;
+  --color-accent: #ec4899;
+  --color-background: #ffffff;
+  --color-foreground: #000000;
+  --color-card: #ffffff;
+  --color-border: #e2e8f0;
+
+  /* Typographie */
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Playfair Display", serif;
+
+  /* Styles */
+  --border-radius: 0.5rem;
+  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --button-padding: 0.5rem 1rem;
+
+  /* Legacy variables pour compatibilité */
+  --primary-color: var(--color-primary);
+  --secondary-color: var(--color-secondary);
+  --accent-color: var(--color-accent);
+  --bg-color: var(--color-background);
+  --text-color: var(--color-foreground);
+  --spacing: 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,4 +56,89 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Classes utilitaires pour les styles personnalisés */
+.heading-underlined {
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+.heading-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.heading-fade {
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heading-slide::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.heading-slide:hover::before {
+  width: 100%;
+}
+
+/* Espacement personnalisé */
+.spacing-compact * {
+  margin-bottom: 0.5rem;
+}
+
+.spacing-comfortable * {
+  margin-bottom: 1rem;
+}
+
+.spacing-spacious * {
+  margin-bottom: 1.5rem;
+}
+
+/* Arrondi personnalisé */
+.rounded-none {
+  border-radius: 0;
+}
+
+.rounded-small {
+  border-radius: 0.25rem;
+}
+
+.rounded-medium {
+  border-radius: 0.5rem;
+}
+
+.rounded-large {
+  border-radius: 0.75rem;
+}
+
+.rounded-xl {
+  border-radius: 1rem;
+}
+
+/* Police personnalisée */
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
 }
