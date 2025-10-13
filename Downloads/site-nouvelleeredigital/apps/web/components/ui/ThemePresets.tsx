@@ -2,7 +2,6 @@
 "use client";
 
 import { useState } from 'react';
-import { useStyle } from '@/contexts/StyleContext';
 import { Sparkles, Briefcase, Palette, Zap, Heart, Leaf } from 'lucide-react';
 
 interface ThemePreset {
