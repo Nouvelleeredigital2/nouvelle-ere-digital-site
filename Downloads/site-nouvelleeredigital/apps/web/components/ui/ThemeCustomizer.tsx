@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useTheme } from '@/components/context/ThemeProvider';
+import { useTheme } from '@/components/context/PersonaProvider';
 import { Button } from './Button';
 import { Palette, Save, RotateCcw, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';

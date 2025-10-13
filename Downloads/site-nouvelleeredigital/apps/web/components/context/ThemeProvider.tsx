@@ -54,7 +54,7 @@ export function CreativePersonaProvider({ children }: { children: React.ReactNod
     trackEngagement('persona_changed', {
       fromPersona: '', // Sera défini par le système d'analytics
       toPersona: activePersona.id,
-      archetype: activePersona.archetype
+      archetype: activePersona.name
     });
 
   }, [activePersona, trackEngagement]);
@@ -79,7 +79,7 @@ export function CreativePersonaProvider({ children }: { children: React.ReactNod
   );
 }
 
-export const useCreativePersona = () => {
+export const usePersona = () => {
   const context = useContext(CreativePersonaContext);
 
   // Vérification robuste du contexte
@@ -107,7 +107,7 @@ export const useCreativePersona = () => {
       };
     } else {
       // Client-side - retourner un objet fallback avec warning
-      console.warn('useCreativePersona: Contexte non disponible, utilisation du fallback');
+      console.warn('usePersona: Contexte non disponible, utilisation du fallback');
       return {
         persona: personas[0] || {
           id: 'default',
@@ -133,5 +133,5 @@ export const useCreativePersona = () => {
 };
 
 // Alias pour compatibilité avec l'ancien système
-export const useTheme = useCreativePersona;
+export const useTheme = usePersona;
 export const ThemeProvider = CreativePersonaProvider;

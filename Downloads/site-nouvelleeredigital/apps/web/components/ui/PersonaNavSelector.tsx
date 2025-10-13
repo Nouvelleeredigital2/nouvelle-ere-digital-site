@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { useCreativePersona } from '@/components/context/ThemeProvider';
+import { usePersona } from '@/components/context/PersonaProvider';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Palette, Users, Target, Zap, Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function PersonaNavSelector() {
-  const { persona, setPersona, personas } = useCreativePersona();
+  const { persona, setPersona, personas } = usePersona();
   const [isOpen, setIsOpen] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -48,7 +48,7 @@ export function PersonaNavSelector() {
   };
 
   const currentPersona = personas.find(p => p.id === persona.id);
-  const Icon = currentPersona ? getPersonaIcon(currentPersona.archetype) : Palette;
+  const Icon = currentPersona ? getPersonaIcon(currentPersona.name) : Palette;
 
   return (
     <>
@@ -112,7 +112,7 @@ export function PersonaNavSelector() {
             >
               <Card className="p-2 bg-background/95 backdrop-blur-sm border-border shadow-lg">
                 {personas.map((p, index) => {
-                  const PersonaIcon = getPersonaIcon(p.archetype);
+                  const PersonaIcon = getPersonaIcon(p.name);
                   const isActive = p.id === persona.id;
 
                   return (
@@ -137,7 +137,7 @@ export function PersonaNavSelector() {
                         <div className="text-left">
                           <div className="font-medium text-sm">{p.name}</div>
                           <div className={`text-xs ${isActive ? 'text-primary-foreground/70' : 'text-muted-foreground'}`}>
-                            {p.visualIdentity.energy} • {p.visualIdentity.mood}
+                            {p.energy} • {p.mood}
                           </div>
                         </div>
                         {isActive && (

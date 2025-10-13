@@ -7,6 +7,7 @@ import type { Theme } from '@/shared/theme.types';
 interface PersonaContextType {
   persona: Theme;
   setPersona: (personaId: string) => void;
+  personas: readonly Theme[];
 }
 
 const PersonaContext = createContext<PersonaContextType | undefined>(undefined);
@@ -27,7 +28,7 @@ export function PersonaProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <PersonaContext.Provider value={{ persona: activePersona, setPersona }}>
+    <PersonaContext.Provider value={{ persona: activePersona, setPersona, personas: themes }}>
       {children}
     </PersonaContext.Provider>
   );

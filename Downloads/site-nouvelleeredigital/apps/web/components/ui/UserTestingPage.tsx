@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useCreativePersona } from '@/components/context/ThemeProvider';
+import { usePersona } from '@/components/context/PersonaProvider';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -20,7 +20,7 @@ interface UserTestData {
 }
 
 export function UserTestingPage() {
-  const { persona } = useCreativePersona();
+  const { persona } = usePersona();
   const [testData, setTestData] = useState<Partial<UserTestData>>({
     personaId: persona.id,
     easeOfUse: 3,

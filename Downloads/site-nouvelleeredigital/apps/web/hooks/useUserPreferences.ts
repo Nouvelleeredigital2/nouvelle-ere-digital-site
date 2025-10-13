@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useCallback } from 'react';
-import { useCreativePersona } from '@/components/context/ThemeProvider';
+import { usePersona } from '@/components/context/PersonaProvider';
 
 interface UserPreferences {
   personaId: string;
@@ -14,7 +14,7 @@ const STORAGE_KEY = 'nouvelle-ere-user-preferences';
 const CURRENT_VERSION = '1.0.0';
 
 export function useUserPreferences() {
-  const { persona, setPersona } = useCreativePersona();
+  const { persona, setPersona } = usePersona();
 
   // Charger les préférences depuis le localStorage
   const loadPreferences = useCallback((): UserPreferences | null => {

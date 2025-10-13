@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { useCreativePersona } from '@/components/context/ThemeProvider';
+import { usePersona } from '@/components/context/PersonaProvider';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -11,7 +11,7 @@ interface AdaptiveNavigationProps {
 }
 
 export function AdaptiveNavigation({ className }: AdaptiveNavigationProps) {
-  const { persona } = useCreativePersona();
+  const { persona } = usePersona();
 
   // Adapter la navigation selon le layout choisi par le persona
   const navigationStyle = persona.settings.layouts.navigation;

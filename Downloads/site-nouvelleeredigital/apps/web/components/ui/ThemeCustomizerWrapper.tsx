@@ -1,6 +1,6 @@
 "use client";
 
-import { useTheme } from "@/components/context/ThemeProvider";
+import { useTheme } from "@/components/context/PersonaProvider";
 import { ThemeCustomizer } from "@/components/ui/ThemeCustomizer";
 
 // Composant client pour gérer l'état du personnaliseur

@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { useCreativePersona } from '@/components/context/ThemeProvider';
+import { usePersona } from '@/components/context/PersonaProvider';
 import { AdaptiveCard } from '@/components/ui/AdaptiveCard';
 import { AdaptiveGrid } from '@/components/ui/AdaptiveGrid';
 import { Button } from '@/components/ui/Button';
@@ -9,7 +9,7 @@ import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 
 export function PersonaDemo() {
-  const { persona } = useCreativePersona();
+  const { persona } = usePersona();
 
   const demoCards = [
     {
@@ -93,9 +93,9 @@ export function PersonaDemo() {
             <div>
               <h3 className="font-medium mb-2">Identité Visuelle</h3>
               <div className="space-y-1 text-sm">
-                <p><strong>Mood:</strong> {persona.visualIdentity.mood}</p>
-                <p><strong>Energy:</strong> {persona.visualIdentity.energy}</p>
-                <p><strong>Archétype:</strong> {persona.archetype}</p>
+                <p><strong>Mood:</strong> {persona.mood}</p>
+                <p><strong>Energy:</strong> {persona.energy}</p>
+                <p><strong>Archétype:</strong> {persona.name}</p>
               </div>
             </div>
             <div>

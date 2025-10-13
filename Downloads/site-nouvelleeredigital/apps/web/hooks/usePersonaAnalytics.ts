@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useCallback } from 'react';
-import { useCreativePersona } from '@/components/context/ThemeProvider';
+import { usePersona } from '@/components/context/PersonaProvider';
 
 interface AnalyticsEvent {
   event: string;
@@ -204,7 +204,7 @@ class PersonaAnalytics {
 let analyticsInstance: PersonaAnalytics | null = null;
 
 export function usePersonaAnalytics() {
-  const { persona } = useCreativePersona();
+  const { persona } = usePersona();
 
   // Initialiser l'analytics au premier rendu
   useEffect(() => {

@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { useCreativePersona } from '@/components/context/ThemeProvider';
+import { usePersona } from '@/components/context/PersonaProvider';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { cn } from '@/lib/utils';
@@ -12,7 +12,7 @@ interface AdaptiveFooterProps {
 }
 
 export function AdaptiveFooter({ className }: AdaptiveFooterProps) {
-  const { persona } = useCreativePersona();
+  const { persona } = usePersona();
 
   // Adapter le footer selon le style du persona
   const footerStyle = persona.settings.styles.borderRadius;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { useTheme } from '@/components/context/ThemeProvider';
+import { useTheme } from '@/components/context/PersonaProvider';
 import { Button } from './Button';
 import { Palette, Sun, Moon, Sparkles, Building, Leaf } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';

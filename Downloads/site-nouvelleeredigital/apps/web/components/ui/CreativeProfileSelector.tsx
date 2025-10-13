@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { useCreativePersona } from '@/components/context/ThemeProvider';
+import { usePersona } from '@/components/context/PersonaProvider';
 import { Card } from './Card';
 import { Palette, Users, Lightbulb, Target, Zap, Heart, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -42,7 +42,7 @@ const Button = ({ children, onClick, className, size = "md", variant = "primary"
 };
 
 export function CreativeProfileSelector({ onComplete, compact = false }: CreativeProfileSelectorProps) {
-  const { personas, setPersona } = useCreativePersona();
+  const { personas, setPersona } = usePersona();
   const [selectedPersona, setSelectedPersona] = useState<string | null>(null);
 
   // Vérifier si l'utilisateur a déjà choisi un persona
@@ -99,7 +99,7 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-md"
           >
             {personas.slice(0, 5).map((persona, index) => {
-              const Icon = getPersonaIcon(persona.archetype);
+              const Icon = getPersonaIcon(persona.name);
               const isSelected = selectedPersona === persona.id;
 
               return (
@@ -190,7 +190,7 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg"
         >
           {personas.map((persona, index) => {
-            const Icon = getPersonaIcon(persona.archetype);
+            const Icon = getPersonaIcon(persona.name);
             const isSelected = selectedPersona === persona.id;
 
             return (
@@ -229,16 +229,16 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
                     {/* Tags d'identité avec couleurs cohérentes */}
                     <div className="flex flex-wrap gap-xs justify-center mb-lg">
                       <span className="px-sm py-xs text-caption bg-surface-100 text-text-muted rounded-full">
-                        {persona.visualIdentity.energy}
+                        {persona.energy}
                       </span>
                       <span className="px-sm py-xs text-caption bg-surface-100 text-text-muted rounded-full">
-                        {persona.visualIdentity.mood}
+                        {persona.mood}
                       </span>
                     </div>
 
                     {/* Archétype avec style approprié */}
                     <p className="text-caption text-text-subtle italic">
-                      {persona.archetype}
+                      {persona.name}
                     </p>
                   </div>
                 </Card>

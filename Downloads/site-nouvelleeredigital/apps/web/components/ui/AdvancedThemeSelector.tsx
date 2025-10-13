@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useCreativePersona } from '@/components/context/ThemeProvider';
+import { usePersona } from '@/components/context/PersonaProvider';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -78,7 +78,7 @@ const contrastThemes = {
 };
 
 export function AdvancedThemeSelector({ onThemeChange }: ThemeSelectorProps) {
-  const { persona, setPersona } = useCreativePersona();
+  const { persona, setPersona } = usePersona();
   const [selectedTheme, setSelectedTheme] = useState<string>('system');
   const [previewMode, setPreviewMode] = useState<string | null>(null);
 
