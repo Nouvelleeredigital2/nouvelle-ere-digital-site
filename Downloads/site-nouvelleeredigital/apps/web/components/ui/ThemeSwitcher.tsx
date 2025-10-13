@@ -34,7 +34,7 @@ export const ThemeSwitcher = ({ className = '' }: ThemeSwitcherProps) => {
       name: 'Océan',
       icon: Palette,
       description: 'Thème frais et aquatique',
-      colors: ['#0ea5e9', '#06b6d4', '#14b8a6']
+      colors: ['#0284c7', '#0891b2', '#0e7490']
     },
     {
       id: 'sunset' as const,
@@ -48,7 +48,7 @@ export const ThemeSwitcher = ({ className = '' }: ThemeSwitcherProps) => {
       name: 'Forêt',
       icon: Leaf,
       description: 'Thème naturel aux tons verts',
-      colors: ['#16a34a', '#15803d', '#84cc16']
+      colors: ['#16a34a', '#059669', '#65a30d']
     },
     {
       id: 'midnight' as const,

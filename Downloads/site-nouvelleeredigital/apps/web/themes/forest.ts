@@ -4,13 +4,13 @@ import type { Theme } from '@/shared/theme.types';
 export const forestTheme: Theme = {
   name: 'Forêt',
   colors: {
-    primary: '#16a34a',
-    secondary: '#15803d',
-    accent: '#84cc16',
-    background: '#f0fdf4',
-    foreground: '#14532d',
-    card: '#ffffff',
-    border: '#bbf7d0',
+    primary: '#16a34a',     // Vert naturel équilibré
+    secondary: '#059669',   // Vert émeraude pour le contraste
+    accent: '#65a30d',      // Vert lime pour l'accent
+    background: '#f8fafc',  // Gris très clair avec une touche de vert
+    foreground: '#14532d',  // Vert très foncé pour le texte
+    card: '#ffffff',        // Blanc pur pour les cartes
+    border: '#d1d5db',      // Gris neutre pour les bordures
   },
   typography: {
     fontFamily: {
