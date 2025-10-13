@@ -2,110 +2,99 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
-import { galaxyTheme, corporateTheme, oceanTheme, sunsetTheme, forestTheme, midnightTheme } from '@/themes'; // Importez vos thèmes
-import type { Theme } from '@/shared/theme.types';
+import { personas } from '@/personas';
+import type { CreativePersona, PersonaId } from '@/shared/theme.types';
 
-const themes = {
-  galaxy: galaxyTheme,
-  corporate: corporateTheme,
-  ocean: oceanTheme,
-  sunset: sunsetTheme,
-  forest: forestTheme,
-  midnight: midnightTheme,
-};
-
-type ThemeName = keyof typeof themes;
-
-interface ThemeContextType {
-  theme: ThemeName;
-  setTheme: (name: ThemeName) => void;
-  currentTheme: Theme;
-  customTheme?: Theme; // Pour les thèmes personnalisés
-  setCustomTheme: (theme: Theme) => void;
-  // État pour le personnaliseur
-  isCustomizerOpen: boolean;
-  openCustomizer: () => void;
-  closeCustomizer: () => void;
+interface CreativePersonaContextType {
+  persona: CreativePersona;
+  setPersona: (personaId: PersonaId) => void;
+  personas: readonly CreativePersona[];
 }
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+const CreativePersonaContext = createContext<CreativePersonaContextType | undefined>(undefined);
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<ThemeName>('galaxy'); // Thème par défaut
-  const [customTheme, setCustomThemeState] = useState<Theme | undefined>(undefined);
-  const [isCustomizerOpen, setIsCustomizerOpen] = useState(false);
+export function CreativePersonaProvider({ children }: { children: React.ReactNode }) {
+  const [activePersona, setActivePersona] = useState<CreativePersona>(personas[0]); // Artiste par défaut
 
-  // Charger le thème personnalisé depuis localStorage au montage
+  // Sauvegarder la préférence dans localStorage
   useEffect(() => {
-    const savedCustomTheme = localStorage.getItem('custom-theme');
-    if (savedCustomTheme) {
-      try {
-        setCustomThemeState(JSON.parse(savedCustomTheme));
-      } catch (error) {
-        console.error('Erreur lors du chargement du thème personnalisé:', error);
+    const savedPersonaId = localStorage.getItem('creative-persona');
+    if (savedPersonaId) {
+      const savedPersona = personas.find(p => p.id === savedPersonaId);
+      if (savedPersona) {
+        setActivePersona(savedPersona);
       }
     }
   }, []);
 
-  // Effet pour appliquer les variables CSS au changement de thème
+  // Effet pour appliquer les variables CSS complètes au changement de persona
   useEffect(() => {
-    const activeTheme = customTheme || themes[theme];
-    const root = window.document.documentElement;
+    const root = document.documentElement;
+    const settings = activePersona.settings;
 
     // Appliquer les couleurs
-    Object.entries(activeTheme.colors).forEach(([key, value]) => {
+    Object.entries(settings.colors).forEach(([key, value]) => {
       root.style.setProperty(`--color-${key}`, value);
     });
 
     // Appliquer la typographie
-    root.style.setProperty('--font-sans', activeTheme.typography.fontFamily.sans);
-    root.style.setProperty('--font-serif', activeTheme.typography.fontFamily.serif);
-
-    // Appliquer les tailles de police
-    Object.entries(activeTheme.typography.fontSize).forEach(([key, value]) => {
-      root.style.setProperty(`--font-size-${key}`, value);
-    });
+    root.style.setProperty('--font-sans', settings.typography.fontFamilySans);
+    root.style.setProperty('--font-serif', settings.typography.fontFamilySerif);
+    root.style.setProperty('--font-mono', settings.typography.fontFamilyMono);
+    root.style.setProperty('--typography-scale', settings.typography.scale);
+    root.style.setProperty('--line-height', settings.typography.lineHeight);
 
     // Appliquer les styles
-    root.style.setProperty('--border-radius', activeTheme.styles.borderRadius);
-    root.style.setProperty('--card-shadow', activeTheme.styles.cardShadow);
+    root.style.setProperty('--border-radius', settings.styles.borderRadius);
+    root.style.setProperty('--card-shadow', settings.styles.cardShadow);
+    root.style.setProperty('--spacing', settings.styles.spacing);
 
-    // Classe CSS pour le thème actif
-    root.classList.remove(...Object.keys(themes));
-    root.classList.add(theme);
+    // Appliquer les layouts
+    Object.entries(settings.layouts).forEach(([key, value]) => {
+      root.style.setProperty(`--layout-${key}`, value);
+    });
 
-    // Sauvegarder le thème personnalisé si présent
-    if (customTheme) {
-      localStorage.setItem('custom-theme', JSON.stringify(customTheme));
+    // Appliquer les animations
+    root.style.setProperty('--animation-intensity', settings.animations.intensity);
+    root.style.setProperty('--animation-transitions', settings.animations.transitions);
+
+    // Classe CSS pour le persona actif
+    root.classList.remove(...personas.map(p => `persona-${p.id}`));
+    root.classList.add(`persona-${activePersona.id}`);
+
+    // Sauvegarder le persona choisi
+    localStorage.setItem('creative-persona', activePersona.id);
+
+  }, [activePersona]);
+
+  const setPersona = (personaId: PersonaId) => {
+    const newPersona = personas.find(p => p.id === personaId);
+    if (newPersona) {
+      setActivePersona(newPersona);
     }
-  }, [theme, customTheme]);
-
-  const setCustomTheme = (newCustomTheme: Theme) => {
-    setCustomThemeState(newCustomTheme);
-    localStorage.setItem('custom-theme', JSON.stringify(newCustomTheme));
   };
 
-  const openCustomizer = () => setIsCustomizerOpen(true);
-  const closeCustomizer = () => setIsCustomizerOpen(false);
-
   const value = useMemo(() => ({
-    theme,
-    setTheme,
-    currentTheme: customTheme || themes[theme],
-    customTheme,
-    setCustomTheme,
-    isCustomizerOpen,
-    openCustomizer,
-    closeCustomizer,
-  }), [theme, customTheme, isCustomizerOpen]);
+    persona: activePersona,
+    setPersona,
+    personas,
+  }), [activePersona]);
 
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+  return (
+    <CreativePersonaContext.Provider value={value}>
+      {children}
+    </CreativePersonaContext.Provider>
+  );
 }
 
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+export const useCreativePersona = () => {
+  const context = useContext(CreativePersonaContext);
+  if (!context) {
+    throw new Error('useCreativePersona must be used within a CreativePersonaProvider');
   }
   return context;
 };
+
+// Alias pour compatibilité avec l'ancien système
+export const useTheme = useCreativePersona;
+export const ThemeProvider = CreativePersonaProvider;

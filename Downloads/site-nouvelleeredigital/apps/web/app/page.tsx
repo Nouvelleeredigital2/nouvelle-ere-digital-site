@@ -1,13 +1,21 @@
-import { generatePageMetadata } from "@/lib/seo";
-import type { Metadata } from "next";
-import { AccueilPage } from "@/components/pages/AccueilPage";
+"use client";
 
-export const metadata: Metadata = generatePageMetadata({
-  title: "Accueil — Nouvelle Ère Digital",
-  description:
-    "De l’idée à l’impact : expériences de marque engageantes, mesurables et humaines. Agence créative & technologique.",
-});
+import { useState, useEffect } from 'react';
+import { AccueilPage } from "@/components/pages/AccueilPage";
+import { CreativeProfileSelector } from "@/components/ui/CreativeProfileSelector";
 
 export default function HomePage() {
+  const [showOnboarding, setShowOnboarding] = useState(false);
+
+  useEffect(() => {
+    // Vérifier si l'utilisateur a déjà choisi un persona
+    const hasChosenPersona = localStorage.getItem('has-chosen-persona');
+    setShowOnboarding(!hasChosenPersona);
+  }, []);
+
+  if (showOnboarding) {
+    return <CreativeProfileSelector onComplete={() => setShowOnboarding(false)} />;
+  }
+
   return <AccueilPage />;
 }
