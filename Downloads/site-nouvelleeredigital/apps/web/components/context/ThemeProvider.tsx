@@ -2,12 +2,16 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
-import { galaxyTheme, corporateTheme } from '@/themes'; // Importez vos thèmes
+import { galaxyTheme, corporateTheme, oceanTheme, sunsetTheme, forestTheme, midnightTheme } from '@/themes'; // Importez vos thèmes
 import type { Theme } from '@/shared/theme.types';
 
 const themes = {
   galaxy: galaxyTheme,
   corporate: corporateTheme,
+  ocean: oceanTheme,
+  sunset: sunsetTheme,
+  forest: forestTheme,
+  midnight: midnightTheme,
 };
 
 type ThemeName = keyof typeof themes;

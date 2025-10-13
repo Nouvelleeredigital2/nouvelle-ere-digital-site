@@ -48,17 +48,55 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
+/* Classes utilitaires utilisant les variables du thème */
+.theme-bg-primary { background-color: var(--color-primary); }
+.theme-bg-secondary { background-color: var(--color-secondary); }
+.theme-bg-accent { background-color: var(--color-accent); }
+.theme-bg-background { background-color: var(--color-background); }
+.theme-bg-card { background-color: var(--color-card); }
+
+.theme-text-primary { color: var(--color-primary); }
+.theme-text-secondary { color: var(--color-secondary); }
+.theme-text-accent { color: var(--color-accent); }
+.theme-text-foreground { color: var(--color-foreground); }
+
+.theme-border { border-color: var(--color-border); }
+.theme-border-radius { border-radius: var(--border-radius); }
+.theme-shadow { box-shadow: var(--card-shadow); }
+
+/* Classes pour les anciens composants qui utilisent brand */
+.bg-brand-50 { background-color: var(--color-primary); opacity: 0.05; }
+.bg-brand-100 { background-color: var(--color-primary); opacity: 0.1; }
+.bg-brand-200 { background-color: var(--color-primary); opacity: 0.2; }
+.bg-brand-300 { background-color: var(--color-primary); opacity: 0.3; }
+.bg-brand-400 { background-color: var(--color-primary); opacity: 0.4; }
+.bg-brand-500 { background-color: var(--color-primary); opacity: 0.5; }
+.bg-brand-600 { background-color: var(--color-primary); opacity: 0.6; }
+.bg-brand-700 { background-color: var(--color-primary); opacity: 0.7; }
+.bg-brand-800 { background-color: var(--color-primary); opacity: 0.8; }
+.bg-brand-900 { background-color: var(--color-primary); opacity: 0.9; }
+
+.text-brand-50 { color: var(--color-primary); opacity: 0.05; }
+.text-brand-100 { color: var(--color-primary); opacity: 0.1; }
+.text-brand-200 { color: var(--color-primary); opacity: 0.2; }
+.text-brand-300 { color: var(--color-primary); opacity: 0.3; }
+.text-brand-400 { color: var(--color-primary); opacity: 0.4; }
+.text-brand-500 { color: var(--color-primary); opacity: 0.5; }
+.text-brand-600 { color: var(--color-primary); opacity: 0.6; }
+.text-brand-700 { color: var(--color-primary); opacity: 0.7; }
+.text-brand-800 { color: var(--color-primary); opacity: 0.8; }
+.text-brand-900 { color: var(--color-primary); opacity: 0.9; }
+
+.border-brand-50 { border-color: var(--color-primary); opacity: 0.05; }
+.border-brand-100 { border-color: var(--color-primary); opacity: 0.1; }
+.border-brand-200 { border-color: var(--color-primary); opacity: 0.2; }
+.border-brand-300 { border-color: var(--color-primary); opacity: 0.3; }
+.border-brand-400 { border-color: var(--color-primary); opacity: 0.4; }
+.border-brand-500 { border-color: var(--color-primary); opacity: 0.5; }
+.border-brand-600 { border-color: var(--color-primary); opacity: 0.6; }
+.border-brand-700 { border-color: var(--color-primary); opacity: 0.7; }
+.border-brand-800 { border-color: var(--color-primary); opacity: 0.8; }
+.border-brand-900 { border-color: var(--color-primary); opacity: 0.9; }
 
 /* Classes utilitaires pour les styles personnalisés */
 .heading-underlined {

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useTheme } from '@/components/context/ThemeProvider';
 import { Button } from './Button';
-import { Palette, Sun, Moon, Sparkles, Building } from 'lucide-react';
+import { Palette, Sun, Moon, Sparkles, Building, Leaf } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface ThemeSwitcherProps {
@@ -28,6 +28,34 @@ export const ThemeSwitcher = ({ className = '' }: ThemeSwitcherProps) => {
       icon: Building,
       description: 'Thème professionnel et sobre',
       colors: ['#2563eb', '#475569', '#16a34a']
+    },
+    {
+      id: 'ocean' as const,
+      name: 'Océan',
+      icon: Palette,
+      description: 'Thème frais et aquatique',
+      colors: ['#0ea5e9', '#06b6d4', '#14b8a6']
+    },
+    {
+      id: 'sunset' as const,
+      name: 'Coucher de Soleil',
+      icon: Sun,
+      description: 'Thème chaud aux couleurs orangées',
+      colors: ['#f97316', '#fb7185', '#eab308']
+    },
+    {
+      id: 'forest' as const,
+      name: 'Forêt',
+      icon: Leaf,
+      description: 'Thème naturel aux tons verts',
+      colors: ['#16a34a', '#15803d', '#84cc16']
+    },
+    {
+      id: 'midnight' as const,
+      name: 'Minuit',
+      icon: Moon,
+      description: 'Thème sombre et mystique',
+      colors: ['#1e1b4b', '#312e81', '#6366f1']
     }
   ];
 
