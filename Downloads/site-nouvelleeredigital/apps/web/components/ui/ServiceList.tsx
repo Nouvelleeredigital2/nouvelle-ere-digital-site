@@ -57,12 +57,12 @@ export const ServiceList: React.FC<ServiceListProps> = ({
 
   const stateClasses: Record<State, string> = {
     default: '',
-    hover: 'bg-[var(--couleur-light-hover)]',
-    active: 'bg-[var(--couleur-light-active)]',
-    focus: 'ring-2 ring-[var(--color-primary)]',
+    hover: 'hover:bg-muted/50',
+    active: 'bg-muted',
+    focus: 'ring-2 ring-primary',
     disabled: 'opacity-50 cursor-not-allowed',
-    selected: 'border-2 border-[var(--color-primary)]',
-    invalid: 'border-2 border-red-500',
+    selected: 'border-2 border-primary bg-primary/5',
+    invalid: 'border-2 border-error',
     dragging: 'cursor-grabbing',
   };
 
@@ -71,7 +71,7 @@ export const ServiceList: React.FC<ServiceListProps> = ({
   return (
     <div
       className={cn(
-        'bg-[var(--couleur-light)] rounded-[var(--border-radius-large)] p-4',
+        'bg-card border rounded-lg p-4',
         variants[variant],
         stateClasses[state],
         className
@@ -87,8 +87,8 @@ export const ServiceList: React.FC<ServiceListProps> = ({
         <div
           key={service.id}
           className={cn(
-            'flex items-center justify-between p-2 border rounded cursor-pointer',
-            selectedIds.includes(service.id) && 'border-[var(--color-primary)]',
+            'flex items-center justify-between p-2 border rounded cursor-pointer transition-colors',
+            selectedIds.includes(service.id) && 'border-primary bg-primary/5',
             sizes[size]
           )}
           onClick={() => handleSelect(service.id)}
@@ -100,7 +100,7 @@ export const ServiceList: React.FC<ServiceListProps> = ({
             <Text size="sm" className="text-muted">{service.description}</Text>
           </div>
           <Badge className={cn(
-            service.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+            service.status === 'active' ? 'bg-success/20 text-success' : 'bg-muted text-muted-foreground'
           )}>
             {service.status}
           </Badge>

@@ -1,9 +1,9 @@
-// apps/web/components/context/ThemeProvider.tsx
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { personas } from '@/personas';
 import type { CreativePersona, PersonaId } from '@/shared/theme.types';
+import { usePersonaAnalytics } from '@/hooks/usePersonaAnalytics';
 
 interface CreativePersonaContextType {
   persona: CreativePersona;
@@ -15,6 +15,7 @@ const CreativePersonaContext = createContext<CreativePersonaContextType | undefi
 
 export function CreativePersonaProvider({ children }: { children: React.ReactNode }) {
   const [activePersona, setActivePersona] = useState<CreativePersona>(personas[0]); // Artiste par défaut
+  const { trackEngagement } = usePersonaAnalytics();
 
   // Sauvegarder la préférence dans localStorage
   useEffect(() => {
@@ -65,7 +66,14 @@ export function CreativePersonaProvider({ children }: { children: React.ReactNod
     // Sauvegarder le persona choisi
     localStorage.setItem('creative-persona', activePersona.id);
 
-  }, [activePersona]);
+    // Tracker l'événement de changement de persona
+    trackEngagement('persona_changed', {
+      fromPersona: '', // Sera défini par le système d'analytics
+      toPersona: activePersona.id,
+      archetype: activePersona.archetype
+    });
+
+  }, [activePersona, trackEngagement]);
 
   const setPersona = (personaId: PersonaId) => {
     const newPersona = personas.find(p => p.id === personaId);
@@ -89,9 +97,54 @@ export function CreativePersonaProvider({ children }: { children: React.ReactNod
 
 export const useCreativePersona = () => {
   const context = useContext(CreativePersonaContext);
-  if (!context) {
-    throw new Error('useCreativePersona must be used within a CreativePersonaProvider');
+
+  // Vérification robuste du contexte
+  if (context === null || context === undefined) {
+    // Fallback pour tous les cas où le contexte n'est pas disponible
+    if (typeof window === 'undefined') {
+      // Server-side rendering - retourner un objet fallback
+      return {
+        persona: personas[0] || {
+          id: 'default',
+          name: 'Default Persona',
+          description: 'Default creative persona',
+          archetype: 'Default',
+          visualIdentity: { mood: 'neutral', energy: 'calm' },
+          settings: {
+            colors: { background: '#ffffff', foreground: '#000000' },
+            typography: { fontFamilySans: 'Inter' },
+            styles: { borderRadius: 'medium' },
+            layouts: { gallery: 'grid' },
+            animations: { intensity: 'subtle' }
+          }
+        },
+        setPersona: () => {},
+        personas: personas
+      };
+    } else {
+      // Client-side - retourner un objet fallback avec warning
+      console.warn('useCreativePersona: Contexte non disponible, utilisation du fallback');
+      return {
+        persona: personas[0] || {
+          id: 'default',
+          name: 'Default Persona',
+          description: 'Default creative persona',
+          archetype: 'Default',
+          visualIdentity: { mood: 'neutral', energy: 'calm' },
+          settings: {
+            colors: { background: '#ffffff', foreground: '#000000' },
+            typography: { fontFamilySans: 'Inter' },
+            styles: { borderRadius: 'medium' },
+            layouts: { gallery: 'grid' },
+            animations: { intensity: 'subtle' }
+          }
+        },
+        setPersona: () => {},
+        personas: personas
+      };
+    }
   }
+
   return context;
 };
 

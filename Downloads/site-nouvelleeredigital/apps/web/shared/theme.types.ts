@@ -51,5 +51,6 @@ export interface CreativePersona {
       intensity: 'subtle' | 'moderate' | 'dramatic';
       transitions: 'smooth' | 'snappy' | 'elastic';
     };
-  };
 }
+
+export type PersonaId = CreativePersona['id'];

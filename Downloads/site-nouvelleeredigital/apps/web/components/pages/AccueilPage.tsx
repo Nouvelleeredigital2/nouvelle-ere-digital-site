@@ -1,365 +1,109 @@
-import { HeroDuoTone } from "@/components/ui/HeroDuoTone";
-import { GalaxyRibbon } from "@/components/ui/GalaxyRibbon";
-import { PlanetBadge } from "@/components/ui/PlanetBadge";
-import { OrbitBreadcrumbs } from '@/components/ui/OrbitBreadcrumbs';
-import { LazyUniverse3DWrapper } from "@/components/ui/LazyUniverse3D";
-import { ThemeSection } from "@/components/layout/ThemeSection";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Button } from "@/components/ui/Button";
-import { HeroSection } from "@/components/ui/HeroSection";
-import { AnimatedSection, SectionHeader } from "@/components/ui/AnimatedSection";
-import { StaggerContainer, StaggerItem, FadeIn } from "@/components/animations";
-import { ThemeSwitcher } from "@/components/ui/ThemeSwitcher";
-import {
-  Camera,
-  Palette,
-  Users,
-  Code,
-  Brain,
-  BookOpen,
-  TrendingUp,
-  Award,
-  Zap
-} from "lucide-react";
+import { PersonaNavSelector } from "@/components/ui/PersonaNavSelector";
 
 export function AccueilPage() {
-  const services = [
-    {
-      title: "Communication & Marketing Digital",
-      description: "Stratégies digitales innovantes pour amplifier votre présence en ligne et engager votre audience.",
-      icon: <TrendingUp size={24} />,
-      image: "/images/communication.svg",
-      features: ["SEO/SEA", "Réseaux sociaux", "Content marketing", "Analytics"]
-    },
-    {
-      title: "Audiovisuel & Création Multimédia",
-      description: "Production audiovisuelle professionnelle pour captiver votre audience avec des contenus visuels impactants.",
-      icon: <Camera size={24} />,
-      image: "/images/audiovisuel.svg",
-      features: ["Vidéo corporate", "Motion design", "Photographie", "Post-production"]
-    },
-    {
-      title: "Événementiel & Technologie Scénique",
-      description: "Événements hybrides et scénographies technologiques pour créer des expériences mémorables.",
-      icon: <Users size={24} />,
-      image: "/images/evenementiel.svg",
-      features: ["Événements hybrides", "Scénographie", "Live streaming", "Interaction"]
-    },
-    {
-      title: "Création Graphique & Design",
-      description: "Identité visuelle et design graphique créatif pour renforcer votre image de marque.",
-      icon: <Palette size={24} />,
-      image: "/images/design.svg",
-      features: ["Identité visuelle", "Print", "Web design", "UX/UI"]
-    },
-    {
-      title: "Développement Web & Expériences Numériques",
-      description: "Sites web et applications modernes avec une attention particulière à l'expérience utilisateur.",
-      icon: <Code size={24} />,
-      image: "/images/developpement.svg",
-      features: ["Sites vitrine", "E-commerce", "Applications web", "Maintenance"]
-    },
-    {
-      title: "Intelligence Artificielle & Innovation",
-      description: "Solutions IA sur mesure pour optimiser vos processus et créer de nouvelles opportunités.",
-      icon: <Brain size={24} />,
-      image: "/images/ia.svg",
-      features: ["Chatbots", "Analyse prédictive", "Automatisation", "Machine Learning"]
-    }
-  ];
-
-  const stats = [
-    { number: "150+", label: "Projets réalisés" },
-    { number: "50+", label: "Clients satisfaits" },
-    { number: "8", label: "Années d'expérience" },
-    { number: "24/7", label: "Support technique" }
-  ];
-
-  // Convertir les services existants pour le composant 3D
-  const universeServices = [
-    {
-      name: "Communication",
-      color: 0xf87171,
-      colorHex: "#f87171",
-      desc: "Stratégies créatives & storytelling digital",
-      position: [0, 10, 0] as [number, number, number],
-      features: ["SEO/SEA", "Réseaux sociaux", "Content marketing", "Analytics"]
-    },
-    {
-      name: "Audiovisuel",
-      color: 0x60a5fa,
-      colorHex: "#60a5fa",
-      desc: "Production vidéo & contenus immersifs",
-      position: [8.7, 5, -5] as [number, number, number],
-      features: ["Vidéo corporate", "Motion design", "Photographie", "Post-production"]
-    },
-    {
-      name: "Événementiel",
-      color: 0xfde047,
-      colorHex: "#fde047",
-      desc: "Expériences mémorables & activation de marque",
-      position: [8.7, -5, 5] as [number, number, number],
-      features: ["Événements hybrides", "Scénographie", "Live streaming", "Interaction"]
-    },
-    {
-      name: "Design",
-      color: 0xfb923c,
-      colorHex: "#fb923c",
-      desc: "Identité visuelle & design thinking",
-      position: [0, -10, 0] as [number, number, number],
-      features: ["Identité visuelle", "Print", "Web design", "UX/UI"]
-    },
-    {
-      name: "Web",
-      color: 0x34d399,
-      colorHex: "#34d399",
-      desc: "Développement web & applications sur mesure",
-      position: [-8.7, -5, -5] as [number, number, number],
-      features: ["Sites vitrine", "E-commerce", "Applications web", "Maintenance"]
-    },
-    {
-      name: "IA",
-      color: 0x818cf8,
-      colorHex: "#818cf8",
-      desc: "Intelligence artificielle & automatisation",
-      position: [-8.7, 5, 5] as [number, number, number],
-      features: ["Chatbots", "Analyse prédictive", "Automatisation", "Machine Learning"]
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-background">
       {/* Header fixe avec sélecteur de thème */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200 dark:border-slate-700">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <h1 className="text-xl font-bold text-gray-900 dark:text-white">
+              <h1 className="text-xl font-bold text-foreground">
                 Nouvelle Ère Digital
               </h1>
             </div>
-            <ThemeSwitcher />
+            <PersonaNavSelector />
           </div>
         </div>
       </div>
 
       {/* Contenu principal avec padding-top pour éviter le header fixe */}
       <div className="pt-16">
-        {/* Hero Section like other pages */}
-        <AnimatedSection variant="gradient" className="text-center py-20">
+        {/* Hero Section simplifiée */}
+        <div className="text-center py-20 bg-gradient-to-br from-primary/20 to-secondary/20">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">Nouvelle Ère Digital</h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
+            <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6">
+              Nouvelle Ère Digital
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
               Simplifier, innover et valoriser l'humain dans chaque projet numérique.
             </p>
-            <Button size="lg" asChild className="bg-white text-gray-900 hover:bg-white/90">
-              <a href="#services">Découvrir Nos Services</a>
-            </Button>
+            <a
+              href="#services"
+              className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-11 px-8"
+            >
+              Découvrir Nos Services
+            </a>
           </div>
-        </AnimatedSection>
-
-        {/* Universe 3D Section */}
-        <div className="relative">
-          <LazyUniverse3DWrapper services={universeServices} />
         </div>
 
-        {/* Rest of the page content... */}
-
-        {/* Subtitle Section */}
-        <AnimatedSection variant="light" className="py-20">
-          <div className="max-w-4xl mx-auto text-center">
-            <StaggerContainer>
-              <StaggerItem>
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                  Agence créative & technologique
-                </h2>
-              </StaggerItem>
-              <StaggerItem>
-                <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
-                  Simplifier, innover et valoriser l'humain dans chaque projet numérique.
+        {/* Section Services simplifiée */}
+        <div className="py-20">
+          <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-4xl font-bold text-center mb-12">Nos Services</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="p-6 bg-card rounded-lg shadow-lg">
+                <h3 className="text-xl font-bold mb-4">Communication Digitale</h3>
+                <p className="text-muted-foreground mb-4">
+                  Stratégies digitales innovantes pour amplifier votre présence en ligne.
                 </p>
-              </StaggerItem>
-              <StaggerItem>
-                <div className="flex flex-wrap justify-center gap-3">
-                  {["Communication", "Audiovisuel", "Événementiel", "Design", "Web", "IA", "Formation"].map((tag, index) => (
-                    <StaggerItem key={tag}>
-                      <span className="px-6 py-3 rounded-full bg-brand-50 dark:bg-brand-900/20 text-brand-700 dark:text-brand-300 font-medium hover:bg-brand-100 dark:hover:bg-brand-800/30 transition-all duration-300 cursor-default">
-                        {tag}
-                      </span>
-                    </StaggerItem>
-                  ))}
-                </div>
-              </StaggerItem>
-            </StaggerContainer>
-          </div>
-        </AnimatedSection>
+                <ul className="text-sm text-muted-foreground">
+                  <li>• SEO/SEA</li>
+                  <li>• Réseaux sociaux</li>
+                  <li>• Content marketing</li>
+                </ul>
+              </div>
 
-        {/* Hero Image Section */}
-        <AnimatedSection variant="light" className="py-16">
-          <div className="max-w-6xl mx-auto">
-            <div className="relative">
-              <div className="aspect-[16/9] rounded-2xl overflow-hidden bg-gray-50 dark:bg-zinc-800">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center space-y-4">
-                    <div className="w-24 h-24 mx-auto bg-brand-600 rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-lg">
-                      N
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Innovation & Créativité</h3>
-                    <p className="text-gray-600 dark:text-gray-300 max-w-md mx-auto">
-                      L'alliance parfaite entre technologie de pointe et approche humaine
-                    </p>
-                  </div>
-                </div>
+              <div className="p-6 bg-card rounded-lg shadow-lg">
+                <h3 className="text-xl font-bold mb-4">Audiovisuel</h3>
+                <p className="text-muted-foreground mb-4">
+                  Production audiovisuelle professionnelle pour captiver votre audience.
+                </p>
+                <ul className="text-sm text-muted-foreground">
+                  <li>• Vidéo corporate</li>
+                  <li>• Motion design</li>
+                  <li>• Post-production</li>
+                </ul>
+              </div>
+
+              <div className="p-6 bg-card rounded-lg shadow-lg">
+                <h3 className="text-xl font-bold mb-4">Développement Web</h3>
+                <p className="text-muted-foreground mb-4">
+                  Sites web modernes avec une attention particulière à l'expérience utilisateur.
+                </p>
+                <ul className="text-sm text-muted-foreground">
+                  <li>• Sites vitrine</li>
+                  <li>• E-commerce</li>
+                  <li>• Applications web</li>
+                </ul>
               </div>
             </div>
           </div>
-        </AnimatedSection>
-
-        <AnimatedSection variant="light" className="py-16">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <StaggerItem key={index}>
-                  <div className="text-center">
-                    <div className="text-4xl lg:text-5xl font-bold text-brand-600 dark:text-brand-400 mb-2">
-                      {stat.number}
-                    </div>
-                    <div className="text-gray-600 dark:text-gray-300 font-medium">
-                      {stat.label}
-                    </div>
-                  </div>
-                </StaggerItem>
-              ))}
-            </div>
-          </div>
-        </AnimatedSection>
-
-        {/* Services Section */}
-        <GalaxyRibbon
-          content={
-            <AnimatedSection
-              variant="animated"
-              className="py-24"
-              showFloatingElements={true}
-            >
-              <div className="max-w-7xl mx-auto">
-                <SectionHeader
-                  title="Nos Expertises Intégrées"
-                  subtitle="Une approche globale"
-                  description="Découvrez nos six pôles d'expertise interconnectés pour une stratégie digitale complète et performante."
-                  align="center"
-                  size="lg"
-                />
-
-                <FadeIn className="mt-16">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {services.map((service, index) => (
-                      <div key={index} className="relative bg-white dark:bg-zinc-800 rounded-lg shadow-lg p-6 hover:shadow-xl transition-all duration-300">
-                        <PlanetBadge
-                          label={service.title}
-                          planet={{ name: 'Service', color: '#f87171', size: 24 }}
-                          className="absolute -top-2 -left-2 z-10"
-                        />
-                        <div className="flex items-center mb-4">
-                          {service.icon}
-                          <h3 className="text-xl font-bold ml-3">{service.title}</h3>
-                        </div>
-                        <p className="text-gray-600 dark:text-gray-300 mb-4">{service.description}</p>
-                        <ul className="text-sm text-gray-500 dark:text-gray-400">
-                          {service.features.map((feature, i) => (
-                            <li key={i}>• {feature}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                </FadeIn>
-              </div>
-            </AnimatedSection>
-          }
-          variant="cosmic"
-          className="py-8"
-        />
-
-        {/* Values Section */}
-        <AnimatedSection variant="light" className="py-24">
-          <div className="max-w-6xl mx-auto">
-            <SectionHeader
-              title="Pourquoi Nous Choisir ?"
-              subtitle="Nos valeurs"
-              description="Une approche humaine et innovante pour des résultats exceptionnels."
-              align="center"
-              size="md"
-            />
-
-            <StaggerContainer className="mt-16">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {[
-                  {
-                    icon: <Award className="w-8 h-8" />,
-                    title: "Expertise Reconnue",
-                    description: "Plus de 8 années d'expérience dans le digital avec des résultats mesurables."
-                  },
-                  {
-                    icon: <Users className="w-8 h-8" />,
-                    title: "Approche Humaine",
-                    description: "Nous plaçons l'humain au cœur de chaque projet pour des solutions authentiques."
-                  },
-                  {
-                    icon: <Zap className="w-8 h-8" />,
-                    title: "Innovation Continue",
-                    description: "Veille technologique permanente pour vous proposer les meilleures solutions."
-                  }
-                ].map((value, index) => (
-                  <div key={index} className="text-center p-8 rounded-2xl bg-white dark:bg-zinc-800 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-zinc-700">
-                    <div className="w-16 h-16 bg-brand-600 dark:bg-brand-500 rounded-2xl flex items-center justify-center text-white mx-auto mb-6">
-                      {value.icon}
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                      {value.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                      {value.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </StaggerContainer>
-          </div>
-        </AnimatedSection>
+        </div>
 
         {/* CTA Section */}
-        <AnimatedSection variant="light" className="py-24 relative overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <svg width="100%" height="100%" className="w-full h-full">
-              <defs>
-                <pattern id="cta-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-                  <circle cx="30" cy="30" r="2" fill="#8B5CF6" opacity="0.3"/>
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#cta-pattern)"/>
-            </svg>
-          </div>
-
-          <div className="max-w-4xl mx-auto text-center relative z-10">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-              Prêt à Démarrer Votre Projet ?
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed">
+        <div className="py-20 bg-muted/30">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold mb-6">Prêt à Démarrer ?</h2>
+            <p className="text-xl text-muted-foreground mb-8">
               Transformons vos idées en expériences digitales exceptionnelles.
-              Contactez-nous dès aujourd'hui pour un devis gratuit.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button size="lg" asChild className="bg-brand-600 text-white hover:bg-brand-700 text-lg px-8 py-4 shadow-xl">
-                <a href="/contact">Démarrer Maintenant</a>
-              </Button>
-              <Button size="lg" variant="outline" asChild className="border-brand-600 text-brand-600 hover:bg-brand-50 dark:border-brand-400 dark:text-brand-400 dark:hover:bg-brand-900 text-lg px-8 py-4">
-                <a href="/expertises">En Savoir Plus</a>
-              </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-11 px-8"
+              >
+                Nous Contacter
+              </a>
+              <a
+                href="/expertises"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 px-8"
+              >
+                En Savoir Plus
+              </a>
             </div>
           </div>
-        </AnimatedSection>
+        </div>
       </div>
     </div>
   );

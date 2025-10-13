@@ -18,8 +18,8 @@ export function CreativeProfileSelector({ onComplete }: CreativeProfileSelectorP
 
   // Vérifier si l'utilisateur a déjà choisi un persona
   useEffect(() => {
-    const hasChosenPersona = localStorage.getItem('has-chosen-persona');
-    if (hasChosenPersona === 'true' && onComplete) {
+    const hasChosenPersona = localStorage.getItem('creative-persona');
+    if (hasChosenPersona && onComplete) {
       onComplete();
     }
   }, [onComplete]);
@@ -32,7 +32,7 @@ export function CreativeProfileSelector({ onComplete }: CreativeProfileSelectorP
   const handleConfirmSelection = () => {
     if (selectedPersona) {
       setPersona(selectedPersona);
-      localStorage.setItem('has-chosen-persona', 'true');
+      localStorage.setItem('creative-persona', selectedPersona); // Persist the chosen persona ID
       if (onComplete) {
         onComplete();
       }

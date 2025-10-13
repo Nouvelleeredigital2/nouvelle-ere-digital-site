@@ -180,3 +180,124 @@
 .font-mono {
   font-family: 'JetBrains Mono', monospace;
 }
+
+/* Animations avancées pour les transitions de personas */
+.persona-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg,
+    var(--color-primary),
+    var(--color-secondary),
+    var(--color-accent)
+  );
+  opacity: 0.1;
+  z-index: 9999;
+  pointer-events: none;
+  animation: personaPulse 0.8s ease-in-out;
+}
+
+@keyframes personaPulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+/* Effet de morphing pour les éléments pendant la transition */
+.persona-morphing {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.persona-morphing:hover {
+  transform: scale(1.02);
+}
+
+/* Indicateur de changement de persona */
+.persona-change-indicator {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  animation: personaPing 2s infinite;
+}
+
+@keyframes personaPing {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+}
+
+/* Animation de rotation pour les icônes */
+.persona-icon-spin {
+  animation: personaIconRotate 0.6s ease-in-out;
+}
+
+@keyframes personaIconRotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* Effet de glow pour l'élément actif */
+.persona-glow {
+  box-shadow: 0 0 20px var(--color-primary),
+              0 0 40px var(--color-primary),
+              0 0 60px var(--color-primary);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Animation de slide pour les éléments */
+.persona-slide-in {
+  animation: personaSlideIn 0.5s ease-out;
+}
+
+@keyframes personaSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Variables CSS pour les transitions */
+:root {
+  --transition-overlay: 0;
+}
+
+/* Styles conditionnels basés sur la variable de transition */
+html[style*="--transition-overlay: 1"] * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
