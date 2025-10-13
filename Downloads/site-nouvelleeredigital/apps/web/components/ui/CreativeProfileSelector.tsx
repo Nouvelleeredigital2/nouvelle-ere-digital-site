@@ -2,19 +2,42 @@
 
 import React, { useState, useEffect } from 'react';
 import { useCreativePersona } from '@/components/context/ThemeProvider';
-import { Button } from './Button';
 import { Card } from './Card';
 import { Palette, Users, Lightbulb, Target, Zap, Heart, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface CreativeProfileSelectorProps {
   onComplete?: () => void;
+  compact?: boolean; // Nouvelle prop pour le mode compact
 }
 
-export function CreativeProfileSelector({ onComplete }: CreativeProfileSelectorProps) {
+// Composant Button simple inline
+const Button = ({ children, onClick, className, size = "md", ...props }: {
+  children: React.ReactNode;
+  onClick?: () => void;
+  className?: string;
+  size?: "sm" | "md" | "lg";
+}) => {
+  const sizeClasses = {
+    sm: "px-4 py-2 text-sm",
+    md: "px-6 py-3 text-base",
+    lg: "px-8 py-4 text-lg"
+  };
+
+  return (
+    <button
+      onClick={onClick}
+      className={`inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 ${sizeClasses[size]} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
+
+export function CreativeProfileSelector({ onComplete, compact = false }: CreativeProfileSelectorProps) {
   const { personas, setPersona } = useCreativePersona();
   const [selectedPersona, setSelectedPersona] = useState<string | null>(null);
-  const [step, setStep] = useState<'selection' | 'confirmation'>('selection');
 
   // Vérifier si l'utilisateur a déjà choisi un persona
   useEffect(() => {
@@ -25,17 +48,10 @@ export function CreativeProfileSelector({ onComplete }: CreativeProfileSelectorP
   }, [onComplete]);
 
   const handlePersonaSelect = (personaId: string) => {
-    setSelectedPersona(personaId);
-    setStep('confirmation');
-  };
-
-  const handleConfirmSelection = () => {
-    if (selectedPersona) {
-      setPersona(selectedPersona);
-      localStorage.setItem('creative-persona', selectedPersona); // Persist the chosen persona ID
-      if (onComplete) {
-        onComplete();
-      }
+    setPersona(personaId);
+    localStorage.setItem('creative-persona', personaId);
+    if (onComplete) {
+      onComplete();
     }
   };
 
@@ -50,54 +66,98 @@ export function CreativeProfileSelector({ onComplete }: CreativeProfileSelectorP
     }
   };
 
-  if (step === 'confirmation' && selectedPersona) {
-    const persona = personas.find(p => p.id === selectedPersona);
-
+  // Mode compact pour intégration dans la page d'accueil
+  if (compact) {
     return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="min-h-screen bg-background flex items-center justify-center p-8"
-      >
-        <Card className="max-w-2xl w-full p-8 text-center">
+      <section className="py-16 bg-gradient-to-br from-background via-background/95 to-background/90">
+        <div className="max-w-6xl mx-auto px-8">
+          {/* Header compact */}
           <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-12"
           >
-            <CheckCircle className="w-16 h-16 text-success mx-auto mb-6" />
+            <h2 className="text-3xl font-serif mb-4 text-foreground">
+              Choisissez votre profil créatif
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Découvrez votre personnalité créative et personnalisez votre expérience
+            </p>
           </motion.div>
 
-          <h2 className="text-3xl font-serif mb-4">
-            Parfait ! Vous êtes {persona?.name}
-          </h2>
-
-          <p className="text-lg text-muted-foreground mb-6">
-            {persona?.description}
-          </p>
-
-          <div className="bg-card/50 rounded-lg p-6 mb-8">
-            <p className="text-sm text-muted-foreground">
-              <strong>Votre archétype :</strong> {persona?.archetype}
-            </p>
-            <p className="text-sm text-muted-foreground mt-2">
-              <strong>Énergie :</strong> {persona?.visualIdentity.energy} •
-              <strong> Ambiance :</strong> {persona?.visualIdentity.mood}
-            </p>
-          </div>
-
-          <Button
-            onClick={handleConfirmSelection}
-            size="lg"
-            className="w-full"
+          {/* Grille compacte des personas */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"
           >
-            Commencer l'expérience
-          </Button>
-        </Card>
-      </motion.div>
+            {personas.slice(0, 5).map((persona, index) => { // Afficher seulement les 5 premiers
+              const Icon = getPersonaIcon(persona.archetype);
+              const isSelected = selectedPersona === persona.id;
+
+              return (
+                <motion.div
+                  key={persona.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * index }}
+                  whileHover={{ y: -4 }}
+                  className="relative"
+                >
+                  <Card
+                    className={`cursor-pointer transition-all duration-300 h-full text-center p-4 hover:shadow-lg ${
+                      isSelected
+                        ? 'ring-2 ring-primary bg-primary/5'
+                        : 'hover:bg-card/80'
+                    }`}
+                    onClick={() => handlePersonaSelect(persona.id)}
+                  >
+                    {/* Icône */}
+                    <div className="flex justify-center mb-3">
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                        isSelected ? 'bg-primary text-primary-foreground' : 'bg-muted'
+                      }`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                    </div>
+
+                    {/* Nom */}
+                    <h3 className="text-sm font-semibold mb-1">{persona.name}</h3>
+                    <p className="text-xs text-muted-foreground leading-tight">
+                      {persona.description.split('.')[0]}
+                    </p>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="text-center mt-8"
+          >
+            <Button
+              onClick={() => {
+                // Sélectionner le premier persona par défaut si aucun n'est choisi
+                if (!selectedPersona) {
+                  handlePersonaSelect(personas[0].id);
+                }
+              }}
+              size="lg"
+              className="bg-primary hover:bg-primary/90"
+            >
+              Commencer avec mon profil
+            </Button>
+          </motion.div>
+        </div>
+      </section>
     );
   }
 
+  // Mode plein écran (original)
   return (
     <div className="min-h-screen bg-background py-16">
       <div className="max-w-6xl mx-auto px-8">
@@ -175,35 +235,11 @@ export function CreativeProfileSelector({ onComplete }: CreativeProfileSelectorP
                       {persona.archetype}
                     </p>
                   </div>
-
-                  {/* Indicateur de sélection */}
-                  {isSelected && (
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      className="absolute top-4 right-4"
-                    >
-                      <CheckCircle className="w-5 h-5 text-primary" />
-                    </motion.div>
-                  )}
                 </Card>
               </motion.div>
             );
           })}
         </motion.div>
-
-        {/* Sélectionné mais pas encore confirmé */}
-        {selectedPersona && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mt-12 text-center"
-          >
-            <Button size="lg" onClick={() => setStep('confirmation')}>
-              Continuer avec ce profil
-            </Button>
-          </motion.div>
-        )}
       </div>
     </div>
   );
