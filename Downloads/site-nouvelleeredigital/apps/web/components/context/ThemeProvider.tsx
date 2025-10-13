@@ -42,22 +42,6 @@ export function CreativePersonaProvider({ children }: { children: React.ReactNod
     root.style.setProperty('--font-sans', settings.typography.fontFamilySans);
     root.style.setProperty('--font-serif', settings.typography.fontFamilySerif);
     root.style.setProperty('--font-mono', settings.typography.fontFamilyMono);
-    root.style.setProperty('--typography-scale', settings.typography.scale);
-    root.style.setProperty('--line-height', settings.typography.lineHeight);
-
-    // Appliquer les styles
-    root.style.setProperty('--border-radius', settings.styles.borderRadius);
-    root.style.setProperty('--card-shadow', settings.styles.cardShadow);
-    root.style.setProperty('--spacing', settings.styles.spacing);
-
-    // Appliquer les layouts
-    Object.entries(settings.layouts).forEach(([key, value]) => {
-      root.style.setProperty(`--layout-${key}`, value);
-    });
-
-    // Appliquer les animations
-    root.style.setProperty('--animation-intensity', settings.animations.intensity);
-    root.style.setProperty('--animation-transitions', settings.animations.transitions);
 
     // Classe CSS pour le persona actif
     root.classList.remove(...personas.map(p => `persona-${p.id}`));
