@@ -6,7 +6,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ServiceModalProvider } from "@/components/context/ServiceModalProvider";
 import { ServiceModal } from "@/components/modals/ServiceModal";
-import { CreativePersonaProvider } from "@/components/context/ThemeProvider";
+import { PersonaProvider } from "@/components/context/PersonaProvider";
 
 export const metadata: Metadata = siteDefaults.metadata;
 
@@ -14,14 +14,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr">
       <body suppressHydrationWarning={true}>
-        <CreativePersonaProvider>
+        <PersonaProvider>
           <ServiceModalProvider>
             <Header />
             <main>{children}</main>
             <Footer />
             <ServiceModal />
           </ServiceModalProvider>
-        </CreativePersonaProvider>
+        </PersonaProvider>
       </body>
     </html>
   );

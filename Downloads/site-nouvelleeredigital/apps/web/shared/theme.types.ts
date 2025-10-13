@@ -1,56 +1,29 @@
 // apps/web/shared/theme.types.ts
 
-export type LayoutStyle = 'symmetrical-grid' | 'asymmetrical-masonry' | 'single-column' | 'magazine-layout' | 'card-grid';
-export type HeroStyle = 'full-visual' | 'split-text-image' | 'minimalist' | 'immersive' | 'classic';
+export type LayoutStyle = 'symmetrical-grid' | 'asymmetrical-masonry' | 'single-column';
+export type HeroStyle = 'full-visual' | 'split-text-image';
 export type TextAlign = 'text-left' | 'text-center' | 'text-right';
-export type TypographyScale = 'compact' | 'comfortable' | 'spacious' | 'dramatic';
 
-export interface CreativePersona {
-  id: string;
+export interface Theme {
+  id: string; 
   name: string;
   description: string;
-  archetype: string;
-  visualIdentity: {
-    mood: 'dark' | 'light' | 'vibrant' | 'minimal' | 'warm' | 'cool';
-    energy: 'calm' | 'energetic' | 'sophisticated' | 'playful' | 'bold';
-  };
   settings: {
-    colors: {
-      background: string;
-      foreground: string;
-      primary: string;
-      secondary: string;
-      accent: string;
-      card: string;
-      border: string;
-      muted: string;
-      success: string;
-      warning: string;
-      error: string;
+    colors: { 
+      background: string; 
+      foreground: string; 
     };
-    typography: {
-      fontFamilySans: string;
-      fontFamilySerif: string;
-      fontFamilyMono: string;
-      scale: TypographyScale;
-      lineHeight: 'tight' | 'normal' | 'relaxed';
+    typography: { 
+      fontFamilySans: string; 
+      fontFamilySerif: string; 
     };
-    styles: {
-      borderRadius: 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
-      cardShadow: 'none' | 'sm' | 'md' | 'lg' | 'xl';
-      spacing: 'compact' | 'normal' | 'spacious';
+    styles: { 
+      borderRadius: string; 
     };
     layouts: {
       gallery: LayoutStyle;
       heroStyle: HeroStyle;
       heroTextAlign: TextAlign;
-      sections: LayoutStyle;
-      navigation: 'horizontal' | 'vertical' | 'floating' | 'minimal';
     };
-    animations: {
-      intensity: 'subtle' | 'moderate' | 'dramatic';
-      transitions: 'smooth' | 'snappy' | 'elastic';
-    };
+  };
 }
-
-export type PersonaId = CreativePersona['id'];

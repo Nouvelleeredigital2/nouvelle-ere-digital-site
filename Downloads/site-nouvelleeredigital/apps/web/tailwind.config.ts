@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: ["class"],
   content: [
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -8,34 +9,33 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: 'var(--color-background)',
-        foreground: 'var(--color-foreground)',
+        border: "hsl(var(--border))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: 'var(--color-primary)',
-          foreground: '#ffffff', // Couleur du texte sur un bouton primaire
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: 'var(--color-secondary)',
-          foreground: '#1e293b', // Couleur du texte sur un bouton secondaire
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
-        card: 'var(--color-card)',
-        border: 'var(--color-border)',
-        'muted-foreground': 'var(--color-muted-foreground)',
-      },
-      fontFamily: {
-        sans: ['var(--font-sans)', 'sans-serif'],
-        serif: ['var(--font-serif)', 'serif'],
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
       },
       borderRadius: {
-        lg: `var(--border-radius)`,
-        md: `calc(var(--border-radius) - 4px)`,
-        sm: `calc(var(--border-radius) - 6px)`,
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
-      boxShadow: {
-        'card-shadow': 'var(--card-shadow)',
+      fontFamily: {
+        sans: ["var(--font-sans)", "sans-serif"],
+        serif: ["var(--font-serif)", "serif"],
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };
 export default config;
