@@ -38,7 +38,8 @@ export const innovateurPersona: CreativePersona = {
     },
     layouts: {
       gallery: 'magazine-layout',
-      hero: 'full-visual',
+      heroStyle: 'full-visual',
+      heroTextAlign: 'text-center',
       sections: 'card-grid',
       navigation: 'floating',
     },

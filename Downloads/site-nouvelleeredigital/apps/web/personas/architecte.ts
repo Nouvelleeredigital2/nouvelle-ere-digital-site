@@ -38,7 +38,8 @@ export const architectePersona: CreativePersona = {
     },
     layouts: {
       gallery: 'symmetrical-grid',
-      hero: 'split-text-image',
+      heroStyle: 'split-text-image',
+      heroTextAlign: 'text-left',
       sections: 'symmetrical-grid',
       navigation: 'horizontal',
     },

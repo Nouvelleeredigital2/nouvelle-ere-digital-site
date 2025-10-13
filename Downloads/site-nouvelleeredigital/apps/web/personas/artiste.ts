@@ -38,7 +38,8 @@ export const artistePersona: CreativePersona = {
     },
     layouts: {
       gallery: 'asymmetrical-masonry',
-      hero: 'immersive',
+      heroStyle: 'immersive',
+      heroTextAlign: 'text-center',
       sections: 'magazine-layout',
       navigation: 'floating',
     },

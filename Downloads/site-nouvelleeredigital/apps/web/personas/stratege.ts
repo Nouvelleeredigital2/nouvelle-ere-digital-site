@@ -38,7 +38,8 @@ export const strategePersona: CreativePersona = {
     },
     layouts: {
       gallery: 'single-column',
-      hero: 'minimalist',
+      heroStyle: 'minimalist',
+      heroTextAlign: 'text-center',
       sections: 'single-column',
       navigation: 'minimal',
     },

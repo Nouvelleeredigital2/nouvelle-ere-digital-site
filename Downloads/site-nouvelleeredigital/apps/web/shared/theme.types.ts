@@ -2,6 +2,7 @@
 
 export type LayoutStyle = 'symmetrical-grid' | 'asymmetrical-masonry' | 'single-column' | 'magazine-layout' | 'card-grid';
 export type HeroStyle = 'full-visual' | 'split-text-image' | 'minimalist' | 'immersive' | 'classic';
+export type TextAlign = 'text-left' | 'text-center' | 'text-right';
 export type TypographyScale = 'compact' | 'comfortable' | 'spacious' | 'dramatic';
 
 export interface CreativePersona {
@@ -41,7 +42,8 @@ export interface CreativePersona {
     };
     layouts: {
       gallery: LayoutStyle;
-      hero: HeroStyle;
+      heroStyle: HeroStyle;
+      heroTextAlign: TextAlign;
       sections: LayoutStyle;
       navigation: 'horizontal' | 'vertical' | 'floating' | 'minimal';
     };
@@ -51,5 +53,3 @@ export interface CreativePersona {
     };
   };
 }
-
-export type PersonaId = CreativePersona['id'];

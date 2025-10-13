@@ -38,7 +38,8 @@ export const connecteurPersona: CreativePersona = {
     },
     layouts: {
       gallery: 'card-grid',
-      hero: 'classic',
+      heroStyle: 'classic',
+      heroTextAlign: 'text-center',
       sections: 'symmetrical-grid',
       navigation: 'horizontal',
     },
