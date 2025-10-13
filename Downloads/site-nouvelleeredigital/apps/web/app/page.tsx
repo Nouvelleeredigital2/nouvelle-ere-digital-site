@@ -1,3 +1,5 @@
+import { CreativeProfileSelector } from '@/components/ui/CreativeProfileSelector';
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
@@ -44,6 +46,8 @@ export default function HomePage() {
             Analytics
           </a>
         </div>
+
+        <CreativeProfileSelector />
       </div>
     </div>
   );

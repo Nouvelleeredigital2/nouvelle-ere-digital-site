@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
   /* Nouveaux tokens pour les composants planétaires et orbitaux */
   --color-planet-primary: #ff6b6b;
   --color-planet-secondary: #4ecdc4;
@@ -13,7 +14,7 @@
   --animation-orbit-duration: 10s;
   --animation-pulse-slow: 2s;
 
-  /* Variables CSS du système de thèmes */
+  /* Variables CSS du système de thèmes - valeurs par défaut */
   --color-primary: #8b5cf6;
   --color-secondary: #3b82f6;
   --color-accent: #ec4899;
@@ -21,15 +22,34 @@
   --color-foreground: #000000;
   --color-card: #ffffff;
   --color-border: #e2e8f0;
+  --color-muted: #64748b;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
 
-  /* Typographie */
+  /* Typographie par défaut */
   --font-sans: "Inter", sans-serif;
   --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --typography-scale: comfortable;
+  --line-height: normal;
 
-  /* Styles */
+  /* Styles par défaut */
   --border-radius: 0.5rem;
   --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --button-padding: 0.5rem 1rem;
+  --spacing: normal;
+
+  /* Layouts par défaut */
+  --layout-gallery: symmetrical-grid;
+  --layout-heroStyle: full-visual;
+  --layout-heroTextAlign: text-center;
+  --layout-sections: symmetrical-grid;
+  --layout-navigation: horizontal;
+
+  /* Animations par défaut */
+  --animation-intensity: moderate;
+  --animation-transitions: smooth;
 
   /* Legacy variables pour compatibilité */
   --primary-color: var(--color-primary);
@@ -37,7 +57,6 @@
   --accent-color: var(--color-accent);
   --bg-color: var(--color-background);
   --text-color: var(--color-foreground);
-  --spacing: 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
