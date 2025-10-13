@@ -1,0 +1,750 @@
+/* apps/web/styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Couleurs Sémantiques */
+  --color-background: #0a0a2a; /* Bleu nuit profond */
+  --color-foreground: #e2e8f0; /* Texte principal (ardoise clair) */
+  --color-muted-foreground: #94a3b8; /* Texte secondaire */
+
+  --color-primary: #818cf8; /* Violet IA pour les actions principales */
+  --color-secondary: #fde047; /* Jaune Événementiel pour les accents */
+
+  --color-card: rgba(30, 41, 59, 0.5); /* Fond des cartes (ardoise semi-transparent) */
+  --color-border: rgba(51, 65, 85, 0.5); /* Bordures subtiles */
+
+  /* Typographie */
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Playfair Display", serif;
+
+  /* Styles */
+  --border-radius: 0.75rem; /* 12px */
+  --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+  /* Couleurs de base du système */
+  --color-primary-50: #f0f4ff;
+  --color-primary-100: #e0e9ff;
+  --color-primary-200: #c7d8ff;
+  --color-primary-300: #a5bbfd;
+  --color-primary-400: #8395f9;
+  --color-primary-500: #6366f1;  /* Couleur primaire principale */
+  --color-primary-600: #5856eb;
+  --color-primary-700: #4f46e5;
+  --color-primary-800: #4338ca;
+  --color-primary-900: #3730a3;
+  --color-primary-950: #1e1b4b;
+
+  /* Secondary palette */
+  --color-secondary-50: #f0f9ff;
+  --color-secondary-100: #e0f2fe;
+  --color-secondary-200: #bae6fd;
+  --color-secondary-300: #7dd3fc;
+  --color-secondary-400: #38bdf8;
+  --color-secondary-500: #0ea5e9;  /* Couleur secondaire principale */
+  --color-secondary-600: #0284c7;
+  --color-secondary-700: #0369a1;
+  --color-secondary-800: #075985;
+  --color-secondary-900: #0c4a6e;
+  --color-secondary-950: #082f49;
+
+  /* Couleurs de surface avec hiérarchie claire */
+  --color-surface-50: #fafafa;    /* Fond très clair */
+  --color-surface-100: #f4f4f5;   /* Fond clair */
+  --color-surface-200: #e4e4e7;   /* Bordures légères */
+  --color-surface-300: #d4d4d8;   /* Éléments désactivés */
+  --color-surface-400: #a1a1aa;   /* Texte secondaire */
+  --color-surface-500: #71717a;   /* Texte muted */
+  --color-surface-600: #52525b;   /* Texte normal */
+  --color-surface-700: #3f3f46;   /* Texte important */
+  --color-surface-800: #27272a;   /* Fond sombre */
+  --color-surface-900: #18181b;   /* Fond très sombre */
+  --color-surface-950: #09090b;   /* Fond noir */
+
+  /* Couleurs sémantiques avec rôles clairs */
+  --color-background: var(--color-surface-50);      /* Fond de page principal */
+  --color-background-subtle: var(--color-surface-100); /* Fond de section */
+  --color-surface: var(--color-surface-100);         /* Fond de cartes/composants */
+  --color-surface-elevated: #ffffff;                /* Cartes surélevées */
+  --color-border: var(--color-surface-200);          /* Bordures */
+  --color-border-subtle: var(--color-surface-100);   /* Bordures discrètes */
+
+  /* Text colors with semantic meaning */
+  --color-text-primary: var(--color-surface-900);    /* Texte principal */
+  --color-text-secondary: var(--color-surface-700);  /* Sous-titres */
+  --color-text-muted: var(--color-surface-500);      /* Texte secondaire */
+  --color-text-subtle: var(--color-surface-400);     /* Texte discret */
+  --color-text-inverse: #ffffff;                     /* Texte sur fond sombre */
+
+  /* Interactive colors */
+  --color-interactive: var(--color-primary-500);     /* Éléments cliquables */
+  --color-interactive-hover: var(--color-primary-600); /* Survol */
+  --color-interactive-active: var(--color-primary-700); /* Actif */
+
+  /* Status colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: var(--color-secondary-500);
+
+  /* Accent colors for personas */
+  --color-accent: #ec4899;  /* Peut être remplacé par le système de personas */
+
+  /* Legacy compatibility */
+  --color-foreground: var(--color-text-primary);
+  --color-card: var(--color-surface-elevated);
+  --color-muted: var(--color-text-muted);
+  --color-primary: var(--color-primary-500);
+  --color-secondary: var(--color-secondary-500);
+}
+
+/* Mode sombre */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--color-surface-950);
+    --color-background-subtle: var(--color-surface-900);
+    --color-surface: var(--color-surface-800);
+    --color-surface-elevated: var(--color-surface-700);
+    --color-border: var(--color-surface-600);
+    --color-border-subtle: var(--color-surface-700);
+
+    --color-text-primary: var(--color-surface-50);
+    --color-text-secondary: var(--color-surface-200);
+    --color-text-muted: var(--color-surface-300);
+    --color-text-subtle: var(--color-surface-400);
+  }
+}
+
+/* ==============================================
+   DESIGN SYSTEM - SYSTÈME D'ESPACEMENT
+   ============================================== */
+
+/* Échelle d'espacement cohérente (multiples de 4px) */
+:root {
+  /* Espacement vertical (padding/margin top/bottom) */
+  --space-xs: 0.25rem;    /* 4px */
+  --space-sm: 0.5rem;     /* 8px */
+  --space-md: 0.75rem;    /* 12px */
+  --space-lg: 1rem;       /* 16px */
+  --space-xl: 1.5rem;     /* 24px */
+  --space-2xl: 2rem;      /* 32px */
+  --space-3xl: 3rem;      /* 48px */
+  --space-4xl: 4rem;      /* 64px */
+  --space-5xl: 6rem;      /* 96px */
+
+  /* Espacement horizontal (padding/margin left/right) */
+  --space-inline-xs: 0.25rem;
+  --space-inline-sm: 0.5rem;
+  --space-inline-md: 0.75rem;
+  --space-inline-lg: 1rem;
+  --space-inline-xl: 1.5rem;
+  --space-inline-2xl: 2rem;
+  --space-inline-3xl: 3rem;
+
+  /* Espacement de grille */
+  --grid-gap-xs: 0.5rem;
+  --grid-gap-sm: 0.75rem;
+  --grid-gap-md: 1rem;
+  --grid-gap-lg: 1.5rem;
+  --grid-gap-xl: 2rem;
+  --grid-gap-2xl: 3rem;
+}
+
+/* ==============================================
+   DESIGN SYSTEM - ÉCHELLE TYPOGRAPHIQUE
+   ============================================== */
+
+/* Échelle typographique hiérarchisée */
+:root {
+  /* Display (pour les très gros titres) */
+  --text-display-2xl: 4.5rem;     /* 72px */
+  --text-display-xl: 3.75rem;     /* 60px */
+  --text-display-lg: 3rem;        /* 48px */
+  --text-display-md: 2.25rem;     /* 36px */
+  --text-display-sm: 1.875rem;    /* 30px */
+
+  /* Headings (titres) */
+  --text-heading-2xl: 2.25rem;    /* 36px */
+  --text-heading-xl: 1.875rem;    /* 30px */
+  --text-heading-lg: 1.5rem;      /* 24px */
+  --text-heading-md: 1.25rem;     /* 20px */
+  --text-heading-sm: 1.125rem;    /* 18px */
+  --text-heading-xs: 1rem;        /* 16px */
+
+  /* Body text (corps de texte) */
+  --text-body-2xl: 1.375rem;      /* 22px */
+  --text-body-xl: 1.25rem;        /* 20px */
+  --text-body-lg: 1.125rem;       /* 18px */
+  --text-body-md: 1rem;           /* 16px */
+  --text-body-sm: 0.875rem;       /* 14px */
+  --text-body-xs: 0.75rem;        /* 12px */
+
+  /* Labels and captions */
+  --text-label-lg: 0.875rem;      /* 14px */
+  --text-label-md: 0.75rem;       /* 12px */
+  --text-label-sm: 0.625rem;      /* 10px */
+  --text-caption: 0.75rem;        /* 12px */
+
+  /* Line heights cohérents */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+}
+
+/* ==============================================
+   DESIGN SYSTEM - STYLES DE COMPOSANTS
+   ============================================== */
+
+/* Styles de base améliorés */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  line-height: var(--leading-normal);
+  font-size: var(--text-body-md);
+}
+
+/* Titres avec hiérarchie claire */
+h1, .text-display { font-size: var(--text-display-lg); font-weight: 700; line-height: var(--leading-tight); }
+h2, .text-heading-2xl { font-size: var(--text-heading-2xl); font-weight: 600; line-height: var(--leading-tight); }
+h3, .text-heading-xl { font-size: var(--text-heading-xl); font-weight: 600; line-height: var(--leading-snug); }
+h4, .text-heading-lg { font-size: var(--text-heading-lg); font-weight: 500; line-height: var(--leading-snug); }
+h5, .text-heading-md { font-size: var(--text-heading-md); font-weight: 500; line-height: var(--leading-normal); }
+h6, .text-heading-sm { font-size: var(--text-heading-sm); font-weight: 500; line-height: var(--leading-normal); }
+
+/* Corps de texte */
+p {
+  margin-bottom: var(--space-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-primary);
+}
+
+.text-body-lg { font-size: var(--text-body-lg); line-height: var(--leading-relaxed); }
+.text-body-md { font-size: var(--text-body-md); line-height: var(--leading-relaxed); }
+.text-body-sm { font-size: var(--text-body-sm); line-height: var(--leading-normal); }
+
+/* Texte secondaire */
+.text-muted { color: var(--color-text-muted); }
+.text-subtle { color: var(--color-text-subtle); }
+
+/* Composants avec styles unifiés */
+.card {
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem; /* 12px */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  padding: var(--space-xl);
+}
+
+.card-elevated {
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  padding: var(--space-xl);
+}
+
+/* Boutons avec hiérarchie claire */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--color-interactive);
+  color: var(--color-text-inverse);
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--text-body-sm);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-interactive-hover);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--text-body-sm);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-surface-100);
+  border-color: var(--color-surface-300);
+}
+
+/* Grille avec espacement cohérent */
+.grid {
+  display: grid;
+  gap: var(--grid-gap-md);
+}
+
+.grid-cols-responsive {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Utilitaires d'espacement cohérents */
+.p-xs { padding: var(--space-xs); }
+.p-sm { padding: var(--space-sm); }
+.p-md { padding: var(--space-md); }
+.p-lg { padding: var(--space-lg); }
+.p-xl { padding: var(--space-xl); }
+.p-2xl { padding: var(--space-2xl); }
+
+.m-xs { margin: var(--space-xs); }
+.m-sm { margin: var(--space-sm); }
+.m-md { margin: var(--space-md); }
+.m-lg { margin: var(--space-lg); }
+.m-xl { margin: var(--space-xl); }
+.m-2xl { margin: var(--space-2xl); }
+
+/* Espacement vertical uniquement */
+.py-xs { padding-top: var(--space-xs); padding-bottom: var(--space-xs); }
+.py-sm { padding-top: var(--space-sm); padding-bottom: var(--space-sm); }
+.py-md { padding-top: var(--space-md); padding-bottom: var(--space-md); }
+.py-lg { padding-top: var(--space-lg); padding-bottom: var(--space-lg); }
+.py-xl { padding-top: var(--space-xl); padding-bottom: var(--space-xl); }
+.py-2xl { padding-top: var(--space-2xl); padding-bottom: var(--space-2xl); }
+
+/* Espacement horizontal uniquement */
+.px-xs { padding-left: var(--space-xs); padding-right: var(--space-xs); }
+.px-sm { padding-left: var(--space-sm); padding-right: var(--space-sm); }
+.px-md { padding-left: var(--space-md); padding-right: var(--space-md); }
+.px-lg { padding-left: var(--space-lg); padding-right: var(--space-lg); }
+.px-xl { padding-left: var(--space-xl); padding-right: var(--space-xl); }
+.px-2xl { padding-left: var(--space-2xl); padding-right: var(--space-2xl); }
+
+/* ==============================================
+   DESIGN SYSTEM - ANIMATIONS ET TRANSITIONS
+   ============================================== */
+
+/* Transitions cohérentes */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-fast {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animations d'entrée */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.6s ease-out;
+}
+
+.animate-slide-in-down {
+  animation: slideInDown 0.6s ease-out;
+}
+
+/* Classes utilitaires utilisant les variables du thème */
+.theme-bg-primary { background-color: var(--color-primary); }
+.theme-bg-secondary { background-color: var(--color-secondary); }
+.theme-bg-accent { background-color: var(--color-accent); }
+.theme-bg-background { background-color: var(--color-background); }
+.theme-bg-card { background-color: var(--color-card); }
+
+.theme-text-primary { color: var(--color-primary); }
+.theme-text-secondary { color: var(--color-secondary); }
+.theme-text-accent { color: var(--color-accent); }
+.theme-text-foreground { color: var(--color-foreground); }
+
+.theme-border { border-color: var(--color-border); }
+.theme-border-radius { border-radius: var(--border-radius); }
+.theme-shadow { box-shadow: var(--card-shadow); }
+
+/* Styles de base pour améliorer l'apparence par défaut */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  line-height: var(--line-height);
+}
+
+/* Amélioration des cartes et composants */
+.card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+}
+
+/* Amélioration des boutons par défaut */
+button {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground, white);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--color-primary);
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+button:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Amélioration du texte */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Classes pour les anciens composants qui utilisent brand */
+.bg-brand-50 { background-color: var(--color-primary); opacity: 0.05; }
+.bg-brand-100 { background-color: var(--color-primary); opacity: 0.1; }
+.bg-brand-200 { background-color: var(--color-primary); opacity: 0.2; }
+.bg-brand-300 { background-color: var(--color-primary); opacity: 0.3; }
+.bg-brand-400 { background-color: var(--color-primary); opacity: 0.4; }
+.bg-brand-500 { background-color: var(--color-primary); opacity: 0.5; }
+.bg-brand-600 { background-color: var(--color-primary); opacity: 0.6; }
+.bg-brand-700 { background-color: var(--color-primary); opacity: 0.7; }
+.bg-brand-800 { background-color: var(--color-primary); opacity: 0.8; }
+.bg-brand-900 { background-color: var(--color-primary); opacity: 0.9; }
+
+.text-brand-50 { color: var(--color-primary); opacity: 0.05; }
+.text-brand-100 { color: var(--color-primary); opacity: 0.1; }
+.text-brand-200 { color: var(--color-primary); opacity: 0.2; }
+.text-brand-300 { color: var(--color-primary); opacity: 0.3; }
+.text-brand-400 { color: var(--color-primary); opacity: 0.4; }
+.text-brand-500 { color: var(--color-primary); opacity: 0.5; }
+.text-brand-600 { color: var(--color-primary); opacity: 0.6; }
+.text-brand-700 { color: var(--color-primary); opacity: 0.7; }
+.text-brand-800 { color: var(--color-primary); opacity: 0.8; }
+.text-brand-900 { color: var(--color-primary); opacity: 0.9; }
+
+.border-brand-50 { border-color: var(--color-primary); opacity: 0.05; }
+.border-brand-100 { border-color: var(--color-primary); opacity: 0.1; }
+.border-brand-200 { border-color: var(--color-primary); opacity: 0.2; }
+.border-brand-300 { border-color: var(--color-primary); opacity: 0.3; }
+.border-brand-400 { border-color: var(--color-primary); opacity: 0.4; }
+.border-brand-500 { border-color: var(--color-primary); opacity: 0.5; }
+.border-brand-600 { border-color: var(--color-primary); opacity: 0.6; }
+.border-brand-700 { border-color: var(--color-primary); opacity: 0.7; }
+.border-brand-800 { border-color: var(--color-primary); opacity: 0.8; }
+.border-brand-900 { border-color: var(--color-primary); opacity: 0.9; }
+
+/* Classes utilitaires utilisant les variables du thème */
+.theme-bg-primary { background-color: var(--color-primary); }
+.theme-bg-secondary { background-color: var(--color-secondary); }
+.theme-bg-accent { background-color: var(--color-accent); }
+.theme-bg-background { background-color: var(--color-background); }
+.theme-bg-card { background-color: var(--color-card); }
+
+.theme-text-primary { color: var(--color-primary); }
+.theme-text-secondary { color: var(--color-secondary); }
+.theme-text-accent { color: var(--color-accent); }
+.theme-text-foreground { color: var(--color-foreground); }
+
+.theme-border { border-color: var(--color-border); }
+.theme-border-radius { border-radius: var(--border-radius); }
+.theme-shadow { box-shadow: var(--card-shadow); }
+
+/* Classes pour les anciens composants qui utilisent brand */
+.bg-brand-50 { background-color: var(--color-primary); opacity: 0.05; }
+.bg-brand-100 { background-color: var(--color-primary); opacity: 0.1; }
+.bg-brand-200 { background-color: var(--color-primary); opacity: 0.2; }
+.bg-brand-300 { background-color: var(--color-primary); opacity: 0.3; }
+.bg-brand-400 { background-color: var(--color-primary); opacity: 0.4; }
+.bg-brand-500 { background-color: var(--color-primary); opacity: 0.5; }
+.bg-brand-600 { background-color: var(--color-primary); opacity: 0.6; }
+.bg-brand-700 { background-color: var(--color-primary); opacity: 0.7; }
+.bg-brand-800 { background-color: var(--color-primary); opacity: 0.8; }
+.bg-brand-900 { background-color: var(--color-primary); opacity: 0.9; }
+
+.text-brand-50 { color: var(--color-primary); opacity: 0.05; }
+.text-brand-100 { color: var(--color-primary); opacity: 0.1; }
+.text-brand-200 { color: var(--color-primary); opacity: 0.2; }
+.text-brand-300 { color: var(--color-primary); opacity: 0.3; }
+.text-brand-400 { color: var(--color-primary); opacity: 0.4; }
+.text-brand-500 { color: var(--color-primary); opacity: 0.5; }
+.text-brand-600 { color: var(--color-primary); opacity: 0.6; }
+.text-brand-700 { color: var(--color-primary); opacity: 0.7; }
+.text-brand-800 { color: var(--color-primary); opacity: 0.8; }
+.text-brand-900 { color: var(--color-primary); opacity: 0.9; }
+
+.border-brand-50 { border-color: var(--color-primary); opacity: 0.05; }
+.border-brand-100 { border-color: var(--color-primary); opacity: 0.1; }
+.border-brand-200 { border-color: var(--color-primary); opacity: 0.2; }
+.border-brand-300 { border-color: var(--color-primary); opacity: 0.3; }
+.border-brand-400 { border-color: var(--color-primary); opacity: 0.4; }
+.border-brand-500 { border-color: var(--color-primary); opacity: 0.5; }
+.border-brand-600 { border-color: var(--color-primary); opacity: 0.6; }
+.border-brand-700 { border-color: var(--color-primary); opacity: 0.7; }
+.border-brand-800 { border-color: var(--color-primary); opacity: 0.8; }
+.border-brand-900 { border-color: var(--color-primary); opacity: 0.9; }
+
+/* Classes utilitaires pour les styles personnalisés */
+.heading-underlined {
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+.heading-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.heading-fade {
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heading-slide::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.heading-slide:hover::before {
+  width: 100%;
+}
+
+/* Espacement personnalisé */
+.spacing-compact * {
+  margin-bottom: 0.5rem;
+}
+
+.spacing-comfortable * {
+  margin-bottom: 1rem;
+}
+
+.spacing-spacious * {
+  margin-bottom: 1.5rem;
+}
+
+/* Arrondi personnalisé */
+.rounded-none {
+  border-radius: 0;
+}
+
+.rounded-small {
+  border-radius: 0.25rem;
+}
+
+.rounded-medium {
+  border-radius: 0.5rem;
+}
+
+.rounded-large {
+  border-radius: 0.75rem;
+}
+
+.rounded-xl {
+  border-radius: 1rem;
+}
+
+/* Police personnalisée */
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Animations avancées pour les transitions de personas */
+.persona-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg,
+    var(--color-primary),
+    var(--color-secondary),
+    var(--color-accent)
+  );
+  opacity: 0.1;
+  z-index: 9999;
+  pointer-events: none;
+  animation: personaPulse 0.8s ease-in-out;
+}
+
+@keyframes personaPulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+/* Effet de morphing pour les éléments pendant la transition */
+.persona-morphing {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.persona-morphing:hover {
+  transform: scale(1.02);
+}
+
+/* Indicateur de changement de persona */
+.persona-change-indicator {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  animation: personaPing 2s infinite;
+}
+
+@keyframes personaPing {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+}
+
+/* Animation de rotation pour les icônes */
+.persona-icon-spin {
+  animation: personaIconRotate 0.6s ease-in-out;
+}
+
+@keyframes personaIconRotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* Effet de glow pour l'élément actif */
+.persona-glow {
+  box-shadow: 0 0 20px var(--color-primary),
+              0 0 40px var(--color-primary),
+              0 0 60px var(--color-primary);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Animation de slide pour les éléments */
+.persona-slide-in {
+  animation: personaSlideIn 0.5s ease-out;
+}
+
+@keyframes personaSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Variables CSS pour les transitions */
+:root {
+  --transition-overlay: 0;
+}
+
+/* Styles conditionnels basés sur la variable de transition */
+html[style*="--transition-overlay: 1"] * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
