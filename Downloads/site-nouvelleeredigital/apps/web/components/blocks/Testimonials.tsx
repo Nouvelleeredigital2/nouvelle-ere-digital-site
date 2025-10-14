@@ -22,7 +22,7 @@ export const Testimonials = ({
   items: Testimonial[];
 }) => {
   return (
-    <section className="py-20 bg-[var(--couleur-surface)]">
+    <section className="py-20 bg-zinc-50 dark:bg-zinc-900">
       <div className="container mx-auto px-4">
         <SectionHeading
           eyebrow={eyebrow}
@@ -44,7 +44,7 @@ export const Testimonials = ({
                 <div>
                   <div className="font-semibold">{t.author}</div>
                   {(t.role || t.company) && (
-                    <div className="text-sm text-[var(--couleur-texte-secondaire)]">
+                    <div className="text-sm text-zinc-600 dark:text-zinc-400">
                       {[t.role, t.company].filter(Boolean).join(" · ")}
                     </div>
                   )}

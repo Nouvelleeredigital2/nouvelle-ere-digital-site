@@ -32,8 +32,8 @@ export const Hero = ({
       className={cn(
         "py-24 md:py-32",
         dark
-          ? "bg-[var(--couleur-dark)] text-[var(--couleur-light)]"
-          : "bg-[var(--couleur-light)] text-[var(--couleur-texte-base)]"
+          ? "bg-zinc-950 text-zinc-50"
+          : "bg-white text-zinc-900"
       )}
     >
       <div
@@ -45,7 +45,7 @@ export const Hero = ({
       >
         <div className={cn("flex-1 text-center md:text-left", isCenter && "text-center")}> 
           {eyebrow && (
-            <div className="mb-3 text-sm font-medium text-[var(--couleur-secondaire)] uppercase tracking-wide">
+            <div className="mb-3 text-sm font-medium text-brand uppercase tracking-wide">
               {eyebrow}
             </div>
           )}
@@ -53,7 +53,7 @@ export const Hero = ({
             {title}
           </h1>
           {subtitle && (
-            <p className="text-lg text-[var(--couleur-texte-secondaire)] mb-6 max-w-xl mx-auto md:mx-0">
+            <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-6 max-w-xl mx-auto md:mx-0">
               {subtitle}
             </p>
           )}
@@ -65,7 +65,7 @@ export const Hero = ({
         </div>
 
         {image && (
-          <div className="flex-1 relative w-full h-64 md:h-96 rounded-[var(--border-radius-large)] overflow-hidden shadow-[var(--box-shadow-subtil)]">
+          <div className="flex-1 relative w-full h-64 md:h-96 rounded-2xl overflow-hidden shadow-soft">
             <Image
               src={image}
               alt=""

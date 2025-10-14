@@ -66,8 +66,7 @@ import modulesData from "@/data/modules.json";
 import bundlesData from "@/data/bundles.json";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "Catalogue des Composants Graphiques",
-  description: "Aperçu complet de tous les composants UI personnalisés.",
+  title: "Catalogue          <p className='text-zinc-600 dark:text-zinc-400'>Aperçu complet de tous les composants UI personnalisés.</p>",
 });
 
 export default function ComponentShowcase() {
@@ -158,7 +157,7 @@ export default function ComponentShowcase() {
           <h3 className="text-xl font-semibold mb-4">Composant: Badge</h3>
           <div className="flex gap-2">
             <Badge>Violet</Badge>
-            <Badge tone="turquoise">Turquoise</Badge>
+            <Badge tone="accent">Turquoise</Badge>
             <Badge tone="neutre">Neutre</Badge>
           </div>
         </div>
@@ -257,10 +256,7 @@ export default function ComponentShowcase() {
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: Carousel3DBundles</h3>
-          {/* Temporarily disabled due to React Three Fiber issues */}
-          <div className="bg-gray-800 p-8 text-center">
-            <p>Carousel3DBundles component disabled due to runtime errors</p>
-          </div>
+          <div className="w-full h-64 rounded-2xl bg-zinc-50 border border-zinc-200 dark:bg-zinc-900 dark:border-zinc-800">me errors</div>
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: ServiceDetailSheet</h3>

@@ -43,13 +43,13 @@ export const FeatureList = ({
               <div
                 className={cn(
                   "mb-4 inline-flex items-center justify-center rounded-full p-3",
-                  "bg-[var(--couleur-primaire)]/10 text-[var(--couleur-primaire)]"
+                  "bg-brand/10 text-brand"
                 )}
               >
                 <item.icon size={28} />
               </div>
               <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-              <p className="text-[var(--couleur-texte-secondaire)]">
+              <p className="text-zinc-600 dark:text-zinc-400">
                 {item.description}
               </p>
             </div>
