@@ -6,8 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { SiteNav } from "./SiteNav";
 import { Button } from "@/components/ui/Button";
-
-export const Header = () => {
+import { PersonaNavSelector } from "@/components/ui/PersonaNavSelector";
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -47,8 +46,9 @@ export const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-4">
             <SiteNav />
+            <PersonaNavSelector />
           </div>
 
           {/* CTA Button */}
