@@ -1,14 +1,13 @@
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import React from "react";
-import { siteDefaults, generatePersonaMetadata } from "@/lib/seo";
+import { siteDefaults } from "@/lib/seo";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ServiceModalProvider } from "@/components/context/ServiceModalProvider";
 import { ServiceModal } from "@/components/modals/ServiceModal";
 import { PersonaProvider } from "@/components/context/PersonaProvider";
 import { getPersonaFromCookies, applyPersonaClassesToHtml } from "@/lib/server-utils";
-import { applyPersonaStylesServer } from "@/lib/persona-styles";
 import { headers } from "next/headers";
 
 // Fonction pour lire les cookies côté serveur
@@ -17,6 +16,7 @@ function getServerCookies() {
   return headersList.get('cookie') || '';
 }
 
+// Métadonnées de base (sans personnalisation par persona)
 export const metadata: Metadata = siteDefaults.metadata;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -24,42 +24,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const cookieString = getServerCookies();
   const personaId = getPersonaFromCookies(cookieString);
 
-  // Obtenir le persona depuis l'ID
-  let persona = null;
-  let personaName = null;
-  if (personaId) {
-    try {
-      const { personas } = require('@/personas');
-      persona = personas.find((p: any) => p.id === personaId) || null;
-      if (persona) {
-        personaName = persona.name;
-      }
-    } catch {
-      persona = null;
-    }
-  }
-
   // Appliquer les classes CSS du persona sur l'élément html
   const personaClasses = applyPersonaClassesToHtml(personaId);
 
-  // Appliquer les variables CSS du persona côté serveur
-  const personaStyles = persona ? applyPersonaStylesServer(persona) : {};
-
-  // Construire le style CSS à injecter
-  const cssVariables = Object.entries(personaStyles)
-    .map(([key, value]) => `  ${key}: ${value};`)
-    .join('\n');
-
   return (
     <html lang="fr" className={personaClasses}>
-      <head>
-        {/* Injecter les variables CSS du persona côté serveur */}
-        {cssVariables && (
-          <style dangerouslySetInnerHTML={{
-            __html: `:root {\n${cssVariables}\n}`
-          }} />
-        )}
-      </head>
       <body>
         <PersonaProvider>
           <ServiceModalProvider>
