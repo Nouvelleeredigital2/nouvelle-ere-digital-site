@@ -1,12 +1,13 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import Cookies from 'js-cookie';
 import { personas } from '@/personas';
 import { applyPersonaStyles, getPersonaClasses } from '@/lib/persona-styles';
 import type { CreativePersona } from '@/shared/theme.types';
 
-// La clé localStorage unique que nous allons utiliser
-const STORAGE_KEY = 'creative-persona-v1';
+// La clé du cookie (plus sécurisé que localStorage)
+const COOKIE_KEY = 'creative-persona-v1';
 
 interface PersonaContextType {
   persona: CreativePersona;
@@ -27,15 +28,15 @@ export function PersonaProvider({ children }: { children: React.ReactNode }) {
     }
   });
 
-  // Effet pour charger le persona depuis le localStorage au démarrage
+  // Effet pour charger le persona depuis le cookie au démarrage
   useEffect(() => {
     try {
-      const savedPersonaId = window.localStorage.getItem(STORAGE_KEY);
+      const savedPersonaId = Cookies.get(COOKIE_KEY);
       if (savedPersonaId) {
         const savedPersona = personas.find(p => p.id === savedPersonaId);
         if (savedPersona) {
           setActivePersona(savedPersona);
-          console.log('✅ Persona chargé depuis localStorage:', savedPersona.name);
+          console.log('✅ Persona chargé depuis cookie:', savedPersona.name);
         } else {
           console.warn(`⚠️ Persona avec id "${savedPersonaId}" non trouvé, utilisation du persona par défaut`);
           setActivePersona(personas[0]);
@@ -44,7 +45,7 @@ export function PersonaProvider({ children }: { children: React.ReactNode }) {
         console.log('ℹ️ Aucun persona sauvegardé, utilisation du persona par défaut');
       }
     } catch (error) {
-      console.error('❌ Erreur lors du chargement du persona depuis localStorage:', error);
+      console.error('❌ Erreur lors du chargement du persona depuis cookie:', error);
       // Fallback au premier persona
       if (personas.length > 0) {
         setActivePersona(personas[0]);
@@ -72,10 +73,15 @@ export function PersonaProvider({ children }: { children: React.ReactNode }) {
     if (newPersona) {
       setActivePersona(newPersona);
       try {
-        window.localStorage.setItem(STORAGE_KEY, personaId);
-        console.log('✅ Persona sauvegardé:', newPersona.name);
+        // Sauvegarder dans le cookie avec une expiration de 365 jours
+        Cookies.set(COOKIE_KEY, personaId, {
+          expires: 365,
+          path: '/',
+          sameSite: 'lax'
+        });
+        console.log('✅ Persona sauvegardé dans cookie:', newPersona.name);
       } catch (error) {
-        console.error('❌ Erreur lors de la sauvegarde du persona:', error);
+        console.error('❌ Erreur lors de la sauvegarde du persona dans cookie:', error);
       }
     } else {
       console.error(`❌ Persona avec id "${personaId}" non trouvé dans la liste:`, personas.map(p => p.id));
