@@ -1,6 +1,9 @@
 import { PersonaNavSelector } from "@/components/ui/PersonaNavSelector";
 import { ThemeIndicator } from "@/components/debug/ThemeIndicator";
 import { ServiceGrid } from "@/components/ui/ServiceCard";
+import { KeyboardShortcuts } from "@/components/ui/KeyboardShortcuts";
+import { PersonaAccessibility } from "@/components/accessibility/PersonaAccessibility";
+import { useKeyboardShortcuts } from "@/hooks/useKeyboardShortcuts";
 import Link from "next/link";
 
 export function AccueilPage() {
@@ -130,6 +133,12 @@ export function AccueilPage() {
 
       {/* Indicateur de thème visible */}
       <ThemeIndicator />
+
+      {/* Raccourcis clavier */}
+      <KeyboardShortcuts />
+
+      {/* Accessibilité pour screen readers */}
+      <PersonaAccessibility />
     </div>
   );
 }
