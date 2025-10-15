@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import React from "react";
-import { siteDefaults } from "@/lib/seo";
+import { siteDefaults, generatePersonaMetadata } from "@/lib/seo";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ServiceModalProvider } from "@/components/context/ServiceModalProvider";
@@ -26,10 +26,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   // Obtenir le persona depuis l'ID
   let persona = null;
+  let personaName = null;
   if (personaId) {
     try {
       const { personas } = require('@/personas');
       persona = personas.find((p: any) => p.id === personaId) || null;
+      if (persona) {
+        personaName = persona.name;
+      }
     } catch {
       persona = null;
     }
@@ -56,7 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }} />
         )}
       </head>
-      <body suppressHydrationWarning={true}>
+      <body>
         <PersonaProvider>
           <ServiceModalProvider>
             <Header />

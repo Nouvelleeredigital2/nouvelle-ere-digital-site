@@ -75,6 +75,48 @@ export const siteDefaults = {
   } satisfies Metadata,
 };
 
+/**
+ * Génère les métadonnées personnalisées selon le persona
+ */
+export function generatePersonaMetadata(personaName?: string): Metadata {
+  const baseMetadata = siteDefaults.metadata;
+  const defaultTitle = "Nouvelle Ère Digital - Agence Digitale & Communication";
+
+  // Si pas de persona spécifié, retourner les métadonnées par défaut
+  if (!personaName) {
+    return baseMetadata;
+  }
+
+  // Personnaliser le titre selon le persona
+  const personaTitles: Record<string, string> = {
+    'artiste': "Nouvelle Ère Digital - Créativité & Innovation | L'Artiste",
+    'architecte': "Nouvelle Ère Digital - Structure & Excellence | L'Architecte",
+    'stratege': "Nouvelle Ère Digital - Stratégie & Performance | Le Stratège",
+    'innovateur': "Nouvelle Ère Digital - Technologie & Avenir | L'Innovateur",
+    'connecteur': "Nouvelle Ère Digital - Relations & Impact | Le Connecteur",
+    'minimaliste': "Nouvelle Ère Digital - Clarté & Efficacité | Le Minimaliste",
+    'colore': "Nouvelle Ère Digital - Énergie & Expression | Le Coloré",
+    'professionnel': "Nouvelle Ère Digital - Expertise & Confiance | Le Professionnel",
+    'gamer': "Nouvelle Ère Digital - Interaction & Engagement | Le Gamer",
+    'artisan': "Nouvelle Ère Digital - Authenticité & Qualité | L'Artisan",
+  };
+
+  const customTitle = personaTitles[personaName.toLowerCase()] || defaultTitle;
+
+  return {
+    ...baseMetadata,
+    title: customTitle,
+    openGraph: {
+      ...baseMetadata.openGraph,
+      title: customTitle,
+    },
+    twitter: {
+      ...baseMetadata.twitter,
+      title: customTitle,
+    },
+  };
+}
+
 export function generatePageMetadata({
   title,
   description,
