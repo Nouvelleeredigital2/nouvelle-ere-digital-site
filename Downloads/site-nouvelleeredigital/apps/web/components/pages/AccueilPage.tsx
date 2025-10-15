@@ -1,5 +1,7 @@
 import { PersonaNavSelector } from "@/components/ui/PersonaNavSelector";
 import { ThemeIndicator } from "@/components/debug/ThemeIndicator";
+import { ServiceGrid } from "@/components/ui/ServiceCard";
+import Link from "next/link";
 
 export function AccueilPage() {
   return (
@@ -9,9 +11,9 @@ export function AccueilPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <h1 className="text-xl font-bold text-foreground">
+              <Link href="/" className="text-xl font-bold text-foreground hover:text-primary transition-colors">
                 Nouvelle Ère Digital
-              </h1>
+              </Link>
             </div>
             <PersonaNavSelector />
           </div>
@@ -30,12 +32,12 @@ export function AccueilPage() {
               Simplifier, innover et valoriser l'humain dans chaque projet numérique.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a
+              <Link
                 href="#services"
                 className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-11 px-8 transform hover:scale-105"
               >
                 Découvrir Nos Services
-              </a>
+              </Link>
               <div className="text-sm text-muted-foreground font-medium">
                 🎨 Changez de thème avec le sélecteur en haut à droite
               </div>
@@ -67,52 +69,29 @@ export function AccueilPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="p-6 bg-card rounded-lg shadow-lg border border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-2xl">📱</span>
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-foreground">Communication Digitale</h3>
-                <p className="text-muted-foreground mb-4">
-                  Stratégies digitales innovantes pour amplifier votre présence en ligne.
-                </p>
-                <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• SEO/SEA</li>
-                  <li>• Réseaux sociaux</li>
-                  <li>• Content marketing</li>
-                </ul>
-              </div>
-
-              <div className="p-6 bg-card rounded-lg shadow-lg border border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-2xl">🎥</span>
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-foreground">Audiovisuel</h3>
-                <p className="text-muted-foreground mb-4">
-                  Production audiovisuelle professionnelle pour captiver votre audience.
-                </p>
-                <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• Vidéo corporate</li>
-                  <li>• Motion design</li>
-                  <li>• Post-production</li>
-                </ul>
-              </div>
-
-              <div className="p-6 bg-card rounded-lg shadow-lg border border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-2xl">💻</span>
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-foreground">Développement Web</h3>
-                <p className="text-muted-foreground mb-4">
-                  Sites web modernes avec une attention particulière à l'expérience utilisateur.
-                </p>
-                <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• Sites vitrine</li>
-                  <li>• E-commerce</li>
-                  <li>• Applications web</li>
-                </ul>
-              </div>
-            </div>
+            <ServiceGrid
+              services={[
+                {
+                  title: "Communication Digitale",
+                  description: "Stratégies digitales innovantes pour amplifier votre présence en ligne.",
+                  icon: "📱",
+                  features: ["SEO/SEA", "Réseaux sociaux", "Content marketing"]
+                },
+                {
+                  title: "Audiovisuel",
+                  description: "Production audiovisuelle professionnelle pour captiver votre audience.",
+                  icon: "🎥",
+                  features: ["Vidéo corporate", "Motion design", "Post-production"]
+                },
+                {
+                  title: "Développement Web",
+                  description: "Sites web modernes avec une attention particulière à l'expérience utilisateur.",
+                  icon: "💻",
+                  features: ["Sites vitrine", "E-commerce", "Applications web"]
+                }
+              ]}
+              columns={3}
+            />
           </div>
         </div>
 
@@ -132,18 +111,18 @@ export function AccueilPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="/contact"
                 className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-11 px-8 transform hover:scale-105"
               >
                 Nous Contacter
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/expertises"
                 className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-border bg-background hover:bg-accent hover:text-accent-foreground h-11 px-8"
               >
                 En Savoir Plus
-              </a>
+              </Link>
             </div>
           </div>
         </div>
