@@ -42,8 +42,15 @@ const Button = ({ children, onClick, className, size = "md", variant = "primary"
 };
 
 export function CreativeProfileSelector({ onComplete, compact = false }: CreativeProfileSelectorProps) {
-  const { personas, setPersona } = usePersona();
+  const { personas, setPersona, persona } = usePersona();
   const [selectedPersona, setSelectedPersona] = useState<string | null>(null);
+
+  // Synchroniser l'état local avec le contexte global
+  useEffect(() => {
+    if (persona) {
+      setSelectedPersona(persona.id);
+    }
+  }, [persona]);
 
   // Vérifier si l'utilisateur a déjà choisi un persona
   useEffect(() => {
@@ -55,6 +62,7 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
 
   const handlePersonaSelect = (personaId: string) => {
     setPersona(personaId);
+    setSelectedPersona(personaId);
     localStorage.setItem('creative-persona', personaId);
     if (onComplete) {
       onComplete();
