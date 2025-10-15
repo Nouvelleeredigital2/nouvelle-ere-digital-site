@@ -18,6 +18,11 @@ export function PersonaAccessibility() {
 
   // Fonction pour annoncer aux screen readers
   const announceToScreenReader = (message: string) => {
+    // Vérifier que document.body existe (côté client uniquement)
+    if (typeof document === 'undefined' || !document.body) {
+      return;
+    }
+
     const announcement = document.createElement('div');
     announcement.setAttribute('aria-live', 'polite');
     announcement.setAttribute('aria-atomic', 'true');
@@ -30,9 +35,19 @@ export function PersonaAccessibility() {
     document.body.appendChild(announcement);
     announcement.textContent = message;
 
-    setTimeout(() => {
-      document.body.removeChild(announcement);
-    }, 1000);
+    // Fonction de nettoyage sécurisée
+    const cleanup = () => {
+      try {
+        if (document.body && document.body.contains(announcement)) {
+          document.body.removeChild(announcement);
+        }
+      } catch (error) {
+        // Ignorer les erreurs de nettoyage si l'élément n'existe plus
+        console.warn('Erreur lors du nettoyage de l\'annonce d\'accessibilité:', error);
+      }
+    };
+
+    setTimeout(cleanup, 1000);
   };
 
   if (!persona) return null;
