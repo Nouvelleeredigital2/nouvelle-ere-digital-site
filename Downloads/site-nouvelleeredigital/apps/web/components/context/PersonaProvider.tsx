@@ -17,7 +17,15 @@ interface PersonaContextType {
 const PersonaContext = createContext<PersonaContextType | undefined>(undefined);
 
 export function PersonaProvider({ children }: { children: React.ReactNode }) {
-  const [activePersona, setActivePersona] = useState<CreativePersona>(personas[0]);
+  // État initial avec le premier persona comme fallback
+  const [activePersona, setActivePersona] = useState<CreativePersona | null>(() => {
+    try {
+      return personas[0] || null;
+    } catch (error) {
+      console.error('Erreur lors de l\'initialisation du persona par défaut:', error);
+      return null;
+    }
+  });
 
   // Effet pour charger le persona depuis le localStorage au démarrage
   useEffect(() => {
@@ -27,37 +35,66 @@ export function PersonaProvider({ children }: { children: React.ReactNode }) {
         const savedPersona = personas.find(p => p.id === savedPersonaId);
         if (savedPersona) {
           setActivePersona(savedPersona);
+          console.log('✅ Persona chargé depuis localStorage:', savedPersona.name);
+        } else {
+          console.warn(`⚠️ Persona avec id "${savedPersonaId}" non trouvé, utilisation du persona par défaut`);
+          setActivePersona(personas[0]);
         }
+      } else {
+        console.log('ℹ️ Aucun persona sauvegardé, utilisation du persona par défaut');
       }
     } catch (error) {
-      console.warn('Failed to read persona from localStorage:', error);
+      console.error('❌ Erreur lors du chargement du persona depuis localStorage:', error);
+      // Fallback au premier persona
+      if (personas.length > 0) {
+        setActivePersona(personas[0]);
+      }
     }
   }, []);
 
   // Effet pour appliquer les variables CSS quand le persona change
   useEffect(() => {
     if (activePersona) {
-      applyPersonaStyles(activePersona);
+      try {
+        applyPersonaStyles(activePersona);
+        console.log('✅ Styles appliqués pour le persona:', activePersona.name);
+      } catch (error) {
+        console.error('❌ Erreur lors de l\'application des styles:', error);
+      }
     }
   }, [activePersona]);
 
   // Fonction pour changer le persona et le sauvegarder
   const setPersona = useCallback((personaId: string) => {
+    console.log('🔄 Tentative de changement vers le persona:', personaId);
+
     const newPersona = personas.find(p => p.id === personaId);
     if (newPersona) {
       setActivePersona(newPersona);
       try {
         window.localStorage.setItem(STORAGE_KEY, personaId);
+        console.log('✅ Persona sauvegardé:', newPersona.name);
       } catch (error) {
-        console.warn('Failed to save persona to localStorage:', error);
+        console.error('❌ Erreur lors de la sauvegarde du persona:', error);
       }
     } else {
-      console.warn(`Persona with id "${personaId}" not found.`);
+      console.error(`❌ Persona avec id "${personaId}" non trouvé dans la liste:`, personas.map(p => p.id));
     }
   }, []);
 
+  // Contexte avec gestion d'erreur
+  const contextValue = activePersona ? {
+    persona: activePersona,
+    setPersona,
+    personas
+  } : {
+    persona: personas[0],
+    setPersona,
+    personas
+  };
+
   return (
-    <PersonaContext.Provider value={{ persona: activePersona, setPersona, personas }}>
+    <PersonaContext.Provider value={contextValue}>
       {children}
     </PersonaContext.Provider>
   );

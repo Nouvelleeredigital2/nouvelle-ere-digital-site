@@ -2,7 +2,7 @@
 "use client";
 
 import { usePersona } from '@/components/context/PersonaProvider';
-import { usePersonaClasses } from '@/lib/persona-styles';
+import { usePersonaClasses } from '@/hooks/usePersonaClasses';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 

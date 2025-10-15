@@ -1,5 +1,4 @@
 // apps/web/lib/persona-styles.ts
-import { usePersona } from '@/components/context/PersonaProvider';
 import type { CreativePersona } from '@/shared/theme.types';
 
 /**
@@ -99,18 +98,9 @@ export function getPersonaClasses(persona: CreativePersona): {
 
 /**
  * Hook pour utiliser les classes CSS du persona actif
+ * NOTE: Ce hook doit être utilisé dans un composant React, pas dans un fichier utilitaire
  */
 export function usePersonaClasses() {
-  const { persona } = usePersona();
-
-  if (!persona?.settings) {
-    return {
-      color: '',
-      typography: '',
-      layout: '',
-      animation: '',
-    };
-  }
-
-  return getPersonaClasses(persona);
+  // Cette fonction sera définie dans un fichier de hooks approprié
+  throw new Error('usePersonaClasses doit être utilisé dans un composant React avec le contexte PersonaProvider');
 }
