@@ -48,7 +48,7 @@ export const CaseList = ({
 
               <div className="p-6">
                 <h3 className="text-xl font-semibold">{c.title}</h3>
-                <p className="mt-2 text-zinc-600 dark:text-zinc-400">{c.summary}</p>
+                <p className="mt-2 text-muted-foreground">{c.summary}</p>
 
                 {c.tags && c.tags.length > 0 && (
                   <div className="mt-4 flex flex-wrap gap-2">
@@ -62,11 +62,11 @@ export const CaseList = ({
                   <div className="mt-5 grid grid-cols-3 gap-3">
                     {c.kpis.slice(0, 3).map((k, idx) => (
                       <div key={idx} className="text-center">
-                        <div className="text-brand font-bold text-xl">
+                        <div className="text-primary font-bold text-xl">
                           {k.value}
                           {k.unit && <span className="text-sm align-super ml-0.5">{k.unit}</span>}
                         </div>
-                        <div className="text-xs text-zinc-600 dark:text-zinc-400">{k.label}</div>
+                        <div className="text-xs text-muted-foreground">{k.label}</div>
                       </div>
                     ))}
                   </div>
@@ -75,7 +75,7 @@ export const CaseList = ({
                 {c.href && (
                   <a
                     href={c.href}
-                    className="mt-6 inline-block text-brand hover:underline"
+                    className="mt-6 inline-block text-primary hover:underline"
                   >
                     Voir le projet →
                   </a>

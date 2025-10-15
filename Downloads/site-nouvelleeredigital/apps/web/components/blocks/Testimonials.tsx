@@ -22,7 +22,7 @@ export const Testimonials = ({
   items: Testimonial[];
 }) => {
   return (
-    <section className="py-20 bg-zinc-50 dark:bg-zinc-900">
+    <section className="py-20 bg-muted/50">
       <div className="container mx-auto px-4">
         <SectionHeading
           eyebrow={eyebrow}
@@ -34,7 +34,7 @@ export const Testimonials = ({
         <div className="grid gap-8 md:grid-cols-3">
           {items.map((t, i) => (
             <Card key={i} className="flex flex-col h-full">
-              <p className="text-lg leading-relaxed">“{t.quote}”</p>
+              <p className="text-lg leading-relaxed">"{t.quote}"</p>
               <div className="mt-6 flex items-center gap-3">
                 {t.avatarUrl && (
                   <div className="relative w-12 h-12 rounded-full overflow-hidden">
@@ -44,7 +44,7 @@ export const Testimonials = ({
                 <div>
                   <div className="font-semibold">{t.author}</div>
                   {(t.role || t.company) && (
-                    <div className="text-sm text-zinc-600 dark:text-zinc-400">
+                    <div className="text-sm text-muted-foreground">
                       {[t.role, t.company].filter(Boolean).join(" · ")}
                     </div>
                   )}

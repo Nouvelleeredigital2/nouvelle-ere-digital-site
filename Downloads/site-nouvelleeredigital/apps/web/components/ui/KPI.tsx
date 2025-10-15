@@ -5,13 +5,13 @@ export const KPI = ({ items }: { items: KPIItem[] }) => (
     {items.map((k, i) => (
       <div
         key={i}
-        className="rounded-2xl bg-white shadow-soft p-6 dark:bg-zinc-900/60 text-center"
+        className="rounded-2xl bg-card text-card-foreground shadow-sm p-6 text-center"
       >
-        <div className="text-3xl md:text-4xl font-bold text-brand">
+        <div className="text-3xl md:text-4xl font-bold text-primary">
           {k.value}
           {k.unit && <span className="text-xl align-super ml-1">{k.unit}</span>}
         </div>
-        <div className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+        <div className="mt-2 text-sm text-muted-foreground">
           {k.label}
         </div>
       </div>

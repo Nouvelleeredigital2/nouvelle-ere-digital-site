@@ -22,8 +22,8 @@ export const CTA = ({
     <section
       className={
         dark
-          ? "py-20 bg-zinc-950 text-zinc-50"
-          : "py-20 bg-white text-zinc-900"
+          ? "py-20 bg-card text-card-foreground"
+          : "py-20 bg-background text-foreground"
       }
     >
       <div className="container mx-auto px-4">
@@ -38,7 +38,7 @@ export const CTA = ({
           {primary.href ? (
             <a
               href={primary.href}
-              className="inline-flex items-center justify-center font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 bg-brand text-white hover:bg-brand/90 text-base px-5 py-2.5"
+              className="inline-flex items-center justify-center font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 bg-primary text-primary-foreground hover:bg-primary/90 text-base px-5 py-2.5"
             >
               {primary.label}
             </a>
@@ -50,7 +50,7 @@ export const CTA = ({
             (secondary.href ? (
               <a
                 href={secondary.href}
-                className="inline-flex items-center justify-center font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white text-base px-5 py-2.5"
+                className="inline-flex items-center justify-center font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 border border-border text-foreground hover:bg-accent hover:text-accent-foreground text-base px-5 py-2.5"
               >
                 {secondary.label}
               </a>

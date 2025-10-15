@@ -66,12 +66,12 @@ import modulesData from "@/data/modules.json";
 import bundlesData from "@/data/bundles.json";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "Catalogue          <p className='text-zinc-600 dark:text-zinc-400'>Aperçu complet de tous les composants UI personnalisés.</p>",
+  title: "Catalogue          <p className='text-muted-foreground'>Aperçu complet de tous les composants UI personnalisés.</p>",
 });
 
 export default function ComponentShowcase() {
   return (
-    <div className="bg-gray-900 min-h-screen text-white">
+    <div className="bg-background min-h-screen text-foreground">
       <Container className="py-12">
         <h1 className="text-4xl font-bold text-center mb-12">Catalogue des Composants Graphiques</h1>
 
@@ -79,21 +79,21 @@ export default function ComponentShowcase() {
         <SectionHeader title="A - Structure & Navigation" />
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: Container</h3>
-          <Container className="border border-gray-700 p-4">Exemple de Container</Container>
+          <Container className="border border-border p-4">Exemple de Container</Container>
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: Grid</h3>
           <Grid className="grid-cols-3 gap-4">
-            <div className="bg-gray-800 p-4">Item 1</div>
-            <div className="bg-gray-800 p-4">Item 2</div>
-            <div className="bg-gray-800 p-4">Item 3</div>
+            <div className="bg-muted p-4">Item 1</div>
+            <div className="bg-muted p-4">Item 2</div>
+            <div className="bg-muted p-4">Item 3</div>
           </Grid>
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: OrbitBreadcrumbs</h3>
           <OrbitBreadcrumbs items={[{ id: "1", label: "Home", href: "/", level: 1 }, { id: "2", label: "Sandbox", href: "/sandbox", level: 2 }]} />
         </div>
-        <hr className="mt-8 border-gray-700" />
+        <hr className="mt-8 border-border" />
 
         {/* Section B - Content Principal */}
         <SectionHeader title="B - Contenu Principal" />
@@ -113,7 +113,7 @@ export default function ComponentShowcase() {
           <h3 className="text-xl font-semibold mb-4">Composant: Media</h3>
           <Media type="image" src="/og-image.svg" alt="Exemple media" className="w-32 h-32" />
         </div>
-        <hr className="mt-8 border-gray-700" />
+        <hr className="mt-8 border-border" />
 
         {/* Section C - Cards & Modules */}
         <SectionHeader title="C - Cards & Modules" />
@@ -140,7 +140,7 @@ export default function ComponentShowcase() {
           <h3 className="text-xl font-semibold mb-4">Composant: ServiceCard</h3>
           <ServiceCard title="Service Example" description="Description du service" />
         </div>
-        <hr className="mt-8 border-gray-700" />
+        <hr className="mt-8 border-border" />
 
         {/* Section D - Buttons & Interactions */}
         <SectionHeader title="D - Buttons & Interactions" />
@@ -165,7 +165,7 @@ export default function ComponentShowcase() {
           <h3 className="text-xl font-semibold mb-4">Composant: Icon</h3>
           <Icon name="star" className="w-8 h-8" />
         </div>
-        <hr className="mt-8 border-gray-700" />
+        <hr className="mt-8 border-border" />
 
         {/* Section E - Forms & Inputs */}
         <SectionHeader title="E - Forms & Inputs" />
@@ -184,7 +184,7 @@ export default function ComponentShowcase() {
           <h3 className="text-xl font-semibold mb-4">Composant: BundleSelector</h3>
           <BundleSelector bundles={bundlesData.bundles.slice(0, 2).map(b => ({ id: b.id, title: b.name, description: b.description }))} />
         </div>
-        <hr className="mt-8 border-gray-700" />
+        <hr className="mt-8 border-border" />
 
         {/* Section F - Visual Effects & Animations */}
         <SectionHeader title="F - Visual Effects & Animations" />
@@ -204,28 +204,28 @@ export default function ComponentShowcase() {
           <h3 className="text-xl font-semibold mb-4">Composant: Skeleton</h3>
           <Skeleton variant="rect" className="w-32 h-8" />
         </div>
-        <hr className="mt-8 border-gray-700" />
+        <hr className="mt-8 border-border" />
 
         {/* Section G - 3D & Interactive */}
         <SectionHeader title="G - 3D & Interactive" />
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: Canvas3D_NED</h3>
           {/* Temporarily disabled due to React Three Fiber issues */}
-          <div className="bg-gray-800 p-8 text-center">
+          <div className="bg-muted p-8 text-center">
             <p>Canvas3D_NED component disabled due to runtime errors</p>
           </div>
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: Universe3D</h3>
           {/* Temporarily disabled due to React Three Fiber issues */}
-          <div className="bg-gray-800 p-8 text-center">
+          <div className="bg-muted p-8 text-center">
             <p>Universe3D component disabled due to runtime errors</p>
           </div>
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: LazyUniverse3DWrapper</h3>
           {/* Temporarily disabled due to React Three Fiber issues */}
-          <div className="bg-gray-800 p-8 text-center">
+          <div className="bg-muted p-8 text-center">
             <p>LazyUniverse3DWrapper component disabled due to runtime errors</p>
           </div>
         </div>
@@ -242,7 +242,7 @@ export default function ComponentShowcase() {
             { id: '1', x: 100, y: 100, content: <div className="w-16 h-16 bg-blue-500 rounded"></div> }
           ]} width={400} height={300} />
         </div>
-        <hr className="mt-8 border-gray-700" />
+        <hr className="mt-8 border-border" />
 
         {/* Section H - Advanced Components */}
         <SectionHeader title="H - Advanced Components" />
@@ -256,7 +256,7 @@ export default function ComponentShowcase() {
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: Carousel3DBundles</h3>
-          <div className="w-full h-64 rounded-2xl bg-zinc-50 border border-zinc-200 dark:bg-zinc-900 dark:border-zinc-800">me errors</div>
+          <div className="w-full h-64 rounded-2xl bg-card border border-border">me errors</div>
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: ServiceDetailSheet</h3>

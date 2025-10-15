@@ -20,7 +20,7 @@ export const Steps = ({
   align?: "left" | "center";
 }) => {
   return (
-    <section className="py-20 bg-zinc-50 dark:bg-zinc-900">
+    <section className="py-20 bg-muted/50">
       <div className="container mx-auto px-4">
         <SectionHeading
           eyebrow={eyebrow}
@@ -35,14 +35,14 @@ export const Steps = ({
               key={index}
               className={cn(
                 "text-center md:text-left",
-                "relative bg-white p-6 rounded-2xl shadow-soft dark:bg-zinc-900/60"
+                "relative bg-card text-card-foreground p-6 rounded-2xl shadow-sm"
               )}
             >
-              <div className="text-brand font-bold text-3xl mb-3">
+              <div className="text-primary font-bold text-3xl mb-3">
                 {String(index + 1).padStart(2, "0")}
               </div>
               <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
-              <p className="text-zinc-600 dark:text-zinc-400">
+              <p className="text-muted-foreground">
                 {step.description}
               </p>
             </div>

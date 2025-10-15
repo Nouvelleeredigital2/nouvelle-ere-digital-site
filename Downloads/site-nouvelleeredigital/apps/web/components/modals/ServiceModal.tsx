@@ -122,11 +122,11 @@ export function ServiceModal() {
       aria-modal
       role="dialog"
     >
-      <div className="w-full max-w-4xl rounded-2xl bg-white shadow-soft dark:bg-zinc-900 overflow-hidden">
+      <div className="w-full max-w-4xl rounded-2xl bg-card text-card-foreground shadow-sm overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-3 border-b border-zinc-200 dark:border-zinc-800">
+        <div className="flex items-center justify-between px-5 py-3 border-b border-border">
           <h2 className="text-xl font-semibold">{service.title}</h2>
-          <button onClick={close} aria-label="Fermer" className="text-zinc-900 dark:text-zinc-50">✕</button>
+          <button onClick={close} aria-label="Fermer" className="text-foreground">✕</button>
         </div>
 
         {/* Hero */}
@@ -139,7 +139,7 @@ export function ServiceModal() {
         {/* Body */}
         <div className="p-6 grid md:grid-cols-3 gap-6">
           <div className="md:col-span-2 space-y-4">
-            <p className="text-zinc-600 dark:text-zinc-400">{service.objective}</p>
+            <p className="text-muted-foreground">{service.objective}</p>
             <p>{service.description}</p>
             <ul className="list-disc pl-5">
               {service.bullets.map((b, i) => (
@@ -164,7 +164,7 @@ export function ServiceModal() {
                 {service.faq.map((f, i) => (
                   <div key={i}>
                     <div className="font-medium">{f.q}</div>
-                    <div className="text-zinc-600 dark:text-zinc-400">{f.a}</div>
+                    <div className="text-muted-foreground">{f.a}</div>
                   </div>
                 ))}
               </div>
@@ -173,15 +173,15 @@ export function ServiceModal() {
 
           <aside className="md:col-span-1 space-y-4">
             <div>
-              <div className="text-sm text-zinc-600 dark:text-zinc-400">Audience</div>
+              <div className="text-sm text-muted-foreground">Audience</div>
               <div className="font-medium">{service.audience.join(", ")}</div>
             </div>
             <div>
-              <div className="text-sm text-zinc-600 dark:text-zinc-400">Durée</div>
+              <div className="text-sm text-muted-foreground">Durée</div>
               <div className="font-medium">{service.duration}</div>
             </div>
 
-            <div className="h-px bg-zinc-200 dark:bg-zinc-800" />
+            <div className="h-px bg-border" />
 
             <div className="grid gap-2">
               <Button onClick={addToJourney}>Ajouter au parcours</Button>
@@ -190,7 +190,7 @@ export function ServiceModal() {
               <Button variant="ghost" onClick={showQR}>Afficher QR</Button>
             </div>
 
-            <div className="text-xs text-zinc-600 dark:text-zinc-400">
+            <div className="text-xs text-muted-foreground">
               Double‑clic sur une carte ouvre cette fiche. Esc ou clic extérieur: fermeture.
             </div>
           </aside>

@@ -20,20 +20,20 @@ const Button = ({ children, onClick, className, size = "md", variant = "primary"
   variant?: "primary" | "secondary";
 }) => {
   const sizeClasses = {
-    sm: "px-md py-sm text-body-sm",
-    md: "px-lg py-md text-body-sm",
-    lg: "px-xl py-lg text-body-md"
+    sm: "px-3 py-2 text-sm",
+    md: "px-4 py-3 text-sm",
+    lg: "px-6 py-4 text-base"
   };
 
   const variantClasses = {
-    primary: "bg-interactive text-text-inverse hover:bg-interactive-hover font-medium",
-    secondary: "bg-surface-100 text-text-primary border border-border hover:bg-surface-200"
+    primary: "bg-primary text-primary-foreground hover:bg-primary/90 font-medium",
+    secondary: "bg-muted text-foreground border border-border hover:bg-muted/80"
   };
 
   return (
     <button
       onClick={onClick}
-      className={`btn ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
+      className={`rounded-lg transition-colors ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
       {...props}
     >
       {children}
@@ -75,18 +75,18 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
   // Mode compact pour intégration dans la page d'accueil
   if (compact) {
     return (
-      <section className="py-4xl bg-background-subtle">
+      <section className="py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4">
           {/* Header avec hiérarchie claire */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-3xl"
+            className="text-center mb-12"
           >
-            <h2 className="text-heading-2xl text-text-primary mb-md">
+            <h2 className="text-3xl text-foreground mb-3">
               Choisissez votre profil créatif
             </h2>
-            <p className="text-body-lg text-text-muted max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Découvrez votre personnalité créative et personnalisez votre expérience
             </p>
           </motion.div>
@@ -96,7 +96,7 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-md"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3"
           >
             {personas.slice(0, 5).map((persona, index) => {
               const Icon = getPersonaIcon(persona.name);
@@ -112,25 +112,25 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
                   className="relative"
                 >
                   <Card
-                    className={`cursor-pointer transition-all duration-300 h-full text-center p-lg hover:shadow-lg ${
+                    className={`cursor-pointer transition-all duration-300 h-full text-center p-4 hover:shadow-lg ${
                       isSelected
-                        ? 'ring-2 ring-interactive bg-interactive/5'
+                        ? 'ring-2 ring-primary bg-primary/5'
                         : 'hover:bg-card/80'
                     }`}
                     onClick={() => handlePersonaSelect(persona.id)}
                   >
                     {/* Icône avec taille cohérente */}
-                    <div className="flex justify-center mb-md">
+                    <div className="flex justify-center mb-3">
                       <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                        isSelected ? 'bg-interactive text-text-inverse' : 'bg-surface-200'
+                        isSelected ? 'bg-primary text-primary-foreground' : 'bg-muted'
                       }`}>
                         <Icon className="w-6 h-6" />
                       </div>
                     </div>
 
                     {/* Nom avec échelle appropriée */}
-                    <h3 className="text-body-sm font-medium mb-xs text-text-primary">{persona.name}</h3>
-                    <p className="text-caption text-text-muted leading-tight">
+                    <h3 className="text-sm font-medium mb-1 text-foreground">{persona.name}</h3>
+                    <p className="text-xs text-muted-foreground leading-tight">
                       {persona.description.split('.')[0]}
                     </p>
                   </Card>
@@ -143,7 +143,7 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="text-center mt-xl"
+            className="text-center mt-6"
           >
             <Button
               onClick={() => {
@@ -153,7 +153,7 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
                 }
               }}
               size="lg"
-              className="bg-interactive hover:bg-interactive-hover"
+              className="bg-primary hover:bg-primary/90"
             >
               Commencer avec mon profil
             </Button>
@@ -165,18 +165,18 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
 
   // Mode plein écran (original) avec système de design
   return (
-    <div className="min-h-screen bg-background py-4xl">
+    <div className="min-h-screen bg-background py-16">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header avec hiérarchie typographique */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-4xl"
+          className="text-center mb-16"
         >
-          <h1 className="text-display-xl font-serif text-text-primary mb-lg">
+          <h1 className="text-5xl font-serif text-foreground mb-4">
             Quelle est votre vision créative ?
           </h1>
-          <p className="text-body-xl text-text-muted max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Chaque personne voit le monde différemment. Découvrez votre profil créatif unique
             et personnalisez votre expérience selon votre personnalité.
           </p>
@@ -187,7 +187,7 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
         >
           {personas.map((persona, index) => {
             const Icon = getPersonaIcon(persona.name);
@@ -205,15 +205,15 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
                 <Card
                   className={`cursor-pointer transition-all duration-300 h-full ${
                     isSelected
-                      ? 'ring-2 ring-interactive bg-card/80'
+                      ? 'ring-2 ring-primary bg-card/80'
                       : 'hover:bg-card/50'
                   }`}
                   onClick={() => handlePersonaSelect(persona.id)}
                 >
                   {/* Icône en haut avec taille cohérente */}
-                  <div className="flex justify-center mb-lg">
+                  <div className="flex justify-center mb-4">
                     <div className={`w-16 h-16 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                      isSelected ? 'bg-interactive text-text-inverse' : 'bg-surface-200'
+                      isSelected ? 'bg-primary text-primary-foreground' : 'bg-muted'
                     }`}>
                       <Icon className="w-8 h-8" />
                     </div>
@@ -221,23 +221,23 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
 
                   {/* Contenu avec hiérarchie claire */}
                   <div className="text-center">
-                    <h3 className="text-heading-lg text-text-primary mb-sm font-medium">{persona.name}</h3>
-                    <p className="text-body-sm text-text-muted mb-lg leading-relaxed">
+                    <h3 className="text-xl text-foreground mb-2 font-medium">{persona.name}</h3>
+                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                       {persona.description}
                     </p>
 
                     {/* Tags d'identité avec couleurs cohérentes */}
-                    <div className="flex flex-wrap gap-xs justify-center mb-lg">
-                      <span className="px-sm py-xs text-caption bg-surface-100 text-text-muted rounded-full">
-                        {persona.energy}
+                    <div className="flex flex-wrap gap-1 justify-center mb-4">
+                      <span className="px-2 py-1 text-xs bg-muted text-muted-foreground rounded-full">
+                        {persona.visualIdentity.energy}
                       </span>
-                      <span className="px-sm py-xs text-caption bg-surface-100 text-text-muted rounded-full">
-                        {persona.mood}
+                      <span className="px-2 py-1 text-xs bg-muted text-muted-foreground rounded-full">
+                        {persona.visualIdentity.mood}
                       </span>
                     </div>
 
                     {/* Archétype avec style approprié */}
-                    <p className="text-caption text-text-subtle italic">
+                    <p className="text-xs text-muted-foreground italic">
                       {persona.name}
                     </p>
                   </div>

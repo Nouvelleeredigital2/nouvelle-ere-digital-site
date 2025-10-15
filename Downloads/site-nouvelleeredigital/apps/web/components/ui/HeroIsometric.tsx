@@ -34,26 +34,26 @@ export const HeroIsometric: React.FC<HeroIsometricProps> = ({
   const [state, setState] = useState<State>('default');
 
   const variants: Record<Variant, string> = {
-    wireframe: 'border border-dashed',
-    solid: 'bg-gradient-to-br from-gray-800 to-gray-900',
-    textured: 'bg-gradient-to-br from-blue-800 to-purple-900',
+    wireframe: 'border-2 border-dashed border-primary',
+    solid: 'bg-gradient-to-br from-muted to-muted-foreground',
+    textured: 'bg-gradient-to-br from-primary to-secondary',
   };
 
   const stateClasses: Record<State, string> = {
     default: '',
     hover: 'opacity-90',
     active: 'scale-105',
-    focus: 'ring-2 ring-[var(--color-primary)]',
+    focus: 'ring-2 ring-primary',
     disabled: 'opacity-50 cursor-not-allowed',
-    selected: 'border-2 border-[var(--color-primary)]',
-    invalid: 'border-2 border-red-500',
+    selected: 'border-2 border-primary',
+    invalid: 'border-2 border-destructive',
     dragging: 'cursor-grabbing',
   };
 
   return (
     <div
       className={cn(
-        'relative bg-[var(--couleur-light)] rounded-[var(--border-radius-large)] shadow-[var(--box-shadow-subtil)] overflow-hidden h-96',
+        'relative bg-background rounded-lg shadow-sm overflow-hidden h-96',
         variants[variant],
         animated && 'transition-all duration-300',
         stateClasses[state],
