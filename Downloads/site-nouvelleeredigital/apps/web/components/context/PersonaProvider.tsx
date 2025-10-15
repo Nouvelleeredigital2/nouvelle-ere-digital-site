@@ -8,23 +8,30 @@ import type { CreativePersona } from '@/shared/theme.types';
 
 const COOKIE_KEY = 'creative-persona-v1';
 
-// Fonction pour obtenir le persona initial UNIQUEMENT côté client
+// Cette fonction s'exécute UNE SEULE FOIS à l'initialisation du composant.
 const getInitialPersona = (): CreativePersona => {
-  // Ce code ne s'exécutera que dans le navigateur
+  // IMPORTANT : Ce code ne s'exécute que côté client, car 'window' n'existe pas sur le serveur.
+  // Lors du rendu serveur, cette partie est ignorée, et la fonction renvoie le persona par défaut,
+  // ce qui est acceptable car le serveur applique déjà la classe via layout.tsx.
   if (typeof window !== 'undefined') {
     try {
       const savedPersonaId = Cookies.get(COOKIE_KEY);
       if (savedPersonaId) {
         const savedPersona = personas.find(p => p.id === savedPersonaId);
+        // Si un persona valide est trouvé dans les cookies, il devient l'état initial.
         if (savedPersona) {
+          console.log('✅ Persona initialisé depuis le cookie:', savedPersona.name);
           return savedPersona;
         }
       }
     } catch (error) {
-      console.error('Erreur lors de la lecture du cookie persona:', error);
+      console.error('❌ Erreur lors de la lecture initiale du cookie persona:', error);
     }
   }
-  // Fallback pour le serveur et en cas d'erreur
+
+  // Fallback : Si nous sommes sur le serveur, ou si aucun cookie valide n'est trouvé,
+  // on utilise le premier persona de la liste.
+  console.log('ℹ️ Aucun persona valide dans le cookie, initialisation avec le persona par défaut.');
   return personas[0];
 };
 
@@ -37,37 +44,37 @@ interface PersonaContextType {
 const PersonaContext = createContext<PersonaContextType | undefined>(undefined);
 
 export function PersonaProvider({ children }: { children: React.ReactNode }) {
-  // Utiliser la fonction pour initialiser le state.
-  // React garantit que cette fonction ne s'exécute qu'une fois.
+  // On utilise la fonction d'initialisation. React garantit qu'elle ne s'exécute qu'une seule fois.
+  // Côté client, `activePersona` aura la bonne valeur DÈS LE DÉPART.
   const [activePersona, setActivePersona] = useState<CreativePersona>(getInitialPersona);
 
-  // Cet effet applique les styles et garantit que les variables CSS sont
-  // à jour, même si les classes sont déjà appliquées par le serveur.
+  // Cet effet est maintenant simplifié. Il ne sert plus à charger la valeur initiale,
+  // mais seulement à appliquer les styles lorsque `activePersona` change.
   useEffect(() => {
-    applyPersonaStyles(activePersona);
-    console.log('✅ Styles appliqués pour le persona:', activePersona.name);
+    // Cette fonction applique les variables CSS. C'est le "coup de pinceau final"
+    // qui assure que même si la classe est déjà là grâce au serveur, les variables
+    // --color-primary, etc., sont bien injectées dans le DOM.
+    if (activePersona) {
+      applyPersonaStyles(activePersona);
+    }
   }, [activePersona]);
 
   const setPersona = useCallback((personaId: string) => {
-    console.log('🔄 Tentative de changement vers le persona:', personaId);
     const newPersona = personas.find(p => p.id === personaId);
     if (newPersona) {
       setActivePersona(newPersona);
       try {
-        Cookies.set(COOKIE_KEY, personaId, {
-          expires: 365,
-          path: '/',
-          sameSite: 'lax'
-        });
-        console.log('✅ Persona sauvegardé dans cookie:', newPersona.name);
+        Cookies.set(COOKIE_KEY, personaId, { expires: 365, path: '/', sameSite: 'lax' });
       } catch (error) {
-        console.error('❌ Erreur lors de la sauvegarde du persona dans cookie:', error);
+        console.error('❌ Erreur lors de la sauvegarde du persona dans le cookie:', error);
       }
     } else {
       console.error(`❌ Persona avec id "${personaId}" non trouvé.`);
     }
   }, []);
 
+  // Plus besoin de gérer un état `null`, car `getInitialPersona` garantit
+  // qu'on a toujours un persona valide.
   const contextValue = {
     persona: activePersona,
     setPersona,
