@@ -7,6 +7,8 @@ import { Menu, X } from "lucide-react";
 import { SiteNav } from "./SiteNav";
 import { Button } from "@/components/ui/Button";
 import { PersonaNavSelector } from "@/components/ui/PersonaNavSelector";
+
+export const Header = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
