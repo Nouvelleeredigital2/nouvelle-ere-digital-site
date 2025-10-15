@@ -3,11 +3,30 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import Cookies from 'js-cookie';
 import { personas } from '@/personas';
-import { applyPersonaStyles, getPersonaClasses } from '@/lib/persona-styles';
+import { applyPersonaStyles } from '@/lib/persona-styles';
 import type { CreativePersona } from '@/shared/theme.types';
 
-// La clé du cookie (plus sécurisé que localStorage)
 const COOKIE_KEY = 'creative-persona-v1';
+
+// Fonction pour obtenir le persona initial UNIQUEMENT côté client
+const getInitialPersona = (): CreativePersona => {
+  // Ce code ne s'exécutera que dans le navigateur
+  if (typeof window !== 'undefined') {
+    try {
+      const savedPersonaId = Cookies.get(COOKIE_KEY);
+      if (savedPersonaId) {
+        const savedPersona = personas.find(p => p.id === savedPersonaId);
+        if (savedPersona) {
+          return savedPersona;
+        }
+      }
+    } catch (error) {
+      console.error('Erreur lors de la lecture du cookie persona:', error);
+    }
+  }
+  // Fallback pour le serveur et en cas d'erreur
+  return personas[0];
+};
 
 interface PersonaContextType {
   persona: CreativePersona;
@@ -18,62 +37,23 @@ interface PersonaContextType {
 const PersonaContext = createContext<PersonaContextType | undefined>(undefined);
 
 export function PersonaProvider({ children }: { children: React.ReactNode }) {
-  // État initial avec le premier persona comme fallback
-  const [activePersona, setActivePersona] = useState<CreativePersona | null>(() => {
-    try {
-      return personas[0] || null;
-    } catch (error) {
-      console.error('Erreur lors de l\'initialisation du persona par défaut:', error);
-      return null;
-    }
-  });
+  // Utiliser la fonction pour initialiser le state.
+  // React garantit que cette fonction ne s'exécute qu'une fois.
+  const [activePersona, setActivePersona] = useState<CreativePersona>(getInitialPersona);
 
-  // Effet pour charger le persona depuis le cookie au démarrage
+  // Cet effet applique les styles et garantit que les variables CSS sont
+  // à jour, même si les classes sont déjà appliquées par le serveur.
   useEffect(() => {
-    try {
-      const savedPersonaId = Cookies.get(COOKIE_KEY);
-      if (savedPersonaId) {
-        const savedPersona = personas.find(p => p.id === savedPersonaId);
-        if (savedPersona) {
-          setActivePersona(savedPersona);
-          console.log('✅ Persona chargé depuis cookie:', savedPersona.name);
-        } else {
-          console.warn(`⚠️ Persona avec id "${savedPersonaId}" non trouvé, utilisation du persona par défaut`);
-          setActivePersona(personas[0]);
-        }
-      } else {
-        console.log('ℹ️ Aucun persona sauvegardé, utilisation du persona par défaut');
-      }
-    } catch (error) {
-      console.error('❌ Erreur lors du chargement du persona depuis cookie:', error);
-      // Fallback au premier persona
-      if (personas.length > 0) {
-        setActivePersona(personas[0]);
-      }
-    }
-  }, []);
-
-  // Effet pour appliquer les variables CSS quand le persona change
-  useEffect(() => {
-    if (activePersona) {
-      try {
-        applyPersonaStyles(activePersona);
-        console.log('✅ Styles appliqués pour le persona:', activePersona.name);
-      } catch (error) {
-        console.error('❌ Erreur lors de l\'application des styles:', error);
-      }
-    }
+    applyPersonaStyles(activePersona);
+    console.log('✅ Styles appliqués pour le persona:', activePersona.name);
   }, [activePersona]);
 
-  // Fonction pour changer le persona et le sauvegarder
   const setPersona = useCallback((personaId: string) => {
     console.log('🔄 Tentative de changement vers le persona:', personaId);
-
     const newPersona = personas.find(p => p.id === personaId);
     if (newPersona) {
       setActivePersona(newPersona);
       try {
-        // Sauvegarder dans le cookie avec une expiration de 365 jours
         Cookies.set(COOKIE_KEY, personaId, {
           expires: 365,
           path: '/',
@@ -84,17 +64,12 @@ export function PersonaProvider({ children }: { children: React.ReactNode }) {
         console.error('❌ Erreur lors de la sauvegarde du persona dans cookie:', error);
       }
     } else {
-      console.error(`❌ Persona avec id "${personaId}" non trouvé dans la liste:`, personas.map(p => p.id));
+      console.error(`❌ Persona avec id "${personaId}" non trouvé.`);
     }
   }, []);
 
-  // Contexte avec gestion d'erreur
-  const contextValue = activePersona ? {
+  const contextValue = {
     persona: activePersona,
-    setPersona,
-    personas
-  } : {
-    persona: personas[0],
     setPersona,
     personas
   };

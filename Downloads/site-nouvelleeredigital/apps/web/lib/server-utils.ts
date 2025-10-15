@@ -1,5 +1,8 @@
 // apps/web/lib/server-utils.ts
 
+import { personas } from '@/personas';
+import type { CreativePersona } from '@/shared/theme.types';
+
 /**
  * Utilitaires pour le rendu côté serveur
  */
@@ -27,18 +30,10 @@ export function getCookieValue(cookieString: string | undefined, name: string): 
  */
 export function getPersonaFromCookies(cookieString: string | undefined): string | null {
   const personaId = getCookieValue(cookieString, 'creative-persona-v1');
-
   if (!personaId) return null;
 
-  // Vérifier que le persona existe
-  try {
-    // Import dynamique pour éviter les problèmes de bundling
-    const { personas } = require('@/personas');
-    const persona = personas.find((p: any) => p.id === personaId);
-    return persona ? personaId : null;
-  } catch {
-    return null;
-  }
+  const personaExists = personas.some((p: CreativePersona) => p.id === personaId);
+  return personaExists ? personaId : null;
 }
 
 /**
@@ -47,35 +42,10 @@ export function getPersonaFromCookies(cookieString: string | undefined): string 
 export function applyPersonaClassesToHtml(personaId: string | null): string {
   if (!personaId) return '';
 
-  try {
-    // Import dynamique pour éviter les problèmes de bundling
-    const { personas } = require('@/personas');
-    const persona = personas.find((p: any) => p.id === personaId);
+  const persona = personas.find((p: CreativePersona) => p.id === personaId);
+  if (!persona?.settings) return '';
 
-    if (!persona?.settings) return '';
-
-    const { colors, typography, layouts, animations } = persona.settings;
-
-    // Construire les classes CSS basées sur le persona
-    const classes = [];
-
-    // Classes de couleur
-    if (colors) {
-      classes.push(`persona-${personaId}`);
-    }
-
-    // Classes de layout
-    if (layouts?.gallery) {
-      classes.push(`layout-${layouts.gallery}`);
-    }
-
-    // Classes d'animation
-    if (animations?.intensity) {
-      classes.push(`animation-${animations.intensity}`);
-    }
-
-    return classes.join(' ');
-  } catch {
-    return '';
-  }
+  // Applique simplement la classe principale du persona.
+  // Les variables CSS seront gérées par le client via `applyPersonaStyles`.
+  return `persona-${persona.id}`;
 }
