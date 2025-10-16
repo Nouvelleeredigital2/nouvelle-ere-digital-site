@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Page {
+  id        String   @id @default(cuid())
+  slug      String
+  locale    String   @default("fr")
+  title     String
+  layout    String   // Structure de la page en JSON (stocké comme String)
+  status    String   @default("DRAFT")
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+  @@unique([slug, locale])
+}
+
+model Media {
+  id           String   @id @default(cuid())
+  filename     String
+  originalName String
+  mime         String
+  width        Int?
+  height       Int?
+  focalX       Float?   @default(0.5)
+  focalY       Float?   @default(0.5)
+  alt          String
+  meta         String?  // JSON stocké comme String
+  createdAt    DateTime @default(now())
+}
+
+model PublishSnapshot {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  siteJson  String   // Snapshot complet du site publié (JSON stocké comme String)
+  isActive  Boolean  @default(true)
+}
