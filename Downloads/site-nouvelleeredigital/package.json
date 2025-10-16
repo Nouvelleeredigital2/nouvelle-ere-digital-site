@@ -11,6 +11,12 @@
     "lint": "npm run lint -w apps/web",
     "format": "prettier --write .",
     "typecheck": "npm run typecheck -w apps/web",
+    "clear-personas": "node clear-personas.js",
+    "db:generate": "npm run db:generate -w apps/web",
+    "db:migrate": "npm run db:migrate -w apps/web",
+    "db:push": "npm run db:push -w apps/web",
+    "db:seed": "npm run db:seed -w apps/web",
+    "db:studio": "npm run db:studio -w apps/web",
     "prepare": "husky install"
   },
   "devDependencies": {

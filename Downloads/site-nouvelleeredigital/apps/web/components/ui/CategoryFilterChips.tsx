@@ -1,12 +1,20 @@
 "use client";
 
-import React, { useState } from 'react';
-import { cn } from '@/lib/utils';
-import { Badge } from './Badge';
+import React, { useState } from "react";
+import { cn } from "@/lib/utils";
+import { Badge } from "./Badge";
 
-type Variant = 'default' | 'outlined' | 'filled';
-type Size = 'sm' | 'md' | 'lg';
-type State = 'default' | 'hover' | 'active' | 'focus' | 'disabled' | 'selected' | 'invalid' | 'dragging';
+type Variant = "default" | "outlined" | "filled";
+type Size = "sm" | "md" | "lg";
+type State =
+  | "default"
+  | "hover"
+  | "active"
+  | "focus"
+  | "disabled"
+  | "selected"
+  | "invalid"
+  | "dragging";
 
 interface CategoryFilterChipsProps {
   categories: Array<{ id: string; label: string; count?: number }>;
@@ -15,7 +23,7 @@ interface CategoryFilterChipsProps {
   variant?: Variant;
   size?: Size;
   maxVisible?: number;
-  dataModel?: 'need' | 'module' | 'bundle';
+  dataModel?: "need" | "module" | "bundle";
   onSelect?: (id: string) => void;
   onAdd?: (id: string) => void;
   onRemove?: (id: string) => void;
@@ -27,8 +35,8 @@ export const CategoryFilterChips: React.FC<CategoryFilterChipsProps> = ({
   categories,
   selectedIds = [],
   multiple = true,
-  variant = 'default',
-  size = 'md',
+  variant = "default",
+  size = "md",
   maxVisible,
   dataModel,
   onSelect,
@@ -37,34 +45,34 @@ export const CategoryFilterChips: React.FC<CategoryFilterChipsProps> = ({
   onClear,
   className,
 }) => {
-  const [state, setState] = useState<State>('default');
+  const [state, setState] = useState<State>("default");
 
   const handleSelect = (id: string) => {
-    if (state === 'disabled') return;
+    if (state === "disabled") return;
     if (onSelect) onSelect(id);
   };
 
   const sizes: Record<Size, string> = {
-    sm: 'text-sm px-2 py-1',
-    md: 'text-base px-3 py-1.5',
-    lg: 'text-lg px-4 py-2',
+    sm: "text-sm px-2 py-1",
+    md: "text-base px-3 py-1.5",
+    lg: "text-lg px-4 py-2",
   };
 
   const variants: Record<Variant, string> = {
-    default: 'bg-[var(--couleur-light)] border border-[var(--color-primary)]',
-    outlined: 'border border-[var(--color-primary)] bg-transparent',
-    filled: 'bg-[var(--color-primary)] text-white',
+    default: "bg-[var(--couleur-light)] border border-[var(--color-primary)]",
+    outlined: "border border-[var(--color-primary)] bg-transparent",
+    filled: "bg-[var(--color-primary)] text-white",
   };
 
   const stateClasses: Record<State, string> = {
-    default: '',
-    hover: 'bg-[var(--couleur-light-hover)]',
-    active: 'bg-[var(--couleur-light-active)]',
-    focus: 'ring-2 ring-[var(--color-primary)]',
-    disabled: 'opacity-50 cursor-not-allowed',
-    selected: 'border-2 border-[var(--color-primary)]',
-    invalid: 'border-2 border-red-500',
-    dragging: 'cursor-grabbing',
+    default: "",
+    hover: "bg-[var(--couleur-light-hover)]",
+    active: "bg-[var(--couleur-light-active)]",
+    focus: "ring-2 ring-[var(--color-primary)]",
+    disabled: "opacity-50 cursor-not-allowed",
+    selected: "border-2 border-[var(--color-primary)]",
+    invalid: "border-2 border-red-500",
+    dragging: "cursor-grabbing",
   };
 
   const visibleCategories = maxVisible ? categories.slice(0, maxVisible) : categories;
@@ -72,16 +80,16 @@ export const CategoryFilterChips: React.FC<CategoryFilterChipsProps> = ({
   return (
     <div
       className={cn(
-        'flex flex-wrap gap-2 p-4 bg-[var(--couleur-light)] rounded-[var(--border-radius-large)]',
+        "flex flex-wrap gap-2 p-4 bg-[var(--couleur-light)] rounded-[var(--border-radius-large)]",
         stateClasses[state],
-        className
+        className,
       )}
       role="group"
       aria-label="Filtres de catégories"
-      onMouseEnter={() => setState('hover')}
-      onMouseLeave={() => setState('default')}
-      onFocus={() => setState('focus')}
-      onBlur={() => setState('default')}
+      onMouseEnter={() => setState("hover")}
+      onMouseLeave={() => setState("default")}
+      onFocus={() => setState("focus")}
+      onBlur={() => setState("default")}
     >
       {visibleCategories.map((category) => (
         <span
@@ -89,8 +97,8 @@ export const CategoryFilterChips: React.FC<CategoryFilterChipsProps> = ({
           className={cn(
             sizes[size],
             variants[variant],
-            selectedIds.includes(category.id) && 'selected',
-            'cursor-pointer inline-block'
+            selectedIds.includes(category.id) && "selected",
+            "cursor-pointer inline-block",
           )}
           onClick={() => handleSelect(category.id)}
           role="checkbox"

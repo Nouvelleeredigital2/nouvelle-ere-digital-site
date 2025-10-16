@@ -1,11 +1,11 @@
 "use client";
 
-import React from 'react';
-import { usePersona } from '@/components/context/PersonaProvider';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
-import { cn } from '@/lib/utils';
-import { Heart, Mail, Phone, MapPin, Linkedin, Twitter, Instagram } from 'lucide-react';
+import React from "react";
+import { usePersona } from "@/components/context/PersonaProvider";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { cn } from "@/lib/utils";
+import { Heart, Mail, Phone, MapPin, Linkedin, Twitter, Instagram } from "lucide-react";
 
 interface AdaptiveFooterProps {
   className?: string;
@@ -28,7 +28,7 @@ export function AdaptiveFooter({ className }: AdaptiveFooterProps) {
         { label: "Design & UX", href: "/services/design" },
         { label: "Développement Web", href: "/services/developpement" },
         { label: "Intelligence Artificielle", href: "/services/ia" },
-      ]
+      ],
     },
     {
       title: "Entreprise",
@@ -39,7 +39,7 @@ export function AdaptiveFooter({ className }: AdaptiveFooterProps) {
         { label: "Contact", href: "/contact" },
         { label: "Blog", href: "/blog" },
         { label: "Presse", href: "/presse" },
-      ]
+      ],
     },
     {
       title: "Ressources",
@@ -50,8 +50,8 @@ export function AdaptiveFooter({ className }: AdaptiveFooterProps) {
         { label: "Études de cas", href: "/cas" },
         { label: "Newsletter", href: "/newsletter" },
         { label: "API", href: "/api" },
-      ]
-    }
+      ],
+    },
   ];
 
   const socialLinks = [
@@ -67,38 +67,38 @@ export function AdaptiveFooter({ className }: AdaptiveFooterProps) {
   ];
 
   const getFooterClasses = () => {
-    const baseClasses = 'bg-card border-t border-border';
+    const baseClasses = "bg-card border-t border-border";
 
     switch (layoutStyle) {
-      case 'symmetrical-grid':
-        return cn(baseClasses, 'py-12');
-      case 'asymmetrical-masonry':
-        return cn(baseClasses, 'py-16 bg-gradient-to-br from-background to-muted/20');
-      case 'single-column':
-        return cn(baseClasses, 'py-8');
-      case 'magazine-layout':
-        return cn(baseClasses, 'py-20');
-      case 'card-grid':
-        return cn(baseClasses, 'py-12');
+      case "symmetrical-grid":
+        return cn(baseClasses, "py-12");
+      case "asymmetrical-masonry":
+        return cn(baseClasses, "py-16 bg-gradient-to-br from-background to-muted/20");
+      case "single-column":
+        return cn(baseClasses, "py-8");
+      case "magazine-layout":
+        return cn(baseClasses, "py-20");
+      case "card-grid":
+        return cn(baseClasses, "py-12");
       default:
-        return cn(baseClasses, 'py-12');
+        return cn(baseClasses, "py-12");
     }
   };
 
   const getSectionClasses = () => {
     switch (layoutStyle) {
-      case 'symmetrical-grid':
-        return 'grid grid-cols-1 md:grid-cols-3 gap-8';
-      case 'asymmetrical-masonry':
-        return 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr';
-      case 'single-column':
-        return 'space-y-8';
-      case 'magazine-layout':
-        return 'grid grid-cols-1 md:grid-cols-2 gap-12';
-      case 'card-grid':
-        return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6';
+      case "symmetrical-grid":
+        return "grid grid-cols-1 md:grid-cols-3 gap-8";
+      case "asymmetrical-masonry":
+        return "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr";
+      case "single-column":
+        return "space-y-8";
+      case "magazine-layout":
+        return "grid grid-cols-1 md:grid-cols-2 gap-12";
+      case "card-grid":
+        return "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6";
       default:
-        return 'grid grid-cols-1 md:grid-cols-3 gap-8';
+        return "grid grid-cols-1 md:grid-cols-3 gap-8";
     }
   };
 
@@ -111,14 +111,12 @@ export function AdaptiveFooter({ className }: AdaptiveFooterProps) {
             <Card
               key={section.title}
               className={cn(
-                'p-6',
-                layoutStyle === 'asymmetrical-masonry' && index === 0 && 'row-span-2',
-                layoutStyle === 'magazine-layout' && index === 0 && 'md:col-span-2'
+                "p-6",
+                layoutStyle === "asymmetrical-masonry" && index === 0 && "row-span-2",
+                layoutStyle === "magazine-layout" && index === 0 && "md:col-span-2",
               )}
             >
-              <h3 className="text-lg font-semibold mb-4 text-foreground">
-                {section.title}
-              </h3>
+              <h3 className="text-lg font-semibold mb-4 text-foreground">{section.title}</h3>
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.href}>
@@ -138,9 +136,7 @@ export function AdaptiveFooter({ className }: AdaptiveFooterProps) {
 
           {/* Section contact et réseaux sociaux */}
           <Card className="p-6">
-            <h3 className="text-lg font-semibold mb-4 text-foreground">
-              Nous contacter
-            </h3>
+            <h3 className="text-lg font-semibold mb-4 text-foreground">Nous contacter</h3>
 
             <div className="space-y-3 mb-6">
               {contactInfo.map((info, index) => (
@@ -170,10 +166,14 @@ export function AdaptiveFooter({ className }: AdaptiveFooterProps) {
         </div>
 
         {/* Section finale avec copyright et informations légales */}
-        <div className={cn(
-          'mt-12 pt-8 border-t border-border',
-          layoutStyle === 'single-column' ? 'text-center' : 'flex flex-col sm:flex-row justify-between items-center gap-4'
-        )}>
+        <div
+          className={cn(
+            "mt-12 pt-8 border-t border-border",
+            layoutStyle === "single-column"
+              ? "text-center"
+              : "flex flex-col sm:flex-row justify-between items-center gap-4",
+          )}
+        >
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <span>© 2024 Nouvelle Ère Digital.</span>
             <span>Fait avec</span>

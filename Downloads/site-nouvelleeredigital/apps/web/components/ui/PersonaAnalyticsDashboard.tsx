@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { usePersonaAnalytics } from '@/hooks/usePersonaAnalytics';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
-import { cn } from '@/lib/utils';
-import { BarChart3, TrendingUp, Users, Clock, Activity, Download, AlertCircle } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { usePersonaAnalytics } from "@/hooks/usePersonaAnalytics";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
+import { cn } from "@/lib/utils";
+import { BarChart3, TrendingUp, Users, Clock, Activity, Download, AlertCircle } from "lucide-react";
 
 interface AnalyticsData {
   totalSessions: number;
@@ -44,16 +44,19 @@ export function PersonaAnalyticsDashboard() {
     const averageSessionTime = totalSessions > 0 ? totalTimeSpent / totalSessions : 0;
 
     // Trouver le persona le plus utilisé
-    const mostUsedPersona = stats.length > 0 ? stats.reduce((prev, current) =>
-      prev.totalSessions > current.totalSessions ? prev : current
-    ) : { personaName: 'Aucun', totalSessions: 0 };
+    const mostUsedPersona =
+      stats.length > 0
+        ? stats.reduce((prev, current) =>
+            prev.totalSessions > current.totalSessions ? prev : current,
+          )
+        : { personaName: "Aucun", totalSessions: 0 };
 
     const data: AnalyticsData = {
       totalSessions,
-      totalUsers: new Set(stats.map(s => s.personaId)).size,
+      totalUsers: new Set(stats.map((s) => s.personaId)).size,
       averageSessionTime: Math.round(averageSessionTime * 100) / 100,
       mostUsedPersona: mostUsedPersona.personaName,
-      personaStats: stats
+      personaStats: stats,
     };
 
     setAnalyticsData(data);
@@ -69,16 +72,16 @@ export function PersonaAnalyticsDashboard() {
         totalSessions: analyticsData.totalSessions,
         totalUsers: analyticsData.totalUsers,
         averageSessionTime: analyticsData.averageSessionTime,
-        mostUsedPersona: analyticsData.mostUsedPersona
+        mostUsedPersona: analyticsData.mostUsedPersona,
       },
-      personaStats: analyticsData.personaStats
+      personaStats: analyticsData.personaStats,
     };
 
-    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = `persona-analytics-${new Date().toISOString().split('T')[0]}.json`;
+    a.download = `persona-analytics-${new Date().toISOString().split("T")[0]}.json`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -206,7 +209,7 @@ export function PersonaAnalyticsDashboard() {
                     <div
                       className="bg-primary h-2 rounded-full transition-all duration-300"
                       style={{
-                        width: `${analyticsData.totalSessions > 0 ? (stat.totalSessions / analyticsData.totalSessions) * 100 : 0}%`
+                        width: `${analyticsData.totalSessions > 0 ? (stat.totalSessions / analyticsData.totalSessions) * 100 : 0}%`,
                       }}
                     />
                   </div>
@@ -227,25 +230,40 @@ export function PersonaAnalyticsDashboard() {
                 <p className="text-sm text-muted-foreground">
                   {analyticsData.averageSessionTime > 5
                     ? "Les utilisateurs passent en moyenne plus de 5 minutes par session, indiquant un bon engagement."
-                    : "Le temps de session pourrait être amélioré pour augmenter l'engagement."
-                  }
+                    : "Le temps de session pourrait être amélioré pour augmenter l'engagement."}
                 </p>
               </div>
 
               <div className="p-4 bg-muted/50 rounded-lg">
                 <h4 className="font-medium mb-2">Persona le Plus Populaire</h4>
                 <p className="text-sm text-muted-foreground">
-                  <strong>{analyticsData.mostUsedPersona}</strong> est le persona préféré des utilisateurs,
-                  représentant {analyticsData.totalSessions > 0 ? Math.round((analyticsData.personaStats.find(p => p.personaName === analyticsData.mostUsedPersona)?.totalSessions || 0) / analyticsData.totalSessions * 100) : 0}% de l'utilisation.
+                  <strong>{analyticsData.mostUsedPersona}</strong> est le persona préféré des
+                  utilisateurs, représentant{" "}
+                  {analyticsData.totalSessions > 0
+                    ? Math.round(
+                        ((analyticsData.personaStats.find(
+                          (p) => p.personaName === analyticsData.mostUsedPersona,
+                        )?.totalSessions || 0) /
+                          analyticsData.totalSessions) *
+                          100,
+                      )
+                    : 0}
+                  % de l'utilisation.
                 </p>
               </div>
 
               <div className="p-4 bg-muted/50 rounded-lg">
                 <h4 className="font-medium mb-2">Recommandations</h4>
                 <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• Considérer l'ajout de fonctionnalités spécifiques au persona le plus populaire</li>
-                  <li>• Analyser les personas moins utilisés pour identifier des axes d'amélioration</li>
-                  <li>• Explorer les corrélations entre durée de session et satisfaction utilisateur</li>
+                  <li>
+                    • Considérer l'ajout de fonctionnalités spécifiques au persona le plus populaire
+                  </li>
+                  <li>
+                    • Analyser les personas moins utilisés pour identifier des axes d'amélioration
+                  </li>
+                  <li>
+                    • Explorer les corrélations entre durée de session et satisfaction utilisateur
+                  </li>
                 </ul>
               </div>
             </div>
@@ -254,12 +272,10 @@ export function PersonaAnalyticsDashboard() {
 
         {/* Actions */}
         <div className="mt-8 flex justify-center gap-4">
-          <Button variant="outline" onClick={() => window.location.href = '/demo'}>
+          <Button variant="outline" onClick={() => (window.location.href = "/demo")}>
             Tester les Personas
           </Button>
-          <Button onClick={() => window.location.href = '/tests'}>
-            Donner votre Avis
-          </Button>
+          <Button onClick={() => (window.location.href = "/tests")}>Donner votre Avis</Button>
         </div>
       </div>
     </div>

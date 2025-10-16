@@ -8,9 +8,13 @@ export function DesignPage() {
       {/* Héro */}
       <ThemeSection variant="gradient" className="py-32 md:py-40">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-4">Création Graphique & Design</p>
+          <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-4">
+            Création Graphique & Design
+          </p>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6">
-            L'identité visuelle<br />comme langage stratégique.
+            L'identité visuelle
+            <br />
+            comme langage stratégique.
           </h1>
         </div>
       </ThemeSection>
@@ -19,14 +23,11 @@ export function DesignPage() {
       <ThemeSection variant="light" className="py-20">
         <div className="max-w-4xl mx-auto">
           <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300">
+            <p>Chaque marque possède une voix, un rythme, un univers.</p>
+            <p>Notre rôle est de le révéler.</p>
             <p>
-              Chaque marque possède une voix, un rythme, un univers.
-            </p>
-            <p>
-              Notre rôle est de le révéler.
-            </p>
-            <p>
-              Le pôle Création Graphique & Design de Nouvelle Ère Digital transforme les idées en images cohérentes et percutantes, capables de séduire, de rassurer et de durer.
+              Le pôle Création Graphique & Design de Nouvelle Ère Digital transforme les idées en
+              images cohérentes et percutantes, capables de séduire, de rassurer et de durer.
             </p>
             <div className="text-center py-6">
               <p className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
@@ -47,15 +48,20 @@ export function DesignPage() {
           />
           <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300 text-center">
             <p>
-              Concevoir des identités visuelles fortes, esthétiques et intelligentes, capables de raconter une histoire avant même les mots.
+              Concevoir des identités visuelles fortes, esthétiques et intelligentes, capables de
+              raconter une histoire avant même les mots.
             </p>
             <p className="font-medium text-zinc-900 dark:text-zinc-100">
               Le design n'est pas un ornement : c'est un levier stratégique.
             </p>
             <p>
-              Chaque trait, chaque couleur, chaque typographie sert une intention — celle de donner du sens, de la cohérence et de la confiance.
+              Chaque trait, chaque couleur, chaque typographie sert une intention — celle de donner
+              du sens, de la cohérence et de la confiance.
             </p>
-            <blockquote className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8" style={{ borderColor: '#7C3AED' }}>
+            <blockquote
+              className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8"
+              style={{ borderColor: "#7C3AED" }}
+            >
               « Une identité réussie, c'est un langage visuel qui inspire la cohérence. »
             </blockquote>
           </div>
@@ -76,16 +82,27 @@ export function DesignPage() {
             <div className="card group hover:shadow-lg transition-shadow">
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
-                  <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white" style={{ background: 'linear-gradient(135deg, #7C3AED, #6D28D9)' }}>
+                  <div
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
+                  >
                     1
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">Identité visuelle & branding</h3>
+                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                    Identité visuelle & branding
+                  </h3>
                   <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
-                    Création ou refonte de logo, univers de marque et charte graphique. Définition d'un ton visuel et émotionnel cohérent. Déclinaisons multi-supports (print, digital, social, motion). Conception de brand books complets et modulables. Harmonisation des identités existantes pour assurer la continuité visuelle.
+                    Création ou refonte de logo, univers de marque et charte graphique. Définition
+                    d'un ton visuel et émotionnel cohérent. Déclinaisons multi-supports (print,
+                    digital, social, motion). Conception de brand books complets et modulables.
+                    Harmonisation des identités existantes pour assurer la continuité visuelle.
                   </p>
-                  <blockquote className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400" style={{ borderColor: '#7C3AED' }}>
+                  <blockquote
+                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    style={{ borderColor: "#7C3AED" }}
+                  >
                     « Votre image parle avant vous. Nous la faisons vibrer au bon rythme. »
                   </blockquote>
                 </div>
@@ -96,17 +113,30 @@ export function DesignPage() {
             <div className="card group hover:shadow-lg transition-shadow">
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
-                  <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white" style={{ background: 'linear-gradient(135deg, #7C3AED, #6D28D9)' }}>
+                  <div
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
+                  >
                     2
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">Design graphique & print</h3>
+                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                    Design graphique & print
+                  </h3>
                   <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
-                    Conception de supports de communication haut de gamme : plaquettes, catalogues, affiches, flyers, PLV, signalétique, packaging. Création de kits événementiels : stands, kakemonos, visuels LED, fonds de scène. Direction artistique de campagnes publicitaires et d'affichage. Collaboration directe avec les pôles audiovisuel et digital pour une harmonie complète.
+                    Conception de supports de communication haut de gamme : plaquettes, catalogues,
+                    affiches, flyers, PLV, signalétique, packaging. Création de kits événementiels :
+                    stands, kakemonos, visuels LED, fonds de scène. Direction artistique de
+                    campagnes publicitaires et d'affichage. Collaboration directe avec les pôles
+                    audiovisuel et digital pour une harmonie complète.
                   </p>
-                  <blockquote className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400" style={{ borderColor: '#7C3AED' }}>
-                    « Le papier et l'écran peuvent raconter la même histoire, s'ils parlent le même langage. »
+                  <blockquote
+                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    style={{ borderColor: "#7C3AED" }}
+                  >
+                    « Le papier et l'écran peuvent raconter la même histoire, s'ils parlent le même
+                    langage. »
                   </blockquote>
                 </div>
               </div>
@@ -116,16 +146,28 @@ export function DesignPage() {
             <div className="card group hover:shadow-lg transition-shadow">
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
-                  <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white" style={{ background: 'linear-gradient(135deg, #7C3AED, #6D28D9)' }}>
+                  <div
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
+                  >
                     3
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">Webdesign & UX/UI</h3>
+                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                    Webdesign & UX/UI
+                  </h3>
                   <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
-                    Conception d'interfaces intuitives, esthétiques et fonctionnelles. Création de maquettes interactives, wireframes et prototypes dynamiques. Intégration responsive et accessibilité mobile. Optimisation de l'expérience utilisateur avec logique de parcours. Collaboration avec le pôle développement pour une cohérence design / technique.
+                    Conception d'interfaces intuitives, esthétiques et fonctionnelles. Création de
+                    maquettes interactives, wireframes et prototypes dynamiques. Intégration
+                    responsive et accessibilité mobile. Optimisation de l'expérience utilisateur
+                    avec logique de parcours. Collaboration avec le pôle développement pour une
+                    cohérence design / technique.
                   </p>
-                  <blockquote className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400" style={{ borderColor: '#7C3AED' }}>
+                  <blockquote
+                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    style={{ borderColor: "#7C3AED" }}
+                  >
                     « Un bon design ne se voit pas, il se ressent. »
                   </blockquote>
                 </div>
@@ -136,17 +178,29 @@ export function DesignPage() {
             <div className="card group hover:shadow-lg transition-shadow">
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
-                  <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white" style={{ background: 'linear-gradient(135deg, #7C3AED, #6D28D9)' }}>
+                  <div
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
+                  >
                     4
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">Direction artistique globale</h3>
+                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                    Direction artistique globale
+                  </h3>
                   <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
-                    Création d'univers visuels pour marques, événements ou productions audiovisuelles. Définition d'un style photographique et colorimétrique distinctif. Supervision de shootings et tournages (look & feel, lumière, cadrage). Suivi artistique transversal sur les supports print, web et motion.
+                    Création d'univers visuels pour marques, événements ou productions
+                    audiovisuelles. Définition d'un style photographique et colorimétrique
+                    distinctif. Supervision de shootings et tournages (look & feel, lumière,
+                    cadrage). Suivi artistique transversal sur les supports print, web et motion.
                   </p>
-                  <blockquote className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400" style={{ borderColor: '#7C3AED' }}>
-                    « Chaque projet est une œuvre collective : nous dessinons le lien entre l'idée et la perception. »
+                  <blockquote
+                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    style={{ borderColor: "#7C3AED" }}
+                  >
+                    « Chaque projet est une œuvre collective : nous dessinons le lien entre l'idée
+                    et la perception. »
                   </blockquote>
                 </div>
               </div>
@@ -156,16 +210,27 @@ export function DesignPage() {
             <div className="card group hover:shadow-lg transition-shadow">
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
-                  <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white" style={{ background: 'linear-gradient(135deg, #7C3AED, #6D28D9)' }}>
+                  <div
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
+                  >
                     5
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">Design augmenté & IA créative</h3>
+                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                    Design augmenté & IA créative
+                  </h3>
                   <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
-                    Utilisation de l'IA pour la recherche visuelle, la variation d'univers, la simulation 3D. Génération assistée d'ambiances, palettes et moodboards interactifs. Accélération des phases de prototypage et d'inspiration. Contrôle humain complet : validation, cohérence et conformité charte.
+                    Utilisation de l'IA pour la recherche visuelle, la variation d'univers, la
+                    simulation 3D. Génération assistée d'ambiances, palettes et moodboards
+                    interactifs. Accélération des phases de prototypage et d'inspiration. Contrôle
+                    humain complet : validation, cohérence et conformité charte.
                   </p>
-                  <blockquote className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400" style={{ borderColor: '#7C3AED' }}>
+                  <blockquote
+                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    style={{ borderColor: "#7C3AED" }}
+                  >
                     « L'IA n'invente pas à notre place, elle élargit notre imagination. »
                   </blockquote>
                 </div>
@@ -190,13 +255,22 @@ export function DesignPage() {
               { num: "2", title: "Analyser", desc: "Vos points de contact et vos publics." },
               { num: "3", title: "Imaginer", desc: "Un univers cohérent et identifiable." },
               { num: "4", title: "Créer", desc: "Des supports impactants et évolutifs." },
-              { num: "5", title: "Déployer", desc: "Une identité durable et déclinable sur tous les médias." },
+              {
+                num: "5",
+                title: "Déployer",
+                desc: "Une identité durable et déclinable sur tous les médias.",
+              },
             ].map((item, i) => (
               <div key={i} className="card text-center group hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl font-bold text-white" style={{ background: 'linear-gradient(135deg, #7C3AED, #6D28D9)' }}>
+                <div
+                  className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl font-bold text-white"
+                  style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
+                >
                   {item.num}
                 </div>
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">{item.title}</h3>
+                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                  {item.title}
+                </h3>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400">{item.desc}</p>
               </div>
             ))}
@@ -234,10 +308,15 @@ export function DesignPage() {
             ].map((item, i) => (
               <div key={i} className="card group hover:shadow-lg transition-all hover:scale-105">
                 <div className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #7C3AED, #6D28D9)' }}>
+                  <div
+                    className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center"
+                    style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
+                  >
                     <div className="w-8 h-8 bg-white/20 rounded-lg"></div>
                   </div>
-                  <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">{item.title}</h3>
+                  <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                    {item.title}
+                  </h3>
                   <p className="text-zinc-600 dark:text-zinc-400">{item.desc}</p>
                 </div>
               </div>
@@ -258,21 +337,45 @@ export function DesignPage() {
           <div className="overflow-x-auto">
             <table className="w-full max-w-4xl mx-auto">
               <thead>
-                <tr className="border-b-2" style={{ borderColor: '#7C3AED' }}>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">Atout</th>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">Impact pour vous</th>
+                <tr className="border-b-2" style={{ borderColor: "#7C3AED" }}>
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                    Atout
+                  </th>
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                    Impact pour vous
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-zinc-200 dark:divide-zinc-700">
                 {[
-                  { atout: "Direction artistique intégrée", impact: "Une cohérence totale de marque." },
-                  { atout: "Approche stratégique du design", impact: "Une identité utile et durable." },
-                  { atout: "IA créative sous contrôle humain", impact: "Inspiration augmentée, respect de votre ADN." },
-                  { atout: "Collaboration inter-pôles", impact: "Synergie entre design, audiovisuel et digital." },
-                  { atout: "Sens du détail", impact: "Finesse, clarté et élégance à chaque support." },
+                  {
+                    atout: "Direction artistique intégrée",
+                    impact: "Une cohérence totale de marque.",
+                  },
+                  {
+                    atout: "Approche stratégique du design",
+                    impact: "Une identité utile et durable.",
+                  },
+                  {
+                    atout: "IA créative sous contrôle humain",
+                    impact: "Inspiration augmentée, respect de votre ADN.",
+                  },
+                  {
+                    atout: "Collaboration inter-pôles",
+                    impact: "Synergie entre design, audiovisuel et digital.",
+                  },
+                  {
+                    atout: "Sens du détail",
+                    impact: "Finesse, clarté et élégance à chaque support.",
+                  },
                 ].map((row, i) => (
-                  <tr key={i} className="hover:bg-zinc-50 dark:hover:bg-zinc-900/30 transition-colors">
-                    <td className="py-4 px-6 font-semibold text-zinc-900 dark:text-zinc-100">{row.atout}</td>
+                  <tr
+                    key={i}
+                    className="hover:bg-zinc-50 dark:hover:bg-zinc-900/30 transition-colors"
+                  >
+                    <td className="py-4 px-6 font-semibold text-zinc-900 dark:text-zinc-100">
+                      {row.atout}
+                    </td>
                     <td className="py-4 px-6 text-zinc-700 dark:text-zinc-300">{row.impact}</td>
                   </tr>
                 ))}
@@ -289,7 +392,10 @@ export function DesignPage() {
             « Le design n'est pas ce qu'on voit. C'est ce que l'on ressent. »
           </blockquote>
           <p className="mt-8 text-zinc-300 max-w-2xl mx-auto">
-            Nous croyons que le design est un dialogue entre la raison et l'émotion. Chaque création est un équilibre entre beauté, clarté et fonction. Notre mission : révéler la singularité de votre marque à travers une signature visuelle qui inspire la confiance et la reconnaissance.
+            Nous croyons que le design est un dialogue entre la raison et l'émotion. Chaque création
+            est un équilibre entre beauté, clarté et fonction. Notre mission : révéler la
+            singularité de votre marque à travers une signature visuelle qui inspire la confiance et
+            la reconnaissance.
           </p>
         </div>
       </ThemeSection>
@@ -302,7 +408,8 @@ export function DesignPage() {
               Nous dessinons la clarté.
             </h2>
             <p className="text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto">
-              Une composition élégante : maquettes de logo, palettes de couleurs, charte graphique et affiches sur une table de création.
+              Une composition élégante : maquettes de logo, palettes de couleurs, charte graphique
+              et affiches sur une table de création.
             </p>
           </div>
 
@@ -315,9 +422,14 @@ export function DesignPage() {
               { icon: "🎭", title: "Direction artistique" },
               { icon: "🤖", title: "IA créative" },
             ].map((item, i) => (
-              <div key={i} className="card text-center group hover:shadow-xl transition-all hover:scale-105">
+              <div
+                key={i}
+                className="card text-center group hover:shadow-xl transition-all hover:scale-105"
+              >
                 <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">{item.title}</h3>
+                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  {item.title}
+                </h3>
               </div>
             ))}
           </div>
@@ -331,7 +443,8 @@ export function DesignPage() {
             Prêt à révéler votre identité ?
           </h2>
           <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-10 max-w-2xl mx-auto">
-            Découvrez nos réalisations graphiques et explorez notre direction artistique globale pour créer une identité qui vous ressemble.
+            Découvrez nos réalisations graphiques et explorez notre direction artistique globale
+            pour créer une identité qui vous ressemble.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>

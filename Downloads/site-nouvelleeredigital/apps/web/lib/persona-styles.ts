@@ -1,12 +1,12 @@
 // apps/web/lib/persona-styles.ts
-import type { CreativePersona } from '@/shared/theme.types';
+import type { CreativePersona } from "@/shared/theme.types";
 
 /**
  * Applique les styles CSS personnalisés d'un persona (côté serveur ou client)
  */
 export function applyPersonaStyles(persona: CreativePersona): void {
   // Vérification si on est côté serveur ou client
-  const isServer = typeof window === 'undefined';
+  const isServer = typeof window === "undefined";
 
   if (isServer) {
     // Côté serveur - on applique les styles directement sur les variables CSS globales
@@ -43,7 +43,7 @@ export function applyPersonaStyles(persona: CreativePersona): void {
   }
 
   // Ajouter la classe du persona actif
-  root.classList.remove(...Array.from(root.classList).filter(cls => cls.startsWith('persona-')));
+  root.classList.remove(...Array.from(root.classList).filter((cls) => cls.startsWith("persona-")));
   root.classList.add(`persona-${persona.id}`);
 
   // Appliquer les attributs de données pour les layouts
@@ -107,29 +107,31 @@ export function getPersonaClasses(persona: CreativePersona): {
 } {
   if (!persona?.settings) {
     return {
-      color: '',
-      typography: '',
-      layout: '',
-      animation: '',
+      color: "",
+      typography: "",
+      layout: "",
+      animation: "",
     };
   }
 
   const { colors, typography, layouts, animations } = persona.settings;
 
   // Classes de couleur basées sur le schéma du persona
-  const colorClasses = colors ? `
+  const colorClasses = colors
+    ? `
     text-[var(--color-foreground)]
     bg-[var(--color-background)]
-  `.trim() : '';
+  `.trim()
+    : "";
 
   // Classes de typographie
-  const typographyClasses = typography ? 'font-persona-sans' : '';
+  const typographyClasses = typography ? "font-persona-sans" : "";
 
   // Classes de layout basées sur la configuration
-  const layoutClasses = layouts ? 'layout-persona-gallery' : '';
+  const layoutClasses = layouts ? "layout-persona-gallery" : "";
 
   // Classes d'animation basées sur l'intensité
-  const animationIntensity = animations?.intensity || 'subtle';
+  const animationIntensity = animations?.intensity || "subtle";
   const animationClasses = `animation-persona-${animationIntensity}`;
 
   return {
@@ -146,5 +148,7 @@ export function getPersonaClasses(persona: CreativePersona): {
  */
 export function usePersonaClasses() {
   // Cette fonction sera définie dans un fichier de hooks approprié
-  throw new Error('usePersonaClasses doit être utilisé dans un composant React avec le contexte PersonaProvider');
+  throw new Error(
+    "usePersonaClasses doit être utilisé dans un composant React avec le contexte PersonaProvider",
+  );
 }

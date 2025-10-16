@@ -17,7 +17,7 @@ export const Card = ({
   const cardClasses = cn(
     "bg-card text-card-foreground rounded-md border border-border shadow-sm transition-all duration-300",
     hover && "hover:shadow-lg hover:-translate-y-1 cursor-pointer",
-    className
+    className,
   );
 
   return (

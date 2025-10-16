@@ -11,16 +11,19 @@ Le serveur devrait démarrer sur `http://localhost:3001`
 ## ✅ Vérifications à Effectuer
 
 ### 1. **Vérification du PersonaDebugger**
+
 - Ouvrez `http://localhost:3001/`
 - En bas à droite, vous devriez voir un petit débogueur noir
 - Il devrait afficher : "Persona: L'Artiste" et "Total: X personas"
 
 ### 2. **Test de Sélection de Persona**
+
 - Cliquez sur les cartes de personas en bas de la page d'accueil
 - Le débogueur devrait se mettre à jour avec le nouveau persona sélectionné
 - Les couleurs de la page devraient changer en temps réel
 
 ### 3. **Vérification des Variables CSS**
+
 - Ouvrez les outils de développement (F12)
 - Allez dans l'onglet "Elements" > "html"
 - Dans la section "Computed" ou "Styles", cherchez les variables CSS :
@@ -30,6 +33,7 @@ Le serveur devrait démarrer sur `http://localhost:3001`
   - `--color-secondary`
 
 ### 4. **Test de Persistance**
+
 - Sélectionnez un persona différent
 - Rechargez la page (F5)
 - Le même persona devrait rester sélectionné
@@ -44,22 +48,26 @@ Le serveur devrait démarrer sur `http://localhost:3001`
 ## 🔍 **Diagnostic si Ça Ne Marche Pas**
 
 ### **Vérifier la Console (F12 > Console)**
+
 - Pas d'erreurs JavaScript
 - Messages de succès lors de la sélection
 
 ### **Vérifier le localStorage**
+
 ```javascript
 // Dans la console du navigateur
-console.log(localStorage.getItem('creative-persona-v1'));
+console.log(localStorage.getItem("creative-persona-v1"));
 ```
 
 ### **Vérifier les Variables CSS**
+
 ```javascript
 // Dans la console du navigateur
-console.log(getComputedStyle(document.documentElement).getPropertyValue('--color-primary'));
+console.log(getComputedStyle(document.documentElement).getPropertyValue("--color-primary"));
 ```
 
 ## 📱 **Tests sur Mobile**
+
 - Ouvrez les outils de développement
 - Activez le mode responsive
 - Testez la sélection de personas sur différents appareils

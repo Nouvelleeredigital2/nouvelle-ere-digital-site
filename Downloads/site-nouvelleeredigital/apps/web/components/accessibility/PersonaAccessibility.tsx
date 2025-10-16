@@ -1,8 +1,8 @@
 // apps/web/components/accessibility/PersonaAccessibility.tsx
 "use client";
 
-import { usePersona } from '@/components/context/PersonaProvider';
-import { useEffect, useState } from 'react';
+import { usePersona } from "@/components/context/PersonaProvider";
+import { useEffect, useState } from "react";
 
 export function PersonaAccessibility() {
   const { persona, personas } = usePersona();
@@ -19,18 +19,18 @@ export function PersonaAccessibility() {
   // Fonction pour annoncer aux screen readers
   const announceToScreenReader = (message: string) => {
     // Vérifier que document.body existe (côté client uniquement)
-    if (typeof document === 'undefined' || !document.body) {
+    if (typeof document === "undefined" || !document.body) {
       return;
     }
 
-    const announcement = document.createElement('div');
-    announcement.setAttribute('aria-live', 'polite');
-    announcement.setAttribute('aria-atomic', 'true');
-    announcement.style.position = 'absolute';
-    announcement.style.left = '-10000px';
-    announcement.style.width = '1px';
-    announcement.style.height = '1px';
-    announcement.style.overflow = 'hidden';
+    const announcement = document.createElement("div");
+    announcement.setAttribute("aria-live", "polite");
+    announcement.setAttribute("aria-atomic", "true");
+    announcement.style.position = "absolute";
+    announcement.style.left = "-10000px";
+    announcement.style.width = "1px";
+    announcement.style.height = "1px";
+    announcement.style.overflow = "hidden";
 
     document.body.appendChild(announcement);
     announcement.textContent = message;
@@ -43,7 +43,7 @@ export function PersonaAccessibility() {
         }
       } catch (error) {
         // Ignorer les erreurs de nettoyage si l'élément n'existe plus
-        console.warn('Erreur lors du nettoyage de l\'annonce d\'accessibilité:', error);
+        console.warn("Erreur lors du nettoyage de l'annonce d'accessibilité:", error);
       }
     };
 
@@ -80,8 +80,14 @@ export function PersonaAccessibility() {
       <div className="mt-4">
         <h3 className="text-lg font-semibold">Raccourcis clavier</h3>
         <div className="text-sm space-y-1">
-          <p><kbd className="px-1 py-0.5 bg-muted rounded text-xs">Alt + 1-5</kbd> : Sélectionner un persona</p>
-          <p><kbd className="px-1 py-0.5 bg-muted rounded text-xs">Alt + R</kbd> : Réinitialiser au thème par défaut</p>
+          <p>
+            <kbd className="px-1 py-0.5 bg-muted rounded text-xs">Alt + 1-5</kbd> : Sélectionner un
+            persona
+          </p>
+          <p>
+            <kbd className="px-1 py-0.5 bg-muted rounded text-xs">Alt + R</kbd> : Réinitialiser au
+            thème par défaut
+          </p>
         </div>
       </div>
     </div>

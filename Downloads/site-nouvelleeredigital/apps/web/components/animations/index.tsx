@@ -18,7 +18,7 @@ export const FadeIn = ({
   duration = 0.6,
   direction = "up",
   distance = 20,
-  className = ""
+  className = "",
 }: FadeInProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -35,13 +35,13 @@ export const FadeIn = ({
       up: { y: distance },
       down: { y: -distance },
       left: { x: distance },
-      right: { x: -distance }
+      right: { x: -distance },
     };
 
     return {
       hidden: {
         opacity: 0,
-        ...directions[direction]
+        ...directions[direction],
       },
       visible: {
         opacity: 1,
@@ -50,9 +50,9 @@ export const FadeIn = ({
         transition: {
           duration,
           delay,
-          ease: [0.25, 0.25, 0.25, 0.75]
-        }
-      }
+          ease: [0.25, 0.25, 0.25, 0.75],
+        },
+      },
     };
   };
 
@@ -84,7 +84,7 @@ export const SlideUp = ({ children, delay = 0, duration = 0.5, className = "" }:
       transition={{
         duration,
         delay,
-        ease: [0.25, 0.25, 0.25, 0.75]
+        ease: [0.25, 0.25, 0.25, 0.75],
       }}
       className={className}
     >
@@ -108,7 +108,7 @@ export const ScaleIn = ({ children, delay = 0, duration = 0.4, className = "" }:
       transition={{
         duration,
         delay,
-        ease: [0.25, 0.25, 0.25, 0.75]
+        ease: [0.25, 0.25, 0.25, 0.75],
       }}
       className={className}
     >
@@ -126,7 +126,7 @@ interface StaggerContainerProps {
 export const StaggerContainer = ({
   children,
   staggerDelay = 0.1,
-  className = ""
+  className = "",
 }: StaggerContainerProps) => {
   return (
     <motion.div
@@ -137,9 +137,9 @@ export const StaggerContainer = ({
         visible: {
           opacity: 1,
           transition: {
-            staggerChildren: staggerDelay
-          }
-        }
+            staggerChildren: staggerDelay,
+          },
+        },
       }}
       className={className}
     >
@@ -158,7 +158,7 @@ export const StaggerItem = ({ children, className = "" }: StaggerItemProps) => {
     <motion.div
       variants={{
         hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 }
+        visible: { opacity: 1, y: 0 },
       }}
       transition={{ duration: 0.5, ease: [0.25, 0.25, 0.25, 0.75] }}
       className={className}
@@ -188,7 +188,7 @@ export const Parallax = ({ children, speed = 0.5, className = "" }: ParallaxProp
     <div
       className={className}
       style={{
-        transform: `translateY(${offset}px)`
+        transform: `translateY(${offset}px)`,
       }}
     >
       {children}
@@ -207,7 +207,7 @@ export const FloatingAnimation = ({
   children,
   intensity = 10,
   speed = 2,
-  className = ""
+  className = "",
 }: FloatingAnimationProps) => {
   return (
     <motion.div
@@ -217,7 +217,7 @@ export const FloatingAnimation = ({
       transition={{
         duration: speed,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: "easeInOut",
       }}
       className={className}
     >

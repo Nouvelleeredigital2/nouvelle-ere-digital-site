@@ -8,9 +8,13 @@ export function ChiffresClesPage() {
       {/* Héro */}
       <ThemeSection variant="gradient" className="py-32 md:py-40">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-4">Chiffres Clés</p>
+          <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-4">
+            Chiffres Clés
+          </p>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6">
-            Notre performance<br />en quelques repères.
+            Notre performance
+            <br />
+            en quelques repères.
           </h1>
         </div>
       </ThemeSection>
@@ -20,10 +24,12 @@ export function ChiffresClesPage() {
         <div className="max-w-4xl mx-auto">
           <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300">
             <p>
-              Chaque chiffre que nous présentons n'est pas un indicateur de vanité, mais une mesure d'engagement, de constance et de confiance.
+              Chaque chiffre que nous présentons n'est pas un indicateur de vanité, mais une mesure
+              d'engagement, de constance et de confiance.
             </p>
             <p>
-              Nos résultats traduisent une exigence : celle de l'impact réel, au service de nos clients, de nos équipes et de la créativité.
+              Nos résultats traduisent une exigence : celle de l'impact réel, au service de nos
+              clients, de nos équipes et de la créativité.
             </p>
             <div className="text-center py-6">
               <p className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
@@ -81,8 +87,13 @@ export function ChiffresClesPage() {
                 desc: "Créatifs, ingénieurs, techniciens et formateurs. Synergie humaine et pluridisciplinarité.",
               },
             ].map((item, i) => (
-              <div key={i} className="card text-center group hover:shadow-lg transition-all hover:scale-105">
-                <div className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">{item.number}</div>
+              <div
+                key={i}
+                className="card text-center group hover:shadow-lg transition-all hover:scale-105"
+              >
+                <div className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">
+                  {item.number}
+                </div>
                 <p className="font-semibold text-zinc-900 dark:text-zinc-100 mb-1">{item.label}</p>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400">{item.desc}</p>
               </div>
@@ -131,9 +142,14 @@ export function ChiffresClesPage() {
                 icon: "💡",
               },
             ].map((item, i) => (
-              <div key={i} className="card text-center group hover:shadow-lg transition-all hover:scale-105">
+              <div
+                key={i}
+                className="card text-center group hover:shadow-lg transition-all hover:scale-105"
+              >
                 <div className="text-4xl mb-4">{item.icon}</div>
-                <div className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">{item.number}</div>
+                <div className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">
+                  {item.number}
+                </div>
                 <p className="font-semibold text-zinc-900 dark:text-zinc-100 mb-1">{item.label}</p>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400">{item.desc}</p>
               </div>
@@ -179,7 +195,9 @@ export function ChiffresClesPage() {
               },
             ].map((item, i) => (
               <div key={i} className="card group hover:shadow-lg transition-shadow">
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-3">{item.title}</h3>
+                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  {item.title}
+                </h3>
                 <p className="text-zinc-600 dark:text-zinc-400">{item.desc}</p>
               </div>
             ))}
@@ -204,7 +222,10 @@ export function ChiffresClesPage() {
               "Une politique RSE et souveraine, auditable et transparente.",
             ].map((item, i) => (
               <div key={i} className="flex gap-4 items-start card">
-                <div className="w-2 h-2 rounded-full flex-shrink-0 mt-2" style={{ backgroundColor: '#7C3AED' }}></div>
+                <div
+                  className="w-2 h-2 rounded-full flex-shrink-0 mt-2"
+                  style={{ backgroundColor: "#7C3AED" }}
+                ></div>
                 <p className="flex-1 text-zinc-700 dark:text-zinc-300">{item}</p>
               </div>
             ))}
@@ -223,7 +244,9 @@ export function ChiffresClesPage() {
             « La donnée éclaire, l'humain décide. »
           </blockquote>
           <p className="mt-8 text-zinc-300 max-w-2xl mx-auto">
-            Nous considérons la donnée comme un outil de dialogue et d'amélioration, pas comme une fin en soi. Elle nous aide à prendre de meilleures décisions, à documenter nos progrès, et à faire évoluer notre vision sans jamais trahir nos valeurs.
+            Nous considérons la donnée comme un outil de dialogue et d'amélioration, pas comme une
+            fin en soi. Elle nous aide à prendre de meilleures décisions, à documenter nos progrès,
+            et à faire évoluer notre vision sans jamais trahir nos valeurs.
           </p>
         </div>
       </ThemeSection>
@@ -236,7 +259,8 @@ export function ChiffresClesPage() {
               Notre croissance repose sur la confiance.
             </h2>
             <p className="text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto">
-              Un design infographique clair et élégant : icônes dorées sur fond bleu nuit, chiffres animés ou interactifs, repères visuels (années, projets, satisfaction, IA).
+              Un design infographique clair et élégant : icônes dorées sur fond bleu nuit, chiffres
+              animés ou interactifs, repères visuels (années, projets, satisfaction, IA).
             </p>
           </div>
 
@@ -248,19 +272,37 @@ export function ChiffresClesPage() {
               { icon: "⭐", title: "96%", desc: "Satisfaction" },
               { icon: "🤖", title: "100%", desc: "Souveraineté" },
             ].map((item, i) => (
-              <div key={i} className="card text-center group hover:shadow-xl transition-all hover:scale-105">
+              <div
+                key={i}
+                className="card text-center group hover:shadow-xl transition-all hover:scale-105"
+              >
                 <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">{item.title}</h3>
+                <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">
+                  {item.title}
+                </h3>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400">{item.desc}</p>
               </div>
             ))}
           </div>
 
           <div className="text-center mt-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full" style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.2), rgba(124,58,237,0.05))' }}>
-              <div className="w-3 h-3 rounded-full animate-pulse" style={{ backgroundColor: '#7C3AED' }}></div>
-              <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">Croissance Responsable</span>
-              <div className="w-3 h-3 rounded-full animate-pulse" style={{ backgroundColor: '#7C3AED' }}></div>
+            <div
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
+              style={{
+                background: "linear-gradient(135deg, rgba(124,58,237,0.2), rgba(124,58,237,0.05))",
+              }}
+            >
+              <div
+                className="w-3 h-3 rounded-full animate-pulse"
+                style={{ backgroundColor: "#7C3AED" }}
+              ></div>
+              <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                Croissance Responsable
+              </span>
+              <div
+                className="w-3 h-3 rounded-full animate-pulse"
+                style={{ backgroundColor: "#7C3AED" }}
+              ></div>
             </div>
           </div>
         </div>
@@ -273,7 +315,8 @@ export function ChiffresClesPage() {
             Découvrez l'impact derrière les chiffres
           </h2>
           <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-10 max-w-2xl mx-auto">
-            Explorez nos réalisations en chiffres et téléchargez notre dossier d'impact PDF pour comprendre comment notre approche transforme les projets.
+            Explorez nos réalisations en chiffres et téléchargez notre dossier d'impact PDF pour
+            comprendre comment notre approche transforme les projets.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>

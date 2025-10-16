@@ -7,7 +7,8 @@ export const siteDefaults = {
       default: "Nouvelle Ère Digital - Agence Digitale & Communication",
       template: "%s | Nouvelle Ère Digital",
     },
-    description: "Agence digitale spécialisée en communication, audiovisuel et développement web. Nous créons des expériences digitales innovantes qui valorisent l'humain.",
+    description:
+      "Agence digitale spécialisée en communication, audiovisuel et développement web. Nous créons des expériences digitales innovantes qui valorisent l'humain.",
     keywords: [
       "agence digitale",
       "communication digitale",
@@ -15,7 +16,7 @@ export const siteDefaults = {
       "développement web",
       "marketing digital",
       "Nouvelle Ère Digital",
-      "innovation numérique"
+      "innovation numérique",
     ],
     authors: [{ name: "Nouvelle Ère Digital" }],
     creator: "Nouvelle Ère Digital",
@@ -30,9 +31,7 @@ export const siteDefaults = {
         { url: "/favicon.ico", sizes: "16x16" },
         { url: "/favicon.svg", type: "image/svg+xml" },
       ],
-      apple: [
-        { url: "/apple-touch-icon.png" },
-      ],
+      apple: [{ url: "/apple-touch-icon.png" }],
     },
     manifest: "/manifest.json",
     openGraph: {
@@ -40,7 +39,8 @@ export const siteDefaults = {
       locale: "fr_FR",
       url: "https://nouvelle-ere-digital.fr",
       title: "Nouvelle Ère Digital - Agence Digitale & Communication",
-      description: "Agence digitale spécialisée en communication, audiovisuel et développement web. Nous créons des expériences digitales innovantes qui valorisent l'humain.",
+      description:
+        "Agence digitale spécialisée en communication, audiovisuel et développement web. Nous créons des expériences digitales innovantes qui valorisent l'humain.",
       siteName: "Nouvelle Ère Digital",
       images: [
         {
@@ -54,7 +54,8 @@ export const siteDefaults = {
     twitter: {
       card: "summary_large_image",
       title: "Nouvelle Ère Digital - Agence Digitale & Communication",
-      description: "Agence digitale spécialisée en communication, audiovisuel et développement web. Nous créons des expériences digitales innovantes qui valorisent l'humain.",
+      description:
+        "Agence digitale spécialisée en communication, audiovisuel et développement web. Nous créons des expériences digitales innovantes qui valorisent l'humain.",
       images: ["/og-image.jpg"],
       creator: "@nouvelleeredigital",
     },
@@ -89,16 +90,16 @@ export function generatePersonaMetadata(personaName?: string): Metadata {
 
   // Personnaliser le titre selon le persona
   const personaTitles: Record<string, string> = {
-    'artiste': "Nouvelle Ère Digital - Créativité & Innovation | L'Artiste",
-    'architecte': "Nouvelle Ère Digital - Structure & Excellence | L'Architecte",
-    'stratege': "Nouvelle Ère Digital - Stratégie & Performance | Le Stratège",
-    'innovateur': "Nouvelle Ère Digital - Technologie & Avenir | L'Innovateur",
-    'connecteur': "Nouvelle Ère Digital - Relations & Impact | Le Connecteur",
-    'minimaliste': "Nouvelle Ère Digital - Clarté & Efficacité | Le Minimaliste",
-    'colore': "Nouvelle Ère Digital - Énergie & Expression | Le Coloré",
-    'professionnel': "Nouvelle Ère Digital - Expertise & Confiance | Le Professionnel",
-    'gamer': "Nouvelle Ère Digital - Interaction & Engagement | Le Gamer",
-    'artisan': "Nouvelle Ère Digital - Authenticité & Qualité | L'Artisan",
+    artiste: "Nouvelle Ère Digital - Créativité & Innovation | L'Artiste",
+    architecte: "Nouvelle Ère Digital - Structure & Excellence | L'Architecte",
+    stratege: "Nouvelle Ère Digital - Stratégie & Performance | Le Stratège",
+    innovateur: "Nouvelle Ère Digital - Technologie & Avenir | L'Innovateur",
+    connecteur: "Nouvelle Ère Digital - Relations & Impact | Le Connecteur",
+    minimaliste: "Nouvelle Ère Digital - Clarté & Efficacité | Le Minimaliste",
+    colore: "Nouvelle Ère Digital - Énergie & Expression | Le Coloré",
+    professionnel: "Nouvelle Ère Digital - Expertise & Confiance | Le Professionnel",
+    gamer: "Nouvelle Ère Digital - Interaction & Engagement | Le Gamer",
+    artisan: "Nouvelle Ère Digital - Authenticité & Qualité | L'Artisan",
   };
 
   const customTitle = personaTitles[personaName.toLowerCase()] || defaultTitle;
@@ -121,7 +122,7 @@ export function generatePageMetadata({
   title,
   description,
   keywords,
-  image
+  image,
 }: {
   title: string;
   description?: string;
@@ -138,7 +139,9 @@ export function generatePageMetadata({
       ...baseMetadata.openGraph,
       title,
       description: description || baseMetadata.description,
-      images: image ? [{ url: image, width: 1200, height: 630, alt: title }] : baseMetadata.openGraph?.images,
+      images: image
+        ? [{ url: image, width: 1200, height: 630, alt: title }]
+        : baseMetadata.openGraph?.images,
     },
     twitter: {
       ...baseMetadata.twitter,

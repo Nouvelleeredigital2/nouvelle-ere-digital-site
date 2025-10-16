@@ -1,10 +1,16 @@
 // apps/web/personas/index.ts
-import { artistePersona } from './artiste';
-import { architectePersona } from './architecte';
-import { strategePersona } from './stratege';
-import { innovateurPersona } from './innovateur';
-import { connecteurPersona } from './connecteur';
-import { minimalistePersona, colorePersona, professionnelPersona, gamerPersona, artisanPersona } from './nouveaux-personas';
+import { artistePersona } from "./artiste";
+import { architectePersona } from "./architecte";
+import { strategePersona } from "./stratege";
+import { innovateurPersona } from "./innovateur";
+import { connecteurPersona } from "./connecteur";
+import {
+  minimalistePersona,
+  colorePersona,
+  professionnelPersona,
+  gamerPersona,
+  artisanPersona,
+} from "./nouveaux-personas";
 
 export const personas = [
   artistePersona,
@@ -19,4 +25,4 @@ export const personas = [
   artisanPersona,
 ] as const;
 
-export type PersonaId = typeof personas[number]['id'];
+export type PersonaId = (typeof personas)[number]["id"];

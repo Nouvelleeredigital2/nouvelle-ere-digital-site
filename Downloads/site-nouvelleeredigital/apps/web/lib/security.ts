@@ -10,8 +10,16 @@
 export function isValidPersonaId(personaId: string): boolean {
   // Liste des personas valides (hardcodée pour la sécurité)
   const validPersonaIds = [
-    'artiste', 'architecte', 'stratege', 'innovateur', 'connecteur',
-    'minimaliste', 'colore', 'professionnel', 'gamer', 'artisan'
+    "artiste",
+    "architecte",
+    "stratege",
+    "innovateur",
+    "connecteur",
+    "minimaliste",
+    "colore",
+    "professionnel",
+    "gamer",
+    "artisan",
   ];
 
   return validPersonaIds.includes(personaId);
@@ -22,20 +30,20 @@ export function isValidPersonaId(personaId: string): boolean {
  */
 export function sanitizeCookieValue(value: string): string {
   // Échapper les caractères spéciaux et limiter la longueur
-  return value.replace(/[<>"'&]/g, '').substring(0, 50);
+  return value.replace(/[<>"'&]/g, "").substring(0, 50);
 }
 
 /**
  * Configure les options sécurisées pour les cookies
  */
 export function getSecureCookieOptions(expiresDays: number = 365) {
-  const isProduction = process.env.NODE_ENV === 'production';
-  const isHttps = typeof window !== 'undefined' && window.location.protocol === 'https:';
+  const isProduction = process.env.NODE_ENV === "production";
+  const isHttps = typeof window !== "undefined" && window.location.protocol === "https:";
 
   return {
     expires: expiresDays,
-    path: '/',
-    sameSite: isProduction ? 'strict' : 'lax',
+    path: "/",
+    sameSite: isProduction ? "strict" : "lax",
     secure: isProduction && isHttps,
     httpOnly: false, // Ne peut pas être httpOnly côté client
   };
@@ -45,7 +53,7 @@ export function getSecureCookieOptions(expiresDays: number = 365) {
  * Valide la structure d'un persona avant traitement
  */
 export function validatePersonaStructure(persona: any): boolean {
-  if (!persona || typeof persona !== 'object') return false;
+  if (!persona || typeof persona !== "object") return false;
 
   // Validation stricte de la structure
   return !!(
@@ -54,10 +62,10 @@ export function validatePersonaStructure(persona: any): boolean {
     persona.settings &&
     persona.settings.colors &&
     persona.settings.typography &&
-    typeof persona.id === 'string' &&
-    typeof persona.name === 'string' &&
-    typeof persona.settings.colors === 'object' &&
-    typeof persona.settings.typography === 'object'
+    typeof persona.id === "string" &&
+    typeof persona.name === "string" &&
+    typeof persona.settings.colors === "object" &&
+    typeof persona.settings.typography === "object"
   );
 }
 
@@ -68,7 +76,7 @@ export function generateDataHash(data: string): string {
   let hash = 0;
   for (let i = 0; i < data.length; i++) {
     const char = data.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
+    hash = (hash << 5) - hash + char;
     hash = hash & hash; // Convertir en 32 bits
   }
   return Math.abs(hash).toString(36);

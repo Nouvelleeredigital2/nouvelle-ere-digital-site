@@ -1,13 +1,13 @@
 // apps/web/lib/persona-styles.ts
-import type { CreativePersona } from '@/shared/theme.types';
+import type { CreativePersona } from "@/shared/theme.types";
 
 /**
  * Applique les styles CSS personnalisés d'un persona CÔTÉ CLIENT UNIQUEMENT
  */
 export function applyPersonaStyles(persona: CreativePersona): void {
   // IMPORTANT : Cette fonction ne doit JAMAIS être appelée côté serveur
-  if (typeof window === 'undefined') {
-    console.warn('applyPersonaStyles appelé côté serveur - ignoré');
+  if (typeof window === "undefined") {
+    console.warn("applyPersonaStyles appelé côté serveur - ignoré");
     return;
   }
 
@@ -57,7 +57,7 @@ export function applyPersonaStyles(persona: CreativePersona): void {
   }
 
   // Appliquer les classes CSS
-  root.classList.remove(...Array.from(root.classList).filter(cls => cls.startsWith('persona-')));
+  root.classList.remove(...Array.from(root.classList).filter((cls) => cls.startsWith("persona-")));
   root.classList.add(`persona-${persona.id}`);
 
   // Appliquer les styles en une seule fois (optimisation performance)
@@ -77,5 +77,7 @@ export function applyPersonaStyles(persona: CreativePersona): void {
  */
 export function usePersonaClasses() {
   // Cette fonction sera définie dans un fichier de hooks approprié
-  throw new Error('usePersonaClasses doit être utilisé dans un composant React avec le contexte PersonaProvider');
+  throw new Error(
+    "usePersonaClasses doit être utilisé dans un composant React avec le contexte PersonaProvider",
+  );
 }

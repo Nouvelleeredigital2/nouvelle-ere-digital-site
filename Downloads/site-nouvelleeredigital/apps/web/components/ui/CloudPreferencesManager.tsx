@@ -1,20 +1,32 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { useCloudSync } from '@/services/cloud-sync';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
-import { cn } from '@/lib/utils';
-import { Cloud, CloudOff, Download, Upload, Wifi, WifiOff, CheckCircle, AlertCircle } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { useCloudSync } from "@/services/cloud-sync";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
+import { cn } from "@/lib/utils";
+import {
+  Cloud,
+  CloudOff,
+  Download,
+  Upload,
+  Wifi,
+  WifiOff,
+  CheckCircle,
+  AlertCircle,
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function CloudPreferencesManager() {
   const { savePreferences, loadPreferences, getStatus, exportData, importData } = useCloudSync();
   const [syncStatus, setSyncStatus] = useState(getStatus());
   const [lastSync, setLastSync] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState<{ type: 'success' | 'error' | 'info'; text: string } | null>(null);
+  const [message, setMessage] = useState<{
+    type: "success" | "error" | "info";
+    text: string;
+  } | null>(null);
 
   // Mettre à jour le statut de connexion périodiquement
   useEffect(() => {
@@ -32,22 +44,22 @@ export function CloudPreferencesManager() {
     try {
       // Simuler une synchronisation avec les préférences actuelles
       const result = await savePreferences({
-        personaId: localStorage.getItem('creative-persona') || 'default',
+        personaId: localStorage.getItem("creative-persona") || "default",
         preferences: {
-          timestamp: new Date().toISOString()
-        }
+          timestamp: new Date().toISOString(),
+        },
       });
 
       if (result.success) {
         setLastSync(new Date().toISOString());
-        setMessage({ type: 'success', text: 'Préférences synchronisées avec succès !' });
+        setMessage({ type: "success", text: "Préférences synchronisées avec succès !" });
       } else {
-        setMessage({ type: 'error', text: `Erreur de synchronisation: ${result.error}` });
+        setMessage({ type: "error", text: `Erreur de synchronisation: ${result.error}` });
       }
     } catch (error) {
       setMessage({
-        type: 'error',
-        text: error instanceof Error ? error.message : 'Erreur inconnue lors de la synchronisation'
+        type: "error",
+        text: error instanceof Error ? error.message : "Erreur inconnue lors de la synchronisation",
       });
     }
 
@@ -60,21 +72,21 @@ export function CloudPreferencesManager() {
 
     try {
       const data = await exportData();
-      const blob = new Blob([data], { type: 'application/json' });
+      const blob = new Blob([data], { type: "application/json" });
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
+      const a = document.createElement("a");
       a.href = url;
-      a.download = `preferences-backup-${new Date().toISOString().split('T')[0]}.json`;
+      a.download = `preferences-backup-${new Date().toISOString().split("T")[0]}.json`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
 
-      setMessage({ type: 'success', text: 'Sauvegarde exportée avec succès !' });
+      setMessage({ type: "success", text: "Sauvegarde exportée avec succès !" });
     } catch (error) {
       setMessage({
-        type: 'error',
-        text: error instanceof Error ? error.message : 'Erreur lors de l\'export'
+        type: "error",
+        text: error instanceof Error ? error.message : "Erreur lors de l'export",
       });
     }
 
@@ -93,19 +105,19 @@ export function CloudPreferencesManager() {
       const result = await importData(text);
 
       if (result.success) {
-        setMessage({ type: 'success', text: 'Préférences importées avec succès !' });
+        setMessage({ type: "success", text: "Préférences importées avec succès !" });
       } else {
-        setMessage({ type: 'error', text: `Erreur d'import: ${result.error}` });
+        setMessage({ type: "error", text: `Erreur d'import: ${result.error}` });
       }
     } catch (error) {
       setMessage({
-        type: 'error',
-        text: error instanceof Error ? error.message : 'Erreur lors de l\'import'
+        type: "error",
+        text: error instanceof Error ? error.message : "Erreur lors de l'import",
       });
     }
 
     setIsLoading(false);
-    event.target.value = ''; // Reset l'input
+    event.target.value = ""; // Reset l'input
   };
 
   return (
@@ -130,8 +142,8 @@ export function CloudPreferencesManager() {
             <div>
               <h3 className="font-semibold">Statut de Connexion</h3>
               <p className="text-sm text-muted-foreground">
-                {syncStatus.online ? 'Connecté' : 'Hors ligne'} •
-                {syncStatus.hasApi ? ' Service Cloud Actif' : ' Mode Local Seulement'}
+                {syncStatus.online ? "Connecté" : "Hors ligne"} •
+                {syncStatus.hasApi ? " Service Cloud Actif" : " Mode Local Seulement"}
               </p>
             </div>
           </div>
@@ -155,7 +167,7 @@ export function CloudPreferencesManager() {
             disabled={isLoading || !syncStatus.online}
             className="w-full"
           >
-            {isLoading ? 'Synchronisation...' : 'Synchroniser Maintenant'}
+            {isLoading ? "Synchronisation..." : "Synchroniser Maintenant"}
           </Button>
         </Card>
 
@@ -165,12 +177,7 @@ export function CloudPreferencesManager() {
           <p className="text-sm text-muted-foreground mb-4">
             Téléchargez vos préférences en fichier
           </p>
-          <Button
-            variant="outline"
-            onClick={handleExport}
-            disabled={isLoading}
-            className="w-full"
-          >
+          <Button variant="outline" onClick={handleExport} disabled={isLoading} className="w-full">
             Exporter les Données
           </Button>
         </Card>
@@ -190,7 +197,7 @@ export function CloudPreferencesManager() {
               disabled={isLoading}
             />
             <Button variant="outline" className="w-full" disabled={isLoading}>
-              {isLoading ? 'Importation...' : 'Importer un Fichier'}
+              {isLoading ? "Importation..." : "Importer un Fichier"}
             </Button>
           </div>
         </Card>
@@ -204,21 +211,19 @@ export function CloudPreferencesManager() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
           >
-            <Card className={cn(
-              "p-4 flex items-center gap-3",
-              message.type === 'success' && "bg-green-50 border-green-200 text-green-800",
-              message.type === 'error' && "bg-red-50 border-red-200 text-red-800",
-              message.type === 'info' && "bg-blue-50 border-blue-200 text-blue-800"
-            )}>
-              {message.type === 'success' && <CheckCircle className="w-5 h-5" />}
-              {message.type === 'error' && <AlertCircle className="w-5 h-5" />}
-              {message.type === 'info' && <AlertCircle className="w-5 h-5" />}
+            <Card
+              className={cn(
+                "p-4 flex items-center gap-3",
+                message.type === "success" && "bg-green-50 border-green-200 text-green-800",
+                message.type === "error" && "bg-red-50 border-red-200 text-red-800",
+                message.type === "info" && "bg-blue-50 border-blue-200 text-blue-800",
+              )}
+            >
+              {message.type === "success" && <CheckCircle className="w-5 h-5" />}
+              {message.type === "error" && <AlertCircle className="w-5 h-5" />}
+              {message.type === "info" && <AlertCircle className="w-5 h-5" />}
               <span className="flex-1">{message.text}</span>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setMessage(null)}
-              >
+              <Button variant="ghost" size="sm" onClick={() => setMessage(null)}>
                 ✕
               </Button>
             </Card>
@@ -233,24 +238,25 @@ export function CloudPreferencesManager() {
           <div>
             <p className="text-muted-foreground">Dernière synchronisation:</p>
             <p className="font-medium">
-              {lastSync ? new Date(lastSync).toLocaleString() : 'Jamais'}
+              {lastSync ? new Date(lastSync).toLocaleString() : "Jamais"}
             </p>
           </div>
           <div>
             <p className="text-muted-foreground">Mode de fonctionnement:</p>
             <p className="font-medium">
               {syncStatus.online
-                ? (syncStatus.hasApi ? 'Cloud + Local' : 'Local uniquement')
-                : 'Hors ligne (Local)'
-              }
+                ? syncStatus.hasApi
+                  ? "Cloud + Local"
+                  : "Local uniquement"
+                : "Hors ligne (Local)"}
             </p>
           </div>
         </div>
 
         <div className="mt-4 p-3 bg-muted/50 rounded-lg">
           <p className="text-xs text-muted-foreground">
-            💡 En mode hors ligne, vos préférences sont sauvegardées localement et seront synchronisées
-            automatiquement lorsque la connexion sera rétablie.
+            💡 En mode hors ligne, vos préférences sont sauvegardées localement et seront
+            synchronisées automatiquement lorsque la connexion sera rétablie.
           </p>
         </div>
       </Card>

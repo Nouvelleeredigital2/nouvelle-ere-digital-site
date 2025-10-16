@@ -1,12 +1,20 @@
 "use client";
 
-import React, { useState } from 'react';
-import { cn } from '@/lib/utils';
-import { Icon } from './Icon';
+import React, { useState } from "react";
+import { cn } from "@/lib/utils";
+import { Icon } from "./Icon";
 
-type Variant = 'default' | 'outlined' | 'filled';
-type Size = 'sm' | 'md' | 'lg';
-type State = 'default' | 'hover' | 'active' | 'focus' | 'disabled' | 'selected' | 'invalid' | 'dragging';
+type Variant = "default" | "outlined" | "filled";
+type Size = "sm" | "md" | "lg";
+type State =
+  | "default"
+  | "hover"
+  | "active"
+  | "focus"
+  | "disabled"
+  | "selected"
+  | "invalid"
+  | "dragging";
 
 interface H2IconsProps {
   icons: Array<{ id: string; label: string; icon: string; level: number }>;
@@ -14,7 +22,7 @@ interface H2IconsProps {
   variant?: Variant;
   size?: Size;
   maxVisible?: number;
-  dataModel?: 'need' | 'module' | 'bundle';
+  dataModel?: "need" | "module" | "bundle";
   onSelect?: (id: string) => void;
   onAdd?: (id: string) => void;
   onRemove?: (id: string) => void;
@@ -25,8 +33,8 @@ interface H2IconsProps {
 export const H2Icons: React.FC<H2IconsProps> = ({
   icons,
   selectedIds = [],
-  variant = 'default',
-  size = 'md',
+  variant = "default",
+  size = "md",
   maxVisible,
   dataModel,
   onSelect,
@@ -35,34 +43,34 @@ export const H2Icons: React.FC<H2IconsProps> = ({
   onNavigate,
   className,
 }) => {
-  const [state, setState] = useState<State>('default');
+  const [state, setState] = useState<State>("default");
 
   const handleSelect = (id: string) => {
-    if (state === 'disabled') return;
+    if (state === "disabled") return;
     if (onSelect) onSelect(id);
   };
 
   const sizes: Record<Size, string> = {
-    sm: 'w-4 h-4',
-    md: 'w-6 h-6',
-    lg: 'w-8 h-8',
+    sm: "w-4 h-4",
+    md: "w-6 h-6",
+    lg: "w-8 h-8",
   };
 
   const variants: Record<Variant, string> = {
-    default: 'text-[var(--color-primary)]',
-    outlined: 'border border-[var(--color-primary)] bg-transparent',
-    filled: 'bg-[var(--color-primary)] text-white',
+    default: "text-[var(--color-primary)]",
+    outlined: "border border-[var(--color-primary)] bg-transparent",
+    filled: "bg-[var(--color-primary)] text-white",
   };
 
   const stateClasses: Record<State, string> = {
-    default: '',
-    hover: 'opacity-75',
-    active: 'scale-110',
-    focus: 'ring-2 ring-[var(--color-primary)]',
-    disabled: 'opacity-50 cursor-not-allowed',
-    selected: 'ring-2 ring-yellow-400',
-    invalid: 'text-red-500',
-    dragging: 'cursor-grabbing',
+    default: "",
+    hover: "opacity-75",
+    active: "scale-110",
+    focus: "ring-2 ring-[var(--color-primary)]",
+    disabled: "opacity-50 cursor-not-allowed",
+    selected: "ring-2 ring-yellow-400",
+    invalid: "text-red-500",
+    dragging: "cursor-grabbing",
   };
 
   const visibleIcons = maxVisible ? icons.slice(0, maxVisible) : icons;
@@ -70,26 +78,26 @@ export const H2Icons: React.FC<H2IconsProps> = ({
   return (
     <div
       className={cn(
-        'flex flex-wrap gap-2 p-4 bg-[var(--couleur-light)] rounded-[var(--border-radius-large)]',
+        "flex flex-wrap gap-2 p-4 bg-[var(--couleur-light)] rounded-[var(--border-radius-large)]",
         stateClasses[state],
-        className
+        className,
       )}
       role="list"
       aria-label="Icônes H2"
-      onMouseEnter={() => setState('hover')}
-      onMouseLeave={() => setState('default')}
-      onFocus={() => setState('focus')}
-      onBlur={() => setState('default')}
+      onMouseEnter={() => setState("hover")}
+      onMouseLeave={() => setState("default")}
+      onFocus={() => setState("focus")}
+      onBlur={() => setState("default")}
     >
       {visibleIcons.map((icon) => (
         <div
           key={icon.id}
           className={cn(
-            'flex items-center gap-1 cursor-pointer transition-transform',
+            "flex items-center gap-1 cursor-pointer transition-transform",
             sizes[size],
             variants[variant],
-            selectedIds.includes(icon.id) && 'ring-2 ring-yellow-400',
-            stateClasses[selectedIds.includes(icon.id) ? 'selected' : 'default']
+            selectedIds.includes(icon.id) && "ring-2 ring-yellow-400",
+            stateClasses[selectedIds.includes(icon.id) ? "selected" : "default"],
           )}
           onClick={() => handleSelect(icon.id)}
           role="listitem"

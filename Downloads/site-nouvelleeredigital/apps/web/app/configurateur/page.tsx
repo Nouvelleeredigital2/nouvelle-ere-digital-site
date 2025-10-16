@@ -1,55 +1,55 @@
-import React from 'react';
-import { JourneyComposer } from '@/components/ui/JourneyComposer';
-import { OrbitBreadcrumbs } from '@/components/ui/OrbitBreadcrumbs';
+import React from "react";
+import { JourneyComposer } from "@/components/ui/JourneyComposer";
+import { OrbitBreadcrumbs } from "@/components/ui/OrbitBreadcrumbs";
 
 const modules = [
   {
-    id: 'strategy-digitale',
-    name: 'Stratégie Digitale',
-    description: 'Définition de la stratégie digitale globale',
-    categoryId: 'communication',
+    id: "strategy-digitale",
+    name: "Stratégie Digitale",
+    description: "Définition de la stratégie digitale globale",
+    categoryId: "communication",
     price: 1500,
-    duration: '2 semaines',
+    duration: "2 semaines",
   },
   {
-    id: 'production-video',
-    name: 'Production Vidéo',
-    description: 'Création de contenu vidéo professionnel',
-    categoryId: 'audiovisuel',
+    id: "production-video",
+    name: "Production Vidéo",
+    description: "Création de contenu vidéo professionnel",
+    categoryId: "audiovisuel",
     price: 2500,
-    duration: '1 mois',
+    duration: "1 mois",
   },
   {
-    id: 'organisation-evenement',
-    name: 'Organisation Événement',
-    description: 'Gestion complète d\'événements',
-    categoryId: 'evenementiel',
+    id: "organisation-evenement",
+    name: "Organisation Événement",
+    description: "Gestion complète d'événements",
+    categoryId: "evenementiel",
     price: 5000,
-    duration: '3 mois',
+    duration: "3 mois",
   },
   {
-    id: 'identite-visuelle',
-    name: 'Identité Visuelle',
-    description: 'Création d\'identité de marque',
-    categoryId: 'design',
+    id: "identite-visuelle",
+    name: "Identité Visuelle",
+    description: "Création d'identité de marque",
+    categoryId: "design",
     price: 3000,
-    duration: '1 mois',
+    duration: "1 mois",
   },
   {
-    id: 'developpement-web',
-    name: 'Développement Web',
-    description: 'Création de sites web modernes',
-    categoryId: 'web',
+    id: "developpement-web",
+    name: "Développement Web",
+    description: "Création de sites web modernes",
+    categoryId: "web",
     price: 4000,
-    duration: '2 mois',
+    duration: "2 mois",
   },
   {
-    id: 'integration-ia',
-    name: 'Intégration IA',
-    description: 'Solutions d\'intelligence artificielle',
-    categoryId: 'ia',
+    id: "integration-ia",
+    name: "Intégration IA",
+    description: "Solutions d'intelligence artificielle",
+    categoryId: "ia",
     price: 6000,
-    duration: '3 mois',
+    duration: "3 mois",
   },
 ];
 
@@ -58,8 +58,8 @@ export default function ConfigurateurPage() {
     <>
       <OrbitBreadcrumbs
         items={[
-          { id: 'home', label: 'Accueil', href: '/', level: 1 },
-          { id: 'configurateur', label: 'Configurateur', level: 2 },
+          { id: "home", label: "Accueil", href: "/", level: 1 },
+          { id: "configurateur", label: "Configurateur", level: 2 },
         ]}
         currentId="configurateur"
       />
@@ -68,7 +68,7 @@ export default function ConfigurateurPage() {
         <JourneyComposer
           modules={modules}
           onCompose={(selected) => {
-            console.log('Modules sélectionnés:', selected);
+            console.log("Modules sélectionnés:", selected);
             alert(`Parcours composé avec ${selected.length} modules !`);
           }}
         />

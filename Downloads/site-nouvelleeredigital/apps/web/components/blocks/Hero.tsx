@@ -31,27 +31,23 @@ export const Hero = ({
     <section
       className={cn(
         "py-24 md:py-32",
-        dark
-          ? "bg-card text-card-foreground"
-          : "bg-background text-foreground"
+        dark ? "bg-card text-card-foreground" : "bg-background text-foreground",
       )}
     >
       <div
         className={cn(
           "container mx-auto flex flex-col items-center gap-12 px-4 md:flex-row",
           isRight && "md:flex-row-reverse",
-          isCenter && "md:flex-col"
+          isCenter && "md:flex-col",
         )}
       >
-        <div className={cn("flex-1 text-center md:text-left", isCenter && "text-center")}> 
+        <div className={cn("flex-1 text-center md:text-left", isCenter && "text-center")}>
           {eyebrow && (
             <div className="mb-3 text-sm font-medium text-primary uppercase tracking-wide">
               {eyebrow}
             </div>
           )}
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-            {title}
-          </h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">{title}</h1>
           {subtitle && (
             <p className="text-lg text-muted-foreground mb-6 max-w-xl mx-auto md:mx-0">
               {subtitle}

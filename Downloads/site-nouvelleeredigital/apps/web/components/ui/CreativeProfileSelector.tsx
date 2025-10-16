@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { usePersona } from '@/components/context/PersonaProvider';
-import { Card } from './Card';
-import { Palette, Users, Lightbulb, Target, Zap, Heart, CheckCircle } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { usePersona } from "@/components/context/PersonaProvider";
+import { Card } from "./Card";
+import { Palette, Users, Lightbulb, Target, Zap, Heart, CheckCircle } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface CreativeProfileSelectorProps {
   onComplete?: () => void;
@@ -12,7 +12,14 @@ interface CreativeProfileSelectorProps {
 }
 
 // Composant Button avec notre système de design
-const Button = ({ children, onClick, className, size = "md", variant = "primary", ...props }: {
+const Button = ({
+  children,
+  onClick,
+  className,
+  size = "md",
+  variant = "primary",
+  ...props
+}: {
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
@@ -22,12 +29,12 @@ const Button = ({ children, onClick, className, size = "md", variant = "primary"
   const sizeClasses = {
     sm: "px-3 py-2 text-sm",
     md: "px-4 py-3 text-sm",
-    lg: "px-6 py-4 text-base"
+    lg: "px-6 py-4 text-base",
   };
 
   const variantClasses = {
     primary: "bg-primary text-primary-foreground hover:bg-primary/90 font-medium",
-    secondary: "bg-muted text-foreground border border-border hover:bg-muted/80"
+    secondary: "bg-muted text-foreground border border-border hover:bg-muted/80",
   };
 
   return (
@@ -41,7 +48,10 @@ const Button = ({ children, onClick, className, size = "md", variant = "primary"
   );
 };
 
-export function CreativeProfileSelector({ onComplete, compact = false }: CreativeProfileSelectorProps) {
+export function CreativeProfileSelector({
+  onComplete,
+  compact = false,
+}: CreativeProfileSelectorProps) {
   const { personas, setPersona, persona } = usePersona();
   const [selectedPersona, setSelectedPersona] = useState<string | null>(null);
 
@@ -54,7 +64,7 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
 
   // Vérifier si l'utilisateur a déjà choisi un persona
   useEffect(() => {
-    const hasChosenPersona = localStorage.getItem('creative-persona');
+    const hasChosenPersona = localStorage.getItem("creative-persona");
     if (hasChosenPersona && onComplete) {
       onComplete();
     }
@@ -63,7 +73,7 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
   const handlePersonaSelect = (personaId: string) => {
     setPersona(personaId);
     setSelectedPersona(personaId);
-    localStorage.setItem('creative-persona', personaId);
+    localStorage.setItem("creative-persona", personaId);
     if (onComplete) {
       onComplete();
     }
@@ -71,12 +81,18 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
 
   const getPersonaIcon = (archetype: string) => {
     switch (archetype) {
-      case 'Le Visionnaire Créatif': return Palette;
-      case 'Le Maître Constructeur': return Users;
-      case 'Le Maître Tacticien': return Target;
-      case 'Le Visionnaire Technologique': return Zap;
-      case 'Le Tisseur de Liens': return Heart;
-      default: return Lightbulb;
+      case "Le Visionnaire Créatif":
+        return Palette;
+      case "Le Maître Constructeur":
+        return Users;
+      case "Le Maître Tacticien":
+        return Target;
+      case "Le Visionnaire Technologique":
+        return Zap;
+      case "Le Tisseur de Liens":
+        return Heart;
+      default:
+        return Lightbulb;
     }
   };
 
@@ -91,9 +107,7 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl text-foreground mb-3">
-              Choisissez votre profil créatif
-            </h2>
+            <h2 className="text-3xl text-foreground mb-3">Choisissez votre profil créatif</h2>
             <p className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Découvrez votre personnalité créative et personnalisez votre expérience
             </p>
@@ -121,17 +135,17 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
                 >
                   <Card
                     className={`cursor-pointer transition-all duration-300 h-full text-center p-4 hover:shadow-lg ${
-                      isSelected
-                        ? 'ring-2 ring-primary bg-primary/5'
-                        : 'hover:bg-card/80'
+                      isSelected ? "ring-2 ring-primary bg-primary/5" : "hover:bg-card/80"
                     }`}
                     onClick={() => handlePersonaSelect(persona.id)}
                   >
                     {/* Icône avec taille cohérente */}
                     <div className="flex justify-center mb-3">
-                      <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                        isSelected ? 'bg-primary text-primary-foreground' : 'bg-muted'
-                      }`}>
+                      <div
+                        className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${
+                          isSelected ? "bg-primary text-primary-foreground" : "bg-muted"
+                        }`}
+                      >
                         <Icon className="w-6 h-6" />
                       </div>
                     </div>
@@ -139,7 +153,7 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
                     {/* Nom avec échelle appropriée */}
                     <h3 className="text-sm font-medium mb-1 text-foreground">{persona.name}</h3>
                     <p className="text-xs text-muted-foreground leading-tight">
-                      {persona.description.split('.')[0]}
+                      {persona.description.split(".")[0]}
                     </p>
                   </Card>
                 </motion.div>
@@ -185,8 +199,8 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
             Quelle est votre vision créative ?
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Chaque personne voit le monde différemment. Découvrez votre profil créatif unique
-            et personnalisez votre expérience selon votre personnalité.
+            Chaque personne voit le monde différemment. Découvrez votre profil créatif unique et
+            personnalisez votre expérience selon votre personnalité.
           </p>
         </motion.div>
 
@@ -212,17 +226,17 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
               >
                 <Card
                   className={`cursor-pointer transition-all duration-300 h-full ${
-                    isSelected
-                      ? 'ring-2 ring-primary bg-card/80'
-                      : 'hover:bg-card/50'
+                    isSelected ? "ring-2 ring-primary bg-card/80" : "hover:bg-card/50"
                   }`}
                   onClick={() => handlePersonaSelect(persona.id)}
                 >
                   {/* Icône en haut avec taille cohérente */}
                   <div className="flex justify-center mb-4">
-                    <div className={`w-16 h-16 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                      isSelected ? 'bg-primary text-primary-foreground' : 'bg-muted'
-                    }`}>
+                    <div
+                      className={`w-16 h-16 rounded-full flex items-center justify-center transition-colors duration-300 ${
+                        isSelected ? "bg-primary text-primary-foreground" : "bg-muted"
+                      }`}
+                    >
                       <Icon className="w-8 h-8" />
                     </div>
                   </div>
@@ -245,9 +259,7 @@ export function CreativeProfileSelector({ onComplete, compact = false }: Creativ
                     </div>
 
                     {/* Archétype avec style approprié */}
-                    <p className="text-xs text-muted-foreground italic">
-                      {persona.name}
-                    </p>
+                    <p className="text-xs text-muted-foreground italic">{persona.name}</p>
                   </div>
                 </Card>
               </motion.div>

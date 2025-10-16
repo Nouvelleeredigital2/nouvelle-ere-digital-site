@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useRef, useState, Suspense } from 'react';
-import { Canvas, useFrame, ThreeElements } from '@react-three/fiber';
-import { OrbitControls, Text, Box } from '@react-three/drei';
-import * as THREE from 'three';
+import React, { useRef, useState, Suspense } from "react";
+import { Canvas, useFrame, ThreeElements } from "@react-three/fiber";
+import { OrbitControls, Text, Box } from "@react-three/drei";
+import * as THREE from "three";
 
 interface Bundle {
   id: string;
@@ -46,7 +46,7 @@ function BundleCard3D({ bundle, position, onClick }: BundleCard3DProps) {
       >
         <boxGeometry args={[2, 3, 0.2]} />
         <meshStandardMaterial
-          color={hovered ? bundle.color : '#ffffff'}
+          color={hovered ? bundle.color : "#ffffff"}
           emissive={bundle.color}
           emissiveIntensity={hovered ? 0.3 : 0.1}
         />
@@ -88,7 +88,13 @@ function BundleCard3D({ bundle, position, onClick }: BundleCard3DProps) {
   );
 }
 
-function Carousel3D({ bundles, onBundleSelect }: { bundles: Bundle[]; onBundleSelect?: (bundle: Bundle) => void }) {
+function Carousel3D({
+  bundles,
+  onBundleSelect,
+}: {
+  bundles: Bundle[];
+  onBundleSelect?: (bundle: Bundle) => void;
+}) {
   const groupRef = useRef<THREE.Group>(null!);
 
   useFrame((state, delta) => {
@@ -128,9 +134,9 @@ interface Carousel3DBundlesProps {
 export const Carousel3DBundles: React.FC<Carousel3DBundlesProps> = ({
   bundles,
   onSelect,
-  width = '100%',
+  width = "100%",
   height = 400,
-  className = '',
+  className = "",
 }) => {
   return (
     <div style={{ width, height }} className={className}>

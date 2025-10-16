@@ -1,7 +1,7 @@
 // apps/web/hooks/usePersonaClasses.ts
-import { useMemo } from 'react';
-import { usePersona } from '@/components/context/PersonaProvider';
-import { getPersonaClasses } from '@/lib/persona-styles';
+import { useMemo } from "react";
+import { usePersona } from "@/components/context/PersonaProvider";
+import { getPersonaClasses } from "@/lib/persona-styles";
 
 /**
  * Hook pour utiliser les classes CSS du persona actif
@@ -13,10 +13,10 @@ export function usePersonaClasses() {
   return useMemo(() => {
     if (!persona?.settings) {
       return {
-        color: '',
-        typography: '',
-        layout: '',
-        animation: '',
+        color: "",
+        typography: "",
+        layout: "",
+        animation: "",
       };
     }
 

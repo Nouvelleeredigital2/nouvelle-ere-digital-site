@@ -9,11 +9,12 @@ import { ServiceModal } from "@/components/modals/ServiceModal";
 import { PersonaProvider } from "@/components/context/PersonaProvider";
 import { getPersonaFromCookies, applyPersonaClassesToHtml } from "@/lib/server-utils";
 import { headers } from "next/headers";
+import { HydrationFix } from "@/components/hydration/HydrationFix";
 
 // Fonction pour lire les cookies côté serveur
 function getServerCookies() {
   const headersList = headers();
-  return headersList.get('cookie') || '';
+  return headersList.get("cookie") || "";
 }
 
 // Métadonnées de base (sans personnalisation par persona)
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={personaClasses}>
       <body>
+        <HydrationFix />
         <PersonaProvider>
           <ServiceModalProvider>
             <Header />

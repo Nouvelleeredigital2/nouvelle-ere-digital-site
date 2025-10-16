@@ -7,7 +7,7 @@
 export interface PersonaAnalytics {
   personaId: string;
   timestamp: number;
-  action: 'select' | 'view' | 'switch';
+  action: "select" | "view" | "switch";
   userAgent?: string;
   referrer?: string;
   sessionId: string;
@@ -24,12 +24,12 @@ export function generateSessionId(): string {
  * Obtient l'ID de session depuis le localStorage ou en crée un nouveau
  */
 export function getSessionId(): string {
-  if (typeof window === 'undefined') return 'server';
+  if (typeof window === "undefined") return "server";
 
-  let sessionId = localStorage.getItem('persona-session-id');
+  let sessionId = localStorage.getItem("persona-session-id");
   if (!sessionId) {
     sessionId = generateSessionId();
-    localStorage.setItem('persona-session-id', sessionId);
+    localStorage.setItem("persona-session-id", sessionId);
   }
 
   return sessionId;
@@ -38,11 +38,8 @@ export function getSessionId(): string {
 /**
  * Enregistre une action de persona
  */
-export function trackPersonaAction(
-  personaId: string,
-  action: 'select' | 'view' | 'switch'
-): void {
-  if (typeof window === 'undefined') return;
+export function trackPersonaAction(personaId: string, action: "select" | "view" | "switch"): void {
+  if (typeof window === "undefined") return;
 
   const analytics: PersonaAnalytics = {
     personaId,
@@ -50,12 +47,12 @@ export function trackPersonaAction(
     action,
     userAgent: navigator.userAgent,
     referrer: document.referrer,
-    sessionId: getSessionId()
+    sessionId: getSessionId(),
   };
 
   // Sauvegarder localement pour l'instant
   // (À remplacer par un vrai système d'analytics comme Google Analytics, Mixpanel, etc.)
-  const existingData = JSON.parse(localStorage.getItem('persona-analytics') || '[]');
+  const existingData = JSON.parse(localStorage.getItem("persona-analytics") || "[]");
   existingData.push(analytics);
 
   // Garder seulement les 1000 derniers événements
@@ -63,23 +60,26 @@ export function trackPersonaAction(
     existingData.splice(0, existingData.length - 1000);
   }
 
-  localStorage.setItem('persona-analytics', JSON.stringify(existingData));
+  localStorage.setItem("persona-analytics", JSON.stringify(existingData));
 
-  console.log('📊 Analytics:', analytics);
+  console.log("📊 Analytics:", analytics);
 }
 
 /**
  * Obtient les statistiques d'utilisation des personas
  */
-export function getPersonaStats(): Record<string, {
-  totalViews: number;
-  totalSelections: number;
-  totalSwitches: number;
-  lastUsed: number;
-}> {
-  if (typeof window === 'undefined') return {};
+export function getPersonaStats(): Record<
+  string,
+  {
+    totalViews: number;
+    totalSelections: number;
+    totalSwitches: number;
+    lastUsed: number;
+  }
+> {
+  if (typeof window === "undefined") return {};
 
-  const data = JSON.parse(localStorage.getItem('persona-analytics') || '[]');
+  const data = JSON.parse(localStorage.getItem("persona-analytics") || "[]");
   const stats: Record<string, any> = {};
 
   data.forEach((event: PersonaAnalytics) => {
@@ -88,18 +88,18 @@ export function getPersonaStats(): Record<string, {
         totalViews: 0,
         totalSelections: 0,
         totalSwitches: 0,
-        lastUsed: 0
+        lastUsed: 0,
       };
     }
 
     switch (event.action) {
-      case 'view':
+      case "view":
         stats[event.personaId].totalViews++;
         break;
-      case 'select':
+      case "select":
         stats[event.personaId].totalSelections++;
         break;
-      case 'switch':
+      case "switch":
         stats[event.personaId].totalSwitches++;
         break;
     }

@@ -1,17 +1,17 @@
 // components/ui/AnimationCustomizer.tsx
 "use client";
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Pause, RotateCcw, Zap, Wind } from 'lucide-react';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Play, Pause, RotateCcw, Zap, Wind } from "lucide-react";
 
 // ==================== TYPES ====================
 
 interface AnimationConfig {
   enabled: boolean;
-  intensity: 'subtle' | 'normal' | 'dramatic';
-  speed: 'slow' | 'normal' | 'fast';
-  easing: 'linear' | 'easeIn' | 'easeOut' | 'easeInOut' | 'spring' | 'bounce';
+  intensity: "subtle" | "normal" | "dramatic";
+  speed: "slow" | "normal" | "fast";
+  easing: "linear" | "easeIn" | "easeOut" | "easeInOut" | "spring" | "bounce";
   pageTransitions: boolean;
   hoverEffects: boolean;
   scrollAnimations: boolean;
@@ -23,9 +23,9 @@ interface AnimationConfig {
 // À ajouter dans votre StyleContext
 const defaultAnimationConfig: AnimationConfig = {
   enabled: true,
-  intensity: 'normal',
-  speed: 'normal',
-  easing: 'easeInOut',
+  intensity: "normal",
+  speed: "normal",
+  easing: "easeInOut",
   pageTransitions: true,
   hoverEffects: true,
   scrollAnimations: true,
@@ -37,12 +37,12 @@ const defaultAnimationConfig: AnimationConfig = {
 export const AnimationCustomizer = () => {
   const [config, setConfig] = useState<AnimationConfig>(defaultAnimationConfig);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [previewAnimation, setPreviewAnimation] = useState<string>('fadeIn');
+  const [previewAnimation, setPreviewAnimation] = useState<string>("fadeIn");
 
   const updateConfig = (updates: Partial<AnimationConfig>) => {
     const newConfig = { ...config, ...updates };
     setConfig(newConfig);
-    localStorage.setItem('animation-config', JSON.stringify(newConfig));
+    localStorage.setItem("animation-config", JSON.stringify(newConfig));
   };
 
   // Valeurs d'animation basées sur la config
@@ -64,7 +64,7 @@ export const AnimationCustomizer = () => {
       easeIn: [0.42, 0, 1, 1],
       easeOut: [0, 0, 0.58, 1],
       easeInOut: [0.42, 0, 0.58, 1],
-      spring: 'spring',
+      spring: "spring",
       bounce: [0.68, -0.55, 0.265, 1.55],
     };
 
@@ -120,9 +120,9 @@ export const AnimationCustomizer = () => {
         opacity: 1,
         y: 0,
         transition: {
-          type: 'spring',
+          type: "spring",
           bounce: 0.5,
-        }
+        },
       },
       exit: { opacity: 0 },
     },
@@ -135,7 +135,7 @@ export const AnimationCustomizer = () => {
 
   const resetToDefault = () => {
     setConfig(defaultAnimationConfig);
-    localStorage.removeItem('animation-config');
+    localStorage.removeItem("animation-config");
   };
 
   return (
@@ -144,9 +144,7 @@ export const AnimationCustomizer = () => {
       <div>
         <div className="flex items-center gap-3 mb-2">
           <Zap className="text-purple-600" size={24} />
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-            Animations
-          </h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Animations</h3>
         </div>
         <p className="text-sm text-gray-600 dark:text-gray-400">
           Personnalisez les animations de l'interface
@@ -156,9 +154,7 @@ export const AnimationCustomizer = () => {
       {/* Activation générale */}
       <div className="flex items-center justify-between p-4 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-lg border border-purple-200 dark:border-purple-800">
         <div>
-          <div className="font-medium text-gray-900 dark:text-white">
-            Activer les animations
-          </div>
+          <div className="font-medium text-gray-900 dark:text-white">Activer les animations</div>
           <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
             Désactiver pour améliorer les performances
           </div>
@@ -166,12 +162,12 @@ export const AnimationCustomizer = () => {
         <button
           onClick={() => updateConfig({ enabled: !config.enabled })}
           className={`relative w-14 h-8 rounded-full transition-colors ${
-            config.enabled ? 'bg-purple-600' : 'bg-gray-300 dark:bg-gray-600'
+            config.enabled ? "bg-purple-600" : "bg-gray-300 dark:bg-gray-600"
           }`}
         >
           <div
             className={`absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow-md transition-transform ${
-              config.enabled ? 'translate-x-6' : 'translate-x-0'
+              config.enabled ? "translate-x-6" : "translate-x-0"
             }`}
           />
         </button>
@@ -185,21 +181,21 @@ export const AnimationCustomizer = () => {
               Intensité des animations
             </label>
             <div className="grid grid-cols-3 gap-2">
-              {(['subtle', 'normal', 'dramatic'] as const).map((intensity) => (
+              {(["subtle", "normal", "dramatic"] as const).map((intensity) => (
                 <button
                   key={intensity}
                   onClick={() => updateConfig({ intensity })}
                   className={`px-4 py-3 rounded-lg border-2 transition-all capitalize ${
                     config.intensity === intensity
-                      ? 'border-purple-600 bg-purple-50 dark:bg-purple-900/20 text-purple-600'
-                      : 'border-gray-200 dark:border-zinc-700 hover:border-purple-300'
+                      ? "border-purple-600 bg-purple-50 dark:bg-purple-900/20 text-purple-600"
+                      : "border-gray-200 dark:border-zinc-700 hover:border-purple-300"
                   }`}
                 >
                   <div className="text-sm font-medium">{intensity}</div>
                   <div className="text-xs text-gray-500 mt-1">
-                    {intensity === 'subtle' && 'Discret'}
-                    {intensity === 'normal' && 'Équilibré'}
-                    {intensity === 'dramatic' && 'Prononcé'}
+                    {intensity === "subtle" && "Discret"}
+                    {intensity === "normal" && "Équilibré"}
+                    {intensity === "dramatic" && "Prononcé"}
                   </div>
                 </button>
               ))}
@@ -212,25 +208,25 @@ export const AnimationCustomizer = () => {
               Vitesse
             </label>
             <div className="grid grid-cols-3 gap-2">
-              {(['slow', 'normal', 'fast'] as const).map((speed) => (
+              {(["slow", "normal", "fast"] as const).map((speed) => (
                 <button
                   key={speed}
                   onClick={() => updateConfig({ speed })}
                   className={`px-4 py-3 rounded-lg border-2 transition-all capitalize ${
                     config.speed === speed
-                      ? 'border-purple-600 bg-purple-50 dark:bg-purple-900/20 text-purple-600'
-                      : 'border-gray-200 dark:border-zinc-700 hover:border-purple-300'
+                      ? "border-purple-600 bg-purple-50 dark:bg-purple-900/20 text-purple-600"
+                      : "border-gray-200 dark:border-zinc-700 hover:border-purple-300"
                   }`}
                 >
                   <div className="text-sm font-medium">
-                    {speed === 'slow' && '🐢 Lent'}
-                    {speed === 'normal' && '⚡ Normal'}
-                    {speed === 'fast' && '🚀 Rapide'}
+                    {speed === "slow" && "🐢 Lent"}
+                    {speed === "normal" && "⚡ Normal"}
+                    {speed === "fast" && "🚀 Rapide"}
                   </div>
                   <div className="text-xs text-gray-500 mt-1">
-                    {speed === 'slow' && '1.2s'}
-                    {speed === 'normal' && '0.6s'}
-                    {speed === 'fast' && '0.3s'}
+                    {speed === "slow" && "1.2s"}
+                    {speed === "normal" && "0.6s"}
+                    {speed === "fast" && "0.3s"}
                   </div>
                 </button>
               ))}
@@ -243,21 +239,23 @@ export const AnimationCustomizer = () => {
               Courbe d'animation (easing)
             </label>
             <div className="grid grid-cols-2 gap-2">
-              {(['linear', 'easeIn', 'easeOut', 'easeInOut', 'spring', 'bounce'] as const).map((easing) => (
-                <button
-                  key={easing}
-                  onClick={() => updateConfig({ easing })}
-                  className={`px-4 py-3 rounded-lg border-2 transition-all ${
-                    config.easing === easing
-                      ? 'border-purple-600 bg-purple-50 dark:bg-purple-900/20 text-purple-600'
-                      : 'border-gray-200 dark:border-zinc-700 hover:border-purple-300'
-                  }`}
-                >
-                  <div className="text-sm font-medium capitalize">
-                    {easing.replace(/([A-Z])/g, ' $1').trim()}
-                  </div>
-                </button>
-              ))}
+              {(["linear", "easeIn", "easeOut", "easeInOut", "spring", "bounce"] as const).map(
+                (easing) => (
+                  <button
+                    key={easing}
+                    onClick={() => updateConfig({ easing })}
+                    className={`px-4 py-3 rounded-lg border-2 transition-all ${
+                      config.easing === easing
+                        ? "border-purple-600 bg-purple-50 dark:bg-purple-900/20 text-purple-600"
+                        : "border-gray-200 dark:border-zinc-700 hover:border-purple-300"
+                    }`}
+                  >
+                    <div className="text-sm font-medium capitalize">
+                      {easing.replace(/([A-Z])/g, " $1").trim()}
+                    </div>
+                  </button>
+                ),
+              )}
             </div>
           </div>
 
@@ -268,10 +266,26 @@ export const AnimationCustomizer = () => {
             </label>
             <div className="space-y-2">
               {[
-                { key: 'pageTransitions', label: 'Transitions de page', desc: 'Animations lors du changement de page' },
-                { key: 'hoverEffects', label: 'Effets au survol', desc: 'Animations lors du survol de la souris' },
-                { key: 'scrollAnimations', label: 'Animations au scroll', desc: 'Animations lors du défilement' },
-                { key: 'loadingAnimations', label: 'Animations de chargement', desc: 'Spinners et skeletons animés' },
+                {
+                  key: "pageTransitions",
+                  label: "Transitions de page",
+                  desc: "Animations lors du changement de page",
+                },
+                {
+                  key: "hoverEffects",
+                  label: "Effets au survol",
+                  desc: "Animations lors du survol de la souris",
+                },
+                {
+                  key: "scrollAnimations",
+                  label: "Animations au scroll",
+                  desc: "Animations lors du défilement",
+                },
+                {
+                  key: "loadingAnimations",
+                  label: "Animations de chargement",
+                  desc: "Spinners et skeletons animés",
+                },
               ].map((option) => (
                 <label
                   key={option.key}
@@ -332,8 +346,8 @@ export const AnimationCustomizer = () => {
                     exit="exit"
                     transition={{
                       duration: animations.duration,
-                      ease: config.easing === 'spring' ? undefined : animations.ease as any,
-                      type: config.easing === 'spring' ? 'spring' : undefined,
+                      ease: config.easing === "spring" ? undefined : (animations.ease as any),
+                      type: config.easing === "spring" ? "spring" : undefined,
                     }}
                     className="absolute inset-0 flex items-center justify-center"
                   >
@@ -366,7 +380,7 @@ export const AnimationCustomizer = () => {
                 className="flex items-center justify-center gap-2 px-4 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isPlaying ? <Pause size={18} /> : <Play size={18} />}
-                <span>{isPlaying ? 'En cours...' : 'Lire'}</span>
+                <span>{isPlaying ? "En cours..." : "Lire"}</span>
               </button>
               <button
                 onClick={resetToDefault}
@@ -381,16 +395,24 @@ export const AnimationCustomizer = () => {
           {/* Informations de performance */}
           <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
             <div className="flex gap-3">
-              <div className="text-yellow-600 dark:text-yellow-400 text-xl">
-                ⚠️
-              </div>
+              <div className="text-yellow-600 dark:text-yellow-400 text-xl">⚠️</div>
               <div className="flex-1 text-sm text-yellow-900 dark:text-yellow-200">
                 <div className="font-medium mb-1">Impact sur les performances</div>
                 <div>
-                  Les animations {config.intensity === 'dramatic' ? 'prononcées' : config.intensity === 'subtle' ? 'discrètes' : 'normales'}
-                  {' '}avec une vitesse {config.speed === 'slow' ? 'lente' : config.speed === 'fast' ? 'rapide' : 'normale'}
-                  {' '}peuvent {config.intensity === 'dramatic' ? 'significativement' : 'légèrement'} impacter les performances
-                  sur les appareils moins puissants.
+                  Les animations{" "}
+                  {config.intensity === "dramatic"
+                    ? "prononcées"
+                    : config.intensity === "subtle"
+                      ? "discrètes"
+                      : "normales"}{" "}
+                  avec une vitesse{" "}
+                  {config.speed === "slow"
+                    ? "lente"
+                    : config.speed === "fast"
+                      ? "rapide"
+                      : "normale"}{" "}
+                  peuvent {config.intensity === "dramatic" ? "significativement" : "légèrement"}{" "}
+                  impacter les performances sur les appareils moins puissants.
                 </div>
               </div>
             </div>
@@ -407,8 +429,8 @@ export const useAnimations = () => {
   const [config, setConfig] = useState<AnimationConfig>(defaultAnimationConfig);
 
   // Charger la config au montage
-  if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('animation-config');
+  if (typeof window !== "undefined") {
+    const saved = localStorage.getItem("animation-config");
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -416,12 +438,12 @@ export const useAnimations = () => {
           setConfig(parsed);
         }
       } catch (e) {
-        console.error('Erreur chargement animations:', e);
+        console.error("Erreur chargement animations:", e);
       }
     }
   }
 
-  const getAnimationProps = (type: 'fade' | 'slide' | 'scale' = 'fade') => {
+  const getAnimationProps = (type: "fade" | "slide" | "scale" = "fade") => {
     if (!config.enabled) {
       return { initial: {}, animate: {}, exit: {} };
     }
@@ -463,8 +485,8 @@ export const useAnimations = () => {
       ...variants[type],
       transition: {
         duration,
-        ease: config.easing === 'spring' ? undefined : config.easing,
-        type: config.easing === 'spring' ? 'spring' : undefined,
+        ease: config.easing === "spring" ? undefined : config.easing,
+        type: config.easing === "spring" ? "spring" : undefined,
       },
     };
   };

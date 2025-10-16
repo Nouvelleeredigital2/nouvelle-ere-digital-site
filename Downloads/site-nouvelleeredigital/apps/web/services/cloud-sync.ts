@@ -21,16 +21,16 @@ class CloudSyncService {
   private syncQueue: CloudPreferences[] = [];
 
   constructor(apiEndpoint?: string) {
-    this.apiEndpoint = apiEndpoint || process.env.NEXT_PUBLIC_API_ENDPOINT || '/api/preferences';
+    this.apiEndpoint = apiEndpoint || process.env.NEXT_PUBLIC_API_ENDPOINT || "/api/preferences";
     this.isOnline = navigator.onLine;
 
     // Écouter les changements de connexion
-    window.addEventListener('online', () => {
+    window.addEventListener("online", () => {
       this.isOnline = true;
       this.syncPendingChanges();
     });
 
-    window.addEventListener('offline', () => {
+    window.addEventListener("offline", () => {
       this.isOnline = false;
     });
   }
@@ -39,23 +39,23 @@ class CloudSyncService {
   async savePreferences(preferences: Partial<CloudPreferences>): Promise<SyncResult> {
     const dataToSave: CloudPreferences = {
       userId: this.getUserId(),
-      personaId: preferences.personaId || 'default',
+      personaId: preferences.personaId || "default",
       themeId: preferences.themeId,
       preferences: preferences.preferences || {},
       lastSync: new Date().toISOString(),
-      version: '1.0.0',
-      ...preferences
+      version: "1.0.0",
+      ...preferences,
     };
 
     if (this.isOnline) {
       try {
         const response = await fetch(`${this.apiEndpoint}/sync`, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${this.getAuthToken()}`
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${this.getAuthToken()}`,
           },
-          body: JSON.stringify(dataToSave)
+          body: JSON.stringify(dataToSave),
         });
 
         if (response.ok) {
@@ -65,13 +65,13 @@ class CloudSyncService {
           throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
       } catch (error) {
-        console.error('Erreur lors de la sauvegarde cloud:', error);
+        console.error("Erreur lors de la sauvegarde cloud:", error);
 
         // Fallback vers le stockage local si l'API n'est pas disponible
         this.saveLocally(dataToSave);
         return {
           success: false,
-          error: error instanceof Error ? error.message : 'Erreur inconnue'
+          error: error instanceof Error ? error.message : "Erreur inconnue",
         };
       }
     } else {
@@ -80,7 +80,7 @@ class CloudSyncService {
       this.syncQueue.push(dataToSave);
       return {
         success: true,
-        data: dataToSave
+        data: dataToSave,
       };
     }
   }
@@ -93,8 +93,8 @@ class CloudSyncService {
       try {
         const response = await fetch(`${this.apiEndpoint}/sync/${targetUserId}`, {
           headers: {
-            'Authorization': `Bearer ${this.getAuthToken()}`
-          }
+            Authorization: `Bearer ${this.getAuthToken()}`,
+          },
         });
 
         if (response.ok) {
@@ -107,7 +107,7 @@ class CloudSyncService {
           throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
       } catch (error) {
-        console.error('Erreur lors du chargement cloud:', error);
+        console.error("Erreur lors du chargement cloud:", error);
         return this.loadLocally(targetUserId);
       }
     } else {
@@ -137,7 +137,7 @@ class CloudSyncService {
       localStorage.setItem(`cloud-preferences-${data.userId}`, JSON.stringify(data));
       localStorage.setItem(`cloud-preferences-backup-${data.userId}`, JSON.stringify(allData));
     } catch (error) {
-      console.error('Erreur lors de la sauvegarde locale:', error);
+      console.error("Erreur lors de la sauvegarde locale:", error);
     }
   }
 
@@ -149,22 +149,22 @@ class CloudSyncService {
       if (data) {
         return { success: true, data: JSON.parse(data) };
       } else {
-        return { success: false, error: 'Aucune donnée locale trouvée' };
+        return { success: false, error: "Aucune donnée locale trouvée" };
       }
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Erreur lors du chargement local'
+        error: error instanceof Error ? error.message : "Erreur lors du chargement local",
       };
     }
   }
 
   // Générer un ID utilisateur unique
   private getUserId(): string {
-    let userId = localStorage.getItem('user-id');
+    let userId = localStorage.getItem("user-id");
     if (!userId) {
       userId = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-      localStorage.setItem('user-id', userId);
+      localStorage.setItem("user-id", userId);
     }
     return userId;
   }
@@ -172,14 +172,14 @@ class CloudSyncService {
   // Obtenir le token d'authentification (simplifié)
   private getAuthToken(): string {
     // Dans un vrai environnement, ceci serait un JWT ou similaire
-    return localStorage.getItem('auth-token') || 'demo-token';
+    return localStorage.getItem("auth-token") || "demo-token";
   }
 
   // Vérifier le statut de connexion
   getConnectionStatus(): { online: boolean; hasApi: boolean } {
     return {
       online: this.isOnline,
-      hasApi: !!this.apiEndpoint && this.apiEndpoint !== '/api/preferences'
+      hasApi: !!this.apiEndpoint && this.apiEndpoint !== "/api/preferences",
     };
   }
 
@@ -189,7 +189,7 @@ class CloudSyncService {
     if (result.success && result.data) {
       return JSON.stringify(result.data, null, 2);
     }
-    throw new Error('Impossible d\'exporter les préférences');
+    throw new Error("Impossible d'exporter les préférences");
   }
 
   // Importer des données depuis un backup
@@ -200,7 +200,7 @@ class CloudSyncService {
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Format de données invalide'
+        error: error instanceof Error ? error.message : "Format de données invalide",
       };
     }
   }
@@ -246,6 +246,6 @@ export function useCloudSync() {
     getStatus,
     exportData,
     importData,
-    isEnabled: true
+    isEnabled: true,
   };
 }

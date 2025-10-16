@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from 'react';
-import { useTheme } from '@/components/context/PersonaProvider';
-import { Button } from './Button';
-import { Palette, Save, RotateCcw, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import type { Theme } from '@/shared/theme.types';
+import React, { useState } from "react";
+import { useTheme } from "@/components/context/PersonaProvider";
+import { Button } from "./Button";
+import { Palette, Save, RotateCcw, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import type { Theme } from "@/shared/theme.types";
 
 interface ThemeCustomizerProps {
   isOpen: boolean;
@@ -18,7 +18,7 @@ export const ThemeCustomizer = ({ isOpen, onClose }: ThemeCustomizerProps) => {
 
   // Mettre à jour le thème local
   const updateCustomTheme = (updates: Partial<Theme>) => {
-    setLocalCustomTheme(prev => ({ ...prev, ...updates }));
+    setLocalCustomTheme((prev) => ({ ...prev, ...updates }));
   };
 
   // Appliquer le thème personnalisé
@@ -48,10 +48,10 @@ export const ThemeCustomizer = ({ isOpen, onClose }: ThemeCustomizerProps) => {
 
         {/* Panneau de personnalisation */}
         <motion.div
-          initial={{ x: '100%' }}
+          initial={{ x: "100%" }}
           animate={{ x: 0 }}
-          exit={{ x: '100%' }}
-          transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+          exit={{ x: "100%" }}
+          transition={{ type: "spring", damping: 25, stiffness: 200 }}
           className="fixed right-0 top-0 h-full w-full max-w-md bg-white dark:bg-zinc-900 shadow-2xl z-50 overflow-hidden flex flex-col"
         >
           {/* Header */}
@@ -79,28 +79,39 @@ export const ThemeCustomizer = ({ isOpen, onClose }: ThemeCustomizerProps) => {
                 {Object.entries(customTheme.colors).map(([key, value]) => (
                   <div key={key}>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 capitalize">
-                      {key === 'primary' ? 'Primaire' :
-                       key === 'secondary' ? 'Secondaire' :
-                       key === 'accent' ? 'Accent' :
-                       key === 'background' ? 'Fond' :
-                       key === 'foreground' ? 'Texte' :
-                       key === 'card' ? 'Cartes' : key}
+                      {key === "primary"
+                        ? "Primaire"
+                        : key === "secondary"
+                          ? "Secondaire"
+                          : key === "accent"
+                            ? "Accent"
+                            : key === "background"
+                              ? "Fond"
+                              : key === "foreground"
+                                ? "Texte"
+                                : key === "card"
+                                  ? "Cartes"
+                                  : key}
                     </label>
                     <div className="flex items-center gap-3">
                       <input
                         type="color"
                         value={value}
-                        onChange={(e) => updateCustomTheme({
-                          colors: { ...customTheme.colors, [key]: e.target.value }
-                        })}
+                        onChange={(e) =>
+                          updateCustomTheme({
+                            colors: { ...customTheme.colors, [key]: e.target.value },
+                          })
+                        }
                         className="w-12 h-12 rounded-lg cursor-pointer border-2 border-gray-200"
                       />
                       <input
                         type="text"
                         value={value}
-                        onChange={(e) => updateCustomTheme({
-                          colors: { ...customTheme.colors, [key]: e.target.value }
-                        })}
+                        onChange={(e) =>
+                          updateCustomTheme({
+                            colors: { ...customTheme.colors, [key]: e.target.value },
+                          })
+                        }
                         className="flex-1 px-3 py-2 border border-gray-300 dark:border-zinc-600 rounded-lg bg-white dark:bg-zinc-800 text-gray-900 dark:text-white text-sm font-mono"
                       />
                     </div>
@@ -121,12 +132,17 @@ export const ThemeCustomizer = ({ isOpen, onClose }: ThemeCustomizerProps) => {
                   </label>
                   <select
                     value={customTheme.typography.fontFamily.sans}
-                    onChange={(e) => updateCustomTheme({
-                      typography: {
-                        ...customTheme.typography,
-                        fontFamily: { ...customTheme.typography.fontFamily, sans: e.target.value }
-                      }
-                    })}
+                    onChange={(e) =>
+                      updateCustomTheme({
+                        typography: {
+                          ...customTheme.typography,
+                          fontFamily: {
+                            ...customTheme.typography.fontFamily,
+                            sans: e.target.value,
+                          },
+                        },
+                      })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 dark:border-zinc-600 rounded-lg bg-white dark:bg-zinc-800 text-gray-900 dark:text-white"
                   >
                     <option value='"Inter", sans-serif'>Inter</option>
@@ -140,12 +156,17 @@ export const ThemeCustomizer = ({ isOpen, onClose }: ThemeCustomizerProps) => {
                   </label>
                   <select
                     value={customTheme.typography.fontFamily.serif}
-                    onChange={(e) => updateCustomTheme({
-                      typography: {
-                        ...customTheme.typography,
-                        fontFamily: { ...customTheme.typography.fontFamily, serif: e.target.value }
-                      }
-                    })}
+                    onChange={(e) =>
+                      updateCustomTheme({
+                        typography: {
+                          ...customTheme.typography,
+                          fontFamily: {
+                            ...customTheme.typography.fontFamily,
+                            serif: e.target.value,
+                          },
+                        },
+                      })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 dark:border-zinc-600 rounded-lg bg-white dark:bg-zinc-800 text-gray-900 dark:text-white"
                   >
                     <option value='"Playfair Display", serif'>Playfair Display</option>
@@ -158,9 +179,7 @@ export const ThemeCustomizer = ({ isOpen, onClose }: ThemeCustomizerProps) => {
 
             {/* Styles */}
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                Styles
-              </h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Styles</h3>
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -168,9 +187,11 @@ export const ThemeCustomizer = ({ isOpen, onClose }: ThemeCustomizerProps) => {
                   </label>
                   <select
                     value={customTheme.styles.borderRadius}
-                    onChange={(e) => updateCustomTheme({
-                      styles: { ...customTheme.styles, borderRadius: e.target.value }
-                    })}
+                    onChange={(e) =>
+                      updateCustomTheme({
+                        styles: { ...customTheme.styles, borderRadius: e.target.value },
+                      })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 dark:border-zinc-600 rounded-lg bg-white dark:bg-zinc-800 text-gray-900 dark:text-white"
                   >
                     <option value="0rem">Aucun</option>
@@ -193,7 +214,7 @@ export const ThemeCustomizer = ({ isOpen, onClose }: ThemeCustomizerProps) => {
                 style={{
                   backgroundColor: customTheme.colors.primary,
                   fontFamily: customTheme.typography.fontFamily.sans,
-                  borderRadius: customTheme.styles.borderRadius
+                  borderRadius: customTheme.styles.borderRadius,
                 }}
               >
                 <div className="text-lg font-bold">Titre Principal</div>

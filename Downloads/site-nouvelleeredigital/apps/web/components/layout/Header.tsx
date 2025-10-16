@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { SiteNav } from "./SiteNav";
 import { Button } from "@/components/ui/Button";
 import { PersonaNavSelector } from "@/components/ui/PersonaNavSelector";
+import { ClientOnly } from "@/components/ui/ClientOnly";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
@@ -25,8 +26,8 @@ export const Header = () => {
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-background/90 backdrop-blur-md border-b border-border shadow-sm'
-          : 'bg-background/80 backdrop-blur-sm'
+          ? "bg-background/90 backdrop-blur-md border-b border-border shadow-sm"
+          : "bg-background/80 backdrop-blur-sm"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -50,7 +51,9 @@ export const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4">
             <SiteNav />
-            <PersonaNavSelector />
+            <ClientOnly>
+              <PersonaNavSelector />
+            </ClientOnly>
           </div>
 
           {/* CTA Button */}

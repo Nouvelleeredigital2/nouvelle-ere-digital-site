@@ -135,7 +135,7 @@ interface TestimonialsSectionProps {
 export const TestimonialsSection = ({
   title = "Témoignages Clients",
   subtitle = "Ce que disent nos clients",
-  testimonials
+  testimonials,
 }: TestimonialsSectionProps) => {
   return (
     <section className="py-24 bg-gradient-to-br from-gray-50 to-white dark:from-zinc-900 dark:to-zinc-800">

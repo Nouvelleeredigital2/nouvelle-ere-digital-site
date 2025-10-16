@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState, useCallback } from 'react';
-import { DragCanvas } from './DragCanvas';
-import { ModuleCard } from './ModuleCard';
-import { CompatibilityIndicator } from './CompatibilityIndicator';
-import { TrajectoireIAOverlay } from './TrajectoireIAOverlay';
-import { GridLayout } from './GridLayout';
+import React, { useState, useCallback } from "react";
+import { DragCanvas } from "./DragCanvas";
+import { ModuleCard } from "./ModuleCard";
+import { CompatibilityIndicator } from "./CompatibilityIndicator";
+import { TrajectoireIAOverlay } from "./TrajectoireIAOverlay";
+import { GridLayout } from "./GridLayout";
 
 interface Module {
   id: string;
@@ -27,46 +27,54 @@ interface JourneyComposerProps {
   modules: Module[];
   onCompose?: (selectedModules: string[]) => void;
   className?: string;
-};
+}
 
 export const JourneyComposer: React.FC<JourneyComposerProps> = ({
   modules,
   onCompose,
-  className = '',
+  className = "",
 }) => {
   const [selectedModules, setSelectedModules] = useState<string[]>([]);
   const [canvasItems, setCanvasItems] = useState<CanvasItem[]>([]);
-  const [trajectories, setTrajectories] = useState<Array<{ id: string; points: Array<{ x: number; y: number }>; color: string }>>([]);
+  const [trajectories, setTrajectories] = useState<
+    Array<{ id: string; points: Array<{ x: number; y: number }>; color: string }>
+  >([]);
 
-  const handleModuleSelect = useCallback((moduleId: string) => {
-    if (selectedModules.includes(moduleId)) {
-      setSelectedModules(prev => prev.filter(id => id !== moduleId));
-      setCanvasItems(prev => prev.filter(item => item.id !== moduleId));
-    } else {
-      setSelectedModules(prev => [...prev, moduleId]);
-      const newItem: CanvasItem = {
-        id: moduleId,
-        x: Math.random() * 400,
-        y: Math.random() * 300,
-        content: <div>{modules.find((m: Module) => m.id === moduleId)?.name}</div>,
-      };
-      setCanvasItems(prev => [...prev, newItem]);
-    }
-  }, [selectedModules, modules]);
+  const handleModuleSelect = useCallback(
+    (moduleId: string) => {
+      if (selectedModules.includes(moduleId)) {
+        setSelectedModules((prev) => prev.filter((id) => id !== moduleId));
+        setCanvasItems((prev) => prev.filter((item) => item.id !== moduleId));
+      } else {
+        setSelectedModules((prev) => [...prev, moduleId]);
+        const newItem: CanvasItem = {
+          id: moduleId,
+          x: Math.random() * 400,
+          y: Math.random() * 300,
+          content: <div>{modules.find((m: Module) => m.id === moduleId)?.name}</div>,
+        };
+        setCanvasItems((prev) => [...prev, newItem]);
+      }
+    },
+    [selectedModules, modules],
+  );
 
-  const handleCanvasDrop = useCallback((moduleId: string, x: number, y: number) => {
-    setCanvasItems(prev => prev.map(item =>
-      item.id === moduleId ? { ...item, x, y } : item
-    ));
-    if (canvasItems.length > 0) {
-      const newTrajectory = {
-        id: `traj-${Date.now()}`,
-        points: canvasItems.map(item => ({ x: item.x, y: item.y })).concat([{ x, y }]),
-        color: '#ffd93d',
-      };
-      setTrajectories(prev => [...prev, newTrajectory]);
-    }
-  }, [canvasItems]);
+  const handleCanvasDrop = useCallback(
+    (moduleId: string, x: number, y: number) => {
+      setCanvasItems((prev) =>
+        prev.map((item) => (item.id === moduleId ? { ...item, x, y } : item)),
+      );
+      if (canvasItems.length > 0) {
+        const newTrajectory = {
+          id: `traj-${Date.now()}`,
+          points: canvasItems.map((item) => ({ x: item.x, y: item.y })).concat([{ x, y }]),
+          color: "#ffd93d",
+        };
+        setTrajectories((prev) => [...prev, newTrajectory]);
+      }
+    },
+    [canvasItems],
+  );
 
   const handleExport = () => {
     onCompose?.(selectedModules);
@@ -85,7 +93,7 @@ export const JourneyComposer: React.FC<JourneyComposerProps> = ({
                 id: module.id,
                 title: module.name,
                 description: module.description,
-                status: 'active' as const,
+                status: "active" as const,
               }}
               onSelect={() => handleModuleSelect(module.id)}
             />
@@ -96,16 +104,8 @@ export const JourneyComposer: React.FC<JourneyComposerProps> = ({
       {/* Colonne 2: Canvas de Composition */}
       <div>
         <h3 className="text-lg font-bold mb-4">Composez votre Parcours</h3>
-        <DragCanvas
-          items={canvasItems}
-          onDrop={handleCanvasDrop}
-          width={400}
-          height={300}
-        />
-        <TrajectoireIAOverlay
-          trajectories={trajectories}
-          variant="animated"
-        />
+        <DragCanvas items={canvasItems} onDrop={handleCanvasDrop} width={400} height={300} />
+        <TrajectoireIAOverlay trajectories={trajectories} variant="animated" />
       </div>
 
       {/* Colonne 3: Récapitulatif et Export */}
@@ -113,12 +113,21 @@ export const JourneyComposer: React.FC<JourneyComposerProps> = ({
         <h3 className="text-lg font-bold mb-4">Récapitulatif</h3>
         <div className="mb-4">
           <CompatibilityIndicator
-            compatibility={{ score: selectedModules.length > 2 ? 90 : 60, status: selectedModules.length > 2 ? 'high' : 'medium' }}
+            compatibility={{
+              score: selectedModules.length > 2 ? 90 : 60,
+              status: selectedModules.length > 2 ? "high" : "medium",
+            }}
           />
         </div>
         <div className="mb-4">
           <p className="text-sm">Modules sélectionnés: {selectedModules.length}</p>
-          <p className="text-sm">Coût estimé: {modules.filter((m: Module) => selectedModules.includes(m.id)).reduce((sum: number, m: Module) => sum + m.price, 0)}€</p>
+          <p className="text-sm">
+            Coût estimé:{" "}
+            {modules
+              .filter((m: Module) => selectedModules.includes(m.id))
+              .reduce((sum: number, m: Module) => sum + m.price, 0)}
+            €
+          </p>
         </div>
         <button
           onClick={handleExport}

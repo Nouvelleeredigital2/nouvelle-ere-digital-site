@@ -1,9 +1,11 @@
 # 🔧 Guide de Diagnostic - Système de Personas
 
 ## 🚀 Démarrage du Serveur
+
 ```bash
 npm run dev
 ```
+
 → Ouvrez `http://localhost:3001`
 
 ## 🔍 **Diagnostic des Personas**
@@ -11,6 +13,7 @@ npm run dev
 ### **1. Vérification Console (F12 → Console)**
 
 #### **✅ Messages Normaux Attendues :**
+
 ```
 ✅ Persona chargé depuis localStorage: L'Artiste
 ✅ Styles appliqués pour le persona: L'Artiste
@@ -18,6 +21,7 @@ npm run dev
 ```
 
 #### **❌ Erreurs à Corriger :**
+
 - `❌ Erreur lors du chargement du persona depuis localStorage`
 - `❌ Persona avec id "xxx" non trouvé`
 - `Cannot find name 'usePersona'` (erreur d'import)
@@ -25,23 +29,26 @@ npm run dev
 ### **2. Vérification des Variables CSS**
 
 #### **Outils de Développement → Elements → html**
+
 Vérifiez que les variables CSS sont définies :
+
 ```css
---color-background: #0a0a2a
---color-primary: #818cf8
---color-secondary: #fde047
---font-fontFamilySans: "Inter", "system-ui", sans-serif
+--color-background:
+  #0a0a2a --color-primary: #818cf8 --color-secondary: #fde047 --font-fontFamilySans: "Inter",
+  "system-ui", sans-serif;
 ```
 
 ### **3. Test du Sélecteur de Personas**
 
 #### **Sur la Page d'Accueil :**
+
 1. **Localisez le sélecteur** (header, coin supérieur droit)
 2. **Cliquez dessus** → Menu déroulant devrait apparaître
 3. **Sélectionnez un persona différent**
 4. **Observez les changements** de couleurs en temps réel
 
 #### **Sur /demo :**
+
 1. **Allez à** `http://localhost:3001/demo`
 2. **Sélectionnez différents personas**
 3. **Vérifiez les changements** dans la palette de couleurs
@@ -49,18 +56,24 @@ Vérifiez que les variables CSS sont définies :
 ## 🎯 **Résolution des Problèmes Courants**
 
 ### **Problème : Sélecteur invisible**
+
 **Solution :**
+
 - Vérifiez que `PersonaNavSelector` est bien dans le header
 - Vérifiez l'import dans `AccueilPage.tsx`
 
 ### **Problème : Couleurs ne changent pas**
+
 **Solution :**
+
 - Ouvrez les outils de développement
 - Vérifiez les variables CSS dans l'élément `<html>`
 - Testez avec le persona "L'Artiste" (le plus contrasté)
 
 ### **Problème : Erreurs console**
+
 **Solution :**
+
 - Vérifiez les imports dans tous les fichiers
 - Assurez-vous que tous les personas sont correctement définis
 - Vérifiez que `PersonaProvider` englobe toute l'application

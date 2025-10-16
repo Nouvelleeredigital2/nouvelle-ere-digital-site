@@ -1,16 +1,16 @@
-import React from 'react';
-import { OrbitBreadcrumbs } from '@/components/ui/OrbitBreadcrumbs';
-import { SectionHeader } from '@/components/ui/SectionHeader';
-import { AnimatedSection } from '@/components/ui/AnimatedSection';
-import { StaggerContainer, StaggerItem, FadeIn } from '@/components/animations';
+import React from "react";
+import { OrbitBreadcrumbs } from "@/components/ui/OrbitBreadcrumbs";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { AnimatedSection } from "@/components/ui/AnimatedSection";
+import { StaggerContainer, StaggerItem, FadeIn } from "@/components/animations";
 
 export default function PhilosophiePage() {
   return (
     <>
       <OrbitBreadcrumbs
         items={[
-          { id: 'home', label: 'Accueil', href: '/', level: 1 },
-          { id: 'philosophie', label: 'Philosophie', level: 2 },
+          { id: "home", label: "Accueil", href: "/", level: 1 },
+          { id: "philosophie", label: "Philosophie", level: 2 },
         ]}
         currentId="philosophie"
       />
@@ -20,9 +20,7 @@ export default function PhilosophiePage() {
         <AnimatedSection variant="gradient" className="text-center py-20">
           <StaggerContainer>
             <StaggerItem>
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-                Notre Philosophie
-              </h1>
+              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">Notre Philosophie</h1>
             </StaggerItem>
             <StaggerItem>
               <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-4xl mx-auto">
@@ -49,7 +47,9 @@ export default function PhilosophiePage() {
                   Démocratiser la Technologie
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                  Nous transformons des concepts techniques complexes en interfaces intuitives et expériences utilisateur fluides. Chaque projet est conçu pour être immédiatement compréhensible et utilisable.
+                  Nous transformons des concepts techniques complexes en interfaces intuitives et
+                  expériences utilisateur fluides. Chaque projet est conçu pour être immédiatement
+                  compréhensible et utilisable.
                 </p>
                 <ul className="space-y-2 text-gray-600 dark:text-gray-300">
                   <li className="flex items-center gap-2">
@@ -69,7 +69,8 @@ export default function PhilosophiePage() {
               <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-8">
                 <div className="text-6xl mb-4">🎯</div>
                 <p className="text-lg text-gray-700 dark:text-gray-300 italic">
-                  "La vraie innovation n'est pas de créer quelque chose de complexe, mais de rendre le complexe simple."
+                  "La vraie innovation n'est pas de créer quelque chose de complexe, mais de rendre
+                  le complexe simple."
                 </p>
               </div>
             </div>
@@ -87,7 +88,9 @@ export default function PhilosophiePage() {
               </StaggerItem>
               <StaggerItem>
                 <p className="text-xl text-white/90 mb-8 leading-relaxed">
-                  Au cœur de notre philosophie se trouve la conviction que la technologie doit servir l'humain, amplifier ses capacités et enrichir ses expériences. Nous plaçons l'empathie et la compréhension au centre de chaque projet.
+                  Au cœur de notre philosophie se trouve la conviction que la technologie doit
+                  servir l'humain, amplifier ses capacités et enrichir ses expériences. Nous plaçons
+                  l'empathie et la compréhension au centre de chaque projet.
                 </p>
               </StaggerItem>
               <StaggerItem>
@@ -95,19 +98,20 @@ export default function PhilosophiePage() {
                   {[
                     {
                       title: "Empathie",
-                      description: "Comprendre profondément les besoins et les émotions des utilisateurs.",
-                      icon: "❤️"
+                      description:
+                        "Comprendre profondément les besoins et les émotions des utilisateurs.",
+                      icon: "❤️",
                     },
                     {
                       title: "Inclusion",
                       description: "Créer des solutions accessibles à tous, sans barrières.",
-                      icon: "🤝"
+                      icon: "🤝",
                     },
                     {
                       title: "Éthique",
                       description: "Utiliser la technologie de manière responsable et bénéfique.",
-                      icon: "⚖️"
-                    }
+                      icon: "⚖️",
+                    },
                   ].map((value, index) => (
                     <div key={index} className="bg-white/10 backdrop-blur-lg rounded-2xl p-6">
                       <div className="text-4xl mb-4">{value.icon}</div>
@@ -136,19 +140,22 @@ export default function PhilosophiePage() {
               {[
                 {
                   title: "Qualité Sans Compromis",
-                  description: "Chaque pixel, chaque ligne de code, chaque interaction est conçue avec une attention méticuleuse aux détails.",
-                  quote: "L'excellence n'est pas un acte, mais une habitude."
+                  description:
+                    "Chaque pixel, chaque ligne de code, chaque interaction est conçue avec une attention méticuleuse aux détails.",
+                  quote: "L'excellence n'est pas un acte, mais une habitude.",
                 },
                 {
                   title: "Innovation Continue",
-                  description: "Nous restons à la pointe de la technologie pour offrir des solutions toujours plus performantes et créatives.",
-                  quote: "L'innovation distingue un leader d'un suiveur."
+                  description:
+                    "Nous restons à la pointe de la technologie pour offrir des solutions toujours plus performantes et créatives.",
+                  quote: "L'innovation distingue un leader d'un suiveur.",
                 },
                 {
                   title: "Partenariat Durable",
-                  description: "Nous construisons des relations de confiance à long terme avec nos clients, basées sur la transparence et le succès mutuel.",
-                  quote: "Le succès n'est pas la clé du bonheur. Le bonheur est la clé du succès."
-                }
+                  description:
+                    "Nous construisons des relations de confiance à long terme avec nos clients, basées sur la transparence et le succès mutuel.",
+                  quote: "Le succès n'est pas la clé du bonheur. Le bonheur est la clé du succès.",
+                },
               ].map((item, index) => (
                 <StaggerItem key={index}>
                   <div className="bg-white dark:bg-zinc-800 rounded-2xl p-8 shadow-lg">
@@ -172,21 +179,26 @@ export default function PhilosophiePage() {
         <AnimatedSection variant="gradient" className="py-16 text-center">
           <StaggerContainer>
             <StaggerItem>
-              <h2 className="text-4xl font-bold text-white mb-6">
-                Prêt à Créer Ensemble ?
-              </h2>
+              <h2 className="text-4xl font-bold text-white mb-6">Prêt à Créer Ensemble ?</h2>
             </StaggerItem>
             <StaggerItem>
               <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Rejoignez-nous dans cette aventure où innovation, humanité et excellence se rencontrent.
+                Rejoignez-nous dans cette aventure où innovation, humanité et excellence se
+                rencontrent.
               </p>
             </StaggerItem>
             <StaggerItem>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/contact" className="bg-white text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-white/90 transition-colors">
+                <a
+                  href="/contact"
+                  className="bg-white text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-white/90 transition-colors"
+                >
                   Nous Contacter
                 </a>
-                <a href="/vision" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors">
+                <a
+                  href="/vision"
+                  className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors"
+                >
                   En Savoir Plus
                 </a>
               </div>

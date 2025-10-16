@@ -12,7 +12,7 @@ export function LoadingSpinner({ size = "md", className = "" }: LoadingSpinnerPr
   const sizeClasses = {
     sm: "w-4 h-4",
     md: "w-8 h-8",
-    lg: "w-12 h-12"
+    lg: "w-12 h-12",
   };
 
   return (
@@ -22,7 +22,7 @@ export function LoadingSpinner({ size = "md", className = "" }: LoadingSpinnerPr
         transition={{
           duration: 1,
           repeat: Infinity,
-          ease: "linear"
+          ease: "linear",
         }}
         className={`${sizeClasses[size]} border-2 border-muted-foreground/20 border-t-primary rounded-full`}
       />
@@ -32,9 +32,7 @@ export function LoadingSpinner({ size = "md", className = "" }: LoadingSpinnerPr
 
 // Composant de squelette pour les états de chargement
 export function Skeleton({ className = "" }: { className?: string }) {
-  return (
-    <div className={`animate-pulse bg-muted/50 rounded ${className}`} />
-  );
+  return <div className={`animate-pulse bg-muted/50 rounded ${className}`} />;
 }
 
 // Grille de squelette pour les services

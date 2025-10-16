@@ -8,9 +8,13 @@ export function EquipeValeursPage() {
       {/* Héro */}
       <ThemeSection variant="gradient" className="py-32 md:py-40">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-4">L&apos;Équipe & Les Valeurs</p>
+          <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-4">
+            L&apos;Équipe & Les Valeurs
+          </p>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6">
-            Une équipe humaine,<br />créative et exigeante.
+            Une équipe humaine,
+            <br />
+            créative et exigeante.
           </h1>
         </div>
       </ThemeSection>
@@ -23,7 +27,9 @@ export function EquipeValeursPage() {
               Chez Nouvelle Ère Digital, l'excellence n'est pas un hasard, c'est une discipline.
             </p>
             <p>
-              Notre agence réunit des créatifs, ingénieurs, réalisateurs, designers, développeurs et formateurs animés par une conviction commune : allier la puissance de la technologie à la beauté de l'humain.
+              Notre agence réunit des créatifs, ingénieurs, réalisateurs, designers, développeurs et
+              formateurs animés par une conviction commune : allier la puissance de la technologie à
+              la beauté de l'humain.
             </p>
             <div className="text-center py-6">
               <p className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
@@ -43,16 +49,19 @@ export function EquipeValeursPage() {
             align="center"
           />
           <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300 text-center">
+            <p>Nous croyons en la force du collectif et en la richesse des talents pluriels.</p>
             <p>
-              Nous croyons en la force du collectif et en la richesse des talents pluriels.
+              Chaque projet est une aventure humaine, où la rigueur technique s'accorde à la
+              sensibilité artistique.
             </p>
             <p>
-              Chaque projet est une aventure humaine, où la rigueur technique s'accorde à la sensibilité artistique.
+              Notre équipe partage une même philosophie : créer des expériences cohérentes,
+              mesurables et inspirantes.
             </p>
-            <p>
-              Notre équipe partage une même philosophie : créer des expériences cohérentes, mesurables et inspirantes.
-            </p>
-            <blockquote className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8" style={{ borderColor: '#7C3AED' }}>
+            <blockquote
+              className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8"
+              style={{ borderColor: "#7C3AED" }}
+            >
               « Chez nous, la créativité s'organise, la technologie s'humanise. »
             </blockquote>
           </div>
@@ -102,7 +111,9 @@ export function EquipeValeursPage() {
               },
             ].map((item, i) => (
               <div key={i} className="card group hover:shadow-lg transition-shadow">
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-3">{item.title}</h3>
+                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  {item.title}
+                </h3>
                 <p className="text-zinc-600 dark:text-zinc-400 mb-2">{item.desc}</p>
                 <p className="text-sm text-zinc-500 dark:text-zinc-500">{item.profiles}</p>
               </div>
@@ -125,12 +136,18 @@ export function EquipeValeursPage() {
           />
           <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300 text-center">
             <p>
-              Nous fonctionnons comme une structure fluide et connectée, où chaque pôle interagit avec les autres via un système de projets transversaux.
+              Nous fonctionnons comme une structure fluide et connectée, où chaque pôle interagit
+              avec les autres via un système de projets transversaux.
             </p>
             <p className="font-medium text-zinc-900 dark:text-zinc-100">
-              Collaboration en temps réel (Notion, ClickUp, Miro, IA interne). Réunions de co-création et validations partagées. Culture du feedback et de la documentation ouverte. Intégration IA dans les process internes (planification, veille, QA).
+              Collaboration en temps réel (Notion, ClickUp, Miro, IA interne). Réunions de
+              co-création et validations partagées. Culture du feedback et de la documentation
+              ouverte. Intégration IA dans les process internes (planification, veille, QA).
             </p>
-            <blockquote className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8" style={{ borderColor: '#7C3AED' }}>
+            <blockquote
+              className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8"
+              style={{ borderColor: "#7C3AED" }}
+            >
               « Notre intelligence collective est augmentée, pas automatisée. »
             </blockquote>
           </div>
@@ -181,7 +198,9 @@ export function EquipeValeursPage() {
             ].map((item, i) => (
               <div key={i} className="card group hover:shadow-lg transition-shadow">
                 <div className="text-2xl mb-4">{item.icon}</div>
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-3">{item.title}</h3>
+                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  {item.title}
+                </h3>
                 <p className="text-zinc-600 dark:text-zinc-400">{item.desc}</p>
               </div>
             ))}
@@ -210,7 +229,10 @@ export function EquipeValeursPage() {
               "Responsabilité : éthique, inclusion et impact durable.",
             ].map((item, i) => (
               <div key={i} className="flex gap-4 items-start card">
-                <div className="w-2 h-2 rounded-full flex-shrink-0 mt-2" style={{ backgroundColor: '#7C3AED' }}></div>
+                <div
+                  className="w-2 h-2 rounded-full flex-shrink-0 mt-2"
+                  style={{ backgroundColor: "#7C3AED" }}
+                ></div>
                 <p className="flex-1 text-zinc-700 dark:text-zinc-300">{item}</p>
               </div>
             ))}
@@ -242,7 +264,8 @@ export function EquipeValeursPage() {
                 author: "Lucas, développeur IA",
               },
               {
-                quote: "Ce que j'aime le plus, c'est la cohérence entre nos valeurs et nos actions.",
+                quote:
+                  "Ce que j'aime le plus, c'est la cohérence entre nos valeurs et nos actions.",
                 author: "Léa, chef de projet digital",
               },
             ].map((item, i) => (
@@ -250,7 +273,9 @@ export function EquipeValeursPage() {
                 <blockquote className="text-zinc-700 dark:text-zinc-300 mb-4 italic">
                   "{item.quote}"
                 </blockquote>
-                <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">— {item.author}</p>
+                <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                  — {item.author}
+                </p>
               </div>
             ))}
           </div>
@@ -265,7 +290,8 @@ export function EquipeValeursPage() {
               Une équipe humaine pour des projets technologiques.
             </h2>
             <p className="text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto">
-              Photo d'équipe captée sur un plateau ou en réunion de co-création. Fond lumineux bleu nuit, accents dorés.
+              Photo d'équipe captée sur un plateau ou en réunion de co-création. Fond lumineux bleu
+              nuit, accents dorés.
             </p>
           </div>
 
@@ -279,18 +305,36 @@ export function EquipeValeursPage() {
               { icon: "📢", title: "Communication" },
               { icon: "🎓", title: "Formation" },
             ].map((item, i) => (
-              <div key={i} className="card text-center group hover:shadow-xl transition-all hover:scale-105">
+              <div
+                key={i}
+                className="card text-center group hover:shadow-xl transition-all hover:scale-105"
+              >
                 <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">{item.title}</h3>
+                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  {item.title}
+                </h3>
               </div>
             ))}
           </div>
 
           <div className="text-center mt-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full" style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.2), rgba(124,58,237,0.05))' }}>
-              <div className="w-3 h-3 rounded-full animate-pulse" style={{ backgroundColor: '#7C3AED' }}></div>
-              <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">Équipe Pluridisciplinaire</span>
-              <div className="w-3 h-3 rounded-full animate-pulse" style={{ backgroundColor: '#7C3AED' }}></div>
+            <div
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
+              style={{
+                background: "linear-gradient(135deg, rgba(124,58,237,0.2), rgba(124,58,237,0.05))",
+              }}
+            >
+              <div
+                className="w-3 h-3 rounded-full animate-pulse"
+                style={{ backgroundColor: "#7C3AED" }}
+              ></div>
+              <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                Équipe Pluridisciplinaire
+              </span>
+              <div
+                className="w-3 h-3 rounded-full animate-pulse"
+                style={{ backgroundColor: "#7C3AED" }}
+              ></div>
             </div>
           </div>
         </div>
@@ -303,7 +347,8 @@ export function EquipeValeursPage() {
             Découvrez qui nous sommes
           </h2>
           <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-10 max-w-2xl mx-auto">
-            Explorez l'agence et nos pôles d'expertise, ou rejoignez notre équipe pour participer à l'aventure Nouvelle Ère Digital.
+            Explorez l'agence et nos pôles d'expertise, ou rejoignez notre équipe pour participer à
+            l'aventure Nouvelle Ère Digital.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>

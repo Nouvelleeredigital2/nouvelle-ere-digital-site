@@ -19,7 +19,7 @@ export const AnimatedSection = ({
   variant = "default",
   backgroundImage,
   parallaxSpeed = 0.3,
-  showFloatingElements = false
+  showFloatingElements = false,
 }: AnimatedSectionProps) => {
   const getVariantClasses = () => {
     switch (variant) {
@@ -52,13 +52,25 @@ export const AnimatedSection = ({
       {variant === "animated" && (
         <div className="absolute inset-0 overflow-hidden">
           {/* Animated gradient orbs */}
-          <FloatingAnimation className="absolute top-10 left-10 opacity-20" intensity={20} speed={4}>
+          <FloatingAnimation
+            className="absolute top-10 left-10 opacity-20"
+            intensity={20}
+            speed={4}
+          >
             <div className="w-32 h-32 bg-blue-400/30 rounded-full blur-3xl" />
           </FloatingAnimation>
-          <FloatingAnimation className="absolute top-20 right-20 opacity-15" intensity={25} speed={5}>
+          <FloatingAnimation
+            className="absolute top-20 right-20 opacity-15"
+            intensity={25}
+            speed={5}
+          >
             <div className="w-40 h-40 bg-purple-400/25 rounded-full blur-2xl" />
           </FloatingAnimation>
-          <FloatingAnimation className="absolute bottom-10 left-1/4 opacity-10" intensity={30} speed={6}>
+          <FloatingAnimation
+            className="absolute bottom-10 left-1/4 opacity-10"
+            intensity={30}
+            speed={6}
+          >
             <div className="w-24 h-24 bg-pink-400/20 rounded-full blur-xl" />
           </FloatingAnimation>
 
@@ -71,12 +83,12 @@ export const AnimatedSection = ({
               duration: 20,
               repeat: Infinity,
               repeatType: "reverse",
-              ease: "linear"
+              ease: "linear",
             }}
             className="absolute inset-0 opacity-5"
             style={{
               backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)`,
-              backgroundSize: '50px 50px'
+              backgroundSize: "50px 50px",
             }}
           />
         </div>
@@ -98,9 +110,7 @@ export const AnimatedSection = ({
       )}
 
       {/* Content Container */}
-      <div className="relative z-10">
-        {children}
-      </div>
+      <div className="relative z-10">{children}</div>
     </section>
   );
 };
@@ -118,30 +128,30 @@ export const SectionHeader = ({
   subtitle,
   description,
   align = "center",
-  size = "md"
+  size = "md",
 }: SectionHeaderProps) => {
   const alignClasses = {
     left: "text-left",
     center: "text-center",
-    right: "text-right"
+    right: "text-right",
   };
 
   const sizeClasses = {
     sm: {
       title: "text-2xl md:text-3xl",
       subtitle: "text-lg",
-      description: "text-base"
+      description: "text-base",
     },
     md: {
       title: "text-3xl md:text-4xl lg:text-5xl",
       subtitle: "text-xl md:text-2xl",
-      description: "text-lg"
+      description: "text-lg",
     },
     lg: {
       title: "text-4xl md:text-5xl lg:text-6xl",
       subtitle: "text-2xl md:text-3xl",
-      description: "text-xl"
-    }
+      description: "text-xl",
+    },
   };
 
   return (

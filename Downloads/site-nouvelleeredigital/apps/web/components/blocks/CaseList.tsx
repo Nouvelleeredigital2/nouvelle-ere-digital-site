@@ -73,10 +73,7 @@ export const CaseList = ({
                 )}
 
                 {c.href && (
-                  <a
-                    href={c.href}
-                    className="mt-6 inline-block text-primary hover:underline"
-                  >
+                  <a href={c.href} className="mt-6 inline-block text-primary hover:underline">
                     Voir le projet →
                   </a>
                 )}

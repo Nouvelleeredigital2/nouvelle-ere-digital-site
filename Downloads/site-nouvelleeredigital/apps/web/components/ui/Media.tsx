@@ -20,10 +20,10 @@ export function Media({
     ratio === "16:9"
       ? "aspect-[16/9]"
       : ratio === "4:3"
-      ? "aspect-[4/3]"
-      : ratio === "1:1"
-      ? "aspect-square"
-      : undefined;
+        ? "aspect-[4/3]"
+        : ratio === "1:1"
+          ? "aspect-square"
+          : undefined;
 
   if (type === "image") {
     const isSvg = src.endsWith(".svg");

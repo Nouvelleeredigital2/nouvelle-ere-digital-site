@@ -1,20 +1,28 @@
 "use client";
 
-import React, { useState } from 'react';
-import { cn } from '@/lib/utils';
-import { Button } from './Button';
-import { Text } from './Text';
+import React, { useState } from "react";
+import { cn } from "@/lib/utils";
+import { Button } from "./Button";
+import { Text } from "./Text";
 
-type Variant = 'default' | 'compact' | 'expanded';
-type State = 'default' | 'hover' | 'active' | 'focus' | 'disabled' | 'selected' | 'invalid' | 'dragging';
+type Variant = "default" | "compact" | "expanded";
+type State =
+  | "default"
+  | "hover"
+  | "active"
+  | "focus"
+  | "disabled"
+  | "selected"
+  | "invalid"
+  | "dragging";
 
 interface AISummaryPanelProps {
   summary: string | { title: string; content: string; metadata?: Record<string, any> };
-  actions?: Array<{ id: string; label: string; type: 'select' | 'add' }>;
+  actions?: Array<{ id: string; label: string; type: "select" | "add" }>;
   variant?: Variant;
   isLoading?: boolean;
   maxHeight?: string | number;
-  dataModel?: 'need' | 'module' | 'bundle';
+  dataModel?: "need" | "module" | "bundle";
   onSelect?: (id: string) => void;
   onAdd?: (id: string) => void;
   onClose?: () => void;
@@ -25,7 +33,7 @@ interface AISummaryPanelProps {
 export const AISummaryPanel: React.FC<AISummaryPanelProps> = ({
   summary,
   actions = [],
-  variant = 'default',
+  variant = "default",
   isLoading = false,
   maxHeight,
   dataModel,
@@ -35,69 +43,69 @@ export const AISummaryPanel: React.FC<AISummaryPanelProps> = ({
   onError,
   className,
 }) => {
-  const [state, setState] = useState<State>('default');
+  const [state, setState] = useState<State>("default");
   const [focusedId, setFocusedId] = useState<string | null>(null);
 
-  const handleAction = (actionId: string, type: 'select' | 'add') => {
-    if (state === 'disabled') return;
+  const handleAction = (actionId: string, type: "select" | "add") => {
+    if (state === "disabled") return;
     try {
-      if (type === 'select' && onSelect) onSelect(actionId);
-      if (type === 'add' && onAdd) onAdd(actionId);
+      if (type === "select" && onSelect) onSelect(actionId);
+      if (type === "add" && onAdd) onAdd(actionId);
     } catch (error) {
-      if (onError) onError('Erreur lors de l\'action');
+      if (onError) onError("Erreur lors de l'action");
     }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === 'Escape' && onClose) {
+    if (event.key === "Escape" && onClose) {
       onClose();
     }
-    if (event.key === 'Enter' && focusedId) {
-      const action = actions.find(a => a.id === focusedId);
+    if (event.key === "Enter" && focusedId) {
+      const action = actions.find((a) => a.id === focusedId);
       if (action) handleAction(action.id, action.type);
     }
   };
 
   const variants: Record<Variant, string> = {
-    default: 'w-full max-w-md',
-    compact: 'w-full max-w-sm p-4',
-    expanded: 'w-full max-w-lg p-6',
+    default: "w-full max-w-md",
+    compact: "w-full max-w-sm p-4",
+    expanded: "w-full max-w-lg p-6",
   };
 
   const stateClasses: Record<State, string> = {
-    default: '',
-    hover: 'bg-[var(--couleur-light-hover)]',
-    active: 'bg-[var(--couleur-light-active)]',
-    focus: 'ring-2 ring-[var(--color-primary)]',
-    disabled: 'opacity-50 cursor-not-allowed',
-    selected: 'border-2 border-[var(--color-primary)]',
-    invalid: 'border-2 border-red-500',
-    dragging: 'cursor-grabbing',
+    default: "",
+    hover: "bg-[var(--couleur-light-hover)]",
+    active: "bg-[var(--couleur-light-active)]",
+    focus: "ring-2 ring-[var(--color-primary)]",
+    disabled: "opacity-50 cursor-not-allowed",
+    selected: "border-2 border-[var(--color-primary)]",
+    invalid: "border-2 border-red-500",
+    dragging: "cursor-grabbing",
   };
 
   return (
     <div
       className={cn(
-        'bg-[var(--couleur-light)] rounded-[var(--border-radius-large)] shadow-[var(--box-shadow-subtil)] p-6 transition-all duration-200',
+        "bg-[var(--couleur-light)] rounded-[var(--border-radius-large)] shadow-[var(--box-shadow-subtil)] p-6 transition-all duration-200",
         variants[variant],
         stateClasses[state],
-        className
+        className,
       )}
       style={{ maxHeight: maxHeight ? `${maxHeight}px` : undefined }}
       role="region"
       aria-label="Résumé IA"
       aria-live="polite"
-      onMouseEnter={() => setState('hover')}
-      onMouseLeave={() => setState('default')}
-      onFocus={() => setState('focus')}
-      onBlur={() => setState('default')}
+      onMouseEnter={() => setState("hover")}
+      onMouseLeave={() => setState("default")}
+      onFocus={() => setState("focus")}
+      onBlur={() => setState("default")}
       onKeyDown={handleKeyDown}
       tabIndex={0}
     >
       {isLoading && <Text className="text-muted">Chargement du résumé...</Text>}
       {!isLoading && (
         <>
-          {typeof summary === 'string' ? (
+          {typeof summary === "string" ? (
             <Text size="base" className="mb-4">
               {summary}
             </Text>
@@ -122,7 +130,7 @@ export const AISummaryPanel: React.FC<AISummaryPanelProps> = ({
                   onFocus={() => setFocusedId(action.id)}
                   onBlur={() => setFocusedId(null)}
                   aria-label={`${action.label} (${action.type})`}
-                  disabled={state === 'disabled'}
+                  disabled={state === "disabled"}
                 >
                   {action.label}
                 </Button>

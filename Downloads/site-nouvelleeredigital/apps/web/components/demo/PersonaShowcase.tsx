@@ -1,10 +1,10 @@
 // apps/web/components/demo/PersonaShowcase.tsx
 "use client";
 
-import { usePersona } from '@/components/context/PersonaProvider';
-import { usePersonaClasses } from '@/hooks/usePersonaClasses';
-import { Card } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
+import { usePersona } from "@/components/context/PersonaProvider";
+import { usePersonaClasses } from "@/hooks/usePersonaClasses";
+import { Card } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
 
 /**
  * Composant de démonstration du système de personas
@@ -17,7 +17,6 @@ export function PersonaShowcase() {
   return (
     <div className={`min-h-screen p-8 ${personaClasses.color}`}>
       <div className="max-w-4xl mx-auto space-y-8">
-
         {/* Sélecteur de persona */}
         <Card className="p-6 bg-persona-card border-persona shadow-persona rounded-persona">
           <h2 className="text-2xl font-bold mb-4 text-persona-primary font-persona-sans">
@@ -31,8 +30,8 @@ export function PersonaShowcase() {
                 onClick={() => setPersona(p.id)}
                 className={`px-4 py-2 rounded-lg transition-all font-persona-sans ${
                   persona.id === p.id
-                    ? 'bg-persona-primary text-white shadow-lg'
-                    : 'bg-persona-muted text-persona-primary hover:bg-persona-muted/80'
+                    ? "bg-persona-primary text-white shadow-lg"
+                    : "bg-persona-muted text-persona-primary hover:bg-persona-muted/80"
                 }`}
               >
                 {p.name}
@@ -41,9 +40,15 @@ export function PersonaShowcase() {
           </div>
 
           <div className="text-sm text-persona-secondary font-persona-sans">
-            <p><strong>Persona actif :</strong> {persona.name}</p>
-            <p><strong>Énergie :</strong> {persona.visualIdentity.energy}</p>
-            <p><strong>Humeur :</strong> {persona.visualIdentity.mood}</p>
+            <p>
+              <strong>Persona actif :</strong> {persona.name}
+            </p>
+            <p>
+              <strong>Énergie :</strong> {persona.visualIdentity.energy}
+            </p>
+            <p>
+              <strong>Humeur :</strong> {persona.visualIdentity.mood}
+            </p>
           </div>
         </Card>
 
@@ -136,10 +141,18 @@ export function PersonaShowcase() {
             </div>
 
             <div className="text-sm text-persona-secondary">
-              <p><strong>Style du héros :</strong> {persona.settings.layouts.heroStyle}</p>
-              <p><strong>Alignement du texte :</strong> {persona.settings.layouts.heroTextAlign}</p>
-              <p><strong>Rayon des bordures :</strong> {persona.settings.styles.borderRadius}</p>
-              <p><strong>Ombre des cartes :</strong> {persona.settings.styles.cardShadow}</p>
+              <p>
+                <strong>Style du héros :</strong> {persona.settings.layouts.heroStyle}
+              </p>
+              <p>
+                <strong>Alignement du texte :</strong> {persona.settings.layouts.heroTextAlign}
+              </p>
+              <p>
+                <strong>Rayon des bordures :</strong> {persona.settings.styles.borderRadius}
+              </p>
+              <p>
+                <strong>Ombre des cartes :</strong> {persona.settings.styles.cardShadow}
+              </p>
             </div>
           </div>
         </Card>
@@ -152,17 +165,29 @@ export function PersonaShowcase() {
 
           <div className="space-y-4">
             <div className="text-sm text-persona-secondary mb-4">
-              <p><strong>Intensité :</strong> {persona.settings.animations.intensity}</p>
-              <p><strong>Transitions :</strong> {persona.settings.animations.transitions}</p>
+              <p>
+                <strong>Intensité :</strong> {persona.settings.animations.intensity}
+              </p>
+              <p>
+                <strong>Transitions :</strong> {persona.settings.animations.transitions}
+              </p>
             </div>
 
             <div className="flex gap-4">
-              <div className={`animation-persona-${persona.settings.animations.intensity} p-4 bg-persona-muted rounded-persona`}>
-                <p className="text-persona-primary">Animation {persona.settings.animations.intensity}</p>
+              <div
+                className={`animation-persona-${persona.settings.animations.intensity} p-4 bg-persona-muted rounded-persona`}
+              >
+                <p className="text-persona-primary">
+                  Animation {persona.settings.animations.intensity}
+                </p>
               </div>
 
-              <div className={`animation-persona-${persona.settings.animations.transitions} p-4 bg-persona-muted rounded-persona`}>
-                <p className="text-persona-primary">Transition {persona.settings.animations.transitions}</p>
+              <div
+                className={`animation-persona-${persona.settings.animations.transitions} p-4 bg-persona-muted rounded-persona`}
+              >
+                <p className="text-persona-primary">
+                  Transition {persona.settings.animations.transitions}
+                </p>
               </div>
             </div>
           </div>
@@ -170,9 +195,7 @@ export function PersonaShowcase() {
 
         {/* Badges d'information */}
         <div className="flex flex-wrap gap-2">
-          <Badge className="bg-persona-primary text-white">
-            Persona: {persona.name}
-          </Badge>
+          <Badge className="bg-persona-primary text-white">Persona: {persona.name}</Badge>
           <Badge className="bg-persona-secondary text-white">
             Énergie: {persona.visualIdentity.energy}
           </Badge>
@@ -180,7 +203,6 @@ export function PersonaShowcase() {
             Humeur: {persona.visualIdentity.mood}
           </Badge>
         </div>
-
       </div>
     </div>
   );

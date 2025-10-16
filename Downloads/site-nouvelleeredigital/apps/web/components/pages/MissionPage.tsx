@@ -8,9 +8,15 @@ export function MissionPage() {
       {/* Héro */}
       <ThemeSection variant="gradient" className="py-32 md:py-40">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-4">Mission & Promesse</p>
+          <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-4">
+            Mission & Promesse
+          </p>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6">
-            Un partenaire unique,<br />une vision globale,<br />un impact mesurable.
+            Un partenaire unique,
+            <br />
+            une vision globale,
+            <br />
+            un impact mesurable.
           </h1>
         </div>
       </ThemeSection>
@@ -20,13 +26,20 @@ export function MissionPage() {
         <div className="max-w-4xl mx-auto">
           <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300">
             <p>
-              Chez Nouvelle Ère Digital, notre mission est d'accompagner la transformation créative, digitale et humaine des organisations.
+              Chez Nouvelle Ère Digital, notre mission est d'accompagner la transformation créative,
+              digitale et humaine des organisations.
             </p>
             <p>
-              Nous concevons des solutions qui unissent stratégie, création et technologie, pour que chaque action ait du sens, chaque expérience laisse une trace et chaque résultat soit mesurable.
+              Nous concevons des solutions qui unissent stratégie, création et technologie, pour que
+              chaque action ait du sens, chaque expérience laisse une trace et chaque résultat soit
+              mesurable.
             </p>
-            <blockquote className="border-l-4 border-brand pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8" style={{ borderColor: '#7C3AED' }}>
-              « Nous ne faisons pas seulement de la communication : nous créons des expériences de marque qui durent. »
+            <blockquote
+              className="border-l-4 border-brand pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8"
+              style={{ borderColor: "#7C3AED" }}
+            >
+              « Nous ne faisons pas seulement de la communication : nous créons des expériences de
+              marque qui durent. »
             </blockquote>
           </div>
         </div>
@@ -35,8 +48,8 @@ export function MissionPage() {
       {/* Notre mission */}
       <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
         <div className="max-w-6xl mx-auto">
-          <SectionHeading 
-            eyebrow="Notre mission" 
+          <SectionHeading
+            eyebrow="Notre mission"
             title="Transformer votre vision en expérience mesurable"
             align="center"
           />
@@ -54,7 +67,10 @@ export function MissionPage() {
               "Mesurer la valeur réelle de chaque projet grâce à des indicateurs précis et transparents",
             ].map((item, i) => (
               <div key={i} className="flex gap-4 items-start">
-                <div className="w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-white text-sm font-bold mt-1" style={{ backgroundColor: '#7C3AED' }}>
+                <div
+                  className="w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-white text-sm font-bold mt-1"
+                  style={{ backgroundColor: "#7C3AED" }}
+                >
                   ✓
                 </div>
                 <p className="flex-1">{item}</p>
@@ -66,7 +82,7 @@ export function MissionPage() {
             <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 mb-8">
               Notre accompagnement repose sur trois promesses fondamentales :
             </p>
-            
+
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 { num: "1", text: "Simplifier la complexité numérique." },
@@ -74,7 +90,10 @@ export function MissionPage() {
                 { num: "3", text: "Valoriser l'humain comme moteur de toute expérience." },
               ].map((item, i) => (
                 <div key={i} className="card text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl font-bold text-white" style={{ background: 'linear-gradient(135deg, #7C3AED, #6D28D9)' }}>
+                  <div
+                    className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl font-bold text-white"
+                    style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
+                  >
                     {item.num}
                   </div>
                   <p className="font-medium text-zinc-900 dark:text-zinc-100">{item.text}</p>
@@ -82,7 +101,10 @@ export function MissionPage() {
               ))}
             </div>
 
-            <blockquote className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-12 text-center" style={{ borderColor: '#7C3AED' }}>
+            <blockquote
+              className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-12 text-center"
+              style={{ borderColor: "#7C3AED" }}
+            >
               « De l'idée à l'impact, nous transformons votre vision en expérience mesurable. »
             </blockquote>
           </div>
@@ -92,22 +114,23 @@ export function MissionPage() {
       {/* Notre approche */}
       <ThemeSection variant="light" className="py-20">
         <div className="max-w-4xl mx-auto">
-          <SectionHeading 
-            eyebrow="Notre approche" 
-            title="La cohérence avant tout"
-            align="center"
-          />
+          <SectionHeading eyebrow="Notre approche" title="La cohérence avant tout" align="center" />
           <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300 text-center">
             <p>
-              Nous rassemblons des expertises souvent séparées : <strong className="text-zinc-900 dark:text-zinc-100">communication, audiovisuel, marketing, événementiel, design, web et IA.</strong>
+              Nous rassemblons des expertises souvent séparées :{" "}
+              <strong className="text-zinc-900 dark:text-zinc-100">
+                communication, audiovisuel, marketing, événementiel, design, web et IA.
+              </strong>
             </p>
+            <p>Cette transversalité est notre force.</p>
             <p>
-              Cette transversalité est notre force.
+              Elle nous permet de concevoir des projets fluides, sans rupture entre le terrain et le
+              digital, avec un seul fil conducteur : votre objectif.
             </p>
-            <p>
-              Elle nous permet de concevoir des projets fluides, sans rupture entre le terrain et le digital, avec un seul fil conducteur : votre objectif.
-            </p>
-            <blockquote className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8" style={{ borderColor: '#7C3AED' }}>
+            <blockquote
+              className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8"
+              style={{ borderColor: "#7C3AED" }}
+            >
               « Un seul partenaire, une seule vision, une expérience continue. »
             </blockquote>
           </div>
@@ -117,15 +140,15 @@ export function MissionPage() {
       {/* Notre méthode - 4 étapes */}
       <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
         <div className="max-w-6xl mx-auto">
-          <SectionHeading 
-            eyebrow="Notre méthode" 
+          <SectionHeading
+            eyebrow="Notre méthode"
             title="Une démarche intégrée et modulaire"
             align="center"
           />
           <p className="text-center text-lg text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto mb-16">
             Du conseil stratégique à la production, puis à la diffusion et à la mesure.
           </p>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
@@ -152,12 +175,17 @@ export function MissionPage() {
               <div key={i} className="card group hover:shadow-lg transition-shadow">
                 <div className="flex gap-4 items-start">
                   <div className="flex-shrink-0">
-                    <div className="w-14 h-14 rounded-xl flex items-center justify-center text-xl font-bold text-white" style={{ background: 'linear-gradient(135deg, #7C3AED, #6D28D9)' }}>
+                    <div
+                      className="w-14 h-14 rounded-xl flex items-center justify-center text-xl font-bold text-white"
+                      style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
+                    >
                       {item.num}
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 mb-2">{item.title}</h3>
+                    <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                      {item.title}
+                    </h3>
                     <p className="text-zinc-600 dark:text-zinc-400">{item.desc}</p>
                   </div>
                 </div>
@@ -166,7 +194,9 @@ export function MissionPage() {
           </div>
 
           <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 mt-12 max-w-3xl mx-auto">
-            Chaque étape est autonome, mais leur combinaison crée l'effet <strong className="text-zinc-900 dark:text-zinc-100">&quot;clé en main&quot;</strong> : une stratégie complète, lisible et mesurable.
+            Chaque étape est autonome, mais leur combinaison crée l'effet{" "}
+            <strong className="text-zinc-900 dark:text-zinc-100">&quot;clé en main&quot;</strong> :
+            une stratégie complète, lisible et mesurable.
           </p>
         </div>
       </ThemeSection>
@@ -174,30 +204,54 @@ export function MissionPage() {
       {/* Notre promesse de résultat */}
       <ThemeSection variant="light" className="py-20">
         <div className="max-w-6xl mx-auto">
-          <SectionHeading 
-            eyebrow="Notre promesse de résultat" 
+          <SectionHeading
+            eyebrow="Notre promesse de résultat"
             title="Plus d'impact, moins de frictions"
             align="center"
           />
-          
+
           <div className="overflow-x-auto">
             <table className="w-full max-w-4xl mx-auto">
               <thead>
-                <tr className="border-b-2" style={{ borderColor: '#7C3AED' }}>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">Ce que vous gagnez</th>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">Ce que nous garantissons</th>
+                <tr className="border-b-2" style={{ borderColor: "#7C3AED" }}>
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                    Ce que vous gagnez
+                  </th>
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                    Ce que nous garantissons
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-zinc-200 dark:divide-zinc-700">
                 {[
-                  { gain: "Temps", garantie: "Moins d'intermédiaires, plus de clarté et de fluidité." },
-                  { gain: "Qualité", garantie: "Image, son, design et narration maîtrisés de bout en bout." },
-                  { gain: "Portée", garantie: "Une stratégie de diffusion pensée dès la conception." },
-                  { gain: "Maîtrise", garantie: "Formation et documentation pour poursuivre en autonomie." },
-                  { gain: "Mesure", garantie: "Des indicateurs concrets : vues, engagement, leads, satisfaction." },
+                  {
+                    gain: "Temps",
+                    garantie: "Moins d'intermédiaires, plus de clarté et de fluidité.",
+                  },
+                  {
+                    gain: "Qualité",
+                    garantie: "Image, son, design et narration maîtrisés de bout en bout.",
+                  },
+                  {
+                    gain: "Portée",
+                    garantie: "Une stratégie de diffusion pensée dès la conception.",
+                  },
+                  {
+                    gain: "Maîtrise",
+                    garantie: "Formation et documentation pour poursuivre en autonomie.",
+                  },
+                  {
+                    gain: "Mesure",
+                    garantie: "Des indicateurs concrets : vues, engagement, leads, satisfaction.",
+                  },
                 ].map((row, i) => (
-                  <tr key={i} className="hover:bg-zinc-50 dark:hover:bg-zinc-900/30 transition-colors">
-                    <td className="py-4 px-6 font-semibold text-zinc-900 dark:text-zinc-100">{row.gain}</td>
+                  <tr
+                    key={i}
+                    className="hover:bg-zinc-50 dark:hover:bg-zinc-900/30 transition-colors"
+                  >
+                    <td className="py-4 px-6 font-semibold text-zinc-900 dark:text-zinc-100">
+                      {row.gain}
+                    </td>
                     <td className="py-4 px-6 text-zinc-700 dark:text-zinc-300">{row.garantie}</td>
                   </tr>
                 ))}
@@ -205,8 +259,12 @@ export function MissionPage() {
             </table>
           </div>
 
-          <blockquote className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-12 text-center max-w-3xl mx-auto" style={{ borderColor: '#7C3AED' }}>
-            « Nous prenons la responsabilité du résultat — qualité, fluidité, pertinence et performance. »
+          <blockquote
+            className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-12 text-center max-w-3xl mx-auto"
+            style={{ borderColor: "#7C3AED" }}
+          >
+            « Nous prenons la responsabilité du résultat — qualité, fluidité, pertinence et
+            performance. »
           </blockquote>
         </div>
       </ThemeSection>
@@ -214,33 +272,51 @@ export function MissionPage() {
       {/* Notre différence */}
       <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
         <div className="max-w-6xl mx-auto">
-          <SectionHeading 
-            eyebrow="Notre différence" 
+          <SectionHeading
+            eyebrow="Notre différence"
             title="La capacité à assembler"
             align="center"
           />
           <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto mb-12">
-            Ce qui nous distingue, ce n'est pas une technologie isolée, mais notre capacité à assembler.
+            Ce qui nous distingue, ce n'est pas une technologie isolée, mais notre capacité à
+            assembler.
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Vue d'ensemble", desc: "Nous parlons le langage des équipes événementielles, créatives et marketing." },
-              { title: "Innovation pragmatique", desc: "L'IA est utilisée là où elle simplifie vraiment." },
+              {
+                title: "Vue d'ensemble",
+                desc: "Nous parlons le langage des équipes événementielles, créatives et marketing.",
+              },
+              {
+                title: "Innovation pragmatique",
+                desc: "L'IA est utilisée là où elle simplifie vraiment.",
+              },
               { title: "Pédagogie", desc: "Nous formons, documentons et transmettons." },
-              { title: "Culture du terrain", desc: "Héritée de l'audiovisuel live, fiable et réactive." },
+              {
+                title: "Culture du terrain",
+                desc: "Héritée de l'audiovisuel live, fiable et réactive.",
+              },
             ].map((item, i) => (
               <div key={i} className="card text-center">
-                <div className="w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #7C3AED, #6D28D9)' }}>
+                <div
+                  className="w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center"
+                  style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
+                >
                   <div className="w-6 h-6 bg-white/20 rounded-lg"></div>
                 </div>
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">{item.title}</h3>
+                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                  {item.title}
+                </h3>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400">{item.desc}</p>
               </div>
             ))}
           </div>
 
-          <blockquote className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-12 text-center max-w-3xl mx-auto" style={{ borderColor: '#7C3AED' }}>
+          <blockquote
+            className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-12 text-center max-w-3xl mx-auto"
+            style={{ borderColor: "#7C3AED" }}
+          >
             « Audiovisuel. Digital. IA. Un seul partenaire, un seul impact. »
           </blockquote>
         </div>
@@ -249,12 +325,12 @@ export function MissionPage() {
       {/* Notre valeur ajoutée */}
       <ThemeSection variant="light" className="py-20">
         <div className="max-w-4xl mx-auto">
-          <SectionHeading 
-            eyebrow="Notre valeur ajoutée" 
+          <SectionHeading
+            eyebrow="Notre valeur ajoutée"
             title="Ce que nous apportons"
             align="center"
           />
-          
+
           <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {[
               "Une approche globale du conseil à la production.",
@@ -264,7 +340,10 @@ export function MissionPage() {
               "Des outils IA responsables, au service de la performance et de la souveraineté numérique.",
             ].map((item, i) => (
               <div key={i} className="flex gap-4 items-start">
-                <div className="w-2 h-2 rounded-full flex-shrink-0 mt-2" style={{ backgroundColor: '#7C3AED' }}></div>
+                <div
+                  className="w-2 h-2 rounded-full flex-shrink-0 mt-2"
+                  style={{ backgroundColor: "#7C3AED" }}
+                ></div>
                 <p className="flex-1 text-zinc-700 dark:text-zinc-300">{item}</p>
               </div>
             ))}
@@ -276,7 +355,8 @@ export function MissionPage() {
       <ThemeSection variant="dark" className="py-20">
         <div className="max-w-4xl mx-auto text-center">
           <blockquote className="text-2xl md:text-3xl font-medium text-white leading-relaxed">
-            « Nous concevons, produisons et optimisons vos expériences de marque grâce à l'IA.<br />
+            « Nous concevons, produisons et optimisons vos expériences de marque grâce à l'IA.
+            <br />
             De la scène à l'écran, captez, engagez, mesurez. »
           </blockquote>
         </div>
@@ -286,12 +366,15 @@ export function MissionPage() {
       <ThemeSection variant="gradient" className="py-32">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white mb-6">
-            Un partenaire unique.<br />
-            Une vision globale.<br />
+            Un partenaire unique.
+            <br />
+            Une vision globale.
+            <br />
             Un impact mesurable.
           </h2>
           <p className="text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto">
-            De l'événement hybride aux expériences digitales immersives, nous créons des moments qui marquent.
+            De l'événement hybride aux expériences digitales immersives, nous créons des moments qui
+            marquent.
           </p>
         </div>
       </ThemeSection>

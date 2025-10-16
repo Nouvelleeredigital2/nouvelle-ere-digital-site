@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useCallback } from 'react';
-import { usePersona } from '@/components/context/PersonaProvider';
+import { useEffect, useCallback } from "react";
+import { usePersona } from "@/components/context/PersonaProvider";
 
 interface AnalyticsEvent {
   event: string;
@@ -31,18 +31,24 @@ class PersonaAnalytics {
   constructor() {
     this.sessionId = this.generateSessionId();
     this.sessionStartTime = Date.now();
-    this.isEnabled = process.env.NODE_ENV === 'production' || localStorage.getItem('analytics-enabled') === 'true';
+    this.isEnabled =
+      process.env.NODE_ENV === "production" || localStorage.getItem("analytics-enabled") === "true";
 
     // Écouter les événements de changement de persona
-    window.addEventListener('personaChanged', this.handlePersonaChange.bind(this));
-    window.addEventListener('userPreferencesChanged', this.handlePreferencesChange.bind(this));
+    window.addEventListener("personaChanged", this.handlePersonaChange.bind(this));
+    window.addEventListener("userPreferencesChanged", this.handlePreferencesChange.bind(this));
   }
 
   private generateSessionId(): string {
     return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
   }
 
-  private trackEvent(event: string, personaId: string, personaName: string, metadata?: Record<string, any>) {
+  private trackEvent(
+    event: string,
+    personaId: string,
+    personaName: string,
+    metadata?: Record<string, any>,
+  ) {
     if (!this.isEnabled) return;
 
     const analyticsEvent: AnalyticsEvent = {
@@ -51,7 +57,7 @@ class PersonaAnalytics {
       personaName,
       timestamp: new Date().toISOString(),
       sessionId: this.sessionId,
-      metadata
+      metadata,
     };
 
     this.events.push(analyticsEvent);
@@ -60,37 +66,42 @@ class PersonaAnalytics {
     this.saveEventsLocally();
 
     // Ici, on pourrait envoyer à un service d'analytics réel
-    console.log('Analytics Event:', analyticsEvent);
+    console.log("Analytics Event:", analyticsEvent);
 
     // Simulation d'envoi à un service externe
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', event, {
+    if (typeof window !== "undefined" && (window as any).gtag) {
+      (window as any).gtag("event", event, {
         persona_id: personaId,
         persona_name: personaName,
         session_id: this.sessionId,
-        ...metadata
+        ...metadata,
       });
     }
   }
 
   private handlePersonaChange(event: CustomEvent) {
     const { personaId, personaName } = event.detail;
-    this.trackEvent('persona_switch', personaId, personaName, {
-      previousPersona: this.getCurrentPersonaId()
+    this.trackEvent("persona_switch", personaId, personaName, {
+      previousPersona: this.getCurrentPersonaId(),
     });
   }
 
   private handlePreferencesChange(event: CustomEvent) {
     const preferences = event.detail;
-    this.trackEvent('preferences_updated', preferences.personaId, preferences.personaName || 'Unknown', {
-      onboardingCompleted: preferences.onboardingCompleted,
-      preferences
-    });
+    this.trackEvent(
+      "preferences_updated",
+      preferences.personaId,
+      preferences.personaName || "Unknown",
+      {
+        onboardingCompleted: preferences.onboardingCompleted,
+        preferences,
+      },
+    );
   }
 
   private getCurrentPersonaId(): string | null {
     try {
-      return localStorage.getItem('creative-persona');
+      return localStorage.getItem("creative-persona");
     } catch {
       return null;
     }
@@ -98,31 +109,36 @@ class PersonaAnalytics {
 
   private saveEventsLocally() {
     try {
-      const existingEvents = JSON.parse(localStorage.getItem('persona-analytics') || '[]');
+      const existingEvents = JSON.parse(localStorage.getItem("persona-analytics") || "[]");
       const allEvents = [...existingEvents, ...this.events];
-      localStorage.setItem('persona-analytics', JSON.stringify(allEvents.slice(-1000))); // Garder les 1000 derniers événements
+      localStorage.setItem("persona-analytics", JSON.stringify(allEvents.slice(-1000))); // Garder les 1000 derniers événements
     } catch (error) {
-      console.error('Erreur lors de la sauvegarde des événements analytics:', error);
+      console.error("Erreur lors de la sauvegarde des événements analytics:", error);
     }
   }
 
   // Méthodes publiques pour le tracking manuel
   trackPageView(page: string, personaId: string, personaName: string) {
-    this.trackEvent('page_view', personaId, personaName, { page });
+    this.trackEvent("page_view", personaId, personaName, { page });
   }
 
-  trackUserEngagement(action: string, personaId: string, personaName: string, metadata?: Record<string, any>) {
-    this.trackEvent('user_engagement', personaId, personaName, { action, ...metadata });
+  trackUserEngagement(
+    action: string,
+    personaId: string,
+    personaName: string,
+    metadata?: Record<string, any>,
+  ) {
+    this.trackEvent("user_engagement", personaId, personaName, { action, ...metadata });
   }
 
   trackPerformance(metric: string, value: number, personaId: string, personaName: string) {
-    this.trackEvent('performance_metric', personaId, personaName, { metric, value });
+    this.trackEvent("performance_metric", personaId, personaName, { metric, value });
   }
 
   // Récupérer les statistiques d'utilisation
   getUsageStats(): PersonaUsageStats[] {
     try {
-      const events = JSON.parse(localStorage.getItem('persona-analytics') || '[]');
+      const events = JSON.parse(localStorage.getItem("persona-analytics") || "[]");
       const stats: Record<string, PersonaUsageStats> = {};
 
       events.forEach((event: AnalyticsEvent) => {
@@ -134,24 +150,24 @@ class PersonaAnalytics {
             totalTimeSpent: 0,
             switchCount: 0,
             lastUsed: event.timestamp,
-            preferences: {}
+            preferences: {},
           };
         }
 
         const stat = stats[event.personaId];
 
         // Compter les sessions uniques
-        if (event.event === 'session_start') {
+        if (event.event === "session_start") {
           stat.totalSessions++;
         }
 
         // Accumuler le temps passé
-        if (event.event === 'session_time') {
-          stat.totalTimeSpent += (event.metadata?.duration || 0);
+        if (event.event === "session_time") {
+          stat.totalTimeSpent += event.metadata?.duration || 0;
         }
 
         // Compter les changements
-        if (event.event === 'persona_switch') {
+        if (event.event === "persona_switch") {
           stat.switchCount++;
         }
 
@@ -163,23 +179,23 @@ class PersonaAnalytics {
 
       return Object.values(stats);
     } catch (error) {
-      console.error('Erreur lors de la récupération des statistiques:', error);
+      console.error("Erreur lors de la récupération des statistiques:", error);
       return [];
     }
   }
 
   // Démarrer une nouvelle session
   startSession(personaId: string, personaName: string) {
-    this.trackEvent('session_start', personaId, personaName, {
+    this.trackEvent("session_start", personaId, personaName, {
       userAgent: navigator.userAgent,
       screenResolution: `${screen.width}x${screen.height}`,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
   }
 
   // Mettre à jour le temps de session
   updateSessionTime(duration: number, personaId: string, personaName: string) {
-    this.trackEvent('session_time', personaId, personaName, { duration });
+    this.trackEvent("session_time", personaId, personaName, { duration });
   }
 
   // Nettoyer les anciennes données
@@ -188,14 +204,14 @@ class PersonaAnalytics {
       const thirtyDaysAgo = new Date();
       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
-      const events = JSON.parse(localStorage.getItem('persona-analytics') || '[]');
-      const recentEvents = events.filter((event: AnalyticsEvent) =>
-        new Date(event.timestamp) > thirtyDaysAgo
+      const events = JSON.parse(localStorage.getItem("persona-analytics") || "[]");
+      const recentEvents = events.filter(
+        (event: AnalyticsEvent) => new Date(event.timestamp) > thirtyDaysAgo,
       );
 
-      localStorage.setItem('persona-analytics', JSON.stringify(recentEvents));
+      localStorage.setItem("persona-analytics", JSON.stringify(recentEvents));
     } catch (error) {
-      console.error('Erreur lors du nettoyage des données analytics:', error);
+      console.error("Erreur lors du nettoyage des données analytics:", error);
     }
   }
 }
@@ -221,10 +237,10 @@ export function usePersonaAnalytics() {
     };
 
     // Écouter les changements de route (simplifié)
-    window.addEventListener('popstate', handleRouteChange);
+    window.addEventListener("popstate", handleRouteChange);
 
     return () => {
-      window.removeEventListener('popstate', handleRouteChange);
+      window.removeEventListener("popstate", handleRouteChange);
     };
   }, [persona]);
 
@@ -236,7 +252,8 @@ export function usePersonaAnalytics() {
       if (document.hidden) {
         // Page devient invisible, calculer le temps passé
         const timeSpent = (Date.now() - startTime) / 1000 / 60; // en minutes
-        if (analyticsInstance && timeSpent > 0.1) { // Minimum 6 secondes
+        if (analyticsInstance && timeSpent > 0.1) {
+          // Minimum 6 secondes
           analyticsInstance.updateSessionTime(timeSpent, persona.id, persona.name);
         }
       } else {
@@ -245,24 +262,30 @@ export function usePersonaAnalytics() {
       }
     };
 
-    document.addEventListener('visibilitychange', handleVisibilityChange);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [persona]);
 
-  const trackEngagement = useCallback((action: string, metadata?: Record<string, any>) => {
-    if (analyticsInstance) {
-      analyticsInstance.trackUserEngagement(action, persona.id, persona.name, metadata);
-    }
-  }, [persona]);
+  const trackEngagement = useCallback(
+    (action: string, metadata?: Record<string, any>) => {
+      if (analyticsInstance) {
+        analyticsInstance.trackUserEngagement(action, persona.id, persona.name, metadata);
+      }
+    },
+    [persona],
+  );
 
-  const trackPerformance = useCallback((metric: string, value: number) => {
-    if (analyticsInstance) {
-      analyticsInstance.trackPerformance(metric, value, persona.id, persona.name);
-    }
-  }, [persona]);
+  const trackPerformance = useCallback(
+    (metric: string, value: number) => {
+      if (analyticsInstance) {
+        analyticsInstance.trackPerformance(metric, value, persona.id, persona.name);
+      }
+    },
+    [persona],
+  );
 
   const getStats = useCallback(() => {
     return analyticsInstance?.getUsageStats() || [];
@@ -272,6 +295,6 @@ export function usePersonaAnalytics() {
     trackEngagement,
     trackPerformance,
     getStats,
-    isEnabled: analyticsInstance?.isEnabled || false
+    isEnabled: analyticsInstance?.isEnabled || false,
   };
 }

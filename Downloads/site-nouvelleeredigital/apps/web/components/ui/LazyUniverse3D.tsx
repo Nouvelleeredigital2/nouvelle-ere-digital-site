@@ -1,7 +1,9 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy } from "react";
 
 // Lazy load Universe3D pour améliorer les performances
-const LazyUniverse3D = lazy(() => import('./Universe3D').then(module => ({ default: module.Universe3D })));
+const LazyUniverse3D = lazy(() =>
+  import("./Universe3D").then((module) => ({ default: module.Universe3D })),
+);
 
 interface LazyUniverse3DWrapperProps {
   services?: any[];
@@ -10,16 +12,16 @@ interface LazyUniverse3DWrapperProps {
 
 export const LazyUniverse3DWrapper: React.FC<LazyUniverse3DWrapperProps> = ({
   services,
-  className = '',
+  className = "",
 }) => {
   return (
-    <Suspense fallback={
-      <div className={`w-full h-screen bg-black flex items-center justify-center ${className}`}>
-        <div className="text-white text-xl animate-pulse">
-          Chargement de l'Univers 3D...
+    <Suspense
+      fallback={
+        <div className={`w-full h-screen bg-black flex items-center justify-center ${className}`}>
+          <div className="text-white text-xl animate-pulse">Chargement de l'Univers 3D...</div>
         </div>
-      </div>
-    }>
+      }
+    >
       <LazyUniverse3D services={services} className={className} />
     </Suspense>
   );

@@ -1,16 +1,22 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { usePersona } from '@/components/context/PersonaProvider';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
-import { Palette, Users, Target, Zap, Heart } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { usePersona } from "@/components/context/PersonaProvider";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { Palette, Users, Target, Zap, Heart } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function PersonaNavSelector() {
   const { persona, setPersona, personas } = usePersona();
   const [isOpen, setIsOpen] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  // Éviter l'hydratation côté serveur pour les composants liés aux personas
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
 
   // Animation de transition quand le persona change
   useEffect(() => {
@@ -24,12 +30,18 @@ export function PersonaNavSelector() {
 
   const getPersonaIcon = (archetype: string) => {
     switch (archetype) {
-      case 'Le Visionnaire Créatif': return Palette;
-      case 'Le Maître Constructeur': return Users;
-      case 'Le Maître Tacticien': return Target;
-      case 'Le Visionnaire Technologique': return Zap;
-      case 'Le Tisseur de Liens': return Heart;
-      default: return Palette;
+      case "Le Visionnaire Créatif":
+        return Palette;
+      case "Le Maître Constructeur":
+        return Users;
+      case "Le Maître Tacticien":
+        return Target;
+      case "Le Visionnaire Technologique":
+        return Zap;
+      case "Le Tisseur de Liens":
+        return Heart;
+      default:
+        return Palette;
     }
   };
 
@@ -41,14 +53,31 @@ export function PersonaNavSelector() {
     setIsOpen(false);
 
     // Ajouter un effet visuel sur tout le document
-    document.documentElement.style.setProperty('--transition-overlay', '1');
+    document.documentElement.style.setProperty("--transition-overlay", "1");
     setTimeout(() => {
-      document.documentElement.style.removeProperty('--transition-overlay');
+      document.documentElement.style.removeProperty("--transition-overlay");
     }, 600);
   };
 
-  const currentPersona = personas.find(p => p.id === persona.id);
+  const currentPersona = personas.find((p) => p.id === persona.id);
   const Icon = currentPersona ? getPersonaIcon(currentPersona.name) : Palette;
+
+  // Ne rendre le contenu qu'après l'hydratation côté client
+  if (!isHydrated) {
+    return (
+      <div className="relative">
+        <Button
+          variant="outline"
+          size="sm"
+          className="flex items-center gap-2 bg-background/50 hover:bg-background border-border"
+          disabled
+        >
+          <Palette className="w-4 h-4" />
+          <span className="hidden sm:inline">Chargement...</span>
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -67,10 +96,14 @@ export function PersonaNavSelector() {
 
       <div className="relative">
         <motion.div
-          animate={isTransitioning ? {
-            scale: [1, 1.05, 1],
-            rotateY: [0, 180, 360]
-          } : {}}
+          animate={
+            isTransitioning
+              ? {
+                  scale: [1, 1.05, 1],
+                  rotateY: [0, 180, 360],
+                }
+              : {}
+          }
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
           <Button
@@ -78,24 +111,25 @@ export function PersonaNavSelector() {
             size="sm"
             onClick={() => setIsOpen(!isOpen)}
             className={`flex items-center gap-2 bg-background/50 hover:bg-background border-border transition-all duration-300 ${
-              isTransitioning ? 'animate-pulse' : ''
+              isTransitioning ? "animate-pulse" : ""
             }`}
             disabled={isTransitioning}
           >
             <motion.div
-              animate={isTransitioning ? {
-                rotate: [0, 360],
-                scale: [1, 1.2, 1]
-              } : {}}
+              animate={
+                isTransitioning
+                  ? {
+                      rotate: [0, 360],
+                      scale: [1, 1.2, 1],
+                    }
+                  : {}
+              }
               transition={{ duration: 0.6 }}
             >
               <Icon className="w-4 h-4" />
             </motion.div>
             <span className="hidden sm:inline">{currentPersona?.name}</span>
-            <motion.div
-              animate={{ rotate: isOpen ? 180 : 0 }}
-              transition={{ duration: 0.2 }}
-            >
+            <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
               ▾
             </motion.div>
           </Button>
@@ -128,16 +162,18 @@ export function PersonaNavSelector() {
                         onClick={() => handlePersonaChange(p.id)}
                         className={`w-full justify-start gap-2 mb-1 transition-all duration-200 ${
                           isActive
-                            ? 'bg-primary text-primary-foreground shadow-md'
-                            : 'hover:bg-muted hover:scale-105'
+                            ? "bg-primary text-primary-foreground shadow-md"
+                            : "hover:bg-muted hover:scale-105"
                         }`}
                         disabled={isTransitioning}
                       >
                         <PersonaIcon className="w-4 h-4" />
                         <div className="text-left">
                           <div className="font-medium text-sm">{p.name}</div>
-                          <div className={`text-xs ${isActive ? 'text-primary-foreground/70' : 'text-muted-foreground'}`}>
-                            {p.energy} • {p.mood}
+                          <div
+                            className={`text-xs ${isActive ? "text-primary-foreground/70" : "text-muted-foreground"}`}
+                          >
+                            {p.visualIdentity.energy} • {p.visualIdentity.mood}
                           </div>
                         </div>
                         {isActive && (

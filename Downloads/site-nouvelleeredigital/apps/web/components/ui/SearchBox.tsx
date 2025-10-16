@@ -1,12 +1,20 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import { cn } from '@/lib/utils';
-import { Text } from './Text';
+import React, { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
+import { Text } from "./Text";
 
-type Variant = 'default' | 'outlined' | 'filled';
-type Size = 'sm' | 'md' | 'lg';
-type State = 'default' | 'hover' | 'active' | 'focus' | 'disabled' | 'selected' | 'invalid' | 'dragging';
+type Variant = "default" | "outlined" | "filled";
+type Size = "sm" | "md" | "lg";
+type State =
+  | "default"
+  | "hover"
+  | "active"
+  | "focus"
+  | "disabled"
+  | "selected"
+  | "invalid"
+  | "dragging";
 
 interface SearchBoxProps {
   placeholder: string;
@@ -14,7 +22,7 @@ interface SearchBoxProps {
   suggestions?: Array<{ id: string; label: string; type?: string }>;
   variant?: Variant;
   size?: Size;
-  dataModel?: 'need' | 'module' | 'bundle';
+  dataModel?: "need" | "module" | "bundle";
   apiUrl?: string; // Nouvelle prop pour l'API
   onSearch?: (query: string) => void;
   onSelect?: (id: string) => void;
@@ -26,10 +34,10 @@ interface SearchBoxProps {
 
 export const SearchBox: React.FC<SearchBoxProps> = ({
   placeholder,
-  value = '',
+  value = "",
   suggestions = [],
-  variant = 'default',
-  size = 'md',
+  variant = "default",
+  size = "md",
   dataModel,
   apiUrl,
   onSearch,
@@ -39,19 +47,21 @@ export const SearchBox: React.FC<SearchBoxProps> = ({
   onClear,
   className,
 }) => {
-  const [state, setState] = useState<State>('default');
+  const [state, setState] = useState<State>("default");
   const [query, setQuery] = useState(value);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [focusedId, setFocusedId] = useState<string | null>(null);
-  const [apiSuggestions, setApiSuggestions] = useState<Array<{ id: string; label: string; type?: string }>>([]);
+  const [apiSuggestions, setApiSuggestions] = useState<
+    Array<{ id: string; label: string; type?: string }>
+  >([]);
 
   // Fetch suggestions from API if apiUrl is provided
   useEffect(() => {
     if (apiUrl && query.length > 2) {
       fetch(`${apiUrl}?q=${encodeURIComponent(query)}`)
-        .then(response => response.json())
-        .then(data => setApiSuggestions(data.suggestions || []))
-        .catch(error => console.error('API Error:', error));
+        .then((response) => response.json())
+        .then((data) => setApiSuggestions(data.suggestions || []))
+        .catch((error) => console.error("API Error:", error));
     } else {
       setApiSuggestions([]);
     }
@@ -78,30 +88,30 @@ export const SearchBox: React.FC<SearchBoxProps> = ({
   };
 
   const sizes: Record<Size, string> = {
-    sm: 'text-sm p-2',
-    md: 'text-base p-3',
-    lg: 'text-lg p-4',
+    sm: "text-sm p-2",
+    md: "text-base p-3",
+    lg: "text-lg p-4",
   };
 
   const variants: Record<Variant, string> = {
-    default: 'border border-gray-300 bg-white',
-    outlined: 'border-2 border-[var(--color-primary)] bg-transparent',
-    filled: 'bg-[var(--couleur-light)] border border-gray-300',
+    default: "border border-gray-300 bg-white",
+    outlined: "border-2 border-[var(--color-primary)] bg-transparent",
+    filled: "bg-[var(--couleur-light)] border border-gray-300",
   };
 
   const stateClasses: Record<State, string> = {
-    default: '',
-    hover: 'border-[var(--color-primary)]',
-    active: 'bg-[var(--couleur-light-active)]',
-    focus: 'ring-2 ring-[var(--color-primary)]',
-    disabled: 'opacity-50 cursor-not-allowed',
-    selected: 'border-2 border-[var(--color-primary)]',
-    invalid: 'border-2 border-red-500',
-    dragging: 'cursor-grabbing',
+    default: "",
+    hover: "border-[var(--color-primary)]",
+    active: "bg-[var(--couleur-light-active)]",
+    focus: "ring-2 ring-[var(--color-primary)]",
+    disabled: "opacity-50 cursor-not-allowed",
+    selected: "border-2 border-[var(--color-primary)]",
+    invalid: "border-2 border-red-500",
+    dragging: "cursor-grabbing",
   };
 
   return (
-    <div className={cn('relative', className)}>
+    <div className={cn("relative", className)}>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -109,16 +119,16 @@ export const SearchBox: React.FC<SearchBoxProps> = ({
           onChange={handleInputChange}
           placeholder={placeholder}
           className={cn(
-            'w-full rounded-[var(--border-radius-large)] shadow-[var(--box-shadow-subtil)]',
+            "w-full rounded-[var(--border-radius-large)] shadow-[var(--box-shadow-subtil)]",
             sizes[size],
             variants[variant],
-            stateClasses[state]
+            stateClasses[state],
           )}
-          onMouseEnter={() => setState('hover')}
-          onMouseLeave={() => setState('default')}
-          onFocus={() => setState('focus')}
+          onMouseEnter={() => setState("hover")}
+          onMouseLeave={() => setState("default")}
+          onFocus={() => setState("focus")}
           onBlur={() => {
-            setState('default');
+            setState("default");
             setTimeout(() => setShowSuggestions(false), 200);
           }}
           role="searchbox"
@@ -128,7 +138,7 @@ export const SearchBox: React.FC<SearchBoxProps> = ({
           <button
             type="button"
             onClick={() => {
-              setQuery('');
+              setQuery("");
               onClear();
             }}
             className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500"
@@ -143,8 +153,8 @@ export const SearchBox: React.FC<SearchBoxProps> = ({
             <div
               key={suggestion.id}
               className={cn(
-                'p-2 cursor-pointer',
-                focusedId === suggestion.id && 'bg-[var(--couleur-light-hover)]'
+                "p-2 cursor-pointer",
+                focusedId === suggestion.id && "bg-[var(--couleur-light-hover)]",
               )}
               onClick={() => handleSelect(suggestion.id)}
               onMouseEnter={() => setFocusedId(suggestion.id)}

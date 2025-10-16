@@ -1,7 +1,7 @@
 // apps/web/hooks/useDebounce.ts
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 /**
  * Hook pour débouncer une valeur
@@ -27,7 +27,7 @@ export function useDebounce<T>(value: T, delay: number): T {
  */
 export function useDebounceCallback<T extends (...args: any[]) => any>(
   callback: T,
-  delay: number
+  delay: number,
 ): T {
   const [debounceTimer, setDebounceTimer] = useState<NodeJS.Timeout>();
 

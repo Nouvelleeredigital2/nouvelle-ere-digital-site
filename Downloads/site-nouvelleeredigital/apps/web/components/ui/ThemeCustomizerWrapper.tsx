@@ -7,10 +7,5 @@ import { ThemeCustomizer } from "@/components/ui/ThemeCustomizer";
 export function ThemeCustomizerWrapper() {
   const { isCustomizerOpen, closeCustomizer } = useTheme();
 
-  return (
-    <ThemeCustomizer
-      isOpen={isCustomizerOpen}
-      onClose={closeCustomizer}
-    />
-  );
+  return <ThemeCustomizer isOpen={isCustomizerOpen} onClose={closeCustomizer} />;
 }

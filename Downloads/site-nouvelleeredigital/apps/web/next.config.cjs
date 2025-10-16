@@ -2,8 +2,8 @@
 const nextConfig = {
   // Optimisation des images
   images: {
-    domains: ['nouvelle-ere-digital.fr', 'localhost'],
-    formats: ['image/webp', 'image/avif'],
+    domains: ["nouvelle-ere-digital.fr", "localhost"],
+    formats: ["image/webp", "image/avif"],
   },
 
   // Optimisations de performance
@@ -18,15 +18,15 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: "/(.*)",
         headers: [
           {
-            key: 'X-Frame-Options',
-            value: 'DENY',
+            key: "X-Frame-Options",
+            value: "DENY",
           },
           {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
+            key: "X-Content-Type-Options",
+            value: "nosniff",
           },
         ],
       },

@@ -5,6 +5,7 @@ import { KeyboardShortcuts } from "@/components/ui/KeyboardShortcuts";
 import { PersonaAccessibility } from "@/components/accessibility/PersonaAccessibility";
 import { useKeyboardShortcuts } from "@/hooks/useKeyboardShortcuts";
 import Link from "next/link";
+import { ClientOnly } from "@/components/ui/ClientOnly";
 
 export function AccueilPage() {
   return (
@@ -14,11 +15,16 @@ export function AccueilPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Link href="/" className="text-xl font-bold text-foreground hover:text-primary transition-colors">
+              <Link
+                href="/"
+                className="text-xl font-bold text-foreground hover:text-primary transition-colors"
+              >
                 Nouvelle Ère Digital
               </Link>
             </div>
-            <PersonaNavSelector />
+            <ClientOnly>
+              <PersonaNavSelector />
+            </ClientOnly>
           </div>
         </div>
       </div>
@@ -76,22 +82,25 @@ export function AccueilPage() {
               services={[
                 {
                   title: "Communication Digitale",
-                  description: "Stratégies digitales innovantes pour amplifier votre présence en ligne.",
+                  description:
+                    "Stratégies digitales innovantes pour amplifier votre présence en ligne.",
                   icon: "📱",
-                  features: ["SEO/SEA", "Réseaux sociaux", "Content marketing"]
+                  features: ["SEO/SEA", "Réseaux sociaux", "Content marketing"],
                 },
                 {
                   title: "Audiovisuel",
-                  description: "Production audiovisuelle professionnelle pour captiver votre audience.",
+                  description:
+                    "Production audiovisuelle professionnelle pour captiver votre audience.",
                   icon: "🎥",
-                  features: ["Vidéo corporate", "Motion design", "Post-production"]
+                  features: ["Vidéo corporate", "Motion design", "Post-production"],
                 },
                 {
                   title: "Développement Web",
-                  description: "Sites web modernes avec une attention particulière à l'expérience utilisateur.",
+                  description:
+                    "Sites web modernes avec une attention particulière à l'expérience utilisateur.",
                   icon: "💻",
-                  features: ["Sites vitrine", "E-commerce", "Applications web"]
-                }
+                  features: ["Sites vitrine", "E-commerce", "Applications web"],
+                },
               ]}
               columns={3}
             />
@@ -109,7 +118,8 @@ export function AccueilPage() {
             {/* Indicateur du thème actuel */}
             <div className="mb-8 p-4 bg-card/50 rounded-lg border border-border/50 max-w-md mx-auto">
               <p className="text-sm text-muted-foreground">
-                🎨 <strong>Thème actuel :</strong> Les couleurs changent automatiquement selon votre sélection
+                🎨 <strong>Thème actuel :</strong> Les couleurs changent automatiquement selon votre
+                sélection
               </p>
             </div>
 

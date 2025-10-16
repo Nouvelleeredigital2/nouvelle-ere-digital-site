@@ -22,11 +22,13 @@ export const Badge = ({
   };
 
   return (
-    <span className={cn(
-      "inline-flex items-center rounded-full font-medium text-xs px-2.5 py-0.5",
-      toneClasses[tone],
-      className
-    )}>
+    <span
+      className={cn(
+        "inline-flex items-center rounded-full font-medium text-xs px-2.5 py-0.5",
+        toneClasses[tone],
+        className,
+      )}
+    >
       {children}
     </span>
   );

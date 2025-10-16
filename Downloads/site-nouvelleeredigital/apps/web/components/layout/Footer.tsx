@@ -13,7 +13,7 @@ import {
   Mail,
   Phone,
   MapPin,
-  ArrowUp
+  ArrowUp,
 } from "lucide-react";
 
 /** Site footer with legal and socials placeholders */
@@ -29,7 +29,7 @@ export function Footer() {
   ];
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -56,10 +56,26 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold">Services</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Stratégie digitale</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Design & UX</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Développement web</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Marketing digital</a></li>
+              <li>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  Stratégie digitale
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  Design & UX
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  Développement web
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  Marketing digital
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -107,8 +123,12 @@ export function Footer() {
               © {year} Nouvelle Ère Digital. Tous droits réservés.
             </div>
             <div className="flex items-center space-x-6 text-sm">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Mentions légales</a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Politique de confidentialité</a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                Mentions légales
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                Politique de confidentialité
+              </a>
               <button
                 onClick={scrollToTop}
                 className="p-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"

@@ -31,11 +31,7 @@ const DEMO_SERVICES: Record<string, Service> = {
     duration: "2-4 semaines",
     description:
       "Mise en place d'une campagne 360 : conception, production, intégration et mesure.",
-    bullets: [
-      "Brief et plan d'action",
-      "Production des assets",
-      "Mise en ligne et tracking",
-    ],
+    bullets: ["Brief et plan d'action", "Production des assets", "Mise en ligne et tracking"],
     compatibilities: [
       { id: "ads", label: "Campagne Ads" },
       { id: "video", label: "Capsule vidéo" },
@@ -117,7 +113,7 @@ export function ServiceModal() {
       className={cn(
         "fixed inset-0 z-[100]",
         "bg-black/40 backdrop-blur-sm",
-        "flex items-center justify-center p-4"
+        "flex items-center justify-center p-4",
       )}
       aria-modal
       role="dialog"
@@ -126,7 +122,9 @@ export function ServiceModal() {
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-3 border-b border-border">
           <h2 className="text-xl font-semibold">{service.title}</h2>
-          <button onClick={close} aria-label="Fermer" className="text-foreground">✕</button>
+          <button onClick={close} aria-label="Fermer" className="text-foreground">
+            ✕
+          </button>
         </div>
 
         {/* Hero */}
@@ -185,9 +183,15 @@ export function ServiceModal() {
 
             <div className="grid gap-2">
               <Button onClick={addToJourney}>Ajouter au parcours</Button>
-              <Button variant="ghost" onClick={openLink}>Ouvrir le lien</Button>
-              <Button variant="secondaire" onClick={downloadBrochure}>Brochure</Button>
-              <Button variant="ghost" onClick={showQR}>Afficher QR</Button>
+              <Button variant="ghost" onClick={openLink}>
+                Ouvrir le lien
+              </Button>
+              <Button variant="secondaire" onClick={downloadBrochure}>
+                Brochure
+              </Button>
+              <Button variant="ghost" onClick={showQR}>
+                Afficher QR
+              </Button>
             </div>
 
             <div className="text-xs text-muted-foreground">

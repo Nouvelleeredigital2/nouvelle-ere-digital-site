@@ -66,14 +66,17 @@ import modulesData from "@/data/modules.json";
 import bundlesData from "@/data/bundles.json";
 
 export const metadata: Metadata = generatePageMetadata({
-  title: "Catalogue          <p className='text-muted-foreground'>Aperçu complet de tous les composants UI personnalisés.</p>",
+  title:
+    "Catalogue          <p className='text-muted-foreground'>Aperçu complet de tous les composants UI personnalisés.</p>",
 });
 
 export default function ComponentShowcase() {
   return (
     <div className="bg-background min-h-screen text-foreground">
       <Container className="py-12">
-        <h1 className="text-4xl font-bold text-center mb-12">Catalogue des Composants Graphiques</h1>
+        <h1 className="text-4xl font-bold text-center mb-12">
+          Catalogue des Composants Graphiques
+        </h1>
 
         {/* Section A - Structure & Navigation */}
         <SectionHeader title="A - Structure & Navigation" />
@@ -91,7 +94,12 @@ export default function ComponentShowcase() {
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: OrbitBreadcrumbs</h3>
-          <OrbitBreadcrumbs items={[{ id: "1", label: "Home", href: "/", level: 1 }, { id: "2", label: "Sandbox", href: "/sandbox", level: 2 }]} />
+          <OrbitBreadcrumbs
+            items={[
+              { id: "1", label: "Home", href: "/", level: 1 },
+              { id: "2", label: "Sandbox", href: "/sandbox", level: 2 },
+            ]}
+          />
         </div>
         <hr className="mt-8 border-border" />
 
@@ -127,13 +135,29 @@ export default function ComponentShowcase() {
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: ModuleCard</h3>
           {modulesData.modules.slice(0, 2).map((module) => (
-            <ModuleCard key={module.id} module={{ id: module.id, title: module.name, description: module.description, status: 'active' }} />
+            <ModuleCard
+              key={module.id}
+              module={{
+                id: module.id,
+                title: module.name,
+                description: module.description,
+                status: "active",
+              }}
+            />
           ))}
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: BundleCard</h3>
           {bundlesData.bundles.slice(0, 2).map((bundle) => (
-            <BundleCard key={bundle.id} bundle={{ id: bundle.id, title: bundle.name, description: bundle.description, items: bundle.modules.map((m: string) => ({ id: m, name: m })) }} />
+            <BundleCard
+              key={bundle.id}
+              bundle={{
+                id: bundle.id,
+                title: bundle.name,
+                description: bundle.description,
+                items: bundle.modules.map((m: string) => ({ id: m, name: m })),
+              }}
+            />
           ))}
         </div>
         <div className="my-8">
@@ -175,14 +199,20 @@ export default function ComponentShowcase() {
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: NeedCaptureForm</h3>
-          <NeedCaptureForm fields={[
-            { id: 'name', label: 'Nom', type: 'text', required: true },
-            { id: 'email', label: 'Email', type: 'email', required: true }
-          ]} />
+          <NeedCaptureForm
+            fields={[
+              { id: "name", label: "Nom", type: "text", required: true },
+              { id: "email", label: "Email", type: "email", required: true },
+            ]}
+          />
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: BundleSelector</h3>
-          <BundleSelector bundles={bundlesData.bundles.slice(0, 2).map(b => ({ id: b.id, title: b.name, description: b.description }))} />
+          <BundleSelector
+            bundles={bundlesData.bundles
+              .slice(0, 2)
+              .map((b) => ({ id: b.id, title: b.name, description: b.description }))}
+          />
         </div>
         <hr className="mt-8 border-border" />
 
@@ -231,16 +261,27 @@ export default function ComponentShowcase() {
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: MiniConstellation</h3>
-          <MiniConstellation stars={[
-            { id: '1', x: 10, y: 10, size: 2, color: 'white' },
-            { id: '2', x: 50, y: 20, size: 3, color: 'blue' }
-          ]} />
+          <MiniConstellation
+            stars={[
+              { id: "1", x: 10, y: 10, size: 2, color: "white" },
+              { id: "2", x: 50, y: 20, size: 3, color: "blue" },
+            ]}
+          />
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: DragCanvas</h3>
-          <DragCanvas items={[
-            { id: '1', x: 100, y: 100, content: <div className="w-16 h-16 bg-blue-500 rounded"></div> }
-          ]} width={400} height={300} />
+          <DragCanvas
+            items={[
+              {
+                id: "1",
+                x: 100,
+                y: 100,
+                content: <div className="w-16 h-16 bg-blue-500 rounded"></div>,
+              },
+            ]}
+            width={400}
+            height={300}
+          />
         </div>
         <hr className="mt-8 border-border" />
 
@@ -252,7 +293,9 @@ export default function ComponentShowcase() {
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: CategoryFilterChips</h3>
-          <CategoryFilterChips categories={categoriesData.categories.map(c => ({ id: c.id, label: c.name }))} />
+          <CategoryFilterChips
+            categories={categoriesData.categories.map((c) => ({ id: c.id, label: c.name }))}
+          />
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: Carousel3DBundles</h3>
@@ -260,20 +303,38 @@ export default function ComponentShowcase() {
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: ServiceDetailSheet</h3>
-          <ServiceDetailSheet service={{ id: '1', title: 'Service Example', description: 'Description', features: ['Feature 1'] }} />
+          <ServiceDetailSheet
+            service={{
+              id: "1",
+              title: "Service Example",
+              description: "Description",
+              features: ["Feature 1"],
+            }}
+          />
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: Testimonials</h3>
-          <Testimonials testimonials={[
-            { id: 1, name: 'John Doe', role: 'CEO', company: 'Example Corp', content: 'Great service!', rating: 5 }
-          ]} />
+          <Testimonials
+            testimonials={[
+              {
+                id: 1,
+                name: "John Doe",
+                role: "CEO",
+                company: "Example Corp",
+                content: "Great service!",
+                rating: 5,
+              },
+            ]}
+          />
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: ThemeSwitch</h3>
-          <ThemeSwitch themes={[
-            { id: 'light', label: 'Light' },
-            { id: 'dark', label: 'Dark' }
-          ]} />
+          <ThemeSwitch
+            themes={[
+              { id: "light", label: "Light" },
+              { id: "dark", label: "Dark" },
+            ]}
+          />
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: Toast</h3>
@@ -289,27 +350,27 @@ export default function ComponentShowcase() {
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: ConsentManager</h3>
-          <ConsentManager categories={[
-            { id: 'analytics', label: 'Analytics', description: 'Collecte de données' }
-          ]} />
+          <ConsentManager
+            categories={[
+              { id: "analytics", label: "Analytics", description: "Collecte de données" },
+            ]}
+          />
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: AnalyticsTracker</h3>
-          <AnalyticsTracker data={[
-            { id: '1', label: 'Page Views', value: 1000 }
-          ]} />
+          <AnalyticsTracker data={[{ id: "1", label: "Page Views", value: 1000 }]} />
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: ExportPanel</h3>
-          <ExportPanel formats={[
-            { id: 'pdf', label: 'PDF', extension: '.pdf' }
-          ]} />
+          <ExportPanel formats={[{ id: "pdf", label: "PDF", extension: ".pdf" }]} />
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: ServiceList</h3>
-          <ServiceList services={[
-            { id: '1', title: 'Service 1', description: 'Description', status: 'active' }
-          ]} />
+          <ServiceList
+            services={[
+              { id: "1", title: "Service 1", description: "Description", status: "active" },
+            ]}
+          />
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: KPI</h3>
@@ -321,15 +382,22 @@ export default function ComponentShowcase() {
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: TrajectoireIAOverlay</h3>
-          <TrajectoireIAOverlay trajectories={[
-            { id: '1', points: [{ x: 0, y: 0 }, { x: 100, y: 100 }], color: 'blue' }
-          ]} />
+          <TrajectoireIAOverlay
+            trajectories={[
+              {
+                id: "1",
+                points: [
+                  { x: 0, y: 0 },
+                  { x: 100, y: 100 },
+                ],
+                color: "blue",
+              },
+            ]}
+          />
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: ColorLegend</h3>
-          <ColorLegend items={[
-            { id: '1', label: 'Category 1', color: 'red' }
-          ]} />
+          <ColorLegend items={[{ id: "1", label: "Category 1", color: "red" }]} />
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: CompatibilityIndicator</h3>
@@ -337,7 +405,7 @@ export default function ComponentShowcase() {
         </div>
         <div className="my-8">
           <h3 className="text-xl font-semibold mb-4">Composant: PlanetBadge</h3>
-          <PlanetBadge label="Planet" planet={{ name: 'Earth', color: 'blue', size: 12 }} />
+          <PlanetBadge label="Planet" planet={{ name: "Earth", color: "blue", size: 12 }} />
         </div>
       </Container>
     </div>

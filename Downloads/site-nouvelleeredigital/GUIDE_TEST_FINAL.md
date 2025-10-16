@@ -16,25 +16,31 @@ Votre système de personnalisation visuelle est maintenant **correctement config
 ## 🧪 **Tests à Effectuer :**
 
 ### **1. Démarrage du Serveur**
+
 ```bash
 npm run dev
 ```
+
 → Accédez à `http://localhost:3001`
 
 ### **2. Vérification de la Page d'Accueil**
+
 - ✅ **Titre** : "Nouvelle Ère Digital" en gros
 - ✅ **Sous-titre** : "Simplifier, innover et valoriser l'humain..."
 - ✅ **3 sections de services** : Communication, Audiovisuel, Développement Web
 - ✅ **Boutons d'action** : "Découvrir Nos Services", "Nous Contacter"
 
 ### **3. Test du Sélecteur de Personas**
+
 - ✅ **Localisation** : Dans le header (coin supérieur droit)
 - ✅ **Bouton** : Affiche l'icône du persona actuel + nom
 - ✅ **Menu déroulant** : Liste tous les personas disponibles
 - ✅ **Sélection** : Cliquez sur un persona différent
 
 ### **4. Vérification des Changements Visuels**
+
 **Observez attentivement :**
+
 - 🎨 **Couleurs de fond** (sections hero, services, CTA)
 - 🎨 **Couleurs de texte** (titres, paragraphes)
 - 🎨 **Couleurs des boutons** (primaires, secondaires)
@@ -42,6 +48,7 @@ npm run dev
 - 🎨 **Animation de transition** lors du changement
 
 ### **5. Test de Persistance**
+
 - Sélectionnez un persona différent
 - Rechargez la page (F5)
 - Le même persona devrait rester sélectionné
@@ -51,6 +58,7 @@ npm run dev
 ## 🔍 **Diagnostic Avancé :**
 
 ### **Variables CSS dans le Navigateur :**
+
 1. Ouvrez les outils de développement (F12)
 2. Allez dans "Elements" > "html"
 3. Vérifiez les variables CSS :
@@ -61,35 +69,38 @@ npm run dev
    ```
 
 ### **Console JavaScript :**
+
 ```javascript
 // Vérifier le persona actif
-console.log(localStorage.getItem('creative-persona-v1'));
+console.log(localStorage.getItem("creative-persona-v1"));
 
 // Vérifier les variables CSS
-console.log(getComputedStyle(document.documentElement).getPropertyValue('--color-primary'));
+console.log(getComputedStyle(document.documentElement).getPropertyValue("--color-primary"));
 ```
 
 ---
 
 ## 🎨 **Personas à Tester :**
 
-| Persona | Couleurs Principales | Style |
-|---------|---------------------|-------|
-| **L'Artiste** | Bleu nuit, Violet électrique, Jaune | Dramatique, immersif |
-| **L'Architecte** | Gris professionnel, Bleu sobre | Structuré, minimal |
-| **L'Innovateur** | Bleu électrique, accents vifs | High-tech, dynamique |
+| Persona          | Couleurs Principales                | Style                |
+| ---------------- | ----------------------------------- | -------------------- |
+| **L'Artiste**    | Bleu nuit, Violet électrique, Jaune | Dramatique, immersif |
+| **L'Architecte** | Gris professionnel, Bleu sobre      | Structuré, minimal   |
+| **L'Innovateur** | Bleu électrique, accents vifs       | High-tech, dynamique |
 
 ---
 
 ## ✅ **Résolution des Problèmes :**
 
 **Si les couleurs ne changent pas :**
+
 1. Vérifiez que le serveur est démarré
 2. Cliquez sur le sélecteur de personas dans le header
 3. Vérifiez les variables CSS dans les outils de développement
 4. Testez avec un navigateur différent
 
 **Si le sélecteur ne s'affiche pas :**
+
 1. Vérifiez qu'il y a bien un bouton dans le coin supérieur droit
 2. Vérifiez la console pour les erreurs JavaScript
 3. Assurez-vous que PersonaProvider est bien dans layout.tsx

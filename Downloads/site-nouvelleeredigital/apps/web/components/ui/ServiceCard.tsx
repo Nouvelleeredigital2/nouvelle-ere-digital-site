@@ -16,7 +16,7 @@ export const ServiceCard = ({
   description,
   icon,
   features = [],
-  index = 0
+  index = 0,
 }: ServiceCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -36,7 +36,7 @@ export const ServiceCard = ({
           <motion.div
             animate={{
               scale: isHovered ? 1.1 : 1,
-              rotate: isHovered ? 5 : 0
+              rotate: isHovered ? 5 : 0,
             }}
             transition={{ duration: 0.3 }}
             className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
@@ -51,9 +51,7 @@ export const ServiceCard = ({
             {title}
           </h3>
 
-          <p className="text-muted-foreground leading-relaxed">
-            {description}
-          </p>
+          <p className="text-muted-foreground leading-relaxed">{description}</p>
 
           {/* Features */}
           {features.length > 0 && (
@@ -72,9 +70,7 @@ export const ServiceCard = ({
                   className="flex items-center space-x-3"
                 >
                   <div className="w-2 h-2 bg-primary rounded-full" />
-                  <span className="text-sm text-muted-foreground">
-                    {feature}
-                  </span>
+                  <span className="text-sm text-muted-foreground">{feature}</span>
                 </motion.div>
               ))}
             </motion.div>
@@ -105,7 +101,9 @@ interface ServiceGridProps {
 
 export const ServiceGrid = ({ services, columns = 3 }: ServiceGridProps) => {
   return (
-    <div className={`grid gap-6 ${columns === 3 ? 'md:grid-cols-2 lg:grid-cols-3' : 'md:grid-cols-2'}`}>
+    <div
+      className={`grid gap-6 ${columns === 3 ? "md:grid-cols-2 lg:grid-cols-3" : "md:grid-cols-2"}`}
+    >
       {services.map((service, index) => (
         <ServiceCard key={index} {...service} index={index} />
       ))}

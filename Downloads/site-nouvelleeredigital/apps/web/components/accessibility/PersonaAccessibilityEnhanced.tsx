@@ -1,19 +1,19 @@
 // apps/web/components/accessibility/PersonaAccessibility.tsx
 "use client";
 
-import { usePersona } from '@/components/context/PersonaProvider';
-import { useEffect, useState, useRef } from 'react';
+import { usePersona } from "@/components/context/PersonaProvider";
+import { useEffect, useState, useRef } from "react";
 
 export function PersonaAccessibility() {
   const { persona, personas } = usePersona();
   const [announceChanges, setAnnounceChanges] = useState(false);
   const [isKeyboardUser, setIsKeyboardUser] = useState(false);
-  const previousPersonaRef = useRef<string>('');
+  const previousPersonaRef = useRef<string>("");
 
   // Détecter l'utilisation du clavier vs souris
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Tab' || e.key === 'Enter' || e.key === ' ') {
+      if (e.key === "Tab" || e.key === "Enter" || e.key === " ") {
         setIsKeyboardUser(true);
       }
     };
@@ -22,39 +22,44 @@ export function PersonaAccessibility() {
       setIsKeyboardUser(false);
     };
 
-    document.addEventListener('keydown', handleKeyDown);
-    document.addEventListener('mousedown', handleMouseDown);
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("mousedown", handleMouseDown);
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.removeEventListener('mousedown', handleMouseDown);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("mousedown", handleMouseDown);
     };
   }, []);
 
   // Annoncer les changements de persona aux screen readers (amélioré)
   useEffect(() => {
-    if (announceChanges && persona && previousPersonaRef.current && previousPersonaRef.current !== persona.id) {
+    if (
+      announceChanges &&
+      persona &&
+      previousPersonaRef.current &&
+      previousPersonaRef.current !== persona.id
+    ) {
       const announcement = `Thème changé pour ${persona.name}. ${persona.description}`;
       announceToScreenReader(announcement);
     }
-    previousPersonaRef.current = persona?.id || '';
+    previousPersonaRef.current = persona?.id || "";
   }, [persona, announceChanges]);
 
   // Fonction pour annoncer aux screen readers (améliorée)
   const announceToScreenReader = (message: string) => {
-    if (typeof document === 'undefined' || !document.body) {
+    if (typeof document === "undefined" || !document.body) {
       return;
     }
 
-    const announcement = document.createElement('div');
-    announcement.setAttribute('aria-live', 'polite');
-    announcement.setAttribute('aria-atomic', 'true');
-    announcement.setAttribute('role', 'status');
-    announcement.style.position = 'absolute';
-    announcement.style.left = '-10000px';
-    announcement.style.width = '1px';
-    announcement.style.height = '1px';
-    announcement.style.overflow = 'hidden';
+    const announcement = document.createElement("div");
+    announcement.setAttribute("aria-live", "polite");
+    announcement.setAttribute("aria-atomic", "true");
+    announcement.setAttribute("role", "status");
+    announcement.style.position = "absolute";
+    announcement.style.left = "-10000px";
+    announcement.style.width = "1px";
+    announcement.style.height = "1px";
+    announcement.style.overflow = "hidden";
 
     document.body.appendChild(announcement);
     announcement.textContent = message;
@@ -67,7 +72,7 @@ export function PersonaAccessibility() {
         }
       } catch (error) {
         // Ignorer les erreurs de nettoyage si l'élément n'existe plus
-        console.warn('Erreur lors du nettoyage de l\'annonce d\'accessibilité:', error);
+        console.warn("Erreur lors du nettoyage de l'annonce d'accessibilité:", error);
       }
     };
 
@@ -108,9 +113,7 @@ export function PersonaAccessibility() {
 
         {/* Indicateur de mode de navigation */}
         <div className="mt-2" role="status" aria-live="polite">
-          {isKeyboardUser && (
-            <span className="sr-only">Mode navigation au clavier activé</span>
-          )}
+          {isKeyboardUser && <span className="sr-only">Mode navigation au clavier activé</span>}
         </div>
       </div>
 
@@ -141,7 +144,7 @@ export function PersonaAccessibility() {
             <li key={p.id}>
               <span className="sr-only">
                 {p.name} : {p.description}
-                {p.id === persona.id && ' (actuellement sélectionné)'}
+                {p.id === persona.id && " (actuellement sélectionné)"}
               </span>
             </li>
           ))}

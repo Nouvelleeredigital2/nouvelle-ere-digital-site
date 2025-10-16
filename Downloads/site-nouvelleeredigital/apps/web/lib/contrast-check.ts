@@ -1,8 +1,8 @@
 // Fonction utilitaire pour vérifier le contraste WCAG
 function getContrastRatio(color1: string, color2: string): number {
   // Convertir les couleurs hex en RGB
-  const hex1 = color1.replace('#', '');
-  const hex2 = color2.replace('#', '');
+  const hex1 = color1.replace("#", "");
+  const hex2 = color2.replace("#", "");
 
   const r1 = parseInt(hex1.substr(0, 2), 16);
   const g1 = parseInt(hex1.substr(2, 2), 16);
@@ -23,7 +23,7 @@ function getContrastRatio(color1: string, color2: string): number {
 }
 
 function getLuminance(r: number, g: number, b: number): number {
-  const [rs, gs, bs] = [r, g, b].map(c => {
+  const [rs, gs, bs] = [r, g, b].map((c) => {
     c = c / 255;
     return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
   });
@@ -32,32 +32,32 @@ function getLuminance(r: number, g: number, b: number): number {
 }
 
 // Vérification des contrastes pour chaque thème
-console.log('=== VÉRIFICATION DES CONTRASTES WCAG ===');
+console.log("=== VÉRIFICATION DES CONTRASTES WCAG ===");
 
 // Test Ocean
-console.log('Océan:', {
-  'Primary sur Background': getContrastRatio('#0284c7', '#f8fafc'),
-  'Foreground sur Background': getContrastRatio('#0f172a', '#f8fafc'),
-  'Primary sur Card': getContrastRatio('#0284c7', '#ffffff'),
+console.log("Océan:", {
+  "Primary sur Background": getContrastRatio("#0284c7", "#f8fafc"),
+  "Foreground sur Background": getContrastRatio("#0f172a", "#f8fafc"),
+  "Primary sur Card": getContrastRatio("#0284c7", "#ffffff"),
 });
 
 // Test Forest
-console.log('Forêt:', {
-  'Primary sur Background': getContrastRatio('#16a34a', '#f8fafc'),
-  'Foreground sur Background': getContrastRatio('#14532d', '#f8fafc'),
-  'Primary sur Card': getContrastRatio('#16a34a', '#ffffff'),
+console.log("Forêt:", {
+  "Primary sur Background": getContrastRatio("#16a34a", "#f8fafc"),
+  "Foreground sur Background": getContrastRatio("#14532d", "#f8fafc"),
+  "Primary sur Card": getContrastRatio("#16a34a", "#ffffff"),
 });
 
 // Test Midnight
-console.log('Minuit:', {
-  'Primary sur Background': getContrastRatio('#1e1b4b', '#0f0f23'),
-  'Foreground sur Background': getContrastRatio('#e0e7ff', '#0f0f23'),
-  'Accent sur Card': getContrastRatio('#6366f1', '#1e1b4b'),
+console.log("Minuit:", {
+  "Primary sur Background": getContrastRatio("#1e1b4b", "#0f0f23"),
+  "Foreground sur Background": getContrastRatio("#e0e7ff", "#0f0f23"),
+  "Accent sur Card": getContrastRatio("#6366f1", "#1e1b4b"),
 });
 
 // Test Sunset
-console.log('Sunset:', {
-  'Primary sur Background': getContrastRatio('#f97316', '#fff7ed'),
-  'Foreground sur Background': getContrastRatio('#9a3412', '#fff7ed'),
-  'Primary sur Card': getContrastRatio('#f97316', '#ffffff'),
+console.log("Sunset:", {
+  "Primary sur Background": getContrastRatio("#f97316", "#fff7ed"),
+  "Foreground sur Background": getContrastRatio("#9a3412", "#fff7ed"),
+  "Primary sur Card": getContrastRatio("#f97316", "#ffffff"),
 });

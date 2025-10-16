@@ -1,10 +1,10 @@
 // apps/web/shared/theme.types.ts
 
-export type LayoutStyle = 'symmetrical-grid' | 'asymmetrical-masonry' | 'single-column';
-export type HeroStyle = 'full-visual' | 'split-text-image' | 'minimalist';
-export type TextAlign = 'text-left' | 'text-center' | 'text-right';
-export type Mood = 'dark' | 'light' | 'minimal' | 'colorful' | 'warm' | 'cool';
-export type Energy = 'calm' | 'energetic' | 'dynamic' | 'subtle' | 'intense';
+export type LayoutStyle = "symmetrical-grid" | "asymmetrical-masonry" | "single-column";
+export type HeroStyle = "full-visual" | "split-text-image" | "minimalist";
+export type TextAlign = "text-left" | "text-center" | "text-right";
+export type Mood = "dark" | "light" | "minimal" | "colorful" | "warm" | "cool";
+export type Energy = "calm" | "energetic" | "dynamic" | "subtle" | "intense";
 
 export interface Theme {
   id: string;

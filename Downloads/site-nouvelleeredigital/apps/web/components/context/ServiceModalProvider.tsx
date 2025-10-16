@@ -17,7 +17,10 @@ export function ServiceModalProvider({ children }: { children: React.ReactNode }
   const open = useCallback((id: string) => setOpenedServiceId(id), []);
   const close = useCallback(() => setOpenedServiceId(null), []);
 
-  const value = useMemo(() => ({ openedServiceId, open, close, setOpenedServiceId }), [openedServiceId, open, close]);
+  const value = useMemo(
+    () => ({ openedServiceId, open, close, setOpenedServiceId }),
+    [openedServiceId, open, close],
+  );
 
   return <ServiceModalCtx.Provider value={value}>{children}</ServiceModalCtx.Provider>;
 }

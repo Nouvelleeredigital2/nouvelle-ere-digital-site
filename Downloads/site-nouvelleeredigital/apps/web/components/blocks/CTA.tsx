@@ -10,20 +10,11 @@ interface CTAProps {
   dark?: boolean;
 }
 
-export const CTA = ({
-  eyebrow,
-  title,
-  subtitle,
-  primary,
-  secondary,
-  dark = false,
-}: CTAProps) => {
+export const CTA = ({ eyebrow, title, subtitle, primary, secondary, dark = false }: CTAProps) => {
   return (
     <section
       className={
-        dark
-          ? "py-20 bg-card text-card-foreground"
-          : "py-20 bg-background text-foreground"
+        dark ? "py-20 bg-card text-card-foreground" : "py-20 bg-background text-foreground"
       }
     >
       <div className="container mx-auto px-4">

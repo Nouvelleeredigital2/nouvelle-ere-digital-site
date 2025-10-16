@@ -1,6 +1,6 @@
 // apps/web/lib/server-utils.ts
-import { personas } from '@/personas';
-import type { CreativePersona } from '@/shared/theme.types';
+import { personas } from "@/personas";
+import type { CreativePersona } from "@/shared/theme.types";
 
 /**
  * Utilitaires pour le rendu côté serveur
@@ -12,11 +12,11 @@ import type { CreativePersona } from '@/shared/theme.types';
 export function getCookieValue(cookieString: string | undefined, name: string): string | undefined {
   if (!cookieString) return undefined;
 
-  const cookies = cookieString.split(';');
+  const cookies = cookieString.split(";");
   for (const cookie of cookies) {
-    const [cookieName, ...cookieValueParts] = cookie.trim().split('=');
+    const [cookieName, ...cookieValueParts] = cookie.trim().split("=");
     if (cookieName === name) {
-      return cookieValueParts.join('=');
+      return cookieValueParts.join("=");
     }
   }
 
@@ -27,7 +27,7 @@ export function getCookieValue(cookieString: string | undefined, name: string): 
  * Obtient le persona depuis les cookies côté serveur
  */
 export function getPersonaFromCookies(cookieString: string | undefined): string | null {
-  const personaId = getCookieValue(cookieString, 'creative-persona-v1');
+  const personaId = getCookieValue(cookieString, "creative-persona-v1");
   if (!personaId) return null;
 
   // Utiliser .some() est plus performant que .find() si on veut juste un booléen.

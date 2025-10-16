@@ -35,16 +35,14 @@ export const Steps = ({
               key={index}
               className={cn(
                 "text-center md:text-left",
-                "relative bg-card text-card-foreground p-6 rounded-2xl shadow-sm"
+                "relative bg-card text-card-foreground p-6 rounded-2xl shadow-sm",
               )}
             >
               <div className="text-primary font-bold text-3xl mb-3">
                 {String(index + 1).padStart(2, "0")}
               </div>
               <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
-              <p className="text-muted-foreground">
-                {step.description}
-              </p>
+              <p className="text-muted-foreground">{step.description}</p>
             </div>
           ))}
         </div>

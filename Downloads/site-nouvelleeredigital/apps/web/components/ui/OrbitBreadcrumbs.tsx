@@ -1,12 +1,20 @@
 "use client";
 
-import React, { useState } from 'react';
-import { cn } from '@/lib/utils';
-import { Text } from './Text';
+import React, { useState } from "react";
+import { cn } from "@/lib/utils";
+import { Text } from "./Text";
 
-type Variant = 'default' | 'orbital' | 'minimal';
-type Size = 'sm' | 'md' | 'lg';
-type State = 'default' | 'hover' | 'active' | 'focus' | 'disabled' | 'selected' | 'invalid' | 'dragging';
+type Variant = "default" | "orbital" | "minimal";
+type Size = "sm" | "md" | "lg";
+type State =
+  | "default"
+  | "hover"
+  | "active"
+  | "focus"
+  | "disabled"
+  | "selected"
+  | "invalid"
+  | "dragging";
 
 interface OrbitBreadcrumbsProps {
   items: Array<{ id: string; label: string; href?: string; level: number }>;
@@ -14,7 +22,7 @@ interface OrbitBreadcrumbsProps {
   variant?: Variant;
   size?: Size;
   animated?: boolean;
-  dataModel?: 'need' | 'module' | 'bundle';
+  dataModel?: "need" | "module" | "bundle";
   onSelect?: (id: string) => void;
   onAdd?: (id: string) => void;
   onNavigate?: (id: string) => void;
@@ -25,8 +33,8 @@ interface OrbitBreadcrumbsProps {
 export const OrbitBreadcrumbs: React.FC<OrbitBreadcrumbsProps> = ({
   items,
   currentId,
-  variant = 'default',
-  size = 'md',
+  variant = "default",
+  size = "md",
   animated = true,
   dataModel,
   onSelect,
@@ -35,73 +43,71 @@ export const OrbitBreadcrumbs: React.FC<OrbitBreadcrumbsProps> = ({
   onReset,
   className,
 }) => {
-  const [state, setState] = useState<State>('default');
+  const [state, setState] = useState<State>("default");
 
   const handleSelect = (id: string) => {
-    if (state === 'disabled') return;
+    if (state === "disabled") return;
     if (onSelect) onSelect(id);
   };
 
   const sizes: Record<Size, string> = {
-    sm: 'text-sm p-1',
-    md: 'text-base p-2',
-    lg: 'text-lg p-3',
+    sm: "text-sm p-1",
+    md: "text-base p-2",
+    lg: "text-lg p-3",
   };
 
   const variants: Record<Variant, string> = {
-    default: 'flex items-center gap-2',
-    orbital: 'flex items-center gap-2 relative',
-    minimal: 'flex items-center gap-1',
+    default: "flex items-center gap-2",
+    orbital: "flex items-center gap-2 relative",
+    minimal: "flex items-center gap-1",
   };
 
   const stateClasses: Record<State, string> = {
-    default: '',
-    hover: 'bg-[var(--couleur-light-hover)]',
-    active: 'bg-[var(--couleur-light-active)]',
-    focus: 'ring-2 ring-[var(--color-primary)]',
-    disabled: 'opacity-50 cursor-not-allowed',
-    selected: 'border-2 border-[var(--color-primary)]',
-    invalid: 'border-2 border-red-500',
-    dragging: 'cursor-grabbing',
+    default: "",
+    hover: "bg-[var(--couleur-light-hover)]",
+    active: "bg-[var(--couleur-light-active)]",
+    focus: "ring-2 ring-[var(--color-primary)]",
+    disabled: "opacity-50 cursor-not-allowed",
+    selected: "border-2 border-[var(--color-primary)]",
+    invalid: "border-2 border-red-500",
+    dragging: "cursor-grabbing",
   };
 
   return (
     <nav
       className={cn(
-        'bg-[var(--couleur-light)] rounded-[var(--border-radius-large)] p-4',
+        "bg-[var(--couleur-light)] rounded-[var(--border-radius-large)] p-4",
         variants[variant],
         stateClasses[state],
-        className
+        className,
       )}
       role="navigation"
       aria-label="Fil d'Ariane orbital"
-      onMouseEnter={() => setState('hover')}
-      onMouseLeave={() => setState('default')}
-      onFocus={() => setState('focus')}
-      onBlur={() => setState('default')}
+      onMouseEnter={() => setState("hover")}
+      onMouseLeave={() => setState("default")}
+      onFocus={() => setState("focus")}
+      onBlur={() => setState("default")}
     >
       {items.map((item, index) => (
         <React.Fragment key={item.id}>
           <div
             className={cn(
-              'flex items-center gap-1 cursor-pointer transition-transform',
-              currentId === item.id && 'font-bold text-[var(--color-primary)]',
+              "flex items-center gap-1 cursor-pointer transition-transform",
+              currentId === item.id && "font-bold text-[var(--color-primary)]",
               sizes[size],
-              animated && 'hover:scale-105'
+              animated && "hover:scale-105",
             )}
             onClick={() => handleSelect(item.id)}
             role="listitem"
-            aria-current={currentId === item.id ? 'page' : undefined}
+            aria-current={currentId === item.id ? "page" : undefined}
             aria-level={item.level}
           >
-            {variant === 'orbital' && (
+            {variant === "orbital" && (
               <div className="w-4 h-4 bg-[var(--color-primary)] rounded-full animate-spin" />
             )}
             <Text>{item.label}</Text>
           </div>
-          {index < items.length - 1 && (
-            <Text className="text-muted">/</Text>
-          )}
+          {index < items.length - 1 && <Text className="text-muted">/</Text>}
         </React.Fragment>
       ))}
       {onReset && (

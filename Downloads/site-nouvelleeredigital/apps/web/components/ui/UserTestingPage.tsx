@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState } from 'react';
-import { usePersona } from '@/components/context/PersonaProvider';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
-import { cn } from '@/lib/utils';
-import { Star, ThumbsUp, ThumbsDown, MessageSquare, CheckCircle, AlertCircle } from 'lucide-react';
+import React, { useState } from "react";
+import { usePersona } from "@/components/context/PersonaProvider";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
+import { cn } from "@/lib/utils";
+import { Star, ThumbsUp, ThumbsDown, MessageSquare, CheckCircle, AlertCircle } from "lucide-react";
 
 interface UserTestData {
   personaId: string;
@@ -27,8 +27,8 @@ export function UserTestingPage() {
     visualAppeal: 3,
     functionality: 3,
     overallSatisfaction: 3,
-    feedback: '',
-    suggestions: ''
+    feedback: "",
+    suggestions: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
@@ -39,31 +39,31 @@ export function UserTestingPage() {
     { title: "Fonctionnalité", key: "functionality" },
     { title: "Satisfaction globale", key: "overallSatisfaction" },
     { title: "Commentaires", key: "feedback" },
-    { title: "Suggestions", key: "suggestions" }
+    { title: "Suggestions", key: "suggestions" },
   ];
 
   const handleRatingChange = (key: keyof UserTestData, value: number) => {
-    setTestData(prev => ({ ...prev, [key]: value }));
+    setTestData((prev) => ({ ...prev, [key]: value }));
   };
 
   const handleTextChange = (key: keyof UserTestData, value: string) => {
-    setTestData(prev => ({ ...prev, [key]: value }));
+    setTestData((prev) => ({ ...prev, [key]: value }));
   };
 
   const handleSubmit = () => {
     const completeData: UserTestData = {
       ...testData,
       personaId: persona.id,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     } as UserTestData;
 
     // Ici, on pourrait envoyer les données à un service d'analytics
-    console.log('Données de test utilisateur:', completeData);
+    console.log("Données de test utilisateur:", completeData);
 
     // Sauvegarder localement pour démonstration
-    const existingTests = JSON.parse(localStorage.getItem('user-tests') || '[]');
+    const existingTests = JSON.parse(localStorage.getItem("user-tests") || "[]");
     existingTests.push(completeData);
-    localStorage.setItem('user-tests', JSON.stringify(existingTests));
+    localStorage.setItem("user-tests", JSON.stringify(existingTests));
 
     setIsSubmitted(true);
   };
@@ -79,7 +79,7 @@ export function UserTestingPage() {
               "transition-colors duration-200",
               star <= value
                 ? "text-yellow-400 hover:text-yellow-500"
-                : "text-gray-300 hover:text-yellow-400"
+                : "text-gray-300 hover:text-yellow-400",
             )}
           >
             <Star className="w-6 h-6 fill-current" />
@@ -93,7 +93,7 @@ export function UserTestingPage() {
     const step = steps[currentStep];
 
     switch (step.key) {
-      case 'easeOfUse':
+      case "easeOfUse":
         return (
           <div className="text-center space-y-6">
             <h2 className="text-2xl font-bold">Facilité d'utilisation</h2>
@@ -101,15 +101,15 @@ export function UserTestingPage() {
               À quel point trouvez-vous facile de naviguer et d'utiliser le système de personas ?
             </p>
             <div className="flex justify-center">
-              {renderStarRating(testData.easeOfUse || 3, (value) => handleRatingChange('easeOfUse', value))}
+              {renderStarRating(testData.easeOfUse || 3, (value) =>
+                handleRatingChange("easeOfUse", value),
+              )}
             </div>
-            <div className="text-sm text-muted-foreground">
-              {testData.easeOfUse}/5
-            </div>
+            <div className="text-sm text-muted-foreground">{testData.easeOfUse}/5</div>
           </div>
         );
 
-      case 'visualAppeal':
+      case "visualAppeal":
         return (
           <div className="text-center space-y-6">
             <h2 className="text-2xl font-bold">Appréciation visuelle</h2>
@@ -117,15 +117,15 @@ export function UserTestingPage() {
               Comment évaluez-vous l'apparence visuelle et le design du système ?
             </p>
             <div className="flex justify-center">
-              {renderStarRating(testData.visualAppeal || 3, (value) => handleRatingChange('visualAppeal', value))}
+              {renderStarRating(testData.visualAppeal || 3, (value) =>
+                handleRatingChange("visualAppeal", value),
+              )}
             </div>
-            <div className="text-sm text-muted-foreground">
-              {testData.visualAppeal}/5
-            </div>
+            <div className="text-sm text-muted-foreground">{testData.visualAppeal}/5</div>
           </div>
         );
 
-      case 'functionality':
+      case "functionality":
         return (
           <div className="text-center space-y-6">
             <h2 className="text-2xl font-bold">Fonctionnalité</h2>
@@ -133,15 +133,15 @@ export function UserTestingPage() {
               Le système répond-il bien à vos attentes en termes de fonctionnalités ?
             </p>
             <div className="flex justify-center">
-              {renderStarRating(testData.functionality || 3, (value) => handleRatingChange('functionality', value))}
+              {renderStarRating(testData.functionality || 3, (value) =>
+                handleRatingChange("functionality", value),
+              )}
             </div>
-            <div className="text-sm text-muted-foreground">
-              {testData.functionality}/5
-            </div>
+            <div className="text-sm text-muted-foreground">{testData.functionality}/5</div>
           </div>
         );
 
-      case 'overallSatisfaction':
+      case "overallSatisfaction":
         return (
           <div className="text-center space-y-6">
             <h2 className="text-2xl font-bold">Satisfaction globale</h2>
@@ -149,15 +149,15 @@ export function UserTestingPage() {
               Globalement, êtes-vous satisfait de votre expérience avec le système de personas ?
             </p>
             <div className="flex justify-center">
-              {renderStarRating(testData.overallSatisfaction || 3, (value) => handleRatingChange('overallSatisfaction', value))}
+              {renderStarRating(testData.overallSatisfaction || 3, (value) =>
+                handleRatingChange("overallSatisfaction", value),
+              )}
             </div>
-            <div className="text-sm text-muted-foreground">
-              {testData.overallSatisfaction}/5
-            </div>
+            <div className="text-sm text-muted-foreground">{testData.overallSatisfaction}/5</div>
           </div>
         );
 
-      case 'feedback':
+      case "feedback":
         return (
           <div className="space-y-6">
             <h2 className="text-2xl font-bold">Vos commentaires</h2>
@@ -167,24 +167,22 @@ export function UserTestingPage() {
             <textarea
               className="w-full h-32 p-3 border border-border rounded-lg bg-background resize-none focus:outline-none focus:ring-2 focus:ring-primary"
               placeholder="Que pensez-vous du système ? Qu'est-ce qui vous a plu ou déplu ?"
-              value={testData.feedback || ''}
-              onChange={(e) => handleTextChange('feedback', e.target.value)}
+              value={testData.feedback || ""}
+              onChange={(e) => handleTextChange("feedback", e.target.value)}
             />
           </div>
         );
 
-      case 'suggestions':
+      case "suggestions":
         return (
           <div className="space-y-6">
             <h2 className="text-2xl font-bold">Suggestions d'amélioration</h2>
-            <p className="text-muted-foreground">
-              Avez-vous des idées pour améliorer le système ?
-            </p>
+            <p className="text-muted-foreground">Avez-vous des idées pour améliorer le système ?</p>
             <textarea
               className="w-full h-32 p-3 border border-border rounded-lg bg-background resize-none focus:outline-none focus:ring-2 focus:ring-primary"
               placeholder="Quelles fonctionnalités aimeriez-vous voir ajoutées ? Comment pourrions-nous améliorer l'expérience ?"
-              value={testData.suggestions || ''}
-              onChange={(e) => handleTextChange('suggestions', e.target.value)}
+              value={testData.suggestions || ""}
+              onChange={(e) => handleTextChange("suggestions", e.target.value)}
             />
           </div>
         );
@@ -203,9 +201,7 @@ export function UserTestingPage() {
           <p className="text-muted-foreground mb-6">
             Vos commentaires nous aident à améliorer le système de Creative Personas.
           </p>
-          <Button onClick={() => window.location.reload()}>
-            Refaire le test
-          </Button>
+          <Button onClick={() => window.location.reload()}>Refaire le test</Button>
         </Card>
       </div>
     );
@@ -218,9 +214,7 @@ export function UserTestingPage() {
         <div className="max-w-4xl mx-auto px-8 text-center">
           <h1 className="text-3xl font-bold mb-4">Tests Utilisateurs - Creative Personas</h1>
           <div className="flex items-center justify-center gap-4">
-            <Badge className="text-sm">
-              Persona actuel: {persona.name}
-            </Badge>
+            <Badge className="text-sm">Persona actuel: {persona.name}</Badge>
             <Badge variant="outline" className="text-sm">
               Étape {currentStep + 1}/{steps.length}
             </Badge>
@@ -239,7 +233,7 @@ export function UserTestingPage() {
                   "w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium",
                   index <= currentStep
                     ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground"
+                    : "bg-muted text-muted-foreground",
                 )}
               >
                 {index + 1}
@@ -255,9 +249,7 @@ export function UserTestingPage() {
         </div>
 
         {/* Contenu de l'étape actuelle */}
-        <Card className="p-8 mb-8">
-          {renderStepContent()}
-        </Card>
+        <Card className="p-8 mb-8">{renderStepContent()}</Card>
 
         {/* Navigation */}
         <div className="flex justify-between">
@@ -270,9 +262,7 @@ export function UserTestingPage() {
           </Button>
 
           {currentStep === steps.length - 1 ? (
-            <Button onClick={handleSubmit}>
-              Soumettre le test
-            </Button>
+            <Button onClick={handleSubmit}>Soumettre le test</Button>
           ) : (
             <Button onClick={() => setCurrentStep(Math.min(steps.length - 1, currentStep + 1))}>
               Suivant
@@ -284,8 +274,9 @@ export function UserTestingPage() {
         <div className="mt-8 p-4 bg-muted/50 rounded-lg">
           <h3 className="font-medium mb-2">À propos de ce test</h3>
           <p className="text-sm text-muted-foreground">
-            Ce questionnaire nous aide à comprendre comment les utilisateurs interagissent avec le système de Creative Personas.
-            Vos réponses sont anonymes et nous permettront d'améliorer l'expérience utilisateur.
+            Ce questionnaire nous aide à comprendre comment les utilisateurs interagissent avec le
+            système de Creative Personas. Vos réponses sont anonymes et nous permettront d'améliorer
+            l'expérience utilisateur.
           </p>
         </div>
       </div>

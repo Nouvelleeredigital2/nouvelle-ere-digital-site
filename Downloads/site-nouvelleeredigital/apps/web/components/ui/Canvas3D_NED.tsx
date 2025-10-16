@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useRef, useState, Suspense } from 'react';
-import { Canvas, useFrame, ThreeElements } from '@react-three/fiber';
-import { OrbitControls, Text, Sphere } from '@react-three/drei';
-import * as THREE from 'three';
+import React, { useRef, useState, Suspense } from "react";
+import { Canvas, useFrame, ThreeElements } from "@react-three/fiber";
+import { OrbitControls, Text, Sphere } from "@react-three/drei";
+import * as THREE from "three";
 
 interface PlanetProps {
   position: [number, number, number];
@@ -43,13 +43,7 @@ function Planet({ position, color, name, onClick }: PlanetProps) {
         />
       </mesh>
       <Suspense fallback={null}>
-        <Text
-          position={[0, -1, 0]}
-          fontSize={0.2}
-          color="white"
-          anchorX="center"
-          anchorY="middle"
-        >
+        <Text position={[0, -1, 0]} fontSize={0.2} color="white" anchorX="center" anchorY="middle">
           {name}
         </Text>
       </Suspense>
@@ -67,12 +61,12 @@ function OrbitingPlanets() {
   });
 
   const planets = [
-    { name: 'Communication', color: '#ff6b6b', position: [3, 0, 0] },
-    { name: 'Audiovisuel', color: '#4ecdc4', position: [0, 3, 0] },
-    { name: 'Événementiel', color: '#ffd93d', position: [-3, 0, 0] },
-    { name: 'Design', color: '#ff6b6b', position: [0, -3, 0] },
-    { name: 'Web', color: '#4ecdc4', position: [2, 2, 0] },
-    { name: 'IA', color: '#ffd93d', position: [-2, -2, 0] },
+    { name: "Communication", color: "#ff6b6b", position: [3, 0, 0] },
+    { name: "Audiovisuel", color: "#4ecdc4", position: [0, 3, 0] },
+    { name: "Événementiel", color: "#ffd93d", position: [-3, 0, 0] },
+    { name: "Design", color: "#ff6b6b", position: [0, -3, 0] },
+    { name: "Web", color: "#4ecdc4", position: [2, 2, 0] },
+    { name: "IA", color: "#ffd93d", position: [-2, -2, 0] },
   ];
 
   return (
@@ -93,14 +87,21 @@ function OrbitingPlanets() {
 interface Canvas3D_NEDProps {
   width?: string | number;
   height?: string | number;
-  services?: Array<{ name: string; color: number; colorHex: string; desc: string; position: [number, number, number]; features: string[]; }>;
+  services?: Array<{
+    name: string;
+    color: number;
+    colorHex: string;
+    desc: string;
+    position: [number, number, number];
+    features: string[];
+  }>;
   className?: string;
 }
 
 export const Canvas3D_NED: React.FC<Canvas3D_NEDProps> = ({
-  width = '100%',
+  width = "100%",
   height = 400,
-  className = '',
+  className = "",
 }) => {
   return (
     <div style={{ width, height }} className={className}>
