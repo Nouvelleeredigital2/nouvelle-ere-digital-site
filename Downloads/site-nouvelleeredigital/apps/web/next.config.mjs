@@ -7,4 +7,17 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true, // Temporairement ignorer les erreurs TypeScript
   },
+  // Configuration pour Docker
+  output: 'standalone',
+  experimental: {
+    outputFileTracingRoot: undefined,
+  },
+  // Optimisations pour la production
+  compress: true,
+  poweredByHeader: false,
+  // Configuration des images
+  images: {
+    domains: ['localhost'],
+    unoptimized: true, // Pour Docker
+  },
 };

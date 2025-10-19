@@ -1,120 +1,256 @@
-# 🚀 Guide d'Utilisation Docker - Nouvelle Ère Digital
+# 🐳 Guide Docker - Nouvelle Ère Digital
+
+Ce guide vous explique comment utiliser Docker pour développer et déployer votre site Nouvelle Ère Digital.
 
 ## 📋 Prérequis
 
-1. **Docker Desktop** doit être installé et démarré
-2. **Docker Engine** doit être en cours d'exécution
+- **Docker Desktop** installé et démarré
+- **Docker Compose** (inclus avec Docker Desktop)
+- **Git** pour cloner le repository
 
-## 🛠️ Construction de l'Image
+## 🚀 Démarrage Rapide
 
-### Option 1 : Utilisation des Scripts NPM
+### 1. Cloner le projet
 ```bash
-# Construire l'image Docker
-npm run docker:build
-
-# Démarrer le conteneur
-npm run docker:run
+git clone https://github.com/Nouvelleeredigital2/nouvelle-ere-digital-site.git
+cd nouvelle-ere-digital-site/apps/web
 ```
 
-### Option 2 : Commandes Docker Directes
+### 2. Démarrer en mode développement
 ```bash
-# Construire l'image
-docker build -t nouvelle-ere-digital .
+# Utiliser le script de démarrage
+chmod +x docker-start.sh
+./docker-start.sh dev
 
-# Lister les images
-docker images
-
-# Démarrer le conteneur
-docker run -d -p 3001:3001 --name nouvelle-ere-digital-container nouvelle-ere-digital
-
-# Voir les logs
-docker logs nouvelle-ere-digital-container
-
-# Arrêter le conteneur
-docker stop nouvelle-ere-digital-container
-
-# Supprimer le conteneur
-docker rm nouvelle-ere-digital-container
+# Ou directement avec Docker Compose
+docker-compose -f docker-compose.dev.yml up --build
 ```
 
-## 🐳 Utilisation avec Docker Compose
+### 3. Accéder à l'application
+- **Site** : http://localhost:3001
+- **Admin** : http://localhost:3001/admin
+- **Prisma Studio** : http://localhost:5555 (optionnel)
 
+## 🔧 Commandes Docker
+
+### Script de démarrage
 ```bash
-# Construire et démarrer avec docker-compose
-docker-compose up --build
+./docker-start.sh [COMMAND]
+```
+
+**Commandes disponibles :**
+- `dev` - Mode développement avec hot reload
+- `prod` - Mode production
+- `build` - Construire l'image Docker
+- `stop` - Arrêter tous les conteneurs
+- `clean` - Nettoyer les images et conteneurs
+- `logs` - Afficher les logs
+- `shell` - Ouvrir un shell dans le conteneur
+
+### Commandes Docker Compose
+
+#### Mode Développement
+```bash
+# Démarrer avec hot reload
+docker-compose -f docker-compose.dev.yml up --build
 
 # Démarrer en arrière-plan
-docker-compose up -d --build
+docker-compose -f docker-compose.dev.yml up -d
 
-# Voir les logs
+# Afficher les logs
+docker-compose -f docker-compose.dev.yml logs -f
+
+# Arrêter
+docker-compose -f docker-compose.dev.yml down
+```
+
+#### Mode Production
+```bash
+# Démarrer en production
+docker-compose up --build -d
+
+# Afficher les logs
 docker-compose logs -f
 
-# Arrêter les services
+# Arrêter
 docker-compose down
 ```
 
-## 🌐 Accès à l'Application
-
-Une fois le conteneur démarré, l'application sera accessible à :
-- **URL locale** : `http://localhost:3001`
-- **Port** : 3001 (configurable dans le Dockerfile)
-
-## 🔧 Configuration Docker
-
-### Variables d'Environnement
-Le conteneur utilise automatiquement les variables définies dans le fichier `.env` :
-- `DATABASE_URL=file:./dev.db`
-- `NEXTAUTH_SECRET=test-secret-key-for-development`
-- `NEXTAUTH_URL=http://localhost:3001`
-
-### Volumes
-- `./dev.db:/app/dev.db` - Base de données SQLite persistante
-
-## 🚨 Dépannage
-
-### Problème : Docker Desktop n'est pas démarré
-1. Ouvrir Docker Desktop
-2. Attendre que le moteur démarre
-3. Réessayer la commande
-
-### Problème : Port 3001 déjà utilisé
+#### Avec Prisma Studio
 ```bash
-# Vérifier les processus sur le port
-netstat -ano | findstr :3001
-
-# Tuer le processus si nécessaire
-taskkill /PID <PID> /F
-
-# Ou utiliser un autre port
-docker run -p 3002:3001 nouvelle-ere-digital
+# Démarrer avec Prisma Studio
+docker-compose -f docker-compose.dev.yml --profile tools up
 ```
 
-### Problème : Erreurs de build
+## 🏗️ Structure des Fichiers Docker
+
+```
+apps/web/
+├── Dockerfile              # Image de production
+├── Dockerfile.dev          # Image de développement
+├── docker-compose.yml      # Configuration production
+├── docker-compose.dev.yml  # Configuration développement
+├── .dockerignore           # Fichiers à ignorer
+└── docker-start.sh         # Script de démarrage
+```
+
+## 🌐 Ports et Services
+
+### Mode Développement
+- **3001** - Application Next.js
+- **5555** - Prisma Studio (optionnel)
+
+### Mode Production
+- **3000** - Application Next.js
+- **5432** - PostgreSQL (optionnel)
+- **6379** - Redis (optionnel)
+
+## 🔐 Variables d'Environnement
+
+### Fichier .env pour Docker
+```env
+# Base de données
+DATABASE_URL="file:./prisma/dev.db"
+
+# Authentification
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-secret-key"
+
+# Site
+NEXT_PUBLIC_SITE_URL="http://localhost:3000"
+NEXT_PUBLIC_SITE_NAME="Nouvelle Ère Digital"
+```
+
+## 📊 Base de Données
+
+### SQLite (par défaut)
+- Base de données persistante dans `./prisma/dev.db`
+- Pas de configuration supplémentaire nécessaire
+
+### PostgreSQL (optionnel)
+```bash
+# Démarrer avec PostgreSQL
+docker-compose --profile production up -d
+```
+
+## 🚀 Déploiement
+
+### 1. Build de l'image
+```bash
+docker build -t nouvelle-ere-digital .
+```
+
+### 2. Tag pour le registry
+```bash
+docker tag nouvelle-ere-digital:latest votre-registry/nouvelle-ere-digital:latest
+```
+
+### 3. Push vers le registry
+```bash
+docker push votre-registry/nouvelle-ere-digital:latest
+```
+
+### 4. Déploiement sur serveur
+```bash
+# Sur le serveur
+docker pull votre-registry/nouvelle-ere-digital:latest
+docker run -d -p 3000:3000 --name nouvelle-ere-digital votre-registry/nouvelle-ere-digital:latest
+```
+
+## 🔍 Debugging
+
+### Afficher les logs
+```bash
+# Logs en temps réel
+docker-compose logs -f
+
+# Logs d'un service spécifique
+docker-compose logs -f web
+```
+
+### Ouvrir un shell dans le conteneur
+```bash
+# Mode développement
+docker-compose -f docker-compose.dev.yml exec web-dev /bin/sh
+
+# Mode production
+docker-compose exec web /bin/sh
+```
+
+### Inspecter l'image
+```bash
+docker run -it nouvelle-ere-digital /bin/sh
+```
+
+## 🧹 Nettoyage
+
+### Nettoyer les conteneurs arrêtés
+```bash
+docker container prune
+```
+
+### Nettoyer les images non utilisées
+```bash
+docker image prune
+```
+
+### Nettoyer tout
+```bash
+docker system prune -a
+```
+
+### Nettoyer avec le script
+```bash
+./docker-start.sh clean
+```
+
+## ⚠️ Dépannage
+
+### Problème de permissions
+```bash
+# Sur Linux/Mac
+sudo chown -R $USER:$USER .
+```
+
+### Problème de port déjà utilisé
+```bash
+# Vérifier les ports utilisés
+netstat -tulpn | grep :3000
+netstat -tulpn | grep :3001
+
+# Arrêter le processus
+sudo kill -9 PID
+```
+
+### Problème de build
 ```bash
 # Nettoyer le cache Docker
-docker system prune -a
+docker builder prune
 
-# Rebuilder l'image
-docker build --no-cache -t nouvelle-ere-digital .
+# Rebuild sans cache
+docker-compose build --no-cache
 ```
 
-## 📊 Avantages de Docker
+## 📈 Optimisations
 
-✅ **Environnement isolé** : Aucun conflit avec l'environnement système
-✅ **Reproductible** : Même résultat sur toutes les machines
-✅ **Portable** : Facile à déployer ailleurs
-✅ **Sécurisé** : Conteneur sandboxé
-✅ **Évolutif** : Facile à scaler avec docker-compose
+### Multi-stage build
+Le Dockerfile utilise un build multi-stage pour :
+- Réduire la taille de l'image finale
+- Séparer les dépendances de développement et production
+- Optimiser les performances
+
+### Cache des layers
+- Les dépendances sont installées dans un layer séparé
+- Le code source est copié après l'installation des dépendances
+- Cela permet de réutiliser le cache lors des modifications de code
 
 ## 🎯 Prochaines Étapes
 
-1. **Démarrer Docker Desktop**
-2. **Construire l'image** : `npm run docker:build`
-3. **Tester l'application** : `npm run docker:run`
-4. **Vérifier l'accès** : http://localhost:3001
+1. **Testez le build** : `./docker-start.sh build`
+2. **Démarrez en dev** : `./docker-start.sh dev`
+3. **Testez en prod** : `./docker-start.sh prod`
+4. **Déployez** : Configurez votre registry et serveur
 
 ---
 
-**🚀 Votre application Nouvelle Ère Digital est maintenant prête pour le déploiement Docker !**
-
-**Nouvelle Ère Digital** | Guide Docker | 18 Octobre 2025
+**🐳 Docker est maintenant configuré pour votre projet !**

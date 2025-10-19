@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # Application Next.js en mode développement
+  web-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=file:./prisma/dev.db
+      - NEXTAUTH_URL=http://localhost:3001
+      - NEXTAUTH_SECRET=dev-secret-key
+    volumes:
+      # Hot reload du code source
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+      # Persister la base de données
+      - ./prisma/dev.db:/app/prisma/dev.db
+    command: npm run dev
+    restart: unless-stopped
+
+  # Prisma Studio pour gérer la base de données
+  prisma-studio:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5555:5555"
+    environment:
+      - DATABASE_URL=file:./prisma/dev.db
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npx prisma studio --hostname 0.0.0.0
+    restart: unless-stopped
+    profiles:
+      - tools

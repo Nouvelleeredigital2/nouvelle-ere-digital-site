@@ -1,19 +1,57 @@
 version: '3.8'
 
 services:
-  nouvelle-ere-digital:
-    build: .
+  # Application Next.js
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "3001:3001"
+      - "3000:3000"
     environment:
       - NODE_ENV=production
-      - DATABASE_URL=file:./dev.db
-      - NEXTAUTH_SECRET=test-secret-key-for-development
-      - NEXTAUTH_URL=http://localhost:3001
+      - DATABASE_URL=file:./prisma/dev.db
+      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_SECRET=your-secret-key-change-in-production
     volumes:
-      - ./dev.db:/app/dev.db
+      # Persister la base de données
+      - ./prisma/dev.db:/app/prisma/dev.db
+      # Persister les uploads
+      - ./public/uploads:/app/public/uploads
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
-networks:
-  default:
-    name: nouvelle-ere-digital-network
+  # Base de données PostgreSQL (optionnel pour la production)
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=nouvelle_ere_digital
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    profiles:
+      - production
+
+  # Redis pour le cache (optionnel)
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    profiles:
+      - production
+
+volumes:
+  postgres_data:
+  redis_data:
