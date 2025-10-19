@@ -1,130 +1,178 @@
-# Vitrine Monorepo (Next.js 14 + TypeScript + Tailwind)
+# 🌟 Nouvelle Ère Digital - Site Builder
 
-Monorepo front prêt pour un site vitrine moderne. Ossature uniquement (UI neutre, blocs, layout, thèmes, navigation, SEO, a11y). Pas de logique métier.
+Un système de gestion de contenu (CMS) moderne et complet avec éditeur visuel, système de personas et API REST.
 
-## Stack
+## ✨ Fonctionnalités
 
-- **Next.js 14+ App Router** (`apps/web/app/`)
-- **TypeScript strict** (paths alias `@/*`)
-- **Tailwind CSS** + **variables CSS** (design tokens)
-- **lucide-react** (icônes), **Framer Motion** (apparitions légères)
-- **ESLint / Prettier**, **Husky + lint-staged**
-- **SEO** (metadata, `sitemap.ts`, `robots.ts`)
-- **A11y** (focus visible, contrast AA visé)
+### 🎨 Système de Personas
+- **Thèmes adaptatifs** : "Naturel" et "Minimaliste" avec couleurs, typographie et animations personnalisées
+- **CSS dynamique** : Variables CSS qui s'adaptent automatiquement au persona sélectionné
+- **Contrastes optimisés** : Couleurs foreground calculées pour l'accessibilité
 
-> Remarque: les primitives UI sont "shadcn-like" (API simple et neutre). Vous pouvez remplacer/étendre avec `shadcn/ui` si souhaité.
+### 🎯 Éditeur Visuel (Studio)
+- **Drag & Drop** : Interface intuitive pour créer et organiser le contenu
+- **12 types de blocs** : Hero, Text, Image, CTA, RichText, Gallery, Columns, Video, Tabs, Accordion, Form, Icon
+- **Sauvegarde automatique** : Auto-save après 30 secondes d'inactivité
+- **Historique** : Undo/Redo avec limite de 50 actions
+- **Prévisualisation** : Mode preview en temps réel
 
-## Démarrage
+### 🔧 API REST Complète
+- **Pages** : CRUD complet (GET, POST, PUT, PATCH, DELETE)
+- **Services** : Gestion du catalogue de services
+- **Media** : Upload, gestion et optimisation des médias
+- **Blog** : Système de blog avec pagination et filtres
+- **Versioning** : Historique des versions avec restauration
+
+### 🌐 Site Public
+- **Rendu dynamique** : Pages générées à partir du contenu admin
+- **SEO optimisé** : Métadonnées automatiques et sitemap
+- **Performance** : Génération statique avec cache intelligent
+- **Responsive** : Design adaptatif sur tous les écrans
+
+## 🚀 Démarrage Rapide
+
+### Prérequis
+- Node.js 18+
+- npm ou yarn
+- Base de données SQLite (incluse)
+
+### Installation
 
 ```bash
-# Installation à la racine
+# Cloner le repository
+git clone https://github.com/votre-username/nouvelle-ere-digital.git
+cd nouvelle-ere-digital
+
+# Installer les dépendances
+cd apps/web
 npm install
 
-# Lancer l'app Web
+# Configurer l'environnement
+cp .env.example .env
+
+# Initialiser la base de données
+npm run db:push
+npm run db:seed
+
+# Démarrer le serveur de développement
 npm run dev
-
-# Build / Start
-npm run build
-npm run start
-
-# Qualité
-npm run lint
-npm run format
-npm run typecheck
 ```
 
-## Structure
+### Accès
+- **Site public** : http://localhost:3001
+- **Administration** : http://localhost:3001/admin
+- **Studio d'édition** : http://localhost:3001/admin/studio
+
+### Identifiants par défaut
+- **Email** : `admin@nouvelleeredigital.com`
+- **Rôle** : `ADMIN`
+
+## 📁 Structure du Projet
 
 ```
 apps/web/
-  app/
-    layout.tsx
-    page.tsx
-    (marketing)/sandbox/page.tsx
-    sitemap.ts
-    robots.ts
-  components/
-    layout/{Header,Footer,SiteNav,ThemeSection}.tsx
-    ui/{Container,Grid,Button,Card,Badge,SectionHeading,Text,Icon,Media}.tsx
-    blocks/{Hero,Split,FeatureList,Steps,KPI,CTA}.tsx
-  config/{nav.config.ts,routes.config.ts}
-  lib/{utils.ts,seo.ts}
-  styles/{globals.css,prose.css}
-  public/{favicon.svg,og-image.svg}
+├── app/                    # Pages Next.js
+│   ├── (admin)/           # Interface d'administration
+│   ├── (public)/          # Pages publiques
+│   └── api/               # API REST
+├── components/            # Composants React
+│   ├── blocks/            # Blocs de contenu
+│   ├── studio/            # Éditeur visuel
+│   └── ui/                # Composants UI
+├── lib/                   # Utilitaires et configuration
+├── personas/              # Définitions des thèmes
+├── prisma/                # Schéma de base de données
+└── styles/                # Styles CSS globaux
 ```
 
-## Ajouter une page
+## 🎨 Personas Disponibles
 
-1. Créez `apps/web/app/mon-slug/page.tsx`.
-2. Exportez `metadata` si besoin:
+### 🌿 Le Naturel
+- **Couleurs** : Verts naturels avec accents dorés
+- **Typographie** : Inter + Merriweather (confortable)
+- **Style** : Arrondis généreux, ombres douces, espacement spacieux
+- **Animations** : Transitions subtiles et fluides
 
-```ts
-import type { Metadata } from "next";
-import { generatePageMetadata } from "@/lib/seo";
-export const metadata: Metadata = generatePageMetadata({ title: "Ma page", description: "…" });
+### ⚫ Le Minimaliste
+- **Couleurs** : Noir et blanc avec gris sophistiqués
+- **Typographie** : Inter + Crimson Text (compact)
+- **Style** : Angles droits, pas d'ombres, espacement réduit
+- **Animations** : Transitions très subtiles
+
+## 🔧 Scripts Disponibles
+
+```bash
+# Développement
+npm run dev                 # Serveur de développement
+npm run build              # Build de production
+npm run start              # Serveur de production
+
+# Base de données
+npm run db:generate        # Générer le client Prisma
+npm run db:push           # Synchroniser le schéma
+npm run db:seed           # Données initiales
+npm run db:studio         # Interface Prisma Studio
+
+# Utilitaires
+npm run lint              # Linter ESLint
+npm run typecheck         # Vérification TypeScript
 ```
 
-3. Ajoutez l'entrée de route dans `apps/web/config/routes.config.ts`:
+## 🌐 Déploiement
 
-```ts
-{ id: "mon-slug", path: "/mon-slug", title: "Ma page" }
+### Vercel (Recommandé)
+1. Connecter le repository GitHub à Vercel
+2. Configurer les variables d'environnement
+3. Déployer automatiquement
+
+### Docker
+```bash
+# Build de l'image
+docker build -t nouvelle-ere-digital .
+
+# Exécution
+docker run -p 3001:3001 nouvelle-ere-digital
 ```
 
-## Composer une page avec les blocs
+## 📊 Technologies Utilisées
 
-Exemple minimal:
+- **Frontend** : Next.js 14, React 18, TypeScript
+- **Styling** : Tailwind CSS, CSS Variables
+- **Base de données** : Prisma, SQLite
+- **Authentification** : NextAuth.js
+- **État** : Zustand
+- **Formulaires** : React Hook Form + Zod
+- **Éditeur** : TipTap (Rich Text)
+- **Drag & Drop** : @dnd-kit
+- **Animations** : Framer Motion
 
-```tsx
-import { ThemeSection } from "@/components/layout/ThemeSection";
-import { Hero } from "@/components/blocks/Hero";
+## 🤝 Contribution
 
-export default function Page() {
-  return (
-    <ThemeSection variant="light">
-      <Hero title="Titre" subtitle="Sous-titre" cta={{ label: "Action", href: "/" }} />
-    </ThemeSection>
-  );
-}
-```
+1. Fork le projet
+2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
+3. Commit les changements (`git commit -m 'Add some AmazingFeature'`)
+4. Push vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
 
-## Ajouter une variante de Button / Badge
+## 📝 Licence
 
-- Ouvrez `apps/web/components/ui/Button.tsx` ou `Badge.tsx`.
-- Ajoutez une clé dans `variants` / `styles` et mappez les classes Tailwind.
-- Utilisez la variante via `variant="maVariante"`.
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
-## Thèming via variables CSS
+## 📞 Support
 
-- Les tokens sont dans `apps/web/styles/globals.css` (`:root`).
-- Modifiez `--color-…`, `--radius-…`, `--shadow-…`, `--font-sans`.
-- Les composants s'appuient sur Tailwind mappé aux variables.
+- **Email** : contact@nouvelleeredigital.com
+- **Documentation** : [Wiki du projet](https://github.com/votre-username/nouvelle-ere-digital/wiki)
+- **Issues** : [GitHub Issues](https://github.com/votre-username/nouvelle-ere-digital/issues)
 
-## Navigation
+## 🎯 Roadmap
 
-- Le header lit `apps/web/config/nav.config.ts` (`navLinks`).
-- Ajoutez/modifiez `{ label, href, group?, external? }`.
+- [ ] Système de templates
+- [ ] Intégration e-commerce
+- [ ] Analytics avancées
+- [ ] API GraphQL
+- [ ] Multi-langues
+- [ ] Mode sombre automatique
 
-## SEO
+---
 
-- `apps/web/lib/seo.ts` expose `siteDefaults` et `generatePageMetadata()`.
-- `app/sitemap.ts` et `app/robots.ts` utilisent `routes.config.ts`.
-
-## A11y
-
-- Focus visible global.
-- `aria-current="page"` côté nav active.
-- Couleurs prévues pour contraste AA sur clair/sombre.
-
-## Remplacer par shadcn/ui (optionnel)
-
-- Installez `shadcn/ui` et générez les primitives souhaitées.
-- Remappez nos composants `ui/*` si besoin pour conserver l'API.
-
-## Conventions
-
-- Fichiers courts, stateless, props typées + JSDoc succinct.
-- Pas d'appels réseau, pas de logique métier.
-
-## Licence
-
-MIT
+**Développé avec ❤️ par Nouvelle Ère Digital**

@@ -1,21 +1,21 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '@/components/ui/Button';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Button } from "@/components/ui/Button";
 
 const meta: Meta<typeof Button> = {
-  title: 'UI/Button',
+  title: "UI/Button",
   component: Button,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: { type: 'select' },
-      options: ['default', 'primary', 'outline', 'ghost'],
+      control: { type: "select" },
+      options: ["default", "primary", "outline", "ghost"],
     },
     size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
     },
   },
 };
@@ -25,24 +25,24 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: 'Cliquez-moi',
-    variant: 'default',
-    size: 'md',
+    children: "Cliquez-moi",
+    variant: "default",
+    size: "md",
   },
 };
 
 export const Primary: Story = {
   args: {
-    children: 'Action principale',
-    variant: 'primary',
-    size: 'md',
+    children: "Action principale",
+    variant: "primary",
+    size: "md",
   },
 };
 
 export const Outline: Story = {
   args: {
-    children: 'Bouton outline',
-    variant: 'outline',
-    size: 'md',
+    children: "Bouton outline",
+    variant: "outline",
+    size: "md",
   },
 };

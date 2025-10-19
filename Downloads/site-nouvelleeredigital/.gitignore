@@ -3,13 +3,10 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
 
 # Next.js
 .next/
 out/
-
-# Production
 build/
 dist/
 
@@ -20,30 +17,20 @@ dist/
 .env.test.local
 .env.production.local
 
-# Vercel
-.vercel
-
-# TypeScript
-*.tsbuildinfo
-next-env.d.ts
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
+# Database
+*.db
+*.sqlite
+*.sqlite3
 
 # Logs
+logs
 *.log
 
 # Runtime data
 pids
 *.pid
 *.seed
+*.pid.lock
 
 # Coverage directory used by tools like istanbul
 coverage/
@@ -66,122 +53,91 @@ jspm_packages/
 # Yarn Integrity file
 .yarn-integrity
 
-# Storybook build outputs
-.out
-.storybook-out
+# dotenv environment variables file
+.env
 
-# Temporary folders
-tmp/
-temp/
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
-# Cache directories
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Cache
 .cache/
 .parcel-cache/
 
-# Editor directories and files
-.vscode/
-!.vscode/extensions.json
-.history/*
+# Storybook
+storybook-static/
 
-# Local Netlify folder
-.netlify
+# Prisma
+prisma/migrations/
 
-# Windows
-$RECYCLE.BIN/
-*.cab
+# Uploads
+public/uploads/
+uploads/
+
+# Personal files (à adapter selon vos besoins)
+*.pdf
+*.zip
+*.exe
 *.msi
-*.msix
-*.msm
-*.msp
-*.lnk
+*.mkv
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.dxf
+*.pptx
+*.ics
+*.json
+*.xlsx
 
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-Icon
-._*
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-# Linux
-*~
-
-# JetBrains IDEs
-.idea/
-
-# VS Code
-.vscode/
-
-# Sublime Text
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
-*.sublime-workspace
-*.sublime-project
-
-# Vim
-[._]*.s[a-w][a-z]
-[._]*.sw[a-p]
-[._]s[a-w][a-z]
-[._]sw[a-p]
-[._]*.un~
-
-# Emacs
-*~
-\#*\#
-/.emacs.desktop
-/.emacs.desktop.lock
-*.elc
-auto-save-list
-tramp
-.\#*
-
-# Windows specific files
-$RECYCLE.BIN/
-*.cab
-*.msi
-*.msix
-*.msm
-*.msp
-*.lnk
-AMDRM_Install.log
-AMD_RyzenMaster.log
-edb_*.exe
-pemhttpd.exe
-postgresql_*.exe
-ntuser.*
-NTUSER.*
-AppData/
-Contacts/
+# Dossiers personnels
 Desktop/
 Documents/
 Downloads/
-Favorites/
-Links/
+Pictures/
+Videos/
 Music/
 OneDrive/
-Pictures/
+Favorites/
+Links/
 Saved Games/
 Searches/
-Videos/
-"Cookies/"
-"Local Settings/"
-"Menu Démarrer/"
-"Mes documents/"
-"Modèles/"
-"Recent/"
-"SendTo/"
-"Voisinage d'impression/"
-"Voisinage réseau/"
-"Application Data/"
+AppData/
+Contacts/
+Menu Démarrer/
+Mes documents/
+Modèles/
+Recent/
+SendTo/
+Voisinage d'impression/
+Voisinage réseau/
+
+# Fichiers système Windows
+NTUSER.DAT*
+ntuser.dat*
+ntuser.ini
+desktop.ini
+
+# Projets personnels (à adapter)
+NED-IA-*/
+nouvelle-ère-digital*/
+www.nouvelleeredigital.fr*/
+assistant-de-tri-photo-ia*/
+test-minimal/
+TRIPHOTOIA/
