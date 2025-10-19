@@ -1,8 +1,6 @@
+import { redirect } from 'next/navigation';
+
 export default function HomePage() {
-  return (
-    <div>
-      <h1>Test - Application fonctionne</h1>
-      <p>Si cette page s'affiche, l'application de base fonctionne.</p>
-    </div>
-  );
+  // Rediriger vers la page d'accueil du site
+  redirect('/accueil');
 }
