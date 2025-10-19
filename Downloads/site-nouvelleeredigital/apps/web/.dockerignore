@@ -74,6 +74,9 @@ docker-compose*
 README.md
 *.md
 
+# TypeScript config (utilise tsconfig.docker.json)
+tsconfig.json
+
 # Personal files
 *.pdf
 *.zip
