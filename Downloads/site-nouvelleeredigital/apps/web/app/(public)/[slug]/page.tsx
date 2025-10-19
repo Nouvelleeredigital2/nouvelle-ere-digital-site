@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getPageBySlug, getAllPages } from '@/lib/snapshot';
-import { BlockRenderer } from '@/components/blocks/BlockRenderer';
+import { BlocksRenderer } from '@/components/blocks/BlocksRenderer';
 
 export async function generateStaticParams() {
   const pages = await getAllPages();
@@ -34,7 +34,7 @@ export default async function DynamicPage({ params }: { params: { slug: string }
 
   return (
     <main className="min-h-screen">
-      <BlockRenderer blocks={pageData.layout.blocks} />
+      <BlocksRenderer blocks={pageData.layout.blocks || []} />
     </main>
   );
 }

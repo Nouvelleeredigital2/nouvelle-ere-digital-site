@@ -12,7 +12,6 @@ export async function GET(request: NextRequest) {
       const page = await prisma.page.findFirst({
         where: {
           slug,
-          locale: 'fr',
         },
       });
 
@@ -27,7 +26,6 @@ export async function GET(request: NextRequest) {
     }
 
     const pages = await prisma.page.findMany({
-      where: { locale: 'fr' },
       orderBy: { updatedAt: 'desc' },
     });
 

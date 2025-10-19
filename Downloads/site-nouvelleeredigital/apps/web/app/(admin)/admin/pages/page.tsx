@@ -2,23 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/Button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
-import { 
-  Plus, 
-  Edit3, 
-  Eye, 
-  Trash2, 
-  Search,
-  Filter,
-  Calendar,
-  User,
-  FileText,
-  TreePine,
-  List
-} from 'lucide-react';
-import { PageHierarchy } from '@/components/admin/PageHierarchy';
+import { useHistory } from '@/hooks/useHistory';
 
 interface Page {
   id: string;
@@ -36,15 +20,62 @@ interface Page {
 export default function PagesAdmin() {
   const [pages, setPages] = useState<Page[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [viewMode, setViewMode] = useState<'list' | 'hierarchy'>('list');
+  
+  // Hook d'historique pour undo/redo
+  const { undo, redo, canUndo, canRedo } = useHistory();
+
+  // Fonctions pour gérer l'historique des pages
+  const handleUndoPages = () => {
+    undo();
+    // Recharger la liste après undo
+    handleRefreshPages();
+  };
+
+  const handleRedoPages = () => {
+    redo();
+    // Recharger la liste après redo
+    handleRefreshPages();
+  };
 
   useEffect(() => {
     const loadPages = async () => {
       try {
         setLoading(true);
-        // TODO: Remplacer par un vrai appel API
+        
+        // Récupérer les pages depuis l'API
+        const response = await fetch('/api/pages');
+        
+        if (!response.ok) {
+          throw new Error('Erreur lors de la récupération des pages');
+        }
+        
+        const apiPages = await response.json();
+        
+        // Transformer les données de l'API pour correspondre à notre interface
+        const transformedPages: Page[] = apiPages.map((page: any) => ({
+          id: page.id,
+          slug: page.slug,
+          title: page.title,
+          status: page.status || 'DRAFT',
+          createdAt: page.createdAt,
+          updatedAt: page.updatedAt,
+          author: {
+            name: 'Admin', // TODO: Récupérer depuis page.author si disponible
+            email: 'admin@example.com'
+          }
+        }));
+        
+        setPages(transformedPages);
+        setError(null);
+      } catch (error) {
+        console.error('Erreur lors du chargement des pages:', error);
+        setError('Erreur lors du chargement des pages. Utilisation des données de démonstration.');
+        
+        // En cas d'erreur, utiliser des données mock pour le développement
         const mockPages: Page[] = [
           {
             id: '1',
@@ -63,21 +94,10 @@ export default function PagesAdmin() {
             createdAt: '2024-01-16T09:00:00Z',
             updatedAt: '2024-01-18T16:45:00Z',
             author: { name: 'Admin', email: 'admin@example.com' }
-          },
-          {
-            id: '3',
-            slug: 'services',
-            title: 'Nos services',
-            status: 'PUBLISHED',
-            createdAt: '2024-01-17T11:00:00Z',
-            updatedAt: '2024-01-19T13:20:00Z',
-            author: { name: 'Admin', email: 'admin@example.com' }
           }
         ];
         
         setPages(mockPages);
-      } catch (error) {
-        console.error('Erreur lors du chargement des pages:', error);
       } finally {
         setLoading(false);
       }
@@ -97,9 +117,9 @@ export default function PagesAdmin() {
     
     const config = statusConfig[status as keyof typeof statusConfig] || statusConfig.DRAFT;
     return (
-      <Badge className={config.color}>
+      <span className={`px-2 py-1 text-xs rounded-full ${config.color}`}>
         {config.label}
-      </Badge>
+      </span>
     );
   };
 
@@ -109,6 +129,86 @@ export default function PagesAdmin() {
     const matchesStatus = statusFilter === 'all' || page.status === statusFilter;
     return matchesSearch && matchesStatus;
   });
+
+  const handleDeletePage = async (pageId: string, pageTitle: string) => {
+    if (!confirm(`Êtes-vous sûr de vouloir supprimer la page "${pageTitle}" ?`)) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/pages/${pageId}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        // Recharger la liste des pages
+        setPages(prevPages => prevPages.filter(page => page.id !== pageId));
+        alert('Page supprimée avec succès');
+      } else {
+        throw new Error('Erreur lors de la suppression');
+      }
+    } catch (error) {
+      console.error('Erreur lors de la suppression:', error);
+      alert('Erreur lors de la suppression de la page');
+    }
+  };
+
+  const handleRefreshPages = () => {
+    // Recharger les pages
+    const loadPages = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('/api/pages');
+        
+        if (response.ok) {
+          const apiPages = await response.json();
+          const transformedPages: Page[] = apiPages.map((page: any) => ({
+            id: page.id,
+            slug: page.slug,
+            title: page.title,
+            status: page.status || 'DRAFT',
+            createdAt: page.createdAt,
+            updatedAt: page.updatedAt,
+            author: {
+              name: 'Admin',
+              email: 'admin@example.com'
+            }
+          }));
+          setPages(transformedPages);
+        }
+      } catch (error) {
+        console.error('Erreur lors du rechargement:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    loadPages();
+  };
+
+  const handleSeedPages = async () => {
+    if (!confirm('Créer des pages d\'exemple ? Cela remplacera les pages existantes.')) {
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/pages/seed', {
+        method: 'POST',
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        alert(`✅ ${result.message}`);
+        // Recharger la liste
+        handleRefreshPages();
+      } else {
+        throw new Error('Erreur lors de la création des pages');
+      }
+    } catch (error) {
+      console.error('Erreur lors de la création des pages:', error);
+      alert('❌ Erreur lors de la création des pages d\'exemple');
+    }
+  };
 
   if (loading) {
     return (
@@ -144,8 +244,7 @@ export default function PagesAdmin() {
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                <List className="w-4 h-4 mr-2" />
-                Liste
+                📋 Liste
               </button>
               <button
                 onClick={() => setViewMode('hierarchy')}
@@ -155,26 +254,72 @@ export default function PagesAdmin() {
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                <TreePine className="w-4 h-4 mr-2" />
-                Arborescence
+                🌳 Arborescence
               </button>
             </div>
             
+            <button
+              onClick={handleRefreshPages}
+              className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md"
+              title="Actualiser la liste"
+            >
+              🔄 Actualiser
+            </button>
+            
+            {/* Contrôles Undo/Redo */}
+            <div className="flex items-center space-x-1">
+              <button
+                onClick={handleUndoPages}
+                disabled={!canUndo}
+                className="bg-gray-500 hover:bg-gray-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-3 py-2 rounded-md"
+                title="Annuler (Ctrl+Z)"
+              >
+                ↶ Annuler
+              </button>
+              <button
+                onClick={handleRedoPages}
+                disabled={!canRedo}
+                className="bg-gray-500 hover:bg-gray-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-3 py-2 rounded-md"
+                title="Rétablir (Ctrl+Shift+Z)"
+              >
+                ↷ Rétablir
+              </button>
+            </div>
+            
+            <button
+              onClick={handleSeedPages}
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md"
+              title="Créer des pages d'exemple"
+            >
+              🌱 Pages d'exemple
+            </button>
+            
             <Link href="/admin/studio">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                <Plus className="w-4 h-4 mr-2" />
-                Nouvelle Page
-              </Button>
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md">
+                ➕ Nouvelle Page
+              </button>
             </Link>
           </div>
         </div>
+
+        {/* Message d'erreur */}
+        {error && (
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+            <div className="flex items-center">
+              <div className="text-yellow-600 mr-3">⚠️</div>
+              <div>
+                <p className="text-yellow-800 font-medium">Attention</p>
+                <p className="text-yellow-700 text-sm">{error}</p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Filtres et recherche */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
             {/* Recherche */}
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="text"
                 placeholder="Rechercher une page..."
@@ -186,7 +331,6 @@ export default function PagesAdmin() {
 
             {/* Filtre par statut */}
             <div className="flex items-center space-x-4">
-              <Filter className="w-5 h-5 text-gray-400" />
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
@@ -206,22 +350,24 @@ export default function PagesAdmin() {
         {/* Contenu principal */}
         <div className="grid gap-6">
           {viewMode === 'hierarchy' ? (
-            <Card>
-              <CardContent className="p-6">
-                <PageHierarchy 
-                  onPageSelect={(page) => {
-                    console.log('Page sélectionnée:', page);
-                  }}
-                />
-              </CardContent>
-            </Card>
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+              <div className="text-center py-8">
+                <div className="text-4xl mb-4">🌳</div>
+                <h3 className="text-lg font-medium text-gray-900 mb-2">
+                  Vue Arborescence
+                </h3>
+                <p className="text-gray-600">
+                  Cette fonctionnalité sera bientôt disponible
+                </p>
+              </div>
+            </div>
           ) : (
             /* Vue liste */
             <>
               {filteredPages.length === 0 ? (
-                <Card>
-                  <CardContent className="text-center py-12">
-                    <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                  <div className="text-center py-12">
+                    <div className="text-4xl mb-4">📄</div>
                     <h3 className="text-lg font-medium text-gray-900 mb-2">
                       {searchTerm || statusFilter !== 'all' ? 'Aucune page trouvée' : 'Aucune page créée'}
                     </h3>
@@ -233,65 +379,61 @@ export default function PagesAdmin() {
                     </p>
                     {(!searchTerm && statusFilter === 'all') && (
                       <Link href="/admin/studio">
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                          <Plus className="w-4 h-4 mr-2" />
-                          Créer une page
-                        </Button>
+                        <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md">
+                          ➕ Créer une page
+                        </button>
                       </Link>
                     )}
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               ) : (
                 filteredPages.map((page) => (
-                  <Card key={page.id} className="hover:shadow-md transition-shadow">
-                    <CardContent className="p-6">
-                      <div className="flex items-center justify-between">
-                        <div className="flex-1">
-                          <div className="flex items-center space-x-3 mb-2">
-                            <h3 className="text-lg font-semibold text-gray-900">
-                              {page.title}
-                            </h3>
-                            {getStatusBadge(page.status)}
-                          </div>
-                          
-                          <div className="flex items-center space-x-6 text-sm text-gray-600 mb-4">
-                            <div className="flex items-center">
-                              <User className="w-4 h-4 mr-1" />
-                              {page.author.name}
-                            </div>
-                            <div className="flex items-center">
-                              <Calendar className="w-4 h-4 mr-1" />
-                              Modifié le {new Date(page.updatedAt).toLocaleDateString('fr-FR')}
-                            </div>
-                            <div className="flex items-center">
-                              <FileText className="w-4 h-4 mr-1" />
-                              /{page.slug}
-                            </div>
-                          </div>
+                  <div key={page.id} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+                    <div className="flex items-center justify-between">
+                      <div className="flex-1">
+                        <div className="flex items-center space-x-3 mb-2">
+                          <h3 className="text-lg font-semibold text-gray-900">
+                            {page.title}
+                          </h3>
+                          {getStatusBadge(page.status)}
                         </div>
-
-                        <div className="flex items-center space-x-2">
-                          <Link href={`/admin/studio/${page.slug}`}>
-                            <Button variant="outline" size="sm">
-                              <Edit3 className="w-4 h-4 mr-1" />
-                              Éditer
-                            </Button>
-                          </Link>
-                          
-                          <Link href={`/${page.slug}`} target="_blank">
-                            <Button variant="outline" size="sm">
-                              <Eye className="w-4 h-4 mr-1" />
-                              Voir
-                            </Button>
-                          </Link>
-                          
-                          <Button variant="outline" size="sm" className="text-red-600 hover:text-red-700">
-                            <Trash2 className="w-4 h-4" />
-                          </Button>
+                        
+                        <div className="flex items-center space-x-6 text-sm text-gray-600 mb-4">
+                          <div className="flex items-center">
+                            👤 {page.author.name}
+                          </div>
+                          <div className="flex items-center">
+                            📅 Modifié le {new Date(page.updatedAt).toLocaleDateString('fr-FR')}
+                          </div>
+                          <div className="flex items-center">
+                            📄 /{page.slug}
+                          </div>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
+
+                      <div className="flex items-center space-x-2">
+                        <Link href={`/admin/studio/${page.slug}`}>
+                          <button className="px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-50">
+                            ✏️ Éditer
+                          </button>
+                        </Link>
+                        
+                        <Link href={`/${page.slug}`} target="_blank">
+                          <button className="px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-50">
+                            👁️ Voir
+                          </button>
+                        </Link>
+                        
+                        <button 
+                          onClick={() => handleDeletePage(page.id, page.title)}
+                          className="px-3 py-1 border border-red-300 rounded-md text-red-600 hover:bg-red-50"
+                          title="Supprimer la page"
+                        >
+                          🗑️
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 ))
               )}
             </>
@@ -300,67 +442,59 @@ export default function PagesAdmin() {
 
         {/* Statistiques */}
         <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card>
-            <CardContent className="p-4">
-              <div className="flex items-center">
-                <div className="p-2 bg-blue-100 rounded-lg">
-                  <FileText className="w-6 h-6 text-blue-600" />
-                </div>
-                <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-600">Total</p>
-                  <p className="text-2xl font-bold text-gray-900">{pages.length}</p>
-                </div>
+          <div className="bg-gray-50 rounded-lg p-4">
+            <div className="flex items-center">
+              <div className="p-2 bg-blue-100 rounded-lg">
+                📄
               </div>
-            </CardContent>
-          </Card>
+              <div className="ml-4">
+                <p className="text-sm font-medium text-gray-600">Total</p>
+                <p className="text-2xl font-bold text-gray-900">{pages.length}</p>
+              </div>
+            </div>
+          </div>
           
-          <Card>
-            <CardContent className="p-4">
-              <div className="flex items-center">
-                <div className="p-2 bg-green-100 rounded-lg">
-                  <Eye className="w-6 h-6 text-green-600" />
-                </div>
-                <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-600">Publiées</p>
-                  <p className="text-2xl font-bold text-gray-900">
-                    {pages.filter(p => p.status === 'PUBLISHED').length}
-                  </p>
-                </div>
+          <div className="bg-gray-50 rounded-lg p-4">
+            <div className="flex items-center">
+              <div className="p-2 bg-green-100 rounded-lg">
+                ✅
               </div>
-            </CardContent>
-          </Card>
+              <div className="ml-4">
+                <p className="text-sm font-medium text-gray-600">Publiées</p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {pages.filter(p => p.status === 'PUBLISHED').length}
+                </p>
+              </div>
+            </div>
+          </div>
           
-          <Card>
-            <CardContent className="p-4">
-              <div className="flex items-center">
-                <div className="p-2 bg-yellow-100 rounded-lg">
-                  <Edit3 className="w-6 h-6 text-yellow-600" />
-                </div>
-                <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-600">Brouillons</p>
-                  <p className="text-2xl font-bold text-gray-900">
-                    {pages.filter(p => p.status === 'DRAFT').length}
-                  </p>
-                </div>
+          <div className="bg-gray-50 rounded-lg p-4">
+            <div className="flex items-center">
+              <div className="p-2 bg-yellow-100 rounded-lg">
+                📝
               </div>
-            </CardContent>
-          </Card>
+              <div className="ml-4">
+                <p className="text-sm font-medium text-gray-600">Brouillons</p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {pages.filter(p => p.status === 'DRAFT').length}
+                </p>
+              </div>
+            </div>
+          </div>
           
-          <Card>
-            <CardContent className="p-4">
-              <div className="flex items-center">
-                <div className="p-2 bg-gray-100 rounded-lg">
-                  <Calendar className="w-6 h-6 text-gray-600" />
-                </div>
-                <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-600">Programmées</p>
-                  <p className="text-2xl font-bold text-gray-900">
-                    {pages.filter(p => p.status === 'SCHEDULED').length}
-                  </p>
-                </div>
+          <div className="bg-gray-50 rounded-lg p-4">
+            <div className="flex items-center">
+              <div className="p-2 bg-gray-100 rounded-lg">
+                📅
               </div>
-            </CardContent>
-          </Card>
+              <div className="ml-4">
+                <p className="text-sm font-medium text-gray-600">Programmées</p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {pages.filter(p => p.status === 'SCHEDULED').length}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
