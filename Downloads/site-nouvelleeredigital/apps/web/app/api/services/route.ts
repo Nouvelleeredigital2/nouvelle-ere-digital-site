@@ -102,3 +102,40 @@ export const POST = withValidation(
     });
   }, { operation: 'create_service' });
 });
+
+export const DELETE = withValidation(
+  undefined, // Pas de body pour DELETE
+  undefined, // Pas de query params
+  { required: true, roles: ['ADMIN'] } // Seuls les admins peuvent supprimer
+)(async (request, { query }) => {
+  return performanceMonitor.measureFunction('api_services_delete', async () => {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+
+    if (!id) {
+      throw new Error('ID du service requis');
+    }
+
+    // Vérifier que le service existe
+    const existingService = await prisma.service.findUnique({
+      where: { id },
+    });
+
+    if (!existingService) {
+      throw new Error('Service non trouvé');
+    }
+
+    await prisma.service.delete({
+      where: { id },
+    });
+
+    // Invalider le cache des services
+    await cache.invalidateByTags(['services', 'preloaded_data']);
+
+    return createSuccessResponse(null, 'Service supprimé avec succès', {
+      cache: {
+        maxAge: 0, // Pas de cache pour les suppressions
+      },
+    });
+  }, { operation: 'delete_service' });
+});

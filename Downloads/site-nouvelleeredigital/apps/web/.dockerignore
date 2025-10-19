@@ -87,7 +87,7 @@ README.md
 *.dxf
 *.pptx
 *.ics
-*.json
+# *.json  # Commenté pour permettre package.json
 *.xlsx
 
 # Scripts de développement

@@ -42,13 +42,24 @@ export async function getActiveSnapshot(): Promise<SiteSnapshot | null> {
 }
 
 /**
- * Récupère une page par son slug depuis la base de données
+ * Récupère une page par son slug depuis le snapshot publié
  */
 export async function getPageBySlug(slug: string): Promise<PageData | null> {
   try {
+    // D'abord, essayer de récupérer depuis le snapshot publié
+    const snapshot = await getActiveSnapshot();
+    if (snapshot) {
+      const pageFromSnapshot = snapshot.pages.find(p => p.slug === slug);
+      if (pageFromSnapshot) {
+        return pageFromSnapshot;
+      }
+    }
+
+    // Fallback: récupérer depuis la base de données si pas de snapshot
     const page = await prisma.page.findUnique({
       where: {
         slug,
+        status: 'PUBLISHED', // Seulement les pages publiées
       },
     });
 
@@ -69,10 +80,17 @@ export async function getPageBySlug(slug: string): Promise<PageData | null> {
 }
 
 /**
- * Récupère toutes les pages publiées
+ * Récupère toutes les pages publiées depuis le snapshot
  */
 export async function getAllPages(): Promise<PageData[]> {
   try {
+    // D'abord, essayer de récupérer depuis le snapshot publié
+    const snapshot = await getActiveSnapshot();
+    if (snapshot) {
+      return snapshot.pages;
+    }
+
+    // Fallback: récupérer depuis la base de données si pas de snapshot
     const pages = await prisma.page.findMany({
       where: {
         status: 'PUBLISHED',

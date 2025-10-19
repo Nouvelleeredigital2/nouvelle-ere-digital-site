@@ -136,3 +136,33 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
+// DELETE - Supprimer un post
+export async function DELETE(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return NextResponse.json({ error: 'id requis' }, { status: 400 });
+    }
+
+    // Vérifier que le post existe
+    const existingPost = await prisma.post.findUnique({
+      where: { id },
+    });
+
+    if (!existingPost) {
+      return NextResponse.json({ error: 'Post non trouvé' }, { status: 404 });
+    }
+
+    await prisma.post.delete({
+      where: { id },
+    });
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Erreur DELETE /api/posts:', error);
+    return NextResponse.json({ error: 'Erreur serveur' }, { status: 500 });
+  }
+}

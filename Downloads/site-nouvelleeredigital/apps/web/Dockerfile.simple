@@ -1,26 +1,81 @@
 # Dockerfile simplifié pour Nouvelle Ère Digital
-FROM node:18-alpine
+# À exécuter depuis apps/web/
 
-# Installer les dépendances système nécessaires
+FROM node:18-alpine AS base
+
+# Installer les dépendances système
 RUN apk add --no-cache libc6-compat
-
-# Définir le répertoire de travail
 WORKDIR /app
 
-# Copier les fichiers de dépendances
-COPY package*.json ./
+# Stage 1: Installer les dépendances
+FROM base AS deps
 
-# Installer les dépendances
+# Copier les fichiers de dépendances
+COPY package.json package-lock.json* ./
+
+# Installer toutes les dépendances
 RUN npm ci
 
-# Copier le code source
-COPY . .
+# Stage 2: Build de l'application
+FROM base AS builder
 
-# Construire l'application
+WORKDIR /app
+
+# Copier les dépendances
+COPY --from=deps /app/node_modules ./node_modules
+
+# Copier le code source
+COPY . ./
+
+# Variables d'environnement pour le build
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
+
+# Générer le client Prisma
+RUN npx prisma generate
+
+# Build de l'application
 RUN npm run build
 
-# Exposer le port
-EXPOSE 3001
+# Stage 3: Image de production
+FROM base AS runner
 
-# Démarrer l'application
-CMD ["npm", "start"]
+WORKDIR /app
+
+# Variables d'environnement
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# Créer un utilisateur non-root
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# Copier les fichiers publics
+COPY --from=builder /app/public ./public
+
+# Copier les fichiers de build
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+# Copier les fichiers Prisma
+COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/.prisma ./node_modules/.prisma
+
+# Copier le package.json
+COPY --from=builder /app/package.json ./package.json
+
+# Créer le dossier pour la base de données
+RUN mkdir -p /app/prisma && chown nextjs:nodejs /app/prisma
+
+# Exposer le port
+EXPOSE 3000
+
+# Variables d'environnement
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+# Changer vers l'utilisateur non-root
+USER nextjs
+
+# Commande de démarrage
+CMD ["node", "server.js"]
