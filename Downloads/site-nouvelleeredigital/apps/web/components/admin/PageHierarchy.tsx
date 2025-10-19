@@ -39,7 +39,7 @@ interface PageHierarchyProps {
   showActions?: boolean;
 }
 
-export function PageHierarchy({ 
+export default function PageHierarchy({ 
   onPageSelect, 
   selectedPageId, 
   showActions = true 
