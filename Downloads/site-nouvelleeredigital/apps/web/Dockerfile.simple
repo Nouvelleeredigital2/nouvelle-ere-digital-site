@@ -14,7 +14,7 @@ FROM base AS deps
 COPY package.json package-lock.json* ./
 
 # Installer toutes les dépendances
-RUN npm ci
+RUN npm install
 
 # Stage 2: Build de l'application
 FROM base AS builder
@@ -33,6 +33,9 @@ ENV NODE_ENV=production
 
 # Générer le client Prisma
 RUN npx prisma generate
+
+# Copier le tsconfig pour Docker
+COPY tsconfig.docker.json ./tsconfig.json
 
 # Build de l'application
 RUN npm run build
