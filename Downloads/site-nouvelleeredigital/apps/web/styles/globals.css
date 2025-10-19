@@ -4,13 +4,11 @@
 @tailwind utilities;
 
 :root {
-  /* Palette Sémantique */
-  --background: 0 0% 100%; /* Base pour le mode clair */
-  --foreground: 222.2 84% 4.9%; /* Base pour le mode clair */
+  /* Variables par défaut - seront remplacées par les personas */
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
   --card: 0 0% 100%;
   --card-foreground: 222.2 84% 4.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
   --primary: 222.2 47.4% 11.2%;
   --primary-foreground: 210 40% 98%;
   --secondary: 210 40% 96.1%;
@@ -19,37 +17,17 @@
   --muted-foreground: 215.4 16.3% 46.9%;
   --accent: 210 40% 96.1%;
   --accent-foreground: 222.2 47.4% 11.2%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
   --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 222.2 47.4% 11.2%;
   --radius: 0.75rem;
 
-  /* Variables de couleur des personas */
-  --color-background: #0a0a2a;
-  --color-foreground: #e2e8f0;
-  --color-primary: #818cf8;
-  --color-secondary: #fde047;
-  --color-accent: #34d399;
-  --color-card: rgba(30, 41, 59, 0.8);
-  --color-border: rgba(51, 65, 85, 0.6);
-  --color-muted: rgba(51, 65, 85, 0.4);
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
+  /* Variables de typographie par défaut */
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", monospace;
 
-  /* Variables de typographie des personas */
-  --font-fontFamilySans: "Inter", sans-serif;
-  --font-fontFamilySerif: "Playfair Display", serif;
-  --font-fontFamilyMono: "JetBrains Mono", monospace;
-  --font-scale: normal;
-  --font-lineHeight: normal;
-
-  /* Variables de style des personas */
-  --style-borderRadius: 0.5rem;
-  --style-cardShadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --style-spacing: 1.5rem;
+  /* Variables de style par défaut */
+  --card-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --spacing-unit: 1.5rem;
 }
 
 .dark {
@@ -78,60 +56,11 @@
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-  font-family: var(--font-fontFamilySans);
+  font-family: var(--font-sans);
 }
 
 /* Classes utilitaires pour les personas */
 @layer utilities {
-  .text-persona-primary {
-    color: var(--color-primary);
-  }
-
-  .text-persona-secondary {
-    color: var(--color-secondary);
-  }
-
-  .text-persona-accent {
-    color: var(--color-accent);
-  }
-
-  .bg-persona-background {
-    background-color: var(--color-background);
-  }
-
-  .bg-persona-card {
-    background-color: var(--color-card);
-  }
-
-  .bg-persona-muted {
-    background-color: var(--color-muted);
-  }
-
-  .border-persona {
-    border-color: var(--color-border);
-  }
-
-  .shadow-persona {
-    box-shadow: var(--style-cardShadow);
-  }
-
-  .rounded-persona {
-    border-radius: var(--style-borderRadius);
-  }
-
-  /* Typographie basée sur les paramètres du persona */
-  .font-persona-sans {
-    font-family: var(--font-fontFamilySans);
-  }
-
-  .font-persona-serif {
-    font-family: var(--font-fontFamilySerif);
-  }
-
-  .font-persona-mono {
-    font-family: var(--font-fontFamilyMono);
-  }
-
   /* Layouts basés sur les paramètres du persona */
   .layout-persona-gallery[data-layout="symmetrical-grid"] {
     display: grid;

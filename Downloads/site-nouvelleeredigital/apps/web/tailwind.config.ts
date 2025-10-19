@@ -21,6 +21,8 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        accent: "hsl(var(--accent))",
+        muted: "hsl(var(--muted))",
       },
       borderRadius: {
         lg: "var(--radius)",

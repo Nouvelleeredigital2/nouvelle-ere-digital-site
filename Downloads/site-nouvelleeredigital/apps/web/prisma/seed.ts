@@ -5,21 +5,31 @@ const prisma = new PrismaClient();
 async function main() {
   console.log('🌱 Début du seed de la base de données...');
 
+  // Créer un utilisateur admin
+  const adminUser = await prisma.user.upsert({
+    where: {
+      email: 'admin@nouvelleeredigital.com',
+    },
+    update: {},
+    create: {
+      name: 'Admin',
+      email: 'admin@nouvelleeredigital.com',
+      role: 'ADMIN',
+    },
+  });
+
+  console.log('✅ Utilisateur admin créé:', adminUser.email);
+
   // Créer une page d'accueil exemple
   const homePage = await prisma.page.upsert({
     where: {
-      slug_locale: {
-        slug: 'home',
-        locale: 'fr',
-      },
+      slug: 'home',
     },
     update: {},
     create: {
       slug: 'home',
-      locale: 'fr',
       title: 'Accueil - Nouvelle Ère Digital',
-      status: 'PUBLISHED',
-      layout: JSON.stringify({
+      content: {
         blocks: [
           {
             id: 'hero-1',
@@ -58,7 +68,9 @@ async function main() {
             },
           },
         ],
-      }),
+      },
+      status: 'PUBLISHED',
+      authorId: adminUser.id,
     },
   });
 
@@ -67,18 +79,13 @@ async function main() {
   // Créer une page services exemple
   const servicesPage = await prisma.page.upsert({
     where: {
-      slug_locale: {
-        slug: 'services',
-        locale: 'fr',
-      },
+      slug: 'services',
     },
     update: {},
     create: {
       slug: 'services',
-      locale: 'fr',
       title: 'Nos Services - Nouvelle Ère Digital',
-      status: 'PUBLISHED',
-      layout: JSON.stringify({
+      content: {
         blocks: [
           {
             id: 'hero-2',
@@ -125,37 +132,14 @@ async function main() {
             },
           },
         ],
-      }),
+      },
+      status: 'PUBLISHED',
+      authorId: adminUser.id,
     },
   });
 
   console.log('✅ Page services créée:', servicesPage.slug);
 
-  // Créer le premier snapshot publié
-  const snapshot = await prisma.publishSnapshot.create({
-    data: {
-      isActive: true,
-      siteJson: JSON.stringify({
-        pages: [
-          {
-            id: homePage.id,
-            slug: homePage.slug,
-            title: homePage.title,
-            layout: JSON.parse(homePage.layout),
-          },
-          {
-            id: servicesPage.id,
-            slug: servicesPage.slug,
-            title: servicesPage.title,
-            layout: JSON.parse(servicesPage.layout),
-          },
-        ],
-        publishedAt: new Date().toISOString(),
-      }),
-    },
-  });
-
-  console.log('✅ Snapshot créé:', snapshot.id);
   console.log('🎉 Seed terminé avec succès!');
   console.log('');
   console.log('📝 Pages créées:');
@@ -163,13 +147,12 @@ async function main() {
   console.log('  - /services (Services)');
   console.log('');
   console.log('🔑 Identifiants admin:');
-  console.log('  Username: admin');
-  console.log('  Password: admin123');
+  console.log('  Email: admin@nouvelleeredigital.com');
+  console.log('  Role: ADMIN');
   console.log('');
   console.log('🌐 Accédez à:');
-  console.log('  - Admin: http://localhost:3000/login');
-  console.log('  - Studio: http://localhost:3000/admin/studio/home');
-  console.log('  - Site: http://localhost:3000/home');
+  console.log('  - Site: http://localhost:3001');
+  console.log('  - Admin: http://localhost:3001/login');
 }
 
 main()

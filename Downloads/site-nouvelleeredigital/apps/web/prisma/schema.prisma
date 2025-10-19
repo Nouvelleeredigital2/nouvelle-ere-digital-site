@@ -10,36 +10,267 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Modèles d'authentification NextAuth.js
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  role          Role      @default(EDITOR)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts Account[]
+  sessions Session[]
+  pages    Page[]
+  comments Comment[]
+  versions Version[]
+  auditLogs AuditLog[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// Modèles CMS avancés
 model Page {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  content     Json     // Structure des blocs
+  status      Status   @default(DRAFT)
+  publishedAt DateTime?
+  authorId    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // SEO et métadonnées avancées
+  metaTitle       String?
+  metaDescription String?
+  canonicalUrl    String?
+  ogImage         String?
+  ogTitle         String?
+  ogDescription   String?
+  twitterCard     String?
+  twitterImage    String?
+  twitterTitle    String?
+  twitterDescription String?
+
+  // Structure et organisation
+  parentId    String? // Pour les sous-pages
+  order       Int     @default(0)
+  template    String? // Template personnalisé
+
+  // Relations
+  author    User     @relation(fields: [authorId], references: [id])
+  parent    Page?    @relation("PageHierarchy", fields: [parentId], references: [id])
+  children  Page[]   @relation("PageHierarchy")
+  tags      Tag[]
+  comments  Comment[]
+  versions  Version[]
+  analytics PageView[]
+
+  @@map("pages")
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  description String
+  icon        String?  // Nom de l'icône Lucide
+  image       String?  // URL de l'image
+  features    Json     // Array des fonctionnalités
+  status      ServiceStatus @default(ACTIVE)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("services")
+}
+
+model Tag {
+  id    String @id @default(cuid())
+  name  String @unique
+  slug  String @unique
+  color String?
+
+  pages Page[]
+
+  @@map("tags")
+}
+
+model Comment {
   id        String   @id @default(cuid())
-  slug      String
-  locale    String   @default("fr")
-  title     String
-  layout    String   // Structure de la page en JSON (stocké comme String)
-  status    String   @default("DRAFT")
+  content   String
+  authorId  String
+  pageId    String?
+  parentId  String? // Pour les commentaires imbriqués
+  status    CommentStatus @default(PUBLISHED)
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  author   User     @relation(fields: [authorId], references: [id])
+  page     Page?    @relation(fields: [pageId], references: [id])
+  parent   Comment? @relation("CommentThread", fields: [parentId], references: [id])
+  replies  Comment[] @relation("CommentThread")
+
+  @@map("comments")
+}
+
+model Version {
+  id        String   @id @default(cuid())
+  content   Json
+  message   String?
+  pageId    String
+  authorId  String
   createdAt DateTime @default(now())
 
-  @@unique([slug, locale])
+  page   Page @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@map("versions")
+}
+
+model PageView {
+  id        String   @id @default(cuid())
+  pageId    String
+  userAgent String?
+  ipAddress String?
+  referrer  String?
+  country   String?
+  city      String?
+  createdAt DateTime @default(now())
+
+  page Page @relation(fields: [pageId], references: [id])
+
+  @@map("page_views")
+}
+
+model Setting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value Json
+  type  String @default("string") // string, number, boolean, json
+
+  @@map("settings")
 }
 
 model Media {
-  id           String   @id @default(cuid())
-  filename     String
+  id          String   @id @default(cuid())
+  filename    String
   originalName String
-  mime         String
-  width        Int?
-  height       Int?
-  focalX       Float?   @default(0.5)
-  focalY       Float?   @default(0.5)
-  alt          String
-  meta         String?  // JSON stocké comme String
-  createdAt    DateTime @default(now())
+  mimeType    String
+  size        Int
+  path        String
+  alt         String?
+  caption     String?
+  uploadedBy  String
+  createdAt   DateTime @default(now())
+
+  @@map("media")
 }
 
-model PublishSnapshot {
+model Template {
+  id          String @id @default(cuid())
+  name        String @unique
+  description String?
+  content     Json   // Structure de blocs par défaut
+  thumbnail   String?
+  category    String?
+  isDefault   Boolean @default(false)
+  createdAt   DateTime @default(now())
+
+  @@map("templates")
+}
+
+model Webhook {
+  id          String @id @default(cuid())
+  name        String
+  url         String
+  secret      String?
+  events      Json   // Événements à écouter
+  isActive    Boolean @default(true)
+  createdAt   DateTime @default(now())
+  lastTriggered DateTime?
+
+  @@map("webhooks")
+}
+
+model AuditLog {
   id        String   @id @default(cuid())
+  userId    String?
+  action    String   // CREATE, UPDATE, DELETE, PUBLISH, etc.
+  resource  String   // page, user, setting, etc.
+  resourceId String?
+  details   Json?
+  ipAddress String?
+  userAgent String?
   createdAt DateTime @default(now())
-  siteJson  String   // Snapshot complet du site publié (JSON stocké comme String)
-  isActive  Boolean  @default(true)
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@map("audit_logs")
+}
+
+// Énumérations
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  EDITOR
+  CONTRIBUTOR
+  VIEWER
+}
+
+enum Status {
+  DRAFT
+  REVIEW
+  SCHEDULED
+  PUBLISHED
+  ARCHIVED
+}
+
+enum CommentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  PUBLISHED
+}
+
+enum ServiceStatus {
+  ACTIVE
+  INACTIVE
+  ARCHIVED
 }
