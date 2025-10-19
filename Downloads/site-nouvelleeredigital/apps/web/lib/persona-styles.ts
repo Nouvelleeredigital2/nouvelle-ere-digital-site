@@ -57,9 +57,12 @@ export function applyPersonaStyles(persona: CreativePersona): void {
 
   // Appliquer les couleurs avec mapping explicite vers Tailwind
   if (colors) {
-    console.log("🎨 Couleurs disponibles:", colors);
-    // Mapping explicite des clés attendues par Tailwind
-    const tailwindColorKeys = ['background', 'foreground', 'primary', 'secondary', 'card', 'border'] as const;
+    // Mapping explicite des clés attendues par Tailwind (incluant les foreground)
+    const tailwindColorKeys = [
+      'background', 'foreground', 'primary', 'primary-foreground', 
+      'secondary', 'secondary-foreground', 'card', 'card-foreground', 
+      'accent', 'accent-foreground', 'muted', 'muted-foreground', 'border'
+    ] as const;
 
     tailwindColorKeys.forEach(key => {
       if (colors[key]) {
@@ -76,27 +79,8 @@ export function applyPersonaStyles(persona: CreativePersona): void {
       }
     });
 
-    // Gérer les couleurs spécifiques comme primary-foreground
-    if (colors.primary && colors.foreground) {
-      // Générer primary-foreground automatiquement si pas défini
-      if (!colors['primary-foreground']) {
-        const primaryHsl = typeof colors.primary === 'string' && colors.primary.startsWith('#') 
-          ? hexToHsl(colors.primary) 
-          : colors.primary;
-        // Logique simple : utiliser foreground ou calculer un contraste
-        root.style.setProperty('--primary-foreground', 'hsl(0 0% 98%)'); // Blanc par défaut
-      }
-    }
-
-    // Gérer secondary-foreground
-    if (colors.secondary && !colors['secondary-foreground']) {
-      root.style.setProperty('--secondary-foreground', 'hsl(0 0% 98%)'); // Blanc par défaut
-    }
-
-    // Gérer card-foreground
-    if (colors.card && !colors['card-foreground']) {
-      root.style.setProperty('--card-foreground', colors.foreground || 'hsl(0 0% 98%)');
-    }
+    // Les couleurs foreground sont maintenant définies explicitement dans les personas
+    // Plus besoin de calcul automatique - les couleurs sont déjà optimisées pour le contraste
 
     // Gérer les autres couleurs (accent, muted, etc.) via des variables CSS dédiées
     if (colors.accent) {
@@ -125,6 +109,35 @@ export function applyPersonaStyles(persona: CreativePersona): void {
     if (typography.fontFamilyMono) {
       root.style.setProperty('--font-mono', typography.fontFamilyMono as string);
     }
+
+    // Gérer l'échelle de typographie
+    if (typography.scale) {
+      const scaleRatios = {
+        'compact': 1.125,
+        'comfortable': 1.2,
+        'normal': 1.2,
+        'spacious': 1.25,
+        'dramatic': 1.333
+      };
+      
+      const ratio = scaleRatios[typography.scale as keyof typeof scaleRatios] || 1.2;
+      root.style.setProperty('--text-scale-ratio', ratio.toString());
+      console.log(`🎨 Appliqué typography.scale: ${typography.scale} -> ratio ${ratio}`);
+    }
+
+    // Gérer l'interligne
+    if (typography.lineHeight) {
+      const lineHeights = {
+        'tight': 1.25,
+        'normal': 1.5,
+        'relaxed': 1.75,
+        'loose': 2.0
+      };
+      
+      const lineHeight = lineHeights[typography.lineHeight as keyof typeof lineHeights] || 1.5;
+      root.style.setProperty('--line-height-base', lineHeight.toString());
+      console.log(`🎨 Appliqué typography.lineHeight: ${typography.lineHeight} -> ${lineHeight}`);
+    }
   }
 
   // Appliquer les styles avec mapping explicite et conversion des valeurs
@@ -141,22 +154,34 @@ export function applyPersonaStyles(persona: CreativePersona): void {
       root.style.setProperty('--radius', radiusValue);
     }
 
-    // Gérer les ombres si définies
+    // Gérer les ombres avec variables CSS modernes
     if (styles.cardShadow) {
-      const shadowValue = styles.cardShadow === 'lg' ? '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)' :
-                         styles.cardShadow === 'md' ? '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' :
-                         styles.cardShadow === 'sm' ? '0 1px 2px 0 rgba(0, 0, 0, 0.05)' :
-                         styles.cardShadow; // Valeur directe
-      root.style.setProperty('--card-shadow', shadowValue);
+      const shadowVar = `var(--shadow-${styles.cardShadow})`;
+      root.style.setProperty('--card-shadow-value', shadowVar);
+      console.log(`🎨 Appliqué cardShadow: ${styles.cardShadow} -> ${shadowVar}`);
     }
 
-    // Gérer les espacements si définis
+    // Gérer les espacements avec facteur multiplicateur dynamique
     if (styles.spacing) {
-      const spacingValue = styles.spacing === 'lg' ? '1rem' :
-                          styles.spacing === 'md' ? '0.75rem' :
-                          styles.spacing === 'sm' ? '0.5rem' :
-                          styles.spacing; // Valeur directe
-      root.style.setProperty('--spacing-unit', spacingValue);
+      const spacingFactors = {
+        'compact': 0.8,
+        'normal': 1.0, 
+        'spacious': 1.25,
+        'lg': 1.0,
+        'md': 0.75,
+        'sm': 0.5,
+        'xl': 1.5,
+        '2xl': 2.0
+      };
+      
+      const factor = spacingFactors[styles.spacing as keyof typeof spacingFactors] || 1.0;
+      root.style.setProperty('--space-scale-factor', factor.toString());
+      
+      // Appliquer aussi les classes CSS correspondantes
+      root.classList.remove('spacing-compact', 'spacing-normal', 'spacing-spacious');
+      root.classList.add(`spacing-${styles.spacing}`);
+      
+      console.log(`🎨 Appliqué spacing: ${styles.spacing} -> facteur ${factor}`);
     }
   }
 
@@ -171,11 +196,13 @@ export function applyPersonaStyles(persona: CreativePersona): void {
     });
   }
 
-  // Appliquer les attributs de données pour les animations
+  // Appliquer les attributs de données pour les animations avec conversion camelCase
   if (animations) {
     Object.entries(animations).forEach(([key, value]) => {
+      // Convertir kebab-case en camelCase pour les data attributes
       const camelKey = key.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
       root.dataset[`animation${camelKey.charAt(0).toUpperCase() + camelKey.slice(1)}`] = value;
+      console.log(`🎨 Appliqué animation.${key}: ${value} -> data-animation${camelKey.charAt(0).toUpperCase() + camelKey.slice(1)}`);
     });
   }
 }
@@ -208,16 +235,8 @@ export function applyPersonaStylesServer(persona: CreativePersona): Record<strin
       }
     });
 
-    // Gérer les couleurs spécifiques
-    if (colors.primary && !colors['primary-foreground']) {
-      cssVariables['--primary-foreground'] = 'hsl(0 0% 98%)';
-    }
-    if (colors.secondary && !colors['secondary-foreground']) {
-      cssVariables['--secondary-foreground'] = 'hsl(0 0% 98%)';
-    }
-    if (colors.card && !colors['card-foreground']) {
-      cssVariables['--card-foreground'] = colors.foreground || 'hsl(0 0% 98%)';
-    }
+    // Les couleurs foreground sont maintenant définies explicitement dans les personas
+    // Plus besoin de calcul automatique côté serveur - les couleurs sont déjà optimisées
 
     // Gérer les autres couleurs
     if (colors.accent) {
@@ -234,7 +253,7 @@ export function applyPersonaStylesServer(persona: CreativePersona): Record<strin
     }
   }
 
-  // Appliquer la typographie avec mapping explicite vers Tailwind
+  // Appliquer la typographie avec mapping explicite vers Tailwind (côté serveur)
   if (typography) {
     if (typography.fontFamilySans) {
       cssVariables['--font-sans'] = typography.fontFamilySans as string;
@@ -244,6 +263,33 @@ export function applyPersonaStylesServer(persona: CreativePersona): Record<strin
     }
     if (typography.fontFamilyMono) {
       cssVariables['--font-mono'] = typography.fontFamilyMono as string;
+    }
+
+    // Gérer l'échelle de typographie
+    if (typography.scale) {
+      const scaleRatios = {
+        'compact': 1.125,
+        'comfortable': 1.2,
+        'normal': 1.2,
+        'spacious': 1.25,
+        'dramatic': 1.333
+      };
+      
+      const ratio = scaleRatios[typography.scale as keyof typeof scaleRatios] || 1.2;
+      cssVariables['--text-scale-ratio'] = ratio.toString();
+    }
+
+    // Gérer l'interligne
+    if (typography.lineHeight) {
+      const lineHeights = {
+        'tight': 1.25,
+        'normal': 1.5,
+        'relaxed': 1.75,
+        'loose': 2.0
+      };
+      
+      const lineHeight = lineHeights[typography.lineHeight as keyof typeof lineHeights] || 1.5;
+      cssVariables['--line-height-base'] = lineHeight.toString();
     }
   }
 
@@ -261,19 +307,24 @@ export function applyPersonaStylesServer(persona: CreativePersona): Record<strin
     }
 
     if (styles.cardShadow) {
-      const shadowValue = styles.cardShadow === 'lg' ? '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)' :
-                         styles.cardShadow === 'md' ? '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' :
-                         styles.cardShadow === 'sm' ? '0 1px 2px 0 rgba(0, 0, 0, 0.05)' :
-                         styles.cardShadow;
-      cssVariables['--card-shadow'] = shadowValue;
+      const shadowVar = `var(--shadow-${styles.cardShadow})`;
+      cssVariables['--card-shadow-value'] = shadowVar;
     }
 
     if (styles.spacing) {
-      const spacingValue = styles.spacing === 'lg' ? '1rem' :
-                          styles.spacing === 'md' ? '0.75rem' :
-                          styles.spacing === 'sm' ? '0.5rem' :
-                          styles.spacing;
-      cssVariables['--spacing-unit'] = spacingValue;
+      const spacingFactors = {
+        'compact': 0.8,
+        'normal': 1.0, 
+        'spacious': 1.25,
+        'lg': 1.0,
+        'md': 0.75,
+        'sm': 0.5,
+        'xl': 1.5,
+        '2xl': 2.0
+      };
+      
+      const factor = spacingFactors[styles.spacing as keyof typeof spacingFactors] || 1.0;
+      cssVariables['--space-scale-factor'] = factor.toString();
     }
   }
 

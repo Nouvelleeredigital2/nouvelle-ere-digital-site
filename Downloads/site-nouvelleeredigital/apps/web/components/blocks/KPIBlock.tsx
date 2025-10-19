@@ -34,12 +34,12 @@ export function KPIBlock({ data }: KPIBlockProps) {
         {(title || subtitle) && (
           <div className="text-center mb-12">
             {title && (
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-muted-foreground mb-4">
                 {title}
               </h2>
             )}
             {subtitle && (
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 {subtitle}
               </p>
             )}
@@ -51,7 +51,7 @@ export function KPIBlock({ data }: KPIBlockProps) {
           {kpis.map((kpi, index) => (
             <div
               key={index}
-              className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              className="text-center p-6 bg-card rounded-lg shadow-lg hover:shadow-xl transition-shadow"
             >
               <div className="text-4xl md:text-5xl font-bold text-indigo-600 mb-2">
                 {kpi.value}
@@ -59,7 +59,7 @@ export function KPIBlock({ data }: KPIBlockProps) {
                   <span className="text-3xl">{kpi.suffix}</span>
                 )}
               </div>
-              <div className="text-gray-700 font-medium">
+              <div className="text-muted-foreground font-medium">
                 {kpi.label}
               </div>
             </div>

@@ -92,7 +92,7 @@ export const PlanetBadge: React.FC<PlanetBadgeProps> = ({
     >
       <div
         className={cn(
-          "rounded-full flex items-center justify-center text-white font-bold",
+          "rounded-full flex items-center justify-center text-card-foreground font-bold",
           sizes[size],
         )}
         style={{ backgroundColor: planet.color }}

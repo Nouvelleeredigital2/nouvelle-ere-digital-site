@@ -43,6 +43,11 @@ interface EditorState {
   
   // Actions - Drag
   setIsDragging: (isDragging: boolean) => void;
+  
+  // Actions - Nested Blocks (for columns)
+  addBlockToColumn: (parentBlockId: string, columnId: string, blockType: string) => void;
+  reorderBlocksInColumn: (parentBlockId: string, columnId: string, fromIndex: number, toIndex: number) => void;
+  deleteBlockFromColumn: (parentBlockId: string, columnId: string, blockId: string) => void;
 }
 
 export const useEditorStore = create<EditorState>((set, get) => ({
@@ -90,7 +95,7 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     };
   }),
   
-  updateBlock: (blockId, data) => set((state) => {
+  updateBlock: (blockId: string, data: any) => set((state) => {
     if (!state.page) return state;
     
     const blocks = state.page.blocks.map((block) =>
@@ -169,4 +174,114 @@ export const useEditorStore = create<EditorState>((set, get) => ({
   
   // Drag state
   setIsDragging: (isDragging) => set({ isDragging }),
+  
+  // Nested blocks actions
+  addBlockToColumn: (parentBlockId: string, columnId: string, blockType: string) => set((state) => {
+    if (!state.page) return state;
+    
+    const { defaultBlockData } = require('@/lib/inspectorSchemas');
+    const newBlock: Block = {
+      id: `${blockType}-${Date.now()}`,
+      type: blockType,
+      data: defaultBlockData[blockType] || {},
+    };
+    
+    const blocks = state.page.blocks.map((block) => {
+      if (block.id === parentBlockId && block.type === 'columns') {
+        const updatedColumns = block.data.columns.map((column: any) => {
+          if (column.id === columnId) {
+            return {
+              ...column,
+              blocks: [...column.blocks, newBlock],
+            };
+          }
+          return column;
+        });
+        
+        return {
+          ...block,
+          data: {
+            ...block.data,
+            columns: updatedColumns,
+          },
+        };
+      }
+      return block;
+    });
+    
+    return {
+      page: { ...state.page, blocks },
+      hasUnsavedChanges: true,
+      selectedBlockId: newBlock.id,
+    };
+  }),
+  
+  reorderBlocksInColumn: (parentBlockId: string, columnId: string, fromIndex: number, toIndex: number) => set((state) => {
+    if (!state.page) return state;
+    
+    const blocks = state.page.blocks.map((block) => {
+      if (block.id === parentBlockId && block.type === 'columns') {
+        const updatedColumns = block.data.columns.map((column: any) => {
+          if (column.id === columnId) {
+            const columnBlocks = [...column.blocks];
+            const [movedBlock] = columnBlocks.splice(fromIndex, 1);
+            columnBlocks.splice(toIndex, 0, movedBlock);
+            
+            return {
+              ...column,
+              blocks: columnBlocks,
+            };
+          }
+          return column;
+        });
+        
+        return {
+          ...block,
+          data: {
+            ...block.data,
+            columns: updatedColumns,
+          },
+        };
+      }
+      return block;
+    });
+    
+    return {
+      page: { ...state.page, blocks },
+      hasUnsavedChanges: true,
+    };
+  }),
+  
+  deleteBlockFromColumn: (parentBlockId: string, columnId: string, blockId: string) => set((state) => {
+    if (!state.page) return state;
+    
+    const blocks = state.page.blocks.map((block) => {
+      if (block.id === parentBlockId && block.type === 'columns') {
+        const updatedColumns = block.data.columns.map((column: any) => {
+          if (column.id === columnId) {
+            return {
+              ...column,
+              blocks: column.blocks.filter((subBlock: Block) => subBlock.id !== blockId),
+            };
+          }
+          return column;
+        });
+        
+        return {
+          ...block,
+          data: {
+            ...block.data,
+            columns: updatedColumns,
+          },
+        };
+      }
+      return block;
+    });
+    
+    return {
+      page: { ...state.page, blocks },
+      hasUnsavedChanges: true,
+      selectedBlockId: state.selectedBlockId === blockId ? null : state.selectedBlockId,
+    };
+  }),
 }));

@@ -54,9 +54,9 @@ export const SkipLink: React.FC<SkipLinkProps> = ({
 
   const variants: Record<Variant, string> = {
     default:
-      "sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-[var(--color-primary)] text-white",
+      "sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 bg-[var(--color-primary)] text-card-foreground",
     hidden: "sr-only",
-    visible: "inline-block bg-[var(--color-primary)] text-white rounded",
+    visible: "inline-block bg-[var(--color-primary)] text-card-foreground rounded",
   };
 
   const stateClasses: Record<State, string> = {

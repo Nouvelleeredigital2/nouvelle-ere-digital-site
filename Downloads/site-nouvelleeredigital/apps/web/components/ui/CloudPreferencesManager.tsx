@@ -135,9 +135,9 @@ export function CloudPreferencesManager() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             {syncStatus.online ? (
-              <Wifi className="w-6 h-6 text-green-500" />
+              <Wifi className="w-6 h-6 text-success" />
             ) : (
-              <WifiOff className="w-6 h-6 text-red-500" />
+              <WifiOff className="w-6 h-6 text-error" />
             )}
             <div>
               <h3 className="font-semibold">Statut de Connexion</h3>
@@ -157,7 +157,7 @@ export function CloudPreferencesManager() {
       {/* Actions principales */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Card className="p-6 text-center">
-          <Cloud className="w-8 h-8 mx-auto mb-3 text-blue-500" />
+          <Cloud className="w-8 h-8 mx-auto mb-3 text-primary" />
           <h3 className="font-semibold mb-2">Synchronisation</h3>
           <p className="text-sm text-muted-foreground mb-4">
             Sauvegardez vos préférences dans le cloud
@@ -172,7 +172,7 @@ export function CloudPreferencesManager() {
         </Card>
 
         <Card className="p-6 text-center">
-          <Download className="w-8 h-8 mx-auto mb-3 text-green-500" />
+          <Download className="w-8 h-8 mx-auto mb-3 text-success" />
           <h3 className="font-semibold mb-2">Exporter</h3>
           <p className="text-sm text-muted-foreground mb-4">
             Téléchargez vos préférences en fichier
@@ -183,7 +183,7 @@ export function CloudPreferencesManager() {
         </Card>
 
         <Card className="p-6 text-center">
-          <Upload className="w-8 h-8 mx-auto mb-3 text-purple-500" />
+          <Upload className="w-8 h-8 mx-auto mb-3 text-accent" />
           <h3 className="font-semibold mb-2">Importer</h3>
           <p className="text-sm text-muted-foreground mb-4">
             Chargez des préférences depuis un fichier
@@ -214,9 +214,9 @@ export function CloudPreferencesManager() {
             <Card
               className={cn(
                 "p-4 flex items-center gap-3",
-                message.type === "success" && "bg-green-50 border-green-200 text-green-800",
-                message.type === "error" && "bg-red-50 border-red-200 text-red-800",
-                message.type === "info" && "bg-blue-50 border-blue-200 text-blue-800",
+                message.type === "success" && "bg-success/10 border-success/20 text-success",
+                message.type === "error" && "bg-error/10 border-error/20 text-error",
+                message.type === "info" && "bg-primary/10 border-primary/20 text-primary",
               )}
             >
               {message.type === "success" && <CheckCircle className="w-5 h-5" />}

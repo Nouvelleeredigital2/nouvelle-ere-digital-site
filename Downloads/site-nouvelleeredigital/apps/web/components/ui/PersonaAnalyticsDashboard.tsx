@@ -156,8 +156,8 @@ export function PersonaAnalyticsDashboard() {
 
           <Card className="p-6">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-green-500/10 rounded-lg">
-                <Users className="w-6 h-6 text-green-500" />
+              <div className="p-2 bg-success/10 rounded-lg">
+                <Users className="w-6 h-6 text-success" />
               </div>
               <div>
                 <p className="text-2xl font-bold">{analyticsData.totalUsers}</p>
@@ -168,8 +168,8 @@ export function PersonaAnalyticsDashboard() {
 
           <Card className="p-6">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-blue-500/10 rounded-lg">
-                <Clock className="w-6 h-6 text-blue-500" />
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <Clock className="w-6 h-6 text-primary" />
               </div>
               <div>
                 <p className="text-2xl font-bold">{analyticsData.averageSessionTime}min</p>
@@ -180,8 +180,8 @@ export function PersonaAnalyticsDashboard() {
 
           <Card className="p-6">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-purple-500/10 rounded-lg">
-                <TrendingUp className="w-6 h-6 text-purple-500" />
+              <div className="p-2 bg-accent/10 rounded-lg">
+                <TrendingUp className="w-6 h-6 text-accent" />
               </div>
               <div>
                 <p className="text-lg font-bold">{analyticsData.mostUsedPersona}</p>

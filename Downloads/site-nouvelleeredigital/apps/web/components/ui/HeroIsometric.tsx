@@ -76,7 +76,7 @@ export const HeroIsometric: React.FC<HeroIsometricProps> = ({
       onFocus={() => setState("focus")}
       onBlur={() => setState("default")}
     >
-      <div className="absolute inset-0 flex items-center justify-center text-white">
+      <div className="absolute inset-0 flex items-center justify-center text-card-foreground">
         <div className="text-center">
           <h2 className="text-2xl font-bold">Hero Isometric</h2>
           <p className="text-sm">Vue 3D stylisée</p>

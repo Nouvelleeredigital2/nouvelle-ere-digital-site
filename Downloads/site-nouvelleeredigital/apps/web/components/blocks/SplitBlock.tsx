@@ -36,20 +36,20 @@ export function SplitBlock({ data }: SplitBlockProps) {
           {/* Texte */}
           <div className={imagePosition === 'left' ? 'md:order-2' : ''}>
             {title && (
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-muted-foreground mb-6">
                 {title}
               </h2>
             )}
             {content && (
               <div
-                className="prose prose-lg max-w-none text-gray-700 mb-8"
+                className="prose prose-lg max-w-none text-muted-foreground mb-8"
                 dangerouslySetInnerHTML={{ __html: content }}
               />
             )}
             {ctaText && ctaLink && (
               <a
                 href={ctaLink}
-                className="inline-block px-8 py-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors"
+                className="inline-block px-8 py-4 bg-indigo-600 text-card-foreground font-semibold rounded-lg hover:bg-indigo-700 transition-colors"
               >
                 {ctaText}
               </a>

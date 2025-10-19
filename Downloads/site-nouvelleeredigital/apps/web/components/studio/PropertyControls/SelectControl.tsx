@@ -27,9 +27,9 @@ export function SelectControl({
 }: SelectControlProps) {
   return (
     <div className="space-y-2">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-700">
+      <label htmlFor={name} className="block text-sm font-medium text-muted-foreground">
         {label}
-        {required && <span className="text-red-500 ml-1">*</span>}
+        {required && <span className="text-error ml-1">*</span>}
       </label>
       
       <select
@@ -37,7 +37,7 @@ export function SelectControl({
         className={`
           w-full px-3 py-2 border rounded-lg
           focus:outline-none focus:ring-2 focus:ring-indigo-500
-          ${error ? 'border-red-500' : 'border-gray-300'}
+          ${error ? 'border-red-500' : 'border-border'}
         `}
         {...register(name)}
       >
@@ -49,7 +49,7 @@ export function SelectControl({
       </select>
       
       {error && (
-        <p className="text-sm text-red-500">{error.message}</p>
+        <p className="text-sm text-error">{error.message}</p>
       )}
     </div>
   );

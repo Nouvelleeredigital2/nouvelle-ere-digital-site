@@ -94,11 +94,11 @@ export const HeroBeforeAfter: React.FC<HeroBeforeAfterProps> = ({
           alt={before.title}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <Text size="lg" className="text-white font-bold">
+        <div className="absolute inset-0 flex items-center justify-center bg-background bg-opacity-50">
+          <Text size="lg" className="text-card-foreground font-bold">
             {before.title}
           </Text>
-          {before.description && <Text className="text-white mt-2">{before.description}</Text>}
+          {before.description && <Text className="text-card-foreground mt-2">{before.description}</Text>}
         </div>
       </div>
       <div className="relative">
@@ -108,16 +108,16 @@ export const HeroBeforeAfter: React.FC<HeroBeforeAfterProps> = ({
           alt={after.title}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <Text size="lg" className="text-white font-bold">
+        <div className="absolute inset-0 flex items-center justify-center bg-background bg-opacity-50">
+          <Text size="lg" className="text-card-foreground font-bold">
             {after.title}
           </Text>
-          {after.description && <Text className="text-white mt-2">{after.description}</Text>}
+          {after.description && <Text className="text-card-foreground mt-2">{after.description}</Text>}
         </div>
       </div>
       <button
         onClick={onToggle}
-        className="absolute top-2 right-2 bg-[var(--color-primary)] text-white px-2 py-1 rounded"
+        className="absolute top-2 right-2 bg-[var(--color-primary)] text-card-foreground px-2 py-1 rounded"
       >
         Basculer
       </button>

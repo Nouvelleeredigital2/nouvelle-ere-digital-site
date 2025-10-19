@@ -58,7 +58,7 @@ export const DragCanvas: React.FC<DragCanvasProps> = ({
 
   const variants: Record<Variant, string> = {
     default: "relative overflow-hidden",
-    grid: "relative overflow-hidden bg-gray-100",
+    grid: "relative overflow-hidden bg-muted",
     free: "relative overflow-hidden",
   };
 
@@ -95,7 +95,7 @@ export const DragCanvas: React.FC<DragCanvasProps> = ({
         <div
           key={item.id}
           className={cn(
-            "absolute p-2 bg-white border rounded shadow cursor-move",
+            "absolute p-2 bg-card border rounded shadow cursor-move",
             draggedId === item.id && "opacity-50",
           )}
           style={{

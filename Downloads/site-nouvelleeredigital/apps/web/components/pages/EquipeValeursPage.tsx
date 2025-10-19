@@ -8,10 +8,10 @@ export function EquipeValeursPage() {
       {/* Héro */}
       <ThemeSection variant="gradient" className="py-32 md:py-40">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-4">
+          <p className="text-sm uppercase tracking-wide text-muted-foreground mb-4">
             L&apos;Équipe & Les Valeurs
           </p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.1] mb-6">
             Une équipe humaine,
             <br />
             créative et exigeante.
@@ -22,7 +22,7 @@ export function EquipeValeursPage() {
       {/* Introduction */}
       <ThemeSection variant="light" className="py-20">
         <div className="max-w-4xl mx-auto">
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground">
             <p>
               Chez Nouvelle Ère Digital, l'excellence n'est pas un hasard, c'est une discipline.
             </p>
@@ -32,7 +32,7 @@ export function EquipeValeursPage() {
               la beauté de l'humain.
             </p>
             <div className="text-center py-6">
-              <p className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+              <p className="text-xl font-semibold text-foreground">
                 « Nous sommes artisans d'émotions et d'expériences numériques. »
               </p>
             </div>
@@ -41,14 +41,14 @@ export function EquipeValeursPage() {
       </ThemeSection>
 
       {/* Notre culture */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-4xl mx-auto">
           <SectionHeading
             eyebrow="Notre culture"
             title="La force du collectif et des talents pluriels"
             align="center"
           />
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300 text-center">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground text-center">
             <p>Nous croyons en la force du collectif et en la richesse des talents pluriels.</p>
             <p>
               Chaque projet est une aventure humaine, où la rigueur technique s'accorde à la
@@ -59,7 +59,7 @@ export function EquipeValeursPage() {
               mesurables et inspirantes.
             </p>
             <blockquote
-              className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8"
+              className="border-l-4 pl-6 py-4 text-muted-foreground italic text-xl mt-8"
               style={{ borderColor: "#7C3AED" }}
             >
               « Chez nous, la créativité s'organise, la technologie s'humanise. »
@@ -111,41 +111,41 @@ export function EquipeValeursPage() {
               },
             ].map((item, i) => (
               <div key={i} className="card group hover:shadow-lg transition-shadow">
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                <h3 className="font-semibold text-foreground mb-3">
                   {item.title}
                 </h3>
-                <p className="text-zinc-600 dark:text-zinc-400 mb-2">{item.desc}</p>
-                <p className="text-sm text-zinc-500 dark:text-zinc-500">{item.profiles}</p>
+                <p className="text-muted-foreground mb-2">{item.desc}</p>
+                <p className="text-sm text-muted-foreground">{item.profiles}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto">
             « Une équipe pluridisciplinaire, un langage commun : l'exigence. »
           </p>
         </div>
       </ThemeSection>
 
       {/* Modèle de travail */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-4xl mx-auto">
           <SectionHeading
             eyebrow="Notre modèle de travail"
             title="Une structure fluide et connectée"
             align="center"
           />
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300 text-center">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground text-center">
             <p>
               Nous fonctionnons comme une structure fluide et connectée, où chaque pôle interagit
               avec les autres via un système de projets transversaux.
             </p>
-            <p className="font-medium text-zinc-900 dark:text-zinc-100">
+            <p className="font-medium text-foreground">
               Collaboration en temps réel (Notion, ClickUp, Miro, IA interne). Réunions de
               co-création et validations partagées. Culture du feedback et de la documentation
               ouverte. Intégration IA dans les process internes (planification, veille, QA).
             </p>
             <blockquote
-              className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8"
+              className="border-l-4 pl-6 py-4 text-muted-foreground italic text-xl mt-8"
               style={{ borderColor: "#7C3AED" }}
             >
               « Notre intelligence collective est augmentée, pas automatisée. »
@@ -198,22 +198,22 @@ export function EquipeValeursPage() {
             ].map((item, i) => (
               <div key={i} className="card group hover:shadow-lg transition-shadow">
                 <div className="text-2xl mb-4">{item.icon}</div>
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                <h3 className="font-semibold text-foreground mb-3">
                   {item.title}
                 </h3>
-                <p className="text-zinc-600 dark:text-zinc-400">{item.desc}</p>
+                <p className="text-muted-foreground">{item.desc}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto">
             « La transparence n'est pas une option, c'est une promesse. »
           </p>
         </div>
       </ThemeSection>
 
       {/* État d'esprit */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-4xl mx-auto">
           <SectionHeading
             eyebrow="Notre état d'esprit"
@@ -233,12 +233,12 @@ export function EquipeValeursPage() {
                   className="w-2 h-2 rounded-full flex-shrink-0 mt-2"
                   style={{ backgroundColor: "#7C3AED" }}
                 ></div>
-                <p className="flex-1 text-zinc-700 dark:text-zinc-300">{item}</p>
+                <p className="flex-1 text-foreground">{item}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto">
             « Nous travaillons avec passion, précision et humilité. »
           </p>
         </div>
@@ -270,10 +270,10 @@ export function EquipeValeursPage() {
               },
             ].map((item, i) => (
               <div key={i} className="card group hover:shadow-lg transition-shadow">
-                <blockquote className="text-zinc-700 dark:text-zinc-300 mb-4 italic">
+                <blockquote className="text-foreground mb-4 italic">
                   "{item.quote}"
                 </blockquote>
-                <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                <p className="text-sm font-medium text-foreground">
                   — {item.author}
                 </p>
               </div>
@@ -286,10 +286,10 @@ export function EquipeValeursPage() {
       <ThemeSection variant="gradient" className="py-32">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
               Une équipe humaine pour des projets technologiques.
             </h2>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto">
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
               Photo d'équipe captée sur un plateau ou en réunion de co-création. Fond lumineux bleu
               nuit, accents dorés.
             </p>
@@ -310,7 +310,7 @@ export function EquipeValeursPage() {
                 className="card text-center group hover:shadow-xl transition-all hover:scale-105"
               >
                 <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                <h3 className="text-lg font-semibold text-foreground">
                   {item.title}
                 </h3>
               </div>
@@ -328,7 +328,7 @@ export function EquipeValeursPage() {
                 className="w-3 h-3 rounded-full animate-pulse"
                 style={{ backgroundColor: "#7C3AED" }}
               ></div>
-              <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+              <span className="text-sm font-medium text-foreground">
                 Équipe Pluridisciplinaire
               </span>
               <div
@@ -341,12 +341,12 @@ export function EquipeValeursPage() {
       </ThemeSection>
 
       {/* CTA */}
-      <ThemeSection variant="light" className="py-32 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-32 bg-muted">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 mb-6">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
             Découvrez qui nous sommes
           </h2>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
             Explorez l'agence et nos pôles d'expertise, ou rejoignez notre équipe pour participer à
             l'aventure Nouvelle Ère Digital.
           </p>

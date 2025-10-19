@@ -111,12 +111,12 @@ export const H2Steps: React.FC<H2StepsProps> = ({
         >
           <div
             className={cn(
-              "w-6 h-6 rounded-full flex items-center justify-center text-white text-sm",
+              "w-6 h-6 rounded-full flex items-center justify-center text-card-foreground text-sm",
               step.status === "completed"
-                ? "bg-green-500"
+                ? "bg-success"
                 : step.status === "active"
-                  ? "bg-blue-500"
-                  : "bg-gray-500",
+                  ? "bg-primary"
+                  : "bg-muted0",
             )}
           >
             {variant === "numbered"

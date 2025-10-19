@@ -52,7 +52,7 @@ export const ExportPanel: React.FC<ExportPanelProps> = ({
   };
 
   const variants: Record<Variant, string> = {
-    modal: "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50",
+    modal: "fixed inset-0 bg-background bg-opacity-50 flex items-center justify-center z-50",
     panel: "w-full max-w-md p-6",
     inline: "w-full p-4",
   };

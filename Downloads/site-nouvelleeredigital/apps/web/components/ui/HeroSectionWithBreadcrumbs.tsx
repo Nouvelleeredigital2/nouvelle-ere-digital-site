@@ -55,8 +55,8 @@ export const HeroSectionWithBreadcrumbs: React.FC<HeroSectionWithBreadcrumbsProp
   };
 
   const variants: Record<Variant, string> = {
-    default: "bg-[var(--couleur-light)] border-b border-gray-200",
-    hero: "bg-gradient-to-r from-blue-500 to-purple-600 text-white",
+    default: "bg-[var(--couleur-light)] border-b border-border",
+    hero: "bg-gradient-to-r from-blue-500 to-purple-600 text-card-foreground",
     minimal: "bg-transparent border-b border-gray-100",
   };
 

@@ -2,49 +2,48 @@
 
 import type { CreativePersona } from "@/shared/theme.types";
 
-// Persona 6: Le Minimaliste - Pour les utilisateurs qui préfèrent la simplicité
+// Persona temporairement simplifié pour débogage
 export const minimalistePersona: CreativePersona = {
   id: "minimaliste",
   name: "Le Minimaliste",
-  description:
-    "Vous appréciez la clarté, l'efficacité et les interfaces épurées qui vont à l'essentiel.",
-  archetype: "Le Sage Élégant",
+  description: "Vous appréciez la clarté et l'efficacité.",
+  archetype: "Le Designer Épuré",
   visualIdentity: {
-    mood: "minimal",
+    mood: "light",
     energy: "calm",
   },
   settings: {
     colors: {
       background: "#ffffff",
       foreground: "#000000",
-      primary: "#000000",
-      secondary: "#666666",
-      accent: "#0066cc",
+      primary: "#007bff",
+      secondary: "#6c757d",
+      accent: "#28a745",
       card: "#ffffff",
-      border: "#e0e0e0",
-      muted: "#f5f5f5",
-      success: "#00cc66",
-      warning: "#ff9900",
-      error: "#cc0000",
+      border: "#dee2e6",
+      muted: "#f8f9fa",
+      success: "#28a745",
+      warning: "#ffc107",
+      error: "#dc3545",
     },
     typography: {
-      fontFamilySans: '"Helvetica Neue", "Arial", sans-serif',
+      fontFamilySans: '"Inter", sans-serif',
       fontFamilySerif: '"Georgia", serif',
-      fontFamilyMono: '"SF Mono", "Monaco", monospace',
-      scale: "compact",
-      lineHeight: "tight",
+      fontFamilyMono: '"Monaco", monospace',
+      scale: "comfortable",
+      lineHeight: "normal",
     },
     styles: {
-      borderRadius: "none",
-      cardShadow: "none",
-      spacing: "compact",
+      borderRadius: "sm",
+      cardShadow: "sm",
+      spacing: "normal",
     },
     layouts: {
-      gallery: "single-column",
+      gallery: "symmetrical-grid",
       heroStyle: "minimalist",
-      heroTextAlign: "text-center",
+      heroTextAlign: "text-left",
       sections: "single-column",
-      navigation: "minimal",
+      navigation: "horizontal",
     },
     animations: {
       intensity: "subtle",
@@ -57,11 +56,10 @@ export const minimalistePersona: CreativePersona = {
 export const colorePersona: CreativePersona = {
   id: "colore",
   name: "Le Coloré",
-  description:
-    "Vous êtes attiré par les couleurs vives, les dégradés et les éléments visuels expressifs.",
+  description: "Vous êtes attiré par les couleurs vives et les éléments visuels expressifs.",
   archetype: "L'Artiste Chromatique",
   visualIdentity: {
-    mood: "vibrant",
+    mood: "colorful",
     energy: "energetic",
   },
   settings: {
@@ -94,7 +92,7 @@ export const colorePersona: CreativePersona = {
       gallery: "asymmetrical-masonry",
       heroStyle: "full-visual",
       heroTextAlign: "text-center",
-      sections: "magazine-layout",
+      sections: "asymmetrical-masonry",
       navigation: "floating",
     },
     animations: {
@@ -159,8 +157,7 @@ export const professionnelPersona: CreativePersona = {
 export const gamerPersona: CreativePersona = {
   id: "gamer",
   name: "Le Gamer",
-  description:
-    "Vous appréciez les interfaces réactives, les animations fluides et une expérience interactive engageante.",
+  description: "Vous appréciez les interfaces réactives et une expérience interactive engageante.",
   archetype: "Le Joueur Stratégique",
   visualIdentity: {
     mood: "dark",
@@ -193,10 +190,10 @@ export const gamerPersona: CreativePersona = {
       spacing: "normal",
     },
     layouts: {
-      gallery: "card-grid",
-      heroStyle: "immersive",
+      gallery: "symmetrical-grid",
+      heroStyle: "full-visual",
       heroTextAlign: "text-center",
-      sections: "magazine-layout",
+      sections: "symmetrical-grid",
       navigation: "floating",
     },
     animations: {
@@ -210,12 +207,11 @@ export const gamerPersona: CreativePersona = {
 export const artisanPersona: CreativePersona = {
   id: "artisan",
   name: "L'Artisan",
-  description:
-    "Vous créez, fabriquez et appréciez les détails fins avec une approche tactile et authentique.",
+  description: "Vous créez et appréciez les détails fins avec une approche tactile et authentique.",
   archetype: "L'Artisan Créateur",
   visualIdentity: {
     mood: "warm",
-    energy: "sophisticated",
+    energy: "calm",
   },
   settings: {
     colors: {
@@ -245,9 +241,9 @@ export const artisanPersona: CreativePersona = {
     },
     layouts: {
       gallery: "asymmetrical-masonry",
-      heroStyle: "classic",
+      heroStyle: "split-text-image",
       heroTextAlign: "text-center",
-      sections: "magazine-layout",
+      sections: "asymmetrical-masonry",
       navigation: "horizontal",
     },
     animations: {

@@ -95,8 +95,8 @@ export const ModuleCard: React.FC<ModuleCardProps> = ({
           className={cn(
             "px-2 py-1 rounded text-sm",
             module.status === "active"
-              ? "bg-green-100 text-green-800"
-              : "bg-gray-100 text-gray-800",
+              ? "bg-success/20 text-success"
+              : "bg-muted text-muted-foreground",
           )}
         >
           {module.status}

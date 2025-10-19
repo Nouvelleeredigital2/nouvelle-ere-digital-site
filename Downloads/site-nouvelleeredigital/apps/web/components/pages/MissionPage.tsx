@@ -8,10 +8,10 @@ export function MissionPage() {
       {/* Héro */}
       <ThemeSection variant="gradient" className="py-32 md:py-40">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-4">
+          <p className="text-sm uppercase tracking-wide text-muted-foreground mb-4">
             Mission & Promesse
           </p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.1] mb-6">
             Un partenaire unique,
             <br />
             une vision globale,
@@ -24,7 +24,7 @@ export function MissionPage() {
       {/* Introduction */}
       <ThemeSection variant="light" className="py-20">
         <div className="max-w-4xl mx-auto">
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground">
             <p>
               Chez Nouvelle Ère Digital, notre mission est d'accompagner la transformation créative,
               digitale et humaine des organisations.
@@ -35,7 +35,7 @@ export function MissionPage() {
               mesurable.
             </p>
             <blockquote
-              className="border-l-4 border-brand pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8"
+              className="border-l-4 border-brand pl-6 py-4 text-muted-foreground italic text-xl mt-8"
               style={{ borderColor: "#7C3AED" }}
             >
               « Nous ne faisons pas seulement de la communication : nous créons des expériences de
@@ -46,14 +46,14 @@ export function MissionPage() {
       </ThemeSection>
 
       {/* Notre mission */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Notre mission"
             title="Transformer votre vision en expérience mesurable"
             align="center"
           />
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300 mb-12">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground mb-12">
             <p className="text-center">
               Nous aidons les entreprises, institutions et créateurs à :
             </p>
@@ -68,7 +68,7 @@ export function MissionPage() {
             ].map((item, i) => (
               <div key={i} className="flex gap-4 items-start">
                 <div
-                  className="w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-white text-sm font-bold mt-1"
+                  className="w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-card-foreground text-sm font-bold mt-1"
                   style={{ backgroundColor: "#7C3AED" }}
                 >
                   ✓
@@ -79,7 +79,7 @@ export function MissionPage() {
           </div>
 
           <div className="max-w-3xl mx-auto">
-            <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 mb-8">
+            <p className="text-center text-lg text-foreground mb-8">
               Notre accompagnement repose sur trois promesses fondamentales :
             </p>
 
@@ -91,18 +91,18 @@ export function MissionPage() {
               ].map((item, i) => (
                 <div key={i} className="card text-center">
                   <div
-                    className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl font-bold text-white"
+                    className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     {item.num}
                   </div>
-                  <p className="font-medium text-zinc-900 dark:text-zinc-100">{item.text}</p>
+                  <p className="font-medium text-foreground">{item.text}</p>
                 </div>
               ))}
             </div>
 
             <blockquote
-              className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-12 text-center"
+              className="border-l-4 pl-6 py-4 text-muted-foreground italic text-xl mt-12 text-center"
               style={{ borderColor: "#7C3AED" }}
             >
               « De l'idée à l'impact, nous transformons votre vision en expérience mesurable. »
@@ -115,10 +115,10 @@ export function MissionPage() {
       <ThemeSection variant="light" className="py-20">
         <div className="max-w-4xl mx-auto">
           <SectionHeading eyebrow="Notre approche" title="La cohérence avant tout" align="center" />
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300 text-center">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground text-center">
             <p>
               Nous rassemblons des expertises souvent séparées :{" "}
-              <strong className="text-zinc-900 dark:text-zinc-100">
+              <strong className="text-foreground">
                 communication, audiovisuel, marketing, événementiel, design, web et IA.
               </strong>
             </p>
@@ -128,7 +128,7 @@ export function MissionPage() {
               digital, avec un seul fil conducteur : votre objectif.
             </p>
             <blockquote
-              className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8"
+              className="border-l-4 pl-6 py-4 text-muted-foreground italic text-xl mt-8"
               style={{ borderColor: "#7C3AED" }}
             >
               « Un seul partenaire, une seule vision, une expérience continue. »
@@ -138,14 +138,14 @@ export function MissionPage() {
       </ThemeSection>
 
       {/* Notre méthode - 4 étapes */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Notre méthode"
             title="Une démarche intégrée et modulaire"
             align="center"
           />
-          <p className="text-center text-lg text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto mb-16">
+          <p className="text-center text-lg text-muted-foreground max-w-3xl mx-auto mb-16">
             Du conseil stratégique à la production, puis à la diffusion et à la mesure.
           </p>
 
@@ -176,26 +176,26 @@ export function MissionPage() {
                 <div className="flex gap-4 items-start">
                   <div className="flex-shrink-0">
                     <div
-                      className="w-14 h-14 rounded-xl flex items-center justify-center text-xl font-bold text-white"
+                      className="w-14 h-14 rounded-xl flex items-center justify-center text-xl font-bold text-card-foreground"
                       style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                     >
                       {item.num}
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">
                       {item.title}
                     </h3>
-                    <p className="text-zinc-600 dark:text-zinc-400">{item.desc}</p>
+                    <p className="text-muted-foreground">{item.desc}</p>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 mt-12 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-foreground mt-12 max-w-3xl mx-auto">
             Chaque étape est autonome, mais leur combinaison crée l'effet{" "}
-            <strong className="text-zinc-900 dark:text-zinc-100">&quot;clé en main&quot;</strong> :
+            <strong className="text-foreground">&quot;clé en main&quot;</strong> :
             une stratégie complète, lisible et mesurable.
           </p>
         </div>
@@ -214,10 +214,10 @@ export function MissionPage() {
             <table className="w-full max-w-4xl mx-auto">
               <thead>
                 <tr className="border-b-2" style={{ borderColor: "#7C3AED" }}>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-foreground">
                     Ce que vous gagnez
                   </th>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-foreground">
                     Ce que nous garantissons
                   </th>
                 </tr>
@@ -247,12 +247,12 @@ export function MissionPage() {
                 ].map((row, i) => (
                   <tr
                     key={i}
-                    className="hover:bg-zinc-50 dark:hover:bg-zinc-900/30 transition-colors"
+                    className="hover:bg-muted transition-colors"
                   >
-                    <td className="py-4 px-6 font-semibold text-zinc-900 dark:text-zinc-100">
+                    <td className="py-4 px-6 font-semibold text-foreground">
                       {row.gain}
                     </td>
-                    <td className="py-4 px-6 text-zinc-700 dark:text-zinc-300">{row.garantie}</td>
+                    <td className="py-4 px-6 text-foreground">{row.garantie}</td>
                   </tr>
                 ))}
               </tbody>
@@ -260,7 +260,7 @@ export function MissionPage() {
           </div>
 
           <blockquote
-            className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-12 text-center max-w-3xl mx-auto"
+            className="border-l-4 pl-6 py-4 text-muted-foreground italic text-xl mt-12 text-center max-w-3xl mx-auto"
             style={{ borderColor: "#7C3AED" }}
           >
             « Nous prenons la responsabilité du résultat — qualité, fluidité, pertinence et
@@ -270,14 +270,14 @@ export function MissionPage() {
       </ThemeSection>
 
       {/* Notre différence */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Notre différence"
             title="La capacité à assembler"
             align="center"
           />
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto mb-12">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto mb-12">
             Ce qui nous distingue, ce n'est pas une technologie isolée, mais notre capacité à
             assembler.
           </p>
@@ -303,18 +303,18 @@ export function MissionPage() {
                   className="w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center"
                   style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                 >
-                  <div className="w-6 h-6 bg-white/20 rounded-lg"></div>
+                  <div className="w-6 h-6 bg-background/20 rounded-lg"></div>
                 </div>
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">{item.desc}</p>
+                <p className="text-sm text-muted-foreground">{item.desc}</p>
               </div>
             ))}
           </div>
 
           <blockquote
-            className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-12 text-center max-w-3xl mx-auto"
+            className="border-l-4 pl-6 py-4 text-muted-foreground italic text-xl mt-12 text-center max-w-3xl mx-auto"
             style={{ borderColor: "#7C3AED" }}
           >
             « Audiovisuel. Digital. IA. Un seul partenaire, un seul impact. »
@@ -344,7 +344,7 @@ export function MissionPage() {
                   className="w-2 h-2 rounded-full flex-shrink-0 mt-2"
                   style={{ backgroundColor: "#7C3AED" }}
                 ></div>
-                <p className="flex-1 text-zinc-700 dark:text-zinc-300">{item}</p>
+                <p className="flex-1 text-foreground">{item}</p>
               </div>
             ))}
           </div>
@@ -354,7 +354,7 @@ export function MissionPage() {
       {/* Notre promesse client */}
       <ThemeSection variant="dark" className="py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <blockquote className="text-2xl md:text-3xl font-medium text-white leading-relaxed">
+          <blockquote className="text-2xl md:text-3xl font-medium text-card-foreground leading-relaxed">
             « Nous concevons, produisons et optimisons vos expériences de marque grâce à l'IA.
             <br />
             De la scène à l'écran, captez, engagez, mesurez. »
@@ -365,14 +365,14 @@ export function MissionPage() {
       {/* Visuel héro complémentaire */}
       <ThemeSection variant="gradient" className="py-32">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
             Un partenaire unique.
             <br />
             Une vision globale.
             <br />
             Un impact mesurable.
           </h2>
-          <p className="text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto">
+          <p className="text-lg text-foreground max-w-2xl mx-auto">
             De l'événement hybride aux expériences digitales immersives, nous créons des moments qui
             marquent.
           </p>
@@ -380,12 +380,12 @@ export function MissionPage() {
       </ThemeSection>
 
       {/* CTA */}
-      <ThemeSection variant="light" className="py-32 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-32 bg-muted">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 mb-6">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
             Prêt à transformer votre vision ?
           </h2>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
             Explorez nos univers intégrés et composez votre parcours IA sur mesure.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

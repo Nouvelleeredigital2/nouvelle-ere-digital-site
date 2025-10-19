@@ -34,7 +34,7 @@ export function ImageInspector({ data, onUpdate }: ImageInspectorProps) {
 
   return (
     <div className="space-y-4">
-      <h4 className="font-semibold text-gray-900 border-b pb-2">
+      <h4 className="font-semibold text-muted-foreground border-b pb-2">
         Bloc Image
       </h4>
 

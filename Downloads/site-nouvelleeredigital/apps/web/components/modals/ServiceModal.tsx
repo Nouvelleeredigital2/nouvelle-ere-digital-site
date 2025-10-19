@@ -112,7 +112,7 @@ export function ServiceModal() {
       onClick={onOverlayClick}
       className={cn(
         "fixed inset-0 z-[100]",
-        "bg-black/40 backdrop-blur-sm",
+        "bg-background/40 backdrop-blur-sm",
         "flex items-center justify-center p-4",
       )}
       aria-modal

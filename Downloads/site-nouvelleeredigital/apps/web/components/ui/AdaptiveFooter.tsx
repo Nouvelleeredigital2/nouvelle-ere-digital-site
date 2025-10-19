@@ -177,7 +177,7 @@ export function AdaptiveFooter({ className }: AdaptiveFooterProps) {
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <span>© 2024 Nouvelle Ère Digital.</span>
             <span>Fait avec</span>
-            <Heart className="w-4 h-4 text-red-500 fill-current" />
+            <Heart className="w-4 h-4 text-error fill-current" />
             <span>pour l'innovation</span>
           </div>
 

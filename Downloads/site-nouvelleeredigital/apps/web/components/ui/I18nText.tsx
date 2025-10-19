@@ -69,7 +69,7 @@ export const I18nText: React.FC<I18nTextProps> = ({
   const stateClasses: Record<State, string> = {
     default: "",
     hover: "underline",
-    active: "bg-yellow-200",
+    active: "bg-warning/30",
     focus: "ring-2 ring-[var(--color-primary)]",
     disabled: "opacity-50 cursor-not-allowed",
     selected: "border-2 border-[var(--color-primary)]",

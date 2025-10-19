@@ -39,7 +39,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg bg-gradient-to-br from-primary to-secondary">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center text-card-foreground font-bold text-lg shadow-lg bg-gradient-to-br from-primary to-secondary">
                 N
               </div>
               <div>

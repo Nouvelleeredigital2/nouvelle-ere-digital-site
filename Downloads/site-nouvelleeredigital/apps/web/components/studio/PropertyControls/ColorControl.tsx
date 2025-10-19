@@ -29,7 +29,7 @@ export function ColorControl({
 
   return (
     <div className="space-y-2">
-      <label className="block text-sm font-medium text-gray-700">
+      <label className="block text-sm font-medium text-muted-foreground">
         {label}
       </label>
       
@@ -42,7 +42,7 @@ export function ColorControl({
             onClick={() => setValue(name, color)}
             className={`
               w-10 h-10 rounded border-2 transition-all
-              ${currentValue === color ? 'border-indigo-500 ring-2 ring-indigo-200' : 'border-gray-300'}
+              ${currentValue === color ? 'border-indigo-500 ring-2 ring-indigo-200' : 'border-border'}
             `}
             style={{ backgroundColor: color }}
             title={color}
@@ -66,13 +66,13 @@ export function ColorControl({
               type="color"
               value={currentValue || '#000000'}
               onChange={(e) => setValue(name, e.target.value)}
-              className="w-12 h-10 rounded border border-gray-300 cursor-pointer"
+              className="w-12 h-10 rounded border border-border cursor-pointer"
             />
             <input
               type="text"
               value={currentValue}
               onChange={(e) => setValue(name, e.target.value)}
-              className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm"
+              className="flex-1 px-3 py-2 border border-border rounded-lg text-sm"
               placeholder="#000000"
             />
           </div>
@@ -81,9 +81,9 @@ export function ColorControl({
       
       {/* Current Value */}
       {currentValue && (
-        <div className="flex items-center gap-2 text-xs text-gray-600">
+        <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <div
-            className="w-4 h-4 rounded border border-gray-300"
+            className="w-4 h-4 rounded border border-border"
             style={{ backgroundColor: currentValue }}
           />
           <span>{currentValue}</span>

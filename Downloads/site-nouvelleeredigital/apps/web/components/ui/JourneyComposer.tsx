@@ -49,8 +49,8 @@ export const JourneyComposer: React.FC<JourneyComposerProps> = ({
         setSelectedModules((prev) => [...prev, moduleId]);
         const newItem: CanvasItem = {
           id: moduleId,
-          x: Math.random() * 400,
-          y: Math.random() * 300,
+          x: 200, // Position par défaut au centre
+          y: 150, // Position par défaut au centre
           content: <div>{modules.find((m: Module) => m.id === moduleId)?.name}</div>,
         };
         setCanvasItems((prev) => [...prev, newItem]);
@@ -66,7 +66,7 @@ export const JourneyComposer: React.FC<JourneyComposerProps> = ({
       );
       if (canvasItems.length > 0) {
         const newTrajectory = {
-          id: `traj-${Date.now()}`,
+          id: `traj-${Math.random().toString(36).substr(2, 9)}`,
           points: canvasItems.map((item) => ({ x: item.x, y: item.y })).concat([{ x, y }]),
           color: "#ffd93d",
         };
@@ -131,7 +131,7 @@ export const JourneyComposer: React.FC<JourneyComposerProps> = ({
         </div>
         <button
           onClick={handleExport}
-          className="bg-primary text-white px-4 py-2 rounded"
+          className="bg-primary text-card-foreground px-4 py-2 rounded"
           disabled={selectedModules.length === 0}
         >
           Exporter le Parcours

@@ -68,7 +68,7 @@ export const MiniConstellation: React.FC<MiniConstellationProps> = ({
   return (
     <div
       className={cn(
-        "relative bg-black rounded-[var(--border-radius-large)] overflow-hidden",
+        "relative bg-background rounded-[var(--border-radius-large)] overflow-hidden",
         sizes[size],
         variants[variant],
         stateClasses[state],

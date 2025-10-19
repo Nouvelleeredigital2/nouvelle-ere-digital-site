@@ -94,9 +94,9 @@ export const SearchBox: React.FC<SearchBoxProps> = ({
   };
 
   const variants: Record<Variant, string> = {
-    default: "border border-gray-300 bg-white",
+    default: "border border-border bg-card",
     outlined: "border-2 border-[var(--color-primary)] bg-transparent",
-    filled: "bg-[var(--couleur-light)] border border-gray-300",
+    filled: "bg-[var(--couleur-light)] border border-border",
   };
 
   const stateClasses: Record<State, string> = {
@@ -141,14 +141,14 @@ export const SearchBox: React.FC<SearchBoxProps> = ({
               setQuery("");
               onClear();
             }}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-muted-foreground0"
           >
             ×
           </button>
         )}
       </form>
       {showSuggestions && allSuggestions.length > 0 && (
-        <div className="absolute top-full left-0 right-0 bg-white border rounded mt-1 shadow-lg z-10">
+        <div className="absolute top-full left-0 right-0 bg-card border rounded mt-1 shadow-lg z-10">
           {allSuggestions.map((suggestion) => (
             <div
               key={suggestion.id}

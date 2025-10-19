@@ -98,14 +98,14 @@ export const HeroCinemagraph: React.FC<HeroCinemagraphProps> = ({
     >
       <Media type="video" src={src} alt={alt} className="w-full h-96 object-cover" />
       {(title || subtitle) && (
-        <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50">
+        <div className="absolute inset-0 flex flex-col justify-center items-center bg-background bg-opacity-50">
           {title && (
-            <Text size="lg" className="text-white font-bold mb-2">
+            <Text size="lg" className="text-card-foreground font-bold mb-2">
               {title}
             </Text>
           )}
           {subtitle && (
-            <Text size="lg" className="text-white">
+            <Text size="lg" className="text-card-foreground">
               {subtitle}
             </Text>
           )}
@@ -113,7 +113,7 @@ export const HeroCinemagraph: React.FC<HeroCinemagraphProps> = ({
       )}
       <button
         onClick={isPlaying ? handlePause : handlePlay}
-        className="absolute bottom-4 right-4 bg-[var(--color-primary)] text-white px-4 py-2 rounded"
+        className="absolute bottom-4 right-4 bg-[var(--color-primary)] text-card-foreground px-4 py-2 rounded"
       >
         {isPlaying ? "Pause" : "Play"}
       </button>

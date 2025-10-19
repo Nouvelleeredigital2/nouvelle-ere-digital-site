@@ -48,14 +48,14 @@ export const Testimonials = ({ testimonials }: TestimonialsProps) => {
                     transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
                     className="mb-8"
                   >
-                    <Quote className="w-12 h-12 text-blue-500 mx-auto opacity-50" />
+                    <Quote className="w-12 h-12 text-primary mx-auto opacity-50" />
                   </motion.div>
 
                   <motion.blockquote
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.6 }}
-                    className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed mb-8 italic"
+                    className="text-xl md:text-2xl text-muted-foreground dark:text-muted-foreground leading-relaxed mb-8 italic"
                   >
                     &quot;{testimonial.content}&quot;
                   </motion.blockquote>
@@ -66,19 +66,19 @@ export const Testimonials = ({ testimonials }: TestimonialsProps) => {
                     transition={{ delay: 0.5, duration: 0.6 }}
                     className="flex items-center justify-center space-x-4"
                   >
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-card-foreground font-bold text-xl">
                       {testimonial.name.charAt(0)}
                     </div>
                     <div className="text-left">
-                      <div className="font-semibold text-gray-900 dark:text-white">
+                      <div className="font-semibold text-muted-foreground dark:text-card-foreground">
                         {testimonial.name}
                       </div>
-                      <div className="text-gray-600 dark:text-gray-400 text-sm">
+                      <div className="text-muted-foreground dark:text-muted-foreground text-sm">
                         {testimonial.role} at {testimonial.company}
                       </div>
                       <div className="flex items-center mt-1">
                         {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                          <Star key={i} className="w-4 h-4 text-warning fill-current" />
                         ))}
                       </div>
                     </div>
@@ -98,8 +98,8 @@ export const Testimonials = ({ testimonials }: TestimonialsProps) => {
             onClick={() => setCurrentIndex(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 hover:scale-125 active:scale-95 ${
               index === currentIndex
-                ? "bg-blue-500 w-8"
-                : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+                ? "bg-primary w-8"
+                : "bg-muted dark:bg-muted hover:bg-muted dark:hover:bg-muted0"
             }`}
             aria-label={`Aller au témoignage ${index + 1}`}
           />
@@ -109,7 +109,7 @@ export const Testimonials = ({ testimonials }: TestimonialsProps) => {
       {/* Navigation Arrows */}
       <button
         onClick={prevTestimonial}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 hover:shadow-xl hover:scale-110 active:scale-95 hover:-translate-x-0.5"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-card dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center text-muted-foreground dark:text-muted-foreground hover:text-muted-foreground dark:hover:text-card-foreground transition-all duration-300 hover:shadow-xl hover:scale-110 active:scale-95 hover:-translate-x-0.5"
         aria-label="Témoignage précédent"
       >
         <ChevronLeft size={20} />
@@ -117,7 +117,7 @@ export const Testimonials = ({ testimonials }: TestimonialsProps) => {
 
       <button
         onClick={nextTestimonial}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 hover:shadow-xl hover:scale-110 active:scale-95 hover:translate-x-0.5"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-card dark:bg-zinc-800 rounded-full shadow-lg flex items-center justify-center text-muted-foreground dark:text-muted-foreground hover:text-muted-foreground dark:hover:text-card-foreground transition-all duration-300 hover:shadow-xl hover:scale-110 active:scale-95 hover:translate-x-0.5"
         aria-label="Témoignage suivant"
       >
         <ChevronRight size={20} />
@@ -145,7 +145,7 @@ export const TestimonialsSection = ({
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+            className="text-4xl md:text-5xl font-bold text-muted-foreground dark:text-card-foreground mb-4"
           >
             {title}
           </motion.h2>
@@ -153,7 +153,7 @@ export const TestimonialsSection = ({
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-gray-600 dark:text-gray-300"
+            className="text-xl text-muted-foreground dark:text-muted-foreground"
           >
             {subtitle}
           </motion.p>

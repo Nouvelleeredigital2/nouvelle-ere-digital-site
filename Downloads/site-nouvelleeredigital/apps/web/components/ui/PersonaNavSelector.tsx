@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { usePersona } from "@/components/context/PersonaProvider";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { Palette, Users, Target, Zap, Heart } from "lucide-react";
+import { Palette, Users, Target, Zap, Heart, Minus, Leaf } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function PersonaNavSelector() {
@@ -40,6 +40,10 @@ export function PersonaNavSelector() {
         return Zap;
       case "Le Tisseur de Liens":
         return Heart;
+      case "Le Puriste Esthétique":
+        return Minus;
+      case "Le Gardien de la Terre":
+        return Leaf;
       default:
         return Palette;
     }

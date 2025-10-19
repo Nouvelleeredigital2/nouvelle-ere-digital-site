@@ -4,9 +4,10 @@ import { architectePersona } from "./architecte";
 import { strategePersona } from "./stratege";
 import { innovateurPersona } from "./innovateur";
 import { connecteurPersona } from "./connecteur";
-// Temporairement commenté pour se concentrer sur les 5 personas de base
+import { minimalistePersona } from "./minimaliste";
+import { naturelPersona } from "./naturel";
+// Temporairement commenté pour se concentrer sur les 7 personas de base
 // import {
-//   minimalistePersona,
 //   colorePersona,
 //   professionnelPersona,
 //   gamerPersona,
@@ -19,8 +20,9 @@ export const personas = [
   strategePersona,
   innovateurPersona,
   connecteurPersona,
-  // Temporairement commenté pour se concentrer sur les 5 personas de base
-  // minimalistePersona,
+  minimalistePersona,
+  naturelPersona,
+  // Temporairement commenté pour se concentrer sur les 7 personas de base
   // colorePersona,
   // professionnelPersona,
   // gamerPersona,

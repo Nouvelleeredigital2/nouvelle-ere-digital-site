@@ -26,13 +26,13 @@ export const AnimatedSection = ({
       case "gradient":
         return "bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-zinc-900 dark:via-zinc-800 dark:to-zinc-900";
       case "dark":
-        return "bg-zinc-900 text-white";
+        return "bg-zinc-900 text-card-foreground";
       case "light":
-        return "bg-gray-50 dark:bg-zinc-800";
+        return "bg-muted dark:bg-zinc-800";
       case "animated":
         return "bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 relative overflow-hidden";
       default:
-        return "bg-white dark:bg-zinc-900";
+        return "bg-card dark:bg-zinc-900";
     }
   };
 
@@ -57,14 +57,14 @@ export const AnimatedSection = ({
             intensity={20}
             speed={4}
           >
-            <div className="w-32 h-32 bg-blue-400/30 rounded-full blur-3xl" />
+            <div className="w-32 h-32 bg-primary/30 rounded-full blur-3xl" />
           </FloatingAnimation>
           <FloatingAnimation
             className="absolute top-20 right-20 opacity-15"
             intensity={25}
             speed={5}
           >
-            <div className="w-40 h-40 bg-purple-400/25 rounded-full blur-2xl" />
+            <div className="w-40 h-40 bg-accent/25 rounded-full blur-2xl" />
           </FloatingAnimation>
           <FloatingAnimation
             className="absolute bottom-10 left-1/4 opacity-10"
@@ -98,13 +98,13 @@ export const AnimatedSection = ({
       {showFloatingElements && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <FloatingAnimation className="absolute top-1/4 left-1/4 opacity-10">
-            <div className="w-2 h-2 bg-white rounded-full" />
+            <div className="w-2 h-2 bg-card rounded-full" />
           </FloatingAnimation>
           <FloatingAnimation className="absolute top-1/3 right-1/3 opacity-8" intensity={15}>
-            <div className="w-3 h-3 bg-blue-400 rounded-full" />
+            <div className="w-3 h-3 bg-primary rounded-full" />
           </FloatingAnimation>
           <FloatingAnimation className="absolute bottom-1/3 left-1/2 opacity-12" intensity={10}>
-            <div className="w-1 h-1 bg-purple-400 rounded-full" />
+            <div className="w-1 h-1 bg-accent rounded-full" />
           </FloatingAnimation>
         </div>
       )}
@@ -162,7 +162,7 @@ export const SectionHeader = ({
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className={`text-sm uppercase tracking-wide text-blue-600 dark:text-blue-400 mb-4 font-medium`}
+            className={`text-sm uppercase tracking-wide text-primary dark:text-primary mb-4 font-medium`}
           >
             {subtitle}
           </motion.p>
@@ -172,7 +172,7 @@ export const SectionHeader = ({
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className={`font-bold text-gray-900 dark:text-white mb-6 ${sizeClasses[size].title}`}
+          className={`font-bold text-muted-foreground dark:text-card-foreground mb-6 ${sizeClasses[size].title}`}
         >
           {title}
         </motion.h2>
@@ -182,7 +182,7 @@ export const SectionHeader = ({
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className={`text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl ${align === "center" ? "mx-auto" : ""} ${sizeClasses[size].description}`}
+            className={`text-muted-foreground dark:text-muted-foreground leading-relaxed max-w-3xl ${align === "center" ? "mx-auto" : ""} ${sizeClasses[size].description}`}
           >
             {description}
           </motion.p>

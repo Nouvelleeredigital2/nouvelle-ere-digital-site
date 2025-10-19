@@ -10,7 +10,11 @@ import {
   MousePointer2,
   Search,
   Plus,
-  X
+  X,
+  FileText,
+  Images,
+  Columns,
+  Star
 } from 'lucide-react';
 
 interface BlockDefinition {
@@ -50,6 +54,34 @@ const blockDefinitions: BlockDefinition[] = [
     icon: <MousePointer2 className="w-5 h-5" />,
     category: 'Contenu',
   },
+  {
+    type: 'richtext',
+    label: 'Texte Riche (WYSIWYG)',
+    description: 'Éditeur de texte formaté avec barre d\'outils',
+    icon: <FileText className="w-5 h-5" />,
+    category: 'Contenu',
+  },
+  {
+    type: 'gallery',
+    label: 'Galerie',
+    description: 'Collection d\'images (Grid, Masonry, Carousel)',
+    icon: <Images className="w-5 h-5" />,
+    category: 'Média',
+  },
+  {
+    type: 'columns',
+    label: 'Colonnes',
+    description: 'Mise en page multi-colonnes (2, 3 ou 4)',
+    icon: <Columns className="w-5 h-5" />,
+    category: 'Layout',
+  },
+  {
+    type: 'icon',
+    label: 'Icône',
+    description: 'Icône avec personnalisation (taille, couleur, animation)',
+    icon: <Star className="w-5 h-5" />,
+    category: 'Média',
+  },
 ];
 
 const categories = Array.from(new Set(blockDefinitions.map(b => b.category)));
@@ -76,45 +108,45 @@ export function BlockPalette({ onClose }: BlockPaletteProps) {
     
     addBlock({
       id: blockId,
-      type: blockType as any,
+      type: blockType,
       data: defaultData,
-    });
+    } as any); // Typage simplifié pour éviter les problèmes d'union complexe
     
     onClose();
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg shadow-xl max-w-3xl w-full max-h-[80vh] flex flex-col">
+    <div className="fixed inset-0 bg-background bg-opacity-50 z-50 flex items-center justify-center p-4">
+      <div className="bg-card rounded-lg shadow-xl max-w-3xl w-full max-h-[80vh] flex flex-col">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+        <div className="flex items-center justify-between p-6 border-b border-border">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">
+            <h2 className="text-2xl font-bold text-muted-foreground">
               Ajouter un Bloc
             </h2>
-            <p className="text-sm text-gray-600 mt-1">
+            <p className="text-sm text-muted-foreground mt-1">
               Choisissez un type de bloc pour l'ajouter à votre page
             </p>
           </div>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="p-2 hover:bg-muted rounded-lg transition-colors"
           >
-            <X className="w-6 h-6 text-gray-500" />
+            <X className="w-6 h-6 text-muted-foreground0" />
           </button>
         </div>
 
         {/* Search and Filters */}
-        <div className="p-6 border-b border-gray-200 space-y-4">
+        <div className="p-6 border-b border-border space-y-4">
           {/* Search */}
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <input
               type="text"
               placeholder="Rechercher un bloc..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full pl-10 pr-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
 
@@ -124,8 +156,8 @@ export function BlockPalette({ onClose }: BlockPaletteProps) {
               onClick={() => setSelectedCategory('Tous')}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 selectedCategory === 'Tous'
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-indigo-600 text-card-foreground'
+                  : 'bg-muted text-muted-foreground hover:bg-muted'
               }`}
             >
               Tous
@@ -136,8 +168,8 @@ export function BlockPalette({ onClose }: BlockPaletteProps) {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   selectedCategory === category
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-indigo-600 text-card-foreground'
+                    : 'bg-muted text-muted-foreground hover:bg-muted'
                 }`}
               >
                 {category}
@@ -150,7 +182,7 @@ export function BlockPalette({ onClose }: BlockPaletteProps) {
         <div className="flex-1 overflow-y-auto p-6">
           {filteredBlocks.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-gray-600">Aucun bloc trouvé</p>
+              <p className="text-muted-foreground">Aucun bloc trouvé</p>
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-4">
@@ -158,17 +190,17 @@ export function BlockPalette({ onClose }: BlockPaletteProps) {
                 <button
                   key={block.type}
                   onClick={() => handleAddBlock(block.type)}
-                  className="group p-6 border-2 border-gray-200 rounded-lg hover:border-indigo-500 hover:shadow-lg transition-all text-left"
+                  className="group p-6 border-2 border-border rounded-lg hover:border-indigo-500 hover:shadow-lg transition-all text-left"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-indigo-100 text-indigo-600 rounded-lg group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                    <div className="p-3 bg-indigo-100 text-indigo-600 rounded-lg group-hover:bg-indigo-600 group-hover:text-card-foreground transition-colors">
                       {block.icon}
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-gray-900 mb-1">
+                      <h3 className="font-semibold text-muted-foreground mb-1">
                         {block.label}
                       </h3>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-muted-foreground">
                         {block.description}
                       </p>
                     </div>
@@ -184,8 +216,8 @@ export function BlockPalette({ onClose }: BlockPaletteProps) {
         </div>
 
         {/* Footer */}
-        <div className="p-6 border-t border-gray-200 bg-gray-50">
-          <p className="text-xs text-gray-600 text-center">
+        <div className="p-6 border-t border-border bg-muted">
+          <p className="text-xs text-muted-foreground text-center">
             💡 Astuce: Vous pouvez réorganiser les blocs par glisser-déposer après les avoir ajoutés
           </p>
         </div>

@@ -8,10 +8,10 @@ export function ExpertisesPage() {
       {/* Héro */}
       <ThemeSection variant="gradient" className="py-32 md:py-40">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-4">
+          <p className="text-sm uppercase tracking-wide text-muted-foreground mb-4">
             Nos Expertises Intégrées
           </p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.1] mb-6">
             Une approche globale,
             <br />
             créative et technologique
@@ -24,7 +24,7 @@ export function ExpertisesPage() {
       {/* Introduction */}
       <ThemeSection variant="light" className="py-20">
         <div className="max-w-4xl mx-auto">
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground">
             <p>
               Chez Nouvelle Ère Digital, nous croyons qu'un projet réussi repose sur une vision
               unifiée.
@@ -32,19 +32,19 @@ export function ExpertisesPage() {
             <p>
               C'est pourquoi nous avons réuni, au sein d'une même agence, tous les savoir-faire
               essentiels de la communication moderne :{" "}
-              <strong className="text-zinc-900 dark:text-zinc-100">
+              <strong className="text-foreground">
                 conseil stratégique, production audiovisuelle, technologie scénique, design, digital
                 et intelligence artificielle.
               </strong>
             </p>
             <div className="text-center py-6">
-              <p className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+              <p className="text-xl font-semibold text-foreground">
                 « Un seul partenaire pour concevoir, produire et mesurer vos expériences de marque.
                 »
               </p>
             </div>
             <p>
-              <strong className="text-zinc-900 dark:text-zinc-100">
+              <strong className="text-foreground">
                 Notre différence : la cohérence.
               </strong>
             </p>
@@ -57,14 +57,14 @@ export function ExpertisesPage() {
       </ThemeSection>
 
       {/* Organisation modulaire */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Une organisation modulaire et complémentaire"
             title="Six pôles d'expertise interconnectés"
             align="center"
           />
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto mb-16">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto mb-16">
             Nos six pôles d'expertise sont indépendants mais interconnectés. Ils peuvent être
             activés séparément ou intégrés dans un dispositif global, selon votre stratégie et vos
             priorités.
@@ -74,13 +74,13 @@ export function ExpertisesPage() {
             <table className="w-full">
               <thead>
                 <tr className="border-b-2" style={{ borderColor: "#7C3AED" }}>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-foreground">
                     Pôle
                   </th>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-foreground">
                     Objectif
                   </th>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-foreground">
                     Résultat attendu
                   </th>
                 </tr>
@@ -121,13 +121,13 @@ export function ExpertisesPage() {
                 ].map((row, i) => (
                   <tr
                     key={i}
-                    className="hover:bg-zinc-50 dark:hover:bg-zinc-900/30 transition-colors"
+                    className="hover:bg-muted transition-colors"
                   >
-                    <td className="py-4 px-6 font-semibold text-zinc-900 dark:text-zinc-100">
+                    <td className="py-4 px-6 font-semibold text-foreground">
                       {row.pole}
                     </td>
-                    <td className="py-4 px-6 text-zinc-700 dark:text-zinc-300">{row.objectif}</td>
-                    <td className="py-4 px-6 text-zinc-700 dark:text-zinc-300">{row.resultat}</td>
+                    <td className="py-4 px-6 text-foreground">{row.objectif}</td>
+                    <td className="py-4 px-6 text-foreground">{row.resultat}</td>
                   </tr>
                 ))}
               </tbody>
@@ -135,7 +135,7 @@ export function ExpertisesPage() {
           </div>
 
           <blockquote
-            className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-12 text-center max-w-3xl mx-auto"
+            className="border-l-4 pl-6 py-4 text-muted-foreground italic text-xl mt-12 text-center max-w-3xl mx-auto"
             style={{ borderColor: "#7C3AED" }}
           >
             « Chaque univers est une brique, leur combinaison crée un écosystème. »
@@ -151,7 +151,7 @@ export function ExpertisesPage() {
             title="Du sens à la mesure"
             align="center"
           />
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto mb-16">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto mb-16">
             Quel que soit le pôle mobilisé, nous suivons une méthodologie unique :
           </p>
 
@@ -165,25 +165,25 @@ export function ExpertisesPage() {
             ].map((item, i) => (
               <div key={i} className="card text-center group hover:shadow-lg transition-shadow">
                 <div
-                  className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl font-bold text-white"
+                  className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl font-bold text-card-foreground"
                   style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                 >
                   {item.num}
                 </div>
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">{item.desc}</p>
+                <p className="text-sm text-muted-foreground">{item.desc}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto mt-12">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto mt-12">
             Cette approche circulaire garantit la fluidité et la performance globale des projets.
           </p>
 
           <blockquote
-            className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8 text-center max-w-3xl mx-auto"
+            className="border-l-4 pl-6 py-4 text-muted-foreground italic text-xl mt-8 text-center max-w-3xl mx-auto"
             style={{ borderColor: "#7C3AED" }}
           >
             « Nous concevons chaque projet comme un parcours intelligent, où chaque action nourrit
@@ -193,7 +193,7 @@ export function ExpertisesPage() {
       </ThemeSection>
 
       {/* Force du modèle intégré */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="La force d'un modèle intégré"
@@ -201,7 +201,7 @@ export function ExpertisesPage() {
             align="center"
           />
 
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300 mb-12">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground mb-12">
             <p className="text-center">Ce modèle intégré permet à Nouvelle Ère Digital de :</p>
           </div>
 
@@ -214,19 +214,19 @@ export function ExpertisesPage() {
             ].map((item, i) => (
               <div key={i} className="flex gap-4 items-start card">
                 <div
-                  className="w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-white text-sm font-bold"
+                  className="w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-card-foreground text-sm font-bold"
                   style={{ backgroundColor: "#7C3AED" }}
                 >
                   ✓
                 </div>
-                <p className="flex-1 font-medium text-zinc-900 dark:text-zinc-100">{item}</p>
+                <p className="flex-1 font-medium text-foreground">{item}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto">
             Nos équipes partagent la même culture :{" "}
-            <strong className="text-zinc-900 dark:text-zinc-100">
+            <strong className="text-foreground">
               créative, technologique et humaine.
             </strong>
           </p>
@@ -241,10 +241,10 @@ export function ExpertisesPage() {
             title="Des professionnels aguerris"
             align="center"
           />
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300 text-center">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground text-center">
             <p>
               Nos pôles sont portés par des professionnels aguerris :{" "}
-              <strong className="text-zinc-900 dark:text-zinc-100">
+              <strong className="text-foreground">
                 créatifs, ingénieurs, réalisateurs, designers, développeurs, formateurs et
                 techniciens événementiels.
               </strong>
@@ -254,7 +254,7 @@ export function ExpertisesPage() {
               inspirante et mesurable.
             </p>
             <blockquote
-              className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8"
+              className="border-l-4 pl-6 py-4 text-muted-foreground italic text-xl mt-8"
               style={{ borderColor: "#7C3AED" }}
             >
               « L'excellence n'est pas un hasard, c'est une discipline. »
@@ -264,7 +264,7 @@ export function ExpertisesPage() {
       </ThemeSection>
 
       {/* Cohérence transversale */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Une cohérence transversale"
@@ -298,14 +298,14 @@ export function ExpertisesPage() {
                       className="w-12 h-12 rounded-xl flex items-center justify-center"
                       style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                     >
-                      <div className="w-6 h-6 bg-white/20 rounded-lg"></div>
+                      <div className="w-6 h-6 bg-background/20 rounded-lg"></div>
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">
                       {item.title}
                     </h3>
-                    <p className="text-zinc-600 dark:text-zinc-400">{item.desc}</p>
+                    <p className="text-muted-foreground">{item.desc}</p>
                   </div>
                 </div>
               </div>
@@ -322,7 +322,7 @@ export function ExpertisesPage() {
             title="Une approche modulaire adaptée à vos besoins"
             align="center"
           />
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto mb-16">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto mb-16">
             Notre approche modulaire s'adapte à la taille, au rythme et à la maturité numérique de
             chaque client :
           </p>
@@ -347,10 +347,10 @@ export function ExpertisesPage() {
             ].map((item, i) => (
               <div key={i} className="card text-center group hover:shadow-lg transition-shadow">
                 <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                <h3 className="text-xl font-semibold text-foreground mb-3">
                   {item.title}
                 </h3>
-                <p className="text-zinc-600 dark:text-zinc-400">{item.desc}</p>
+                <p className="text-muted-foreground">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -360,7 +360,7 @@ export function ExpertisesPage() {
       {/* Citation manifeste */}
       <ThemeSection variant="dark" className="py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <blockquote className="text-2xl md:text-3xl font-medium text-white leading-relaxed">
+          <blockquote className="text-2xl md:text-3xl font-medium text-card-foreground leading-relaxed">
             « Nous faisons converger stratégie, design, technologie et IA pour créer un impact
             durable. »
           </blockquote>
@@ -371,10 +371,10 @@ export function ExpertisesPage() {
       <ThemeSection variant="gradient" className="py-32">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
               Six univers interconnectés
             </h2>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto">
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
               De l'audiovisuel au digital, de la scène aux données IA, nous créons des synergies qui
               amplifient votre impact.
             </p>
@@ -395,7 +395,7 @@ export function ExpertisesPage() {
                 className="card text-center group hover:shadow-xl transition-all hover:scale-105"
               >
                 <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                <h3 className="text-lg font-semibold text-foreground">
                   {item.title}
                 </h3>
               </div>
@@ -413,7 +413,7 @@ export function ExpertisesPage() {
                 className="w-3 h-3 rounded-full animate-pulse"
                 style={{ backgroundColor: "#7C3AED" }}
               ></div>
-              <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+              <span className="text-sm font-medium text-foreground">
                 Interconnexion & Synergie
               </span>
               <div
@@ -426,12 +426,12 @@ export function ExpertisesPage() {
       </ThemeSection>
 
       {/* CTA */}
-      <ThemeSection variant="light" className="py-32 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-32 bg-muted">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 mb-6">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
             Explorez nos univers en détail
           </h2>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
             Découvrez comment chaque pôle peut transformer votre communication et composez votre
             parcours sur mesure.
           </p>

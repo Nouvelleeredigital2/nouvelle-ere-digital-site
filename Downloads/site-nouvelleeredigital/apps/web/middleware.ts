@@ -4,37 +4,41 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Routes admin qui nécessitent une authentification
+  // Protéger toutes les routes /admin
   if (pathname.startsWith('/admin')) {
-    const sessionToken = request.cookies.get('admin_session')?.value;
-
-    if (!sessionToken) {
-      // Rediriger vers la page de connexion
+    // Vérifier si l'utilisateur est authentifié
+    // Pour l'instant, on utilise une vérification simple avec un cookie
+    // Dans un vrai projet, vous utiliseriez NextAuth ou une autre solution d'auth
+    
+    const authToken = request.cookies.get('admin-auth')?.value;
+    
+    // Si pas de token, rediriger vers la page de login
+    if (!authToken) {
       const loginUrl = new URL('/login', request.url);
-      loginUrl.searchParams.set('redirect', pathname);
+      loginUrl.searchParams.set('callbackUrl', pathname);
       return NextResponse.redirect(loginUrl);
     }
+    
+    // TODO: Vérifier la validité du token et le rôle de l'utilisateur
+    // Pour l'instant, on accepte tous les tokens
+    
+    return NextResponse.next();
+  }
 
-    // Vérifier si la session est valide
-    try {
-      const session = JSON.parse(
-        Buffer.from(sessionToken, 'base64').toString()
-      );
+  // Protéger les API routes sensibles
+  if (pathname.startsWith('/api/pages') && request.method !== 'GET') {
+    const authToken = request.cookies.get('admin-auth')?.value;
+    
+    if (!authToken) {
+      return new NextResponse('Unauthorized', { status: 401 });
+    }
+  }
 
-      if (session.expiresAt < Date.now()) {
-        // Session expirée
-        const loginUrl = new URL('/login', request.url);
-        loginUrl.searchParams.set('redirect', pathname);
-        const response = NextResponse.redirect(loginUrl);
-        response.cookies.delete('admin_session');
-        return response;
-      }
-    } catch {
-      // Token invalide
-      const loginUrl = new URL('/login', request.url);
-      const response = NextResponse.redirect(loginUrl);
-      response.cookies.delete('admin_session');
-      return response;
+  if (pathname.startsWith('/api/upload') || pathname.startsWith('/api/media')) {
+    const authToken = request.cookies.get('admin-auth')?.value;
+    
+    if (!authToken) {
+      return new NextResponse('Unauthorized', { status: 401 });
     }
   }
 
@@ -42,5 +46,10 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: [
+    '/admin/:path*',
+    '/api/pages/:path*',
+    '/api/upload/:path*',
+    '/api/media/:path*',
+  ],
 };

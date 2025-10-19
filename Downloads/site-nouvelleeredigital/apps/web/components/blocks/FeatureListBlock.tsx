@@ -41,12 +41,12 @@ export function FeatureListBlock({ data }: FeatureListBlockProps) {
         {(title || subtitle) && (
           <div className="text-center mb-12">
             {title && (
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-muted-foreground mb-4">
                 {title}
               </h2>
             )}
             {subtitle && (
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 {subtitle}
               </p>
             )}
@@ -58,15 +58,15 @@ export function FeatureListBlock({ data }: FeatureListBlockProps) {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow"
+              className="bg-card p-6 rounded-lg border border-border hover:shadow-lg transition-shadow"
             >
               <div className="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mb-4">
                 <Check className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-muted-foreground mb-3">
                 {feature.title}
               </h3>
-              <p className="text-gray-700">
+              <p className="text-muted-foreground">
                 {feature.description}
               </p>
             </div>

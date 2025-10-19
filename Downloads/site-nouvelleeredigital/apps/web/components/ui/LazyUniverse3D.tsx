@@ -17,8 +17,8 @@ export const LazyUniverse3DWrapper: React.FC<LazyUniverse3DWrapperProps> = ({
   return (
     <Suspense
       fallback={
-        <div className={`w-full h-screen bg-black flex items-center justify-center ${className}`}>
-          <div className="text-white text-xl animate-pulse">Chargement de l'Univers 3D...</div>
+        <div className={`w-full h-screen bg-background flex items-center justify-center ${className}`}>
+          <div className="text-card-foreground text-xl animate-pulse">Chargement de l'Univers 3D...</div>
         </div>
       }
     >

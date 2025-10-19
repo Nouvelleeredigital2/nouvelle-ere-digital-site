@@ -5,6 +5,7 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { useEditorStore } from '@/stores/editorStore';
 import { BlockPreview } from './BlockPreview';
+import { ColumnsBlock } from '@/components/blocks/ColumnsBlock';
 import type { Block } from '@/lib/types/blocks';
 import {
   GripVertical,
@@ -18,10 +19,20 @@ interface DraggableBlockProps {
   block: Block;
   index: number;
   isSelected: boolean;
+  isNested?: boolean;
+  parentBlockId?: string;
+  parentColumnId?: string;
 }
 
-export function DraggableBlock({ block, index, isSelected }: DraggableBlockProps) {
-  const { selectBlock, deleteBlock, duplicateBlock } = useEditorStore();
+export function DraggableBlock({ 
+  block, 
+  index, 
+  isSelected, 
+  isNested = false, 
+  parentBlockId, 
+  parentColumnId 
+}: DraggableBlockProps) {
+  const { selectBlock, deleteBlock, duplicateBlock, deleteBlockFromColumn } = useEditorStore();
   const [isHovered, setIsHovered] = React.useState(false);
 
   const {
@@ -48,7 +59,11 @@ export function DraggableBlock({ block, index, isSelected }: DraggableBlockProps
   const handleDelete = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (confirm('Supprimer ce bloc ?')) {
-      deleteBlock(block.id);
+      if (isNested && parentBlockId && parentColumnId) {
+        deleteBlockFromColumn(parentBlockId, parentColumnId, block.id);
+      } else {
+        deleteBlock(block.id);
+      }
     }
   };
 
@@ -68,11 +83,11 @@ export function DraggableBlock({ block, index, isSelected }: DraggableBlockProps
         ${isSelected
           ? 'border-indigo-500 ring-2 ring-indigo-200'
           : isHovered
-          ? 'border-gray-300'
+          ? 'border-border'
           : 'border-transparent'
         }
         ${isDragging ? 'cursor-grabbing' : 'cursor-pointer'}
-        bg-white hover:shadow-md
+        bg-card hover:shadow-md
       `}
       onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
@@ -80,11 +95,11 @@ export function DraggableBlock({ block, index, isSelected }: DraggableBlockProps
     >
       {/* Toolbar qui apparaît au survol */}
       {(isHovered || isSelected) && (
-        <div className="absolute -top-10 left-0 right-0 flex items-center justify-between bg-white border border-gray-200 rounded-t-lg px-3 py-1 shadow-sm z-10">
+        <div className="absolute -top-10 left-0 right-0 flex items-center justify-between bg-card border border-border rounded-t-lg px-3 py-1 shadow-sm z-10">
           {/* Informations du bloc */}
-          <div className="flex items-center gap-2 text-xs text-gray-600">
+          <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <span className="font-medium capitalize">{block.type}</span>
-            <span className="text-gray-400">•</span>
+            <span className="text-muted-foreground">•</span>
             <span>Bloc #{index + 1}</span>
           </div>
 
@@ -94,28 +109,28 @@ export function DraggableBlock({ block, index, isSelected }: DraggableBlockProps
             <button
               {...attributes}
               {...listeners}
-              className="p-1.5 hover:bg-gray-100 rounded cursor-grab active:cursor-grabbing"
+              className="p-1.5 hover:bg-muted rounded cursor-grab active:cursor-grabbing"
               title="Déplacer"
             >
-              <GripVertical className="w-4 h-4 text-gray-400" />
+              <GripVertical className="w-4 h-4 text-muted-foreground" />
             </button>
 
             {/* Dupliquer */}
             <button
               onClick={handleDuplicate}
-              className="p-1.5 hover:bg-gray-100 rounded"
+              className="p-1.5 hover:bg-muted rounded"
               title="Dupliquer"
             >
-              <Copy className="w-4 h-4 text-gray-600" />
+              <Copy className="w-4 h-4 text-muted-foreground" />
             </button>
 
             {/* Supprimer */}
             <button
               onClick={handleDelete}
-              className="p-1.5 hover:bg-red-50 rounded"
+              className="p-1.5 hover:bg-error/10 rounded"
               title="Supprimer"
             >
-              <Trash2 className="w-4 h-4 text-red-600" />
+              <Trash2 className="w-4 h-4 text-error" />
             </button>
           </div>
         </div>
@@ -123,7 +138,11 @@ export function DraggableBlock({ block, index, isSelected }: DraggableBlockProps
 
       {/* Contenu du bloc */}
       <div className="p-4">
-        <BlockPreview block={block} />
+        {block.type === 'columns' ? (
+          <ColumnsBlock block={block as any} isEditing={true} />
+        ) : (
+          <BlockPreview block={block} />
+        )}
       </div>
 
       {/* Indicateur de sélection */}

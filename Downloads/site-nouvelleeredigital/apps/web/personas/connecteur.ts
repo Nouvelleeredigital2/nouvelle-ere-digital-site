@@ -8,18 +8,23 @@ export const connecteurPersona: CreativePersona = {
   archetype: "Le Tisseur de Liens",
   visualIdentity: {
     mood: "warm",
-    energy: "playful",
+    energy: "calm",
   },
   settings: {
     colors: {
       background: "#fef7ed", // Beige chaud
       foreground: "#92400e", // Marron foncé
       primary: "#ea580c", // Orange terre cuite
+      "primary-foreground": "#ffffff", // Blanc pour contraste optimal
       secondary: "#f59e0b", // Orange doré
-      accent: "#ec4899", // Rose dynamique
+      "secondary-foreground": "#92400e", // Marron foncé pour contraste optimal
+      accent: "#ff7f50", // Corail harmonieux au lieu de l'orange corail
+      "accent-foreground": "#ffffff", // Blanc pour contraste optimal
       card: "#ffffff", // Blanc pur
+      "card-foreground": "#92400e", // Marron foncé pour contraste optimal
       border: "#fed7aa", // Orange très clair
       muted: "rgba(251, 191, 36, 0.2)",
+      "muted-foreground": "#ea580c", // Orange terre cuite pour contraste
       success: "#16a34a",
       warning: "#d97706",
       error: "#dc2626",
@@ -37,8 +42,8 @@ export const connecteurPersona: CreativePersona = {
       spacing: "spacious",
     },
     layouts: {
-      gallery: "card-grid",
-      heroStyle: "classic",
+      gallery: "symmetrical-grid",
+      heroStyle: "split-text-image",
       heroTextAlign: "text-center",
       sections: "symmetrical-grid",
       navigation: "horizontal",

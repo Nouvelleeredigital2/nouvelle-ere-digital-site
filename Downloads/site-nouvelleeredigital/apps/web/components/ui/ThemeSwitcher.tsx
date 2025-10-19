@@ -1,4 +1,4 @@
-"'use client';
+"use client";
 
 import { usePersona } from '@/components/context/PersonaProvider';
 import { Moon, Sun, Palette, Users, Target, Zap, Heart } from 'lucide-react';
@@ -40,7 +40,7 @@ export function ThemeSwitcher() {
       <Button
         onClick={togglePersona}
         variant="ghost"
-        size="icon"
+        size="md"
         className="flex items-center justify-center"
       >
         <Icon className="h-5 w-5" />

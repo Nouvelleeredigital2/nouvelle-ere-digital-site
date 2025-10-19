@@ -8,10 +8,10 @@ export function AudiovisuelPage() {
       {/* Héro */}
       <ThemeSection variant="gradient" className="py-32 md:py-40">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-4">
+          <p className="text-sm uppercase tracking-wide text-muted-foreground mb-4">
             Audiovisuel & Création Multimédia
           </p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.1] mb-6">
             Donner vie à l&apos;image,
             <br />
             amplifier les émotions.
@@ -22,7 +22,7 @@ export function AudiovisuelPage() {
       {/* Introduction */}
       <ThemeSection variant="light" className="py-20">
         <div className="max-w-4xl mx-auto">
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground">
             <p>L&apos;image est le langage le plus universel.</p>
             <p>
               Chez Nouvelle Ère Digital, nous la mettons au service du sens, de la stratégie et de
@@ -34,7 +34,7 @@ export function AudiovisuelPage() {
               sur scène, à l&apos;écran et sur le web.
             </p>
             <div className="text-center py-6">
-              <p className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+              <p className="text-xl font-semibold text-foreground">
                 « Nous ne filmons pas des images. Nous racontons des histoires qui engagent. »
               </p>
             </div>
@@ -43,14 +43,14 @@ export function AudiovisuelPage() {
       </ThemeSection>
 
       {/* Notre mission */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-4xl mx-auto">
           <SectionHeading
             eyebrow="Notre mission"
             title="Faire de l'audiovisuel un levier de communication"
             align="center"
           />
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300 text-center">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground text-center">
             <p>
               Faire de l&apos;audiovisuel un levier de communication, de performance et de
               mémorisation.
@@ -59,7 +59,7 @@ export function AudiovisuelPage() {
               Chaque projet est abordé comme un récit : un scénario clair, une émotion à
               transmettre, une trace à laisser.
             </p>
-            <p className="font-medium text-zinc-900 dark:text-zinc-100">
+            <p className="font-medium text-foreground">
               Nous combinons la précision technique, la rigueur du storytelling et la maîtrise des
               nouveaux formats numériques.
             </p>
@@ -82,17 +82,17 @@ export function AudiovisuelPage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     1
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Captation & régie live
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Captation multicaméras (4K / 8K / drones). Régies live professionnelles :
                     Blackmagic, ATEM, Barco, NovaStar. Diffusion multi-plateformes : YouTube,
                     LinkedIn, Teams, Twitch, Zoom. Streaming hybride : simultané site / live /
@@ -100,7 +100,7 @@ export function AudiovisuelPage() {
                     audio-vidéo.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « Du terrain au réseau, chaque pixel compte. »
@@ -114,24 +114,24 @@ export function AudiovisuelPage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     2
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Production & post-production
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Montage, étalonnage, colorimétrie, mixage sonore. Génériques, habillages,
                     sous-titres et motion design. Création sonore, musiques originales, sound design
                     immersif. Adaptation multi-formats : corporate, réseaux sociaux, documentaire,
                     publicité. Livraison rapide (48–72 h) pour diffusion optimisée.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « Chaque image a une mission : informer, émouvoir ou inspirer. »
@@ -145,24 +145,24 @@ export function AudiovisuelPage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     3
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Création de films & contenus premium
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Films corporate et institutionnels. Reportages, interviews, teasers et
                     aftermovies. Capsules thématiques pour réseaux sociaux. Vidéos événementielles
                     hybrides : plateau, mur LED, scène IA. Animation et motion design 2D/3D pour
                     enrichir la narration.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « Le fond et la forme doivent frapper juste, ensemble. »
@@ -176,23 +176,23 @@ export function AudiovisuelPage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     4
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Studio photo & contenus visuels
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Portraits corporate et équipes dirigeantes. Shooting produits, packshots,
                     reportages terrain. Intégration photo + vidéo pour storytelling global.
                     Photogrammétrie, VR 360°, mini-sets modulaires.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « Une image juste vaut mille mots, mais bien placée, elle en vaut mille clics. »
@@ -206,17 +206,17 @@ export function AudiovisuelPage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     5
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Audiovisuel augmenté & IA
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Caméras IA (tracking automatique, cadrage intelligent). Tri et retouche
                     automatiques via apprentissage supervisé. Génération de clips et déclinaisons
                     formatées pour chaque plateforme. Copilote IA pour la post-production assistée
@@ -224,7 +224,7 @@ export function AudiovisuelPage() {
                     visuel.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « L&apos;IA ne remplace pas le regard, elle l&apos;amplifie. »
@@ -237,7 +237,7 @@ export function AudiovisuelPage() {
       </ThemeSection>
 
       {/* Méthodologie */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Notre méthodologie"
@@ -275,20 +275,20 @@ export function AudiovisuelPage() {
             ].map((item, i) => (
               <div key={i} className="card text-center group hover:shadow-lg transition-shadow">
                 <div
-                  className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl font-bold text-white"
+                  className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl font-bold text-card-foreground"
                   style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                 >
                   {item.num}
                 </div>
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">{item.desc}</p>
+                <p className="text-sm text-muted-foreground">{item.desc}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto">
             « Un récit visuel réussi est un projet où la technique s&apos;efface derrière
             l&apos;émotion. »
           </p>
@@ -323,10 +323,10 @@ export function AudiovisuelPage() {
               },
             ].map((item, i) => (
               <div key={i} className="card group hover:shadow-lg transition-shadow">
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                <h3 className="font-semibold text-foreground mb-3">
                   {item.category}
                 </h3>
-                <p className="text-zinc-600 dark:text-zinc-400">{item.items}</p>
+                <p className="text-muted-foreground">{item.items}</p>
               </div>
             ))}
           </div>
@@ -334,7 +334,7 @@ export function AudiovisuelPage() {
       </ThemeSection>
 
       {/* Atouts différenciateurs */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Nos atouts différenciateurs"
@@ -346,10 +346,10 @@ export function AudiovisuelPage() {
             <table className="w-full max-w-4xl mx-auto">
               <thead>
                 <tr className="border-b-2" style={{ borderColor: "#7C3AED" }}>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-foreground">
                     Atout clé
                   </th>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-foreground">
                     Ce que cela vous apporte
                   </th>
                 </tr>
@@ -370,12 +370,12 @@ export function AudiovisuelPage() {
                 ].map((row, i) => (
                   <tr
                     key={i}
-                    className="hover:bg-zinc-50 dark:hover:bg-zinc-900/30 transition-colors"
+                    className="hover:bg-muted transition-colors"
                   >
-                    <td className="py-4 px-6 font-semibold text-zinc-900 dark:text-zinc-100">
+                    <td className="py-4 px-6 font-semibold text-foreground">
                       {row.atout}
                     </td>
-                    <td className="py-4 px-6 text-zinc-700 dark:text-zinc-300">{row.apporte}</td>
+                    <td className="py-4 px-6 text-foreground">{row.apporte}</td>
                   </tr>
                 ))}
               </tbody>
@@ -414,18 +414,18 @@ export function AudiovisuelPage() {
                     className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
-                    <div className="w-8 h-8 bg-white/20 rounded-lg"></div>
+                    <div className="w-8 h-8 bg-background/20 rounded-lg"></div>
                   </div>
-                  <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                  <h3 className="font-semibold text-foreground mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-zinc-600 dark:text-zinc-400">{item.desc}</p>
+                  <p className="text-muted-foreground">{item.desc}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto mt-12">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto mt-12">
             « Chaque projet est une expérience mesurable, pas un simple tournage. »
           </p>
         </div>
@@ -434,7 +434,7 @@ export function AudiovisuelPage() {
       {/* Philosophie visuelle */}
       <ThemeSection variant="dark" className="py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <blockquote className="text-2xl md:text-3xl font-medium text-white leading-relaxed">
+          <blockquote className="text-2xl md:text-3xl font-medium text-card-foreground leading-relaxed">
             « L&apos;art de la technologie scénique, au service de l&apos;émotion. »
           </blockquote>
         </div>
@@ -444,10 +444,10 @@ export function AudiovisuelPage() {
       <ThemeSection variant="gradient" className="py-32">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
               De la scène à l&apos;écran : captez, engagez, mesurez.
             </h2>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto">
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
               Nous considérons la lumière, le son et le mouvement comme des langages émotionnels.
               Chaque projet raconte une histoire unique.
             </p>
@@ -467,7 +467,7 @@ export function AudiovisuelPage() {
                 className="card text-center group hover:shadow-xl transition-all hover:scale-105"
               >
                 <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                <h3 className="text-lg font-semibold text-foreground">
                   {item.title}
                 </h3>
               </div>
@@ -477,12 +477,12 @@ export function AudiovisuelPage() {
       </ThemeSection>
 
       {/* CTA */}
-      <ThemeSection variant="light" className="py-32 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-32 bg-muted">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 mb-6">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
             Prêt à donner vie à votre vision ?
           </h2>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
             Découvrez nos réalisations audiovisuelles et explorez l&apos;univers Nouvelle Ère Event
             pour vos prochains projets.
           </p>

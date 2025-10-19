@@ -92,13 +92,13 @@ export const TrajectoireIAOverlay: React.FC<TrajectoireIAOverlayProps> = ({
       onFocus={() => setState("focus")}
       onBlur={() => setState("default")}
     >
-      <Suspense fallback={<div className="w-full h-full bg-gray-200 animate-pulse rounded" />}>
+      <Suspense fallback={<div className="w-full h-full bg-muted animate-pulse rounded" />}>
         <TrajectoireSVG trajectories={trajectories} variant={variant} onSelect={handleSelect} />
       </Suspense>
       {onAnimate && (
         <button
           onClick={onAnimate}
-          className="absolute top-2 left-2 bg-[var(--color-primary)] text-white px-2 py-1 rounded"
+          className="absolute top-2 left-2 bg-[var(--color-primary)] text-card-foreground px-2 py-1 rounded"
         >
           Animer
         </button>
@@ -106,7 +106,7 @@ export const TrajectoireIAOverlay: React.FC<TrajectoireIAOverlayProps> = ({
       {onReset && (
         <button
           onClick={onReset}
-          className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded"
+          className="absolute top-2 right-2 bg-error text-card-foreground px-2 py-1 rounded"
         >
           Réinitialiser
         </button>

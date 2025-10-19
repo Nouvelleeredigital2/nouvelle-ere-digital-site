@@ -30,7 +30,7 @@ export function PersonaShowcase() {
                 onClick={() => setPersona(p.id)}
                 className={`px-4 py-2 rounded-lg transition-all font-persona-sans ${
                   persona.id === p.id
-                    ? "bg-persona-primary text-white shadow-lg"
+                    ? "bg-persona-primary text-card-foreground shadow-lg"
                     : "bg-persona-muted text-persona-primary hover:bg-persona-muted/80"
                 }`}
               >
@@ -132,7 +132,7 @@ export function PersonaShowcase() {
                 {[1, 2, 3, 4, 5, 6].map((item) => (
                   <div
                     key={item}
-                    className="bg-persona-primary text-white p-3 rounded text-center font-persona-sans"
+                    className="bg-persona-primary text-card-foreground p-3 rounded text-center font-persona-sans"
                   >
                     Élément {item}
                   </div>
@@ -195,11 +195,11 @@ export function PersonaShowcase() {
 
         {/* Badges d'information */}
         <div className="flex flex-wrap gap-2">
-          <Badge className="bg-persona-primary text-white">Persona: {persona.name}</Badge>
-          <Badge className="bg-persona-secondary text-white">
+          <Badge className="bg-persona-primary text-card-foreground">Persona: {persona.name}</Badge>
+          <Badge className="bg-persona-secondary text-card-foreground">
             Énergie: {persona.visualIdentity.energy}
           </Badge>
-          <Badge className="bg-persona-accent text-white">
+          <Badge className="bg-persona-accent text-card-foreground">
             Humeur: {persona.visualIdentity.mood}
           </Badge>
         </div>

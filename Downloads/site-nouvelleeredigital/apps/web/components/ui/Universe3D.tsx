@@ -561,7 +561,7 @@ export function Universe3D({
   }, [hoveredPole]);
 
   return (
-    <div className={`relative w-full h-screen bg-black ${className}`}>
+    <div className={`relative w-full h-screen bg-background ${className}`}>
       <div
         role="application"
         aria-label="Univers 3D interactif des services"
@@ -581,10 +581,10 @@ export function Universe3D({
             <div className="absolute inset-0 pointer-events-none z-10">
               {/* Titre - Stabilisé */}
               <div className="absolute top-8 left-1/2 -translate-x-1/2 text-center will-change-transform">
-                <h1 className="text-4xl md:text-6xl font-bold text-white mb-2 tracking-wider drop-shadow-lg">
+                <h1 className="text-4xl md:text-6xl font-bold text-card-foreground mb-2 tracking-wider drop-shadow-lg">
                   NOUVELLE ÈRE DIGITAL
                 </h1>
-                <p className="text-lg md:text-xl text-white/80 tracking-widest drop-shadow-md">
+                <p className="text-lg md:text-xl text-card-foreground/80 tracking-widest drop-shadow-md">
                   L&apos;UNIVERS DES POSSIBLES
                 </p>
               </div>
@@ -626,7 +626,7 @@ export function Universe3D({
               {/* Carte d'information détaillée - Panneau latéral droit */}
               {hoveredPole && (
                 <div
-                  className="absolute right-8 top-1/2 -translate-y-1/2 bg-black/95 backdrop-blur-xl border-2 rounded-2xl p-6 w-80 pointer-events-auto shadow-2xl will-change-transform"
+                  className="absolute right-8 top-1/2 -translate-y-1/2 bg-background/95 backdrop-blur-xl border-2 rounded-2xl p-6 w-80 pointer-events-auto shadow-2xl will-change-transform"
                   style={{
                     borderColor: hoveredPole.colorHex,
                     boxShadow: `0 0 30px ${hoveredPole.colorHex}40`,
@@ -643,16 +643,16 @@ export function Universe3D({
                     </h3>
                   </div>
 
-                  <p className="text-white/90 text-sm mb-4 leading-relaxed">{hoveredPole.desc}</p>
+                  <p className="text-card-foreground/90 text-sm mb-4 leading-relaxed">{hoveredPole.desc}</p>
 
                   <div className="space-y-2">
-                    <div className="text-xs text-white/50 uppercase tracking-wider mb-2">
+                    <div className="text-xs text-card-foreground/50 uppercase tracking-wider mb-2">
                       Services inclus
                     </div>
                     {hoveredPole.features.map((feature, i) => (
                       <div
                         key={i}
-                        className="text-sm text-white/80 flex items-center gap-2 hover:text-white transition-colors"
+                        className="text-sm text-card-foreground/80 flex items-center gap-2 hover:text-card-foreground transition-colors"
                       >
                         <div
                           className="w-1.5 h-1.5 rounded-full"
@@ -666,7 +666,7 @@ export function Universe3D({
               )}
 
               {/* Instructions - Stabilisées */}
-              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center text-white/40 text-xs tracking-widest will-change-opacity">
+              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center text-card-foreground/40 text-xs tracking-widest will-change-opacity">
                 <div className="opacity-60 hover:opacity-100 transition-opacity duration-300">
                   ◆ SURVOLEZ LES LABELS • EXPLOREZ L&apos;UNIVERS ◆
                 </div>
@@ -696,14 +696,14 @@ export function Universe3D({
             `}</style>
 
             {!isLoaded && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black/90 z-50">
-                <div className="text-white text-xl">Chargement...</div>
+              <div className="absolute inset-0 flex items-center justify-center bg-background/90 z-50">
+                <div className="text-card-foreground text-xl">Chargement...</div>
               </div>
             )}
 
             {webGLError && (
-              <div className="absolute inset-0 flex items-center justify-center bg-red-900/80 z-50">
-                <div className="text-white text-center p-6 bg-black/50 rounded-lg">
+              <div className="absolute inset-0 flex items-center justify-center bg-error/80 z-50">
+                <div className="text-card-foreground text-center p-6 bg-background/50 rounded-lg">
                   <h2 className="text-2xl mb-4">Erreur WebGL</h2>
                   <p>{webGLError}</p>
                 </div>
@@ -732,7 +732,7 @@ export function Universe3D({
         {/* Bouton pour basculer le mode */}
         <button
           onClick={() => setFallbackMode(!fallbackMode)}
-          className="absolute top-4 right-4 bg-white/10 px-4 py-2 rounded"
+          className="absolute top-4 right-4 bg-card/10 px-4 py-2 rounded"
           aria-label={fallbackMode ? "Activer la vue 3D" : "Activer la vue alternative"}
         >
           {fallbackMode ? "Vue 3D" : "Vue Liste"}

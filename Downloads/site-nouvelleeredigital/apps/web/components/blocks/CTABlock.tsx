@@ -24,7 +24,7 @@ export function CTABlock({ data }: CTABlockProps) {
     secondaryButtonText = '',
     secondaryButtonLink = '#',
     backgroundColor = 'bg-indigo-700',
-    textColor = 'text-white',
+    textColor = 'text-card-foreground',
   } = data;
 
   return (
@@ -41,14 +41,14 @@ export function CTABlock({ data }: CTABlockProps) {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href={primaryButtonLink}
-            className="inline-block px-8 py-4 bg-white text-indigo-700 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+            className="inline-block px-8 py-4 bg-card text-indigo-700 font-semibold rounded-lg hover:bg-muted transition-colors"
           >
             {primaryButtonText}
           </a>
           {secondaryButtonText && (
             <a
               href={secondaryButtonLink}
-              className={`inline-block px-8 py-4 border-2 border-white ${textColor} font-semibold rounded-lg hover:bg-white hover:text-indigo-700 transition-colors`}
+              className={`inline-block px-8 py-4 border-2 border-white ${textColor} font-semibold rounded-lg hover:bg-card hover:text-indigo-700 transition-colors`}
             >
               {secondaryButtonText}
             </a>

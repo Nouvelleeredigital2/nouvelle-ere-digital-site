@@ -1,5 +1,8 @@
-import { AccueilPage } from "@/components/pages/AccueilPage";
-
 export default function HomePage() {
-  return <AccueilPage />;
+  return (
+    <div>
+      <h1>Test - Application fonctionne</h1>
+      <p>Si cette page s'affiche, l'application de base fonctionne.</p>
+    </div>
+  );
 }

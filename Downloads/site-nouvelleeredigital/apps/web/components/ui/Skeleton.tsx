@@ -42,16 +42,16 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   const [state, setState] = useState<State>("default");
 
   const variants: Record<Variant, string> = {
-    text: "h-4 bg-gray-300 rounded",
-    rect: "bg-gray-300 rounded",
-    circle: "bg-gray-300 rounded-full",
-    card: "bg-gray-300 rounded-[var(--border-radius-large)]",
+    text: "h-4 bg-muted rounded",
+    rect: "bg-muted rounded",
+    circle: "bg-muted rounded-full",
+    card: "bg-muted rounded-[var(--border-radius-large)]",
   };
 
   const stateClasses: Record<State, string> = {
     default: "",
-    hover: "bg-gray-400",
-    active: "bg-gray-500",
+    hover: "bg-muted",
+    active: "bg-muted0",
     focus: "ring-2 ring-[var(--color-primary)]",
     disabled: "opacity-50",
     selected: "border-2 border-[var(--color-primary)]",
@@ -67,7 +67,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
             <div
               key={index}
               className={cn(
-                "h-4 bg-gray-300 rounded",
+                "h-4 bg-muted rounded",
                 animated && "animate-pulse",
                 stateClasses[state],
               )}

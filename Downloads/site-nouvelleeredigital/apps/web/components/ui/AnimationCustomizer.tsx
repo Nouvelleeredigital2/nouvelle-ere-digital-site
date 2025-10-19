@@ -143,30 +143,30 @@ export const AnimationCustomizer = () => {
       {/* En-tête */}
       <div>
         <div className="flex items-center gap-3 mb-2">
-          <Zap className="text-purple-600" size={24} />
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Animations</h3>
+          <Zap className="text-accent" size={24} />
+          <h3 className="text-lg font-semibold text-muted-foreground dark:text-card-foreground">Animations</h3>
         </div>
-        <p className="text-sm text-gray-600 dark:text-gray-400">
+        <p className="text-sm text-muted-foreground dark:text-muted-foreground">
           Personnalisez les animations de l'interface
         </p>
       </div>
 
       {/* Activation générale */}
-      <div className="flex items-center justify-between p-4 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-lg border border-purple-200 dark:border-purple-800">
+      <div className="flex items-center justify-between p-4 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-lg border border-accent/20 dark:border-purple-800">
         <div>
-          <div className="font-medium text-gray-900 dark:text-white">Activer les animations</div>
-          <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          <div className="font-medium text-muted-foreground dark:text-card-foreground">Activer les animations</div>
+          <div className="text-sm text-muted-foreground dark:text-muted-foreground mt-1">
             Désactiver pour améliorer les performances
           </div>
         </div>
         <button
           onClick={() => updateConfig({ enabled: !config.enabled })}
           className={`relative w-14 h-8 rounded-full transition-colors ${
-            config.enabled ? "bg-purple-600" : "bg-gray-300 dark:bg-gray-600"
+            config.enabled ? "bg-accent" : "bg-muted dark:bg-muted"
           }`}
         >
           <div
-            className={`absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow-md transition-transform ${
+            className={`absolute top-1 left-1 w-6 h-6 bg-card rounded-full shadow-md transition-transform ${
               config.enabled ? "translate-x-6" : "translate-x-0"
             }`}
           />
@@ -177,7 +177,7 @@ export const AnimationCustomizer = () => {
         <>
           {/* Intensité */}
           <div>
-            <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-3">
+            <label className="block text-sm font-semibold text-muted-foreground dark:text-card-foreground mb-3">
               Intensité des animations
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -187,12 +187,12 @@ export const AnimationCustomizer = () => {
                   onClick={() => updateConfig({ intensity })}
                   className={`px-4 py-3 rounded-lg border-2 transition-all capitalize ${
                     config.intensity === intensity
-                      ? "border-purple-600 bg-purple-50 dark:bg-purple-900/20 text-purple-600"
-                      : "border-gray-200 dark:border-zinc-700 hover:border-purple-300"
+                      ? "border-purple-600 bg-accent/10 dark:bg-accent/20 text-accent"
+                      : "border-border dark:border-zinc-700 hover:border-accent/30"
                   }`}
                 >
                   <div className="text-sm font-medium">{intensity}</div>
-                  <div className="text-xs text-gray-500 mt-1">
+                  <div className="text-xs text-muted-foreground0 mt-1">
                     {intensity === "subtle" && "Discret"}
                     {intensity === "normal" && "Équilibré"}
                     {intensity === "dramatic" && "Prononcé"}
@@ -204,7 +204,7 @@ export const AnimationCustomizer = () => {
 
           {/* Vitesse */}
           <div>
-            <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-3">
+            <label className="block text-sm font-semibold text-muted-foreground dark:text-card-foreground mb-3">
               Vitesse
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -214,8 +214,8 @@ export const AnimationCustomizer = () => {
                   onClick={() => updateConfig({ speed })}
                   className={`px-4 py-3 rounded-lg border-2 transition-all capitalize ${
                     config.speed === speed
-                      ? "border-purple-600 bg-purple-50 dark:bg-purple-900/20 text-purple-600"
-                      : "border-gray-200 dark:border-zinc-700 hover:border-purple-300"
+                      ? "border-purple-600 bg-accent/10 dark:bg-accent/20 text-accent"
+                      : "border-border dark:border-zinc-700 hover:border-accent/30"
                   }`}
                 >
                   <div className="text-sm font-medium">
@@ -223,7 +223,7 @@ export const AnimationCustomizer = () => {
                     {speed === "normal" && "⚡ Normal"}
                     {speed === "fast" && "🚀 Rapide"}
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">
+                  <div className="text-xs text-muted-foreground0 mt-1">
                     {speed === "slow" && "1.2s"}
                     {speed === "normal" && "0.6s"}
                     {speed === "fast" && "0.3s"}
@@ -235,7 +235,7 @@ export const AnimationCustomizer = () => {
 
           {/* Courbe d'animation */}
           <div>
-            <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-3">
+            <label className="block text-sm font-semibold text-muted-foreground dark:text-card-foreground mb-3">
               Courbe d'animation (easing)
             </label>
             <div className="grid grid-cols-2 gap-2">
@@ -246,8 +246,8 @@ export const AnimationCustomizer = () => {
                     onClick={() => updateConfig({ easing })}
                     className={`px-4 py-3 rounded-lg border-2 transition-all ${
                       config.easing === easing
-                        ? "border-purple-600 bg-purple-50 dark:bg-purple-900/20 text-purple-600"
-                        : "border-gray-200 dark:border-zinc-700 hover:border-purple-300"
+                        ? "border-purple-600 bg-accent/10 dark:bg-accent/20 text-accent"
+                        : "border-border dark:border-zinc-700 hover:border-accent/30"
                     }`}
                   >
                     <div className="text-sm font-medium capitalize">
@@ -261,7 +261,7 @@ export const AnimationCustomizer = () => {
 
           {/* Options supplémentaires */}
           <div>
-            <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-3">
+            <label className="block text-sm font-semibold text-muted-foreground dark:text-card-foreground mb-3">
               Options
             </label>
             <div className="space-y-2">
@@ -289,7 +289,7 @@ export const AnimationCustomizer = () => {
               ].map((option) => (
                 <label
                   key={option.key}
-                  className="flex items-start gap-3 p-3 rounded-lg border border-gray-200 dark:border-zinc-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-zinc-800"
+                  className="flex items-start gap-3 p-3 rounded-lg border border-border dark:border-zinc-700 cursor-pointer hover:bg-muted dark:hover:bg-zinc-800"
                 >
                   <input
                     type="checkbox"
@@ -298,10 +298,10 @@ export const AnimationCustomizer = () => {
                     className="mt-1"
                   />
                   <div className="flex-1">
-                    <div className="text-sm font-medium text-gray-900 dark:text-white">
+                    <div className="text-sm font-medium text-muted-foreground dark:text-card-foreground">
                       {option.label}
                     </div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                    <div className="text-xs text-muted-foreground dark:text-muted-foreground mt-1">
                       {option.desc}
                     </div>
                   </div>
@@ -312,7 +312,7 @@ export const AnimationCustomizer = () => {
 
           {/* Zone de prévisualisation */}
           <div>
-            <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-3">
+            <label className="block text-sm font-semibold text-muted-foreground dark:text-card-foreground mb-3">
               Prévisualisation
             </label>
 
@@ -321,7 +321,7 @@ export const AnimationCustomizer = () => {
               <select
                 value={previewAnimation}
                 onChange={(e) => setPreviewAnimation(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-zinc-600 rounded-lg bg-white dark:bg-zinc-800 text-gray-900 dark:text-white"
+                className="w-full px-3 py-2 border border-border dark:border-zinc-600 rounded-lg bg-card dark:bg-zinc-800 text-muted-foreground dark:text-card-foreground"
               >
                 <option value="fadeIn">Fade In</option>
                 <option value="slideUp">Slide Up</option>
@@ -335,7 +335,7 @@ export const AnimationCustomizer = () => {
             </div>
 
             {/* Zone de prévisualisation */}
-            <div className="relative h-48 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-zinc-800 dark:to-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-700 overflow-hidden">
+            <div className="relative h-48 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-zinc-800 dark:to-zinc-900 rounded-lg border border-border dark:border-zinc-700 overflow-hidden">
               <AnimatePresence mode="wait">
                 {isPlaying && (
                   <motion.div
@@ -351,7 +351,7 @@ export const AnimationCustomizer = () => {
                     }}
                     className="absolute inset-0 flex items-center justify-center"
                   >
-                    <div className="bg-gradient-to-br from-purple-600 to-blue-600 text-white px-8 py-6 rounded-xl shadow-2xl">
+                    <div className="bg-gradient-to-br from-purple-600 to-blue-600 text-card-foreground px-8 py-6 rounded-xl shadow-2xl">
                       <Wind size={48} className="mx-auto mb-4" />
                       <div className="text-2xl font-bold">Animation</div>
                       <div className="text-sm mt-2 opacity-90">
@@ -364,7 +364,7 @@ export const AnimationCustomizer = () => {
 
               {!isPlaying && (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-gray-400">
+                  <div className="text-center text-muted-foreground">
                     <Play size={48} className="mx-auto mb-4 opacity-50" />
                     <div className="text-sm">Cliquez sur Lire pour voir l'animation</div>
                   </div>
@@ -377,14 +377,14 @@ export const AnimationCustomizer = () => {
               <button
                 onClick={playPreview}
                 disabled={isPlaying}
-                className="flex items-center justify-center gap-2 px-4 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex items-center justify-center gap-2 px-4 py-3 bg-accent text-card-foreground rounded-lg hover:bg-accent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isPlaying ? <Pause size={18} /> : <Play size={18} />}
                 <span>{isPlaying ? "En cours..." : "Lire"}</span>
               </button>
               <button
                 onClick={resetToDefault}
-                className="flex items-center justify-center gap-2 px-4 py-3 border-2 border-gray-300 dark:border-zinc-600 rounded-lg hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors"
+                className="flex items-center justify-center gap-2 px-4 py-3 border-2 border-border dark:border-zinc-600 rounded-lg hover:bg-muted dark:hover:bg-zinc-800 transition-colors"
               >
                 <RotateCcw size={18} />
                 <span>Réinitialiser</span>
@@ -393,10 +393,10 @@ export const AnimationCustomizer = () => {
           </div>
 
           {/* Informations de performance */}
-          <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
+          <div className="p-4 bg-warning/10 dark:bg-warning/20 rounded-lg border border-warning/20 dark:border-yellow-800">
             <div className="flex gap-3">
-              <div className="text-yellow-600 dark:text-yellow-400 text-xl">⚠️</div>
-              <div className="flex-1 text-sm text-yellow-900 dark:text-yellow-200">
+              <div className="text-warning dark:text-warning text-xl">⚠️</div>
+              <div className="flex-1 text-sm text-warning dark:text-warning">
                 <div className="font-medium mb-1">Impact sur les performances</div>
                 <div>
                   Les animations{" "}
@@ -504,15 +504,15 @@ export const AnimationCustomizerComponent = () => {
   return (
     <div className="space-y-4">
       <div>
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+        <h3 className="text-lg font-semibold text-muted-foreground dark:text-card-foreground mb-2">
           Personnaliseur d'animations
         </h3>
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+        <p className="text-sm text-muted-foreground dark:text-muted-foreground mb-4">
           Contrôle complet des animations de l'interface
         </p>
       </div>
-      <div className="p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
-        <p className="text-sm text-purple-800 dark:text-purple-200">
+      <div className="p-4 bg-accent/10 dark:bg-accent/20 rounded-lg">
+        <p className="text-sm text-accent dark:text-accent">
           Composant en développement - Bientôt disponible !
         </p>
       </div>

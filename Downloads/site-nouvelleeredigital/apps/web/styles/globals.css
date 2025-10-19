@@ -20,14 +20,53 @@
   --border: 214.3 31.8% 91.4%;
   --radius: 0.75rem;
 
-  /* Variables de typographie par défaut */
+  /* Variables de couleurs supplémentaires */
+  --success: 142 76% 36%;
+  --warning: 38 92% 50%;
+  --error: 0 84% 60%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+
+  /* Variables de typographie dynamique */
+  --text-scale-ratio: 1.2; /* Ratio par défaut pour "normal" */
+  --line-height-base: 1.5; /* Interligne par défaut pour "normal" */
+  --font-size-base: 1rem; /* Taille de base */
+  
+  /* Tailles calculées basées sur le ratio */
+  --font-size-xs: calc(var(--font-size-base) / var(--text-scale-ratio) / var(--text-scale-ratio));
+  --font-size-sm: calc(var(--font-size-base) / var(--text-scale-ratio));
+  --font-size-lg: calc(var(--font-size-base) * var(--text-scale-ratio));
+  --font-size-xl: calc(var(--font-size-lg) * var(--text-scale-ratio));
+  --font-size-2xl: calc(var(--font-size-xl) * var(--text-scale-ratio));
+  --font-size-3xl: calc(var(--font-size-2xl) * var(--text-scale-ratio));
+  --font-size-4xl: calc(var(--font-size-3xl) * var(--text-scale-ratio));
+
+  /* Variables de polices */
   --font-sans: "Inter", sans-serif;
   --font-serif: "Playfair Display", serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  /* Variables de style par défaut */
-  --card-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --spacing-unit: 1.5rem;
+  /* Variables d'ombres modernes et sophistiquées */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-none: none;
+  --card-shadow-value: var(--shadow-md); /* Valeur par défaut */
+  
+  /* Variables d'espacement modernes avec facteur dynamique */
+  --space-scale-factor: 1; /* Facteur multiplicateur pour les espacements */
+  --space-xs: calc(0.25rem * var(--space-scale-factor));
+  --space-sm: calc(0.5rem * var(--space-scale-factor));
+  --space-md: calc(0.75rem * var(--space-scale-factor));
+  --space-lg: calc(1rem * var(--space-scale-factor));
+  --space-xl: calc(1.5rem * var(--space-scale-factor));
+  --space-2xl: calc(2rem * var(--space-scale-factor));
+  --space-3xl: calc(3rem * var(--space-scale-factor));
+  
+  /* Variables de base pour les espacements */
+  --spacing-unit: 1rem;
 }
 
 .dark {
@@ -61,34 +100,308 @@ body {
 
 /* Classes utilitaires pour les personas */
 @layer utilities {
-  /* Layouts basés sur les paramètres du persona */
+  /* Layouts basés sur les paramètres du persona - Système complet */
+  
+  /* Gallery Layouts */
+  html[data-gallery="symmetrical-grid"] .gallery-container,
   .layout-persona-gallery[data-layout="symmetrical-grid"] {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+    align-items: start;
   }
 
+  html[data-gallery="asymmetrical-masonry"] .gallery-container,
   .layout-persona-gallery[data-layout="asymmetrical-masonry"] {
     column-count: 3;
-    column-gap: 1rem;
+    column-gap: var(--space-lg);
+    break-inside: avoid;
   }
 
+  html[data-gallery="single-column"] .gallery-container,
   .layout-persona-gallery[data-layout="single-column"] {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--space-lg);
+    max-width: 800px;
+    margin: 0 auto;
   }
 
-  /* Animations basées sur les paramètres du persona */
+  /* Hero Layouts */
+  html[data-heroStyle="split-text-image"] .hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
+  }
+
+  html[data-heroStyle="full-visual"] .hero-container {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  html[data-heroStyle="minimalist"] .hero-container {
+    text-align: center;
+    padding: var(--space-3xl) 0;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Hero Text Alignment */
+  html[data-heroTextAlign="text-left"] .hero-text {
+    text-align: left;
+  }
+
+  html[data-heroTextAlign="text-center"] .hero-text {
+    text-align: center;
+  }
+
+  html[data-heroTextAlign="text-right"] .hero-text {
+    text-align: right;
+  }
+
+  /* Section Layouts */
+  html[data-sections="symmetrical-grid"] .sections-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  html[data-sections="asymmetrical-masonry"] .sections-container {
+    column-count: 2;
+    column-gap: var(--space-xl);
+    break-inside: avoid;
+  }
+
+  html[data-sections="single-column"] .sections-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Navigation Layouts */
+  html[data-navigation="horizontal"] .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) 0;
+  }
+
+  html[data-navigation="floating"] .nav-container {
+    position: fixed;
+    top: var(--space-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow-value);
+    padding: var(--space-sm) var(--space-lg);
+    z-index: 50;
+  }
+
+  html[data-navigation="minimal"] .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+
+  /* Styles pour les cartes avec ombres dynamiques */
+  .card-persona {
+    background-color: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow-value);
+    border: 1px solid hsl(var(--border));
+    padding: var(--space-lg);
+  }
+
+  /* Classes utilitaires pour les ombres */
+  .shadow-dynamic-sm { box-shadow: var(--shadow-sm); }
+  .shadow-dynamic-md { box-shadow: var(--shadow-md); }
+  .shadow-dynamic-lg { box-shadow: var(--shadow-lg); }
+  .shadow-dynamic-xl { box-shadow: var(--shadow-xl); }
+  .shadow-dynamic-2xl { box-shadow: var(--shadow-2xl); }
+  .shadow-dynamic-none { box-shadow: var(--shadow-none); }
+
+  /* Animations basées sur les paramètres du persona - Système complet */
+  
+  /* Intensité des animations via data attributes */
+  html[data-animationIntensity="subtle"] .animated-element,
   .animation-persona-subtle {
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  html[data-animationIntensity="moderate"] .animated-element,
+  .animation-persona-moderate {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  html[data-animationIntensity="dramatic"] .animated-element,
   .animation-persona-dramatic {
     transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  .animation-persona-elastic {
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  /* Transitions spécifiques */
+  html[data-animationTransitions="smooth"] .animated-element {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
+
+  html[data-animationTransitions="elastic"] .animated-element {
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  html[data-animationTransitions="snappy"] .animated-element {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+  }
+
+  /* Effets hover dynamiques */
+  html[data-animationIntensity="subtle"] .animated-element:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  html[data-animationIntensity="moderate"] .animated-element:hover {
+    transform: translateY(-4px) scale(1.02);
+    opacity: 0.95;
+  }
+
+  html[data-animationIntensity="dramatic"] .animated-element:hover {
+    transform: translateY(-8px) scale(1.05);
+    opacity: 0.9;
+  }
+
+  /* Animations de chargement */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Classes d'animation */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.5s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out;
+  }
+
+  /* Transitions fluides pour les changements de persona */
+  * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Styles pour les boutons avec contraste optimal */
+  .btn-primary {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-radius: var(--radius);
+    padding: var(--space-sm) var(--space-lg);
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+    border-radius: var(--radius);
+    padding: var(--space-sm) var(--space-lg);
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .btn-secondary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  /* Espacement dynamique basé sur le persona */
+  .spacing-compact {
+    --space-scale-factor: 0.8;
+  }
+
+  .spacing-normal {
+    --space-scale-factor: 1.0;
+  }
+
+  .spacing-spacious {
+    --space-scale-factor: 1.25;
+  }
+
+  /* Classes utilitaires pour utiliser les espacements dynamiques */
+  .p-dynamic-xs { padding: var(--space-xs); }
+  .p-dynamic-sm { padding: var(--space-sm); }
+  .p-dynamic-md { padding: var(--space-md); }
+  .p-dynamic-lg { padding: var(--space-lg); }
+  .p-dynamic-xl { padding: var(--space-xl); }
+  
+  .m-dynamic-xs { margin: var(--space-xs); }
+  .m-dynamic-sm { margin: var(--space-sm); }
+  .m-dynamic-md { margin: var(--space-md); }
+  .m-dynamic-lg { margin: var(--space-lg); }
+  .m-dynamic-xl { margin: var(--space-xl); }
+  
+  .gap-dynamic-xs { gap: var(--space-xs); }
+  .gap-dynamic-sm { gap: var(--space-sm); }
+  .gap-dynamic-md { gap: var(--space-md); }
+  .gap-dynamic-lg { gap: var(--space-lg); }
+  .gap-dynamic-xl { gap: var(--space-xl); }
+
+  /* Classes utilitaires pour la typographie dynamique */
+  .text-dynamic-xs { font-size: var(--font-size-xs); line-height: var(--line-height-base); }
+  .text-dynamic-sm { font-size: var(--font-size-sm); line-height: var(--line-height-base); }
+  .text-dynamic-base { font-size: var(--font-size-base); line-height: var(--line-height-base); }
+  .text-dynamic-lg { font-size: var(--font-size-lg); line-height: var(--line-height-base); }
+  .text-dynamic-xl { font-size: var(--font-size-xl); line-height: var(--line-height-base); }
+  .text-dynamic-2xl { font-size: var(--font-size-2xl); line-height: var(--line-height-base); }
+  .text-dynamic-3xl { font-size: var(--font-size-3xl); line-height: var(--line-height-base); }
+  .text-dynamic-4xl { font-size: var(--font-size-4xl); line-height: var(--line-height-base); }
+
+  /* Classes pour les polices */
+  .font-persona-sans { font-family: var(--font-sans); }
+  .font-persona-serif { font-family: var(--font-serif); }
+  .font-persona-mono { font-family: var(--font-mono); }
 }

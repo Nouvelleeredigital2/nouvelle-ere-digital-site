@@ -73,9 +73,9 @@ export const CompatibilityIndicator: React.FC<CompatibilityIndicatorProps> = ({
   };
 
   const statusColors: Record<string, string> = {
-    high: "bg-green-500 border-green-500",
-    medium: "bg-yellow-500 border-yellow-500",
-    low: "bg-red-500 border-red-500",
+    high: "bg-success border-green-500",
+    medium: "bg-warning border-yellow-500",
+    low: "bg-error border-red-500",
   };
 
   const stateClasses: Record<State, string> = {

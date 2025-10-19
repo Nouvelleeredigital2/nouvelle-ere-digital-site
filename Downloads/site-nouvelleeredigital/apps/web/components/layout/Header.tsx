@@ -37,7 +37,7 @@ export const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg bg-gradient-to-br from-primary to-secondary">
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center text-card-foreground font-bold text-lg shadow-lg bg-gradient-to-br from-primary to-secondary">
               N
             </div>
             <div className="hidden sm:block">

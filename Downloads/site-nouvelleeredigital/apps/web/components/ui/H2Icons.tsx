@@ -59,7 +59,7 @@ export const H2Icons: React.FC<H2IconsProps> = ({
   const variants: Record<Variant, string> = {
     default: "text-[var(--color-primary)]",
     outlined: "border border-[var(--color-primary)] bg-transparent",
-    filled: "bg-[var(--color-primary)] text-white",
+    filled: "bg-[var(--color-primary)] text-card-foreground",
   };
 
   const stateClasses: Record<State, string> = {
@@ -69,7 +69,7 @@ export const H2Icons: React.FC<H2IconsProps> = ({
     focus: "ring-2 ring-[var(--color-primary)]",
     disabled: "opacity-50 cursor-not-allowed",
     selected: "ring-2 ring-yellow-400",
-    invalid: "text-red-500",
+    invalid: "text-error",
     dragging: "cursor-grabbing",
   };
 

@@ -41,27 +41,27 @@ export function HeroBlock({ data }: HeroBlockProps) {
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-background/40" />
       
       {/* Content */}
       <div className={`relative z-10 max-w-4xl mx-auto flex flex-col ${alignmentClass} space-y-6`}>
         {subtitle && (
-          <p className="text-lg font-medium text-white/90 uppercase tracking-wide">
+          <p className="text-lg font-medium text-card-foreground/90 uppercase tracking-wide">
             {subtitle}
           </p>
         )}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-card-foreground">
           {title}
         </h1>
         {description && (
-          <p className="text-xl text-white/90 max-w-2xl">
+          <p className="text-xl text-card-foreground/90 max-w-2xl">
             {description}
           </p>
         )}
         {ctaText && (
           <a
             href={ctaLink}
-            className="inline-block px-8 py-4 bg-white text-purple-700 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+            className="inline-block px-8 py-4 bg-card text-accent font-semibold rounded-lg hover:bg-muted transition-colors"
           >
             {ctaText}
           </a>

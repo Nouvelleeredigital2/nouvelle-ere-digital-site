@@ -15,12 +15,17 @@ export const artistePersona: CreativePersona = {
     colors: {
       background: "#0a0a2a", // Bleu nuit profond
       foreground: "#e2e8f0", // Gris clair argenté
-      primary: "#818cf8", // Violet IA électrique
-      secondary: "#fde047", // Jaune événementiel éclatant
-      accent: "#34d399", // Vert web dynamique
+      primary: "#8b5cf6", // Violet plus sophistiqué
+      "primary-foreground": "#ffffff", // Blanc pour contraste optimal
+      secondary: "#fbbf24", // Jaune doré plus chaleureux
+      "secondary-foreground": "#0a0a2a", // Bleu nuit pour contraste optimal
+      accent: "#06b6d4", // Cyan électrique moderne
+      "accent-foreground": "#0a0a2a", // Bleu nuit pour contraste optimal
       card: "rgba(30, 41, 59, 0.8)", // Ardoise semi-transparent
+      "card-foreground": "#e2e8f0", // Gris clair pour contraste optimal
       border: "rgba(51, 65, 85, 0.6)",
       muted: "rgba(51, 65, 85, 0.4)",
+      "muted-foreground": "#94a3b8", // Gris clair pour contraste
       success: "#10b981",
       warning: "#f59e0b",
       error: "#ef4444",
@@ -39,9 +44,9 @@ export const artistePersona: CreativePersona = {
     },
     layouts: {
       gallery: "asymmetrical-masonry",
-      heroStyle: "immersive",
+      heroStyle: "full-visual",
       heroTextAlign: "text-center",
-      sections: "magazine-layout",
+      sections: "asymmetrical-masonry",
       navigation: "floating",
     },
     animations: {

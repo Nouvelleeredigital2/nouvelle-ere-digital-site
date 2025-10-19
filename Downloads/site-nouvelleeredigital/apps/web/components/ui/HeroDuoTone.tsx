@@ -88,7 +88,7 @@ export const HeroDuoTone: React.FC<HeroDuoToneProps> = ({
       />
       <button
         onClick={onToggle}
-        className="absolute top-4 right-4 bg-[var(--color-primary)] text-white px-3 py-1 rounded"
+        className="absolute top-4 right-4 bg-[var(--color-primary)] text-card-foreground px-3 py-1 rounded"
       >
         Toggle
       </button>

@@ -89,7 +89,7 @@ export const ThemeSwitch: React.FC<ThemeSwitchProps> = ({
         className={cn(
           "relative inline-flex items-center rounded-full transition-colors",
           sizes[size],
-          theme === "dark" ? "bg-gray-800" : "bg-gray-200",
+          theme === "dark" ? "bg-muted" : "bg-muted",
           stateClasses[state],
           className,
         )}
@@ -104,7 +104,7 @@ export const ThemeSwitch: React.FC<ThemeSwitchProps> = ({
       >
         <span
           className={cn(
-            "inline-block rounded-full bg-white shadow transform transition-transform",
+            "inline-block rounded-full bg-card shadow transform transition-transform",
             size === "sm" ? "w-3 h-3" : size === "md" ? "w-5 h-5" : "w-7 h-7",
             theme === "dark" ? "translate-x-full" : "translate-x-0",
           )}

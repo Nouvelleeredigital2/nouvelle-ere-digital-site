@@ -47,7 +47,7 @@ export function ImageBlock({ data }: ImageBlockProps) {
           />
         </div>
         {caption && (
-          <p className="mt-3 text-sm text-gray-600 text-center italic">
+          <p className="mt-3 text-sm text-muted-foreground text-center italic">
             {caption}
           </p>
         )}

@@ -1,56 +1,125 @@
+'use client';
+
 import React from 'react';
+import { Block } from '@/lib/types/blocks';
 import { HeroBlock } from './HeroBlock';
 import { TextBlock } from './TextBlock';
 import { ImageBlock } from './ImageBlock';
 import { CTABlock } from './CTABlock';
-
-export interface Block {
-  id: string;
-  type: string;
-  data: any;
-}
+import { RichTextBlock } from './RichTextBlock';
+import { GalleryBlock } from './GalleryBlock';
+import { ColumnsBlock } from './ColumnsBlock';
+import { VideoBlock } from './VideoBlock';
+import { TabsBlock } from './TabsBlock';
+import { AccordionBlock } from './AccordionBlock';
+import { FormBlock } from './FormBlock';
+import { IconBlock } from './IconBlock';
 
 interface BlockRendererProps {
-  blocks: Block[];
+  block: Block;
+  isNested?: boolean;
 }
 
-export function BlockRenderer({ blocks }: BlockRendererProps) {
-  if (!blocks || blocks.length === 0) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <p className="text-gray-600">Aucun contenu à afficher</p>
-          <p className="text-sm text-gray-400 mt-2">
-            Veuillez configurer cette page dans le studio admin
-          </p>
-        </div>
-      </div>
-    );
-  }
+export function BlockRenderer({ block, isNested = false }: BlockRendererProps) {
+  const baseClasses = isNested ? 'p-2' : '';
 
-  return (
-    <>
-      {blocks.map((block) => {
-        switch (block.type) {
-          case 'hero':
-            return <HeroBlock key={block.id} data={block.data} />;
-          case 'text':
-            return <TextBlock key={block.id} data={block.data} />;
-          case 'image':
-            return <ImageBlock key={block.id} data={block.data} />;
-          case 'cta':
-            return <CTABlock key={block.id} data={block.data} />;
-          default:
-            console.warn(`Type de bloc inconnu: ${block.type}`);
-            return (
-              <div key={block.id} className="p-4 bg-yellow-50 border border-yellow-200">
-                <p className="text-sm text-yellow-800">
-                  Bloc de type &quot;{block.type}&quot; non supporté
-                </p>
-              </div>
-            );
-        }
-      })}
-    </>
-  );
+  switch (block.type) {
+    case 'hero':
+      return (
+        <div className={baseClasses}>
+          <HeroBlock data={block.data} />
+        </div>
+      );
+    
+    case 'text':
+      return (
+        <div className={baseClasses}>
+          <TextBlock data={block.data} />
+        </div>
+      );
+    
+    case 'image':
+      return (
+        <div className={baseClasses}>
+          <ImageBlock data={block.data} />
+        </div>
+      );
+    
+    case 'cta':
+      return (
+        <div className={baseClasses}>
+          <CTABlock data={block.data} />
+        </div>
+      );
+    
+    case 'richtext':
+      return (
+        <div className={baseClasses}>
+          <RichTextBlock data={block.data} />
+        </div>
+      );
+    
+    case 'gallery':
+      return (
+        <div className={baseClasses}>
+          <GalleryBlock data={block.data} />
+        </div>
+      );
+    
+    case 'columns':
+      return (
+        <div className={baseClasses}>
+          <ColumnsBlock data={block.data} />
+        </div>
+      );
+    
+    case 'video':
+      return (
+        <div className={baseClasses}>
+          <VideoBlock data={block.data} />
+        </div>
+      );
+    
+    case 'tabs':
+      return (
+        <div className={baseClasses}>
+          <TabsBlock data={block.data} />
+        </div>
+      );
+    
+    case 'accordion':
+      return (
+        <div className={baseClasses}>
+          <AccordionBlock data={block.data} />
+        </div>
+      );
+    
+    case 'form':
+      return (
+        <div className={baseClasses}>
+          <FormBlock data={block.data} />
+        </div>
+      );
+    
+    case 'columns':
+      return (
+        <div className={baseClasses}>
+          <ColumnsBlock block={block} isEditing={false} />
+        </div>
+      );
+    
+    case 'icon':
+      return (
+        <div className={baseClasses}>
+          <IconBlock block={block} isEditing={false} />
+        </div>
+      );
+    
+    default:
+      return (
+        <div className={`${baseClasses} p-4 border-2 border-dashed border-border rounded-lg text-center text-muted-foreground0`}>
+          Bloc non reconnu: {block.type}
+        </div>
+      );
+  }
 }

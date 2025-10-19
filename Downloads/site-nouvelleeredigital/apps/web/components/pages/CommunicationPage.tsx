@@ -8,10 +8,10 @@ export function CommunicationPage() {
       {/* Héro */}
       <ThemeSection variant="gradient" className="py-32 md:py-40">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-4">
+          <p className="text-sm uppercase tracking-wide text-muted-foreground mb-4">
             Communication & Marketing Digital
           </p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.1] mb-6">
             Faire briller les marques
             <br />
             dans l&apos;univers numérique.
@@ -22,7 +22,7 @@ export function CommunicationPage() {
       {/* Introduction */}
       <ThemeSection variant="light" className="py-20">
         <div className="max-w-4xl mx-auto">
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground">
             <p>
               Dans un monde où tout le monde communique, nous aidons les marques à être comprises,
               visibles et désirées.
@@ -36,7 +36,7 @@ export function CommunicationPage() {
               visibilité de votre marque sur tous les canaux.
             </p>
             <div className="text-center py-6">
-              <p className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+              <p className="text-xl font-semibold text-foreground">
                 L&apos;impact se mesure. La créativité s&apos;orchestre.
               </p>
             </div>
@@ -45,21 +45,21 @@ export function CommunicationPage() {
       </ThemeSection>
 
       {/* Notre rôle */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-4xl mx-auto">
           <SectionHeading
             eyebrow="Notre rôle"
             title="Transformer vos objectifs en actions concrètes"
             align="center"
           />
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300 text-center">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground text-center">
             <p>Transformer vos objectifs de communication en actions concrètes et mesurables.</p>
             <p>Nous intervenons sur l&apos;ensemble de la chaîne stratégique et éditoriale :</p>
-            <p className="font-medium text-zinc-900 dark:text-zinc-100">
+            <p className="font-medium text-foreground">
               de la réflexion à la diffusion, en passant par la data, le design et la performance.
             </p>
             <blockquote
-              className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8"
+              className="border-l-4 pl-6 py-4 text-muted-foreground italic text-xl mt-8"
               style={{ borderColor: "#7C3AED" }}
             >
               Nous ne lançons pas de campagnes : nous créons des écosystèmes d&apos;attention.
@@ -83,24 +83,24 @@ export function CommunicationPage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     1
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Stratégie & Conseil
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Audit de communication et diagnostic de marque. Storytelling et identité
                     narrative. Élaboration de stratégies multicanales (SEO, SEA, social media,
                     emailing, print). Planning éditorial et plan de diffusion IA-assisté.
                     Positionnement de marque et accompagnement d&apos;image.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     Racontez mieux, dépensez moins, touchez plus.
@@ -114,17 +114,17 @@ export function CommunicationPage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     2
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Campagnes digitales & social media
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Création, pilotage et diffusion de campagnes sur Meta, Google, LinkedIn, TikTok.
                     Gestion complète des réseaux sociaux : stratégie, contenus, publication,
                     reporting. Publicités dynamiques et ciblées (B2B / B2C / institutionnel).
@@ -133,7 +133,7 @@ export function CommunicationPage() {
                     infographies.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     Votre audience n&apos;a pas besoin de plus de messages, mais de plus de sens.
@@ -147,24 +147,24 @@ export function CommunicationPage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     3
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Contenus & storytelling
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Rédaction éditoriale et conception de brand stories. Production de vidéos et
                     visuels optimisés pour les plateformes sociales. Podcasts, articles, newsletters
                     et livres blancs. Alignement entre message, ton et stratégie de marque.
                     Intégration IA pour la cohérence sémantique et la déclinaison multilingue.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     Nous racontons votre marque à travers la donnée et l&apos;émotion.
@@ -178,24 +178,24 @@ export function CommunicationPage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     4
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Optimisation & data marketing
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     SEO/SEA de performance : audit, refonte, netlinking, analytics. Tracking des
                     conversions et tableaux de bord personnalisés. Automatisations marketing (CRM,
                     nurturing, triggers). Analyse comportementale et segmentation IA. Mesure des
                     indicateurs d&apos;engagement et de ROI.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     Chaque clic, chaque vue, chaque interaction doit avoir un sens.
@@ -208,7 +208,7 @@ export function CommunicationPage() {
       </ThemeSection>
 
       {/* Méthodologie */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Notre méthodologie"
@@ -226,20 +226,20 @@ export function CommunicationPage() {
             ].map((item, i) => (
               <div key={i} className="card text-center group hover:shadow-lg transition-shadow">
                 <div
-                  className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl font-bold text-white"
+                  className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl font-bold text-card-foreground"
                   style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                 >
                   {item.num}
                 </div>
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">{item.desc}</p>
+                <p className="text-sm text-muted-foreground">{item.desc}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto">
             Nous pensons globalement, agissons localement et mesurons en temps réel.
           </p>
         </div>
@@ -266,13 +266,13 @@ export function CommunicationPage() {
                   className="w-2 h-2 rounded-full flex-shrink-0 mt-2"
                   style={{ backgroundColor: "#7C3AED" }}
                 ></div>
-                <p className="flex-1 text-zinc-700 dark:text-zinc-300">{item}</p>
+                <p className="flex-1 text-foreground">{item}</p>
               </div>
             ))}
           </div>
 
           <blockquote
-            className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl text-center max-w-3xl mx-auto"
+            className="border-l-4 pl-6 py-4 text-muted-foreground italic text-xl text-center max-w-3xl mx-auto"
             style={{ borderColor: "#7C3AED" }}
           >
             Les données guident nos décisions, mais l'humain reste au centre.
@@ -281,7 +281,7 @@ export function CommunicationPage() {
       </ThemeSection>
 
       {/* Bénéfices pour nos clients */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Bénéfices pour nos clients"
@@ -293,10 +293,10 @@ export function CommunicationPage() {
             <table className="w-full max-w-4xl mx-auto">
               <thead>
                 <tr className="border-b-2" style={{ borderColor: "#7C3AED" }}>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-foreground">
                     Bénéfice
                   </th>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-foreground">
                     Impact
                   </th>
                 </tr>
@@ -326,12 +326,12 @@ export function CommunicationPage() {
                 ].map((row, i) => (
                   <tr
                     key={i}
-                    className="hover:bg-zinc-50 dark:hover:bg-zinc-900/30 transition-colors"
+                    className="hover:bg-muted transition-colors"
                   >
-                    <td className="py-4 px-6 font-semibold text-zinc-900 dark:text-zinc-100">
+                    <td className="py-4 px-6 font-semibold text-foreground">
                       {row.benefice}
                     </td>
-                    <td className="py-4 px-6 text-zinc-700 dark:text-zinc-300">{row.impact}</td>
+                    <td className="py-4 px-6 text-foreground">{row.impact}</td>
                   </tr>
                 ))}
               </tbody>
@@ -370,12 +370,12 @@ export function CommunicationPage() {
                     className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
-                    <div className="w-8 h-8 bg-white/20 rounded-lg"></div>
+                    <div className="w-8 h-8 bg-background/20 rounded-lg"></div>
                   </div>
-                  <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                  <h3 className="font-semibold text-foreground mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-zinc-600 dark:text-zinc-400">{item.desc}</p>
+                  <p className="text-muted-foreground">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -386,7 +386,7 @@ export function CommunicationPage() {
       {/* Notre promesse */}
       <ThemeSection variant="dark" className="py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <blockquote className="text-2xl md:text-3xl font-medium text-white leading-relaxed">
+          <blockquote className="text-2xl md:text-3xl font-medium text-card-foreground leading-relaxed">
             « Nous vous aidons à faire entendre votre marque dans le bruit numérique — avec
             cohérence, créativité et mesure. »
           </blockquote>
@@ -397,10 +397,10 @@ export function CommunicationPage() {
       <ThemeSection variant="gradient" className="py-32">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
               Stratégie, créativité, data — en un seul mouvement.
             </h2>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto">
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
               De la stratégie à la mesure, nous orchestrons votre présence digitale avec précision
               et créativité.
             </p>
@@ -419,7 +419,7 @@ export function CommunicationPage() {
                 className="card text-center group hover:shadow-xl transition-all hover:scale-105"
               >
                 <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                <h3 className="text-lg font-semibold text-foreground">
                   {item.title}
                 </h3>
               </div>
@@ -429,12 +429,12 @@ export function CommunicationPage() {
       </ThemeSection>
 
       {/* CTA */}
-      <ThemeSection variant="light" className="py-32 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-32 bg-muted">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 mb-6">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
             Prêt à faire briller votre marque ?
           </h2>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
             Découvrez nos réalisations et explorez nos solutions IA pour révolutionner votre
             marketing digital.
           </p>

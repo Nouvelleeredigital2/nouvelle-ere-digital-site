@@ -42,28 +42,54 @@ export async function getActiveSnapshot(): Promise<SiteSnapshot | null> {
 }
 
 /**
- * Récupère une page par son slug depuis le snapshot actif
+ * Récupère une page par son slug depuis la base de données
  */
 export async function getPageBySlug(slug: string): Promise<PageData | null> {
-  const snapshot = await getActiveSnapshot();
-  
-  if (!snapshot) {
+  try {
+    const page = await prisma.page.findUnique({
+      where: {
+        slug,
+      },
+    });
+
+    if (!page) {
+      return null;
+    }
+
+    return {
+      id: page.id,
+      slug: page.slug,
+      title: page.title,
+      layout: page.content as PageLayout,
+    };
+  } catch (error) {
+    console.error('Erreur lors de la récupération de la page:', error);
     return null;
   }
-
-  const page = snapshot.pages.find(p => p.slug === slug);
-  return page || null;
 }
 
 /**
- * Récupère toutes les pages du snapshot actif
+ * Récupère toutes les pages publiées
  */
 export async function getAllPages(): Promise<PageData[]> {
-  const snapshot = await getActiveSnapshot();
-  
-  if (!snapshot) {
+  try {
+    const pages = await prisma.page.findMany({
+      where: {
+        status: 'PUBLISHED',
+      },
+      orderBy: {
+        updatedAt: 'desc',
+      },
+    });
+
+    return pages.map(page => ({
+      id: page.id,
+      slug: page.slug,
+      title: page.title,
+      layout: page.content as PageLayout,
+    }));
+  } catch (error) {
+    console.error('Erreur lors de la récupération des pages:', error);
     return [];
   }
-
-  return snapshot.pages;
 }

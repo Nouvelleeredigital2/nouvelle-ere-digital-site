@@ -19,7 +19,7 @@ export function SolutionsIAPage() {
                 className="w-2 h-2 rounded-full animate-pulse"
                 style={{ backgroundColor: "#7C3AED" }}
               ></div>
-              <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+              <span className="text-sm font-medium text-foreground">
                 Solutions IA
               </span>
               <div
@@ -28,7 +28,7 @@ export function SolutionsIAPage() {
               ></div>
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-[1.05] mb-8">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.05] mb-8">
               Découvrez notre
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
@@ -36,7 +36,7 @@ export function SolutionsIAPage() {
               </span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-300 max-w-4xl mx-auto leading-relaxed mb-12">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-12">
               Explorez nos solutions d'intelligence artificielle à travers des démonstrations
               interactives. Découvrez comment l'IA transforme votre communication digitale.
             </p>
@@ -71,10 +71,10 @@ export function SolutionsIAPage() {
               >
                 🎯
               </div>
-              <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-4 text-xl">
+              <h3 className="font-semibold text-foreground mb-4 text-xl">
                 Journey Composer
               </h3>
-              <p className="text-zinc-600 dark:text-zinc-400 mb-4">
+              <p className="text-muted-foreground mb-4">
                 Composez automatiquement vos parcours client personnalisés avec l'IA
               </p>
               <Button size="sm" variant="outline" asChild>
@@ -89,10 +89,10 @@ export function SolutionsIAPage() {
               >
                 📊
               </div>
-              <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-4 text-xl">
+              <h3 className="font-semibold text-foreground mb-4 text-xl">
                 Analytics IA
               </h3>
-              <p className="text-zinc-600 dark:text-zinc-400 mb-4">
+              <p className="text-muted-foreground mb-4">
                 Analysez et optimisez vos performances avec l'intelligence prédictive
               </p>
               <Button size="sm" variant="outline" asChild>
@@ -107,10 +107,10 @@ export function SolutionsIAPage() {
               >
                 🎨
               </div>
-              <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-4 text-xl">
+              <h3 className="font-semibold text-foreground mb-4 text-xl">
                 Content Creator IA
               </h3>
-              <p className="text-zinc-600 dark:text-zinc-400 mb-4">
+              <p className="text-muted-foreground mb-4">
                 Générez du contenu personnalisé et optimisé automatiquement
               </p>
               <Button size="sm" variant="outline" asChild>
@@ -124,7 +124,7 @@ export function SolutionsIAPage() {
       {/* Canvas interactif pour composer solutions */}
       <ThemeSection
         variant="light"
-        className="py-32 bg-zinc-50 dark:bg-zinc-900/30"
+        className="py-32 bg-muted"
         id="journey-composer"
       >
         <div className="max-w-6xl mx-auto">
@@ -135,12 +135,12 @@ export function SolutionsIAPage() {
           />
 
           <div className="mt-16">
-            <div className="bg-white dark:bg-zinc-900 rounded-3xl shadow-xl p-8 md:p-12">
+            <div className="bg-card rounded-3xl shadow-xl p-8 md:p-12">
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-4">
+                <h3 className="text-2xl font-semibold text-foreground mb-4">
                   Configurez votre parcours client idéal
                 </h3>
-                <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+                <p className="text-muted-foreground max-w-2xl mx-auto">
                   Utilisez notre canvas interactif pour composer visuellement le parcours de vos
                   clients. L'IA vous suggère automatiquement les meilleures optimisations.
                 </p>
@@ -187,7 +187,7 @@ export function SolutionsIAPage() {
                       className="w-2 h-2 rounded-full animate-pulse"
                       style={{ backgroundColor: "#7C3AED" }}
                     ></div>
-                    <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                    <span className="text-sm font-medium text-foreground">
                       IA Suggestion : Optimiser le tunnel de conversion
                     </span>
                   </div>
@@ -197,28 +197,28 @@ export function SolutionsIAPage() {
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
                   <div className="text-3xl mb-2">⚡</div>
-                  <h4 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                  <h4 className="font-semibold text-foreground mb-2">
                     Automatisation
                   </h4>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                  <p className="text-sm text-muted-foreground">
                     L&apos;IA ajuste automatiquement vos parcours
                   </p>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl mb-2">📈</div>
-                  <h4 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                  <h4 className="font-semibold text-foreground mb-2">
                     Performance
                   </h4>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                  <p className="text-sm text-muted-foreground">
                     Optimisation en temps réel des conversions
                   </p>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl mb-2">🎯</div>
-                  <h4 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                  <h4 className="font-semibold text-foreground mb-2">
                     Personnalisation
                   </h4>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                  <p className="text-sm text-muted-foreground">
                     Adaptation IA selon le comportement utilisateur
                   </p>
                 </div>
@@ -239,7 +239,7 @@ export function SolutionsIAPage() {
 
           <div className="grid lg:grid-cols-2 gap-16 items-center mt-16">
             <div>
-              <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-6">
+              <h3 className="text-2xl font-semibold text-foreground mb-6">
                 Intelligence prédictive pour vos données
               </h3>
 
@@ -252,10 +252,10 @@ export function SolutionsIAPage() {
                     📊
                   </div>
                   <div>
-                    <h4 className="font-medium text-zinc-900 dark:text-zinc-100">
+                    <h4 className="font-medium text-foreground">
                       Analyse prédictive
                     </h4>
-                    <p className="text-zinc-600 dark:text-zinc-400">
+                    <p className="text-muted-foreground">
                       Anticipez les tendances et comportements de vos utilisateurs
                     </p>
                   </div>
@@ -269,10 +269,10 @@ export function SolutionsIAPage() {
                     🎯
                   </div>
                   <div>
-                    <h4 className="font-medium text-zinc-900 dark:text-zinc-100">
+                    <h4 className="font-medium text-foreground">
                       Optimisation automatique
                     </h4>
-                    <p className="text-zinc-600 dark:text-zinc-400">
+                    <p className="text-muted-foreground">
                       L&apos;IA ajuste vos stratégies en temps réel pour maximiser les résultats
                     </p>
                   </div>
@@ -286,10 +286,10 @@ export function SolutionsIAPage() {
                     📈
                   </div>
                   <div>
-                    <h4 className="font-medium text-zinc-900 dark:text-zinc-100">
+                    <h4 className="font-medium text-foreground">
                       Rapports intelligents
                     </h4>
-                    <p className="text-zinc-600 dark:text-zinc-400">
+                    <p className="text-muted-foreground">
                       Insights automatisés avec recommandations d&apos;actions concrètes
                     </p>
                   </div>
@@ -297,7 +297,7 @@ export function SolutionsIAPage() {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-zinc-900 rounded-3xl shadow-xl p-8">
+            <div className="bg-card rounded-3xl shadow-xl p-8">
               <div className="space-y-6">
                 <div className="h-32 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl flex items-center justify-center">
                   <div className="text-center">
@@ -307,21 +307,21 @@ export function SolutionsIAPage() {
                 </div>
 
                 <div className="grid grid-cols-3 gap-4">
-                  <div className="text-center p-4 bg-zinc-50 dark:bg-zinc-800 rounded-lg">
-                    <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">+127%</div>
-                    <div className="text-xs text-zinc-600 dark:text-zinc-400">
+                  <div className="text-center p-4 bg-muted rounded-lg">
+                    <div className="text-2xl font-bold text-foreground">+127%</div>
+                    <div className="text-xs text-muted-foreground">
                       Taux de conversion prédit
                     </div>
                   </div>
-                  <div className="text-center p-4 bg-zinc-50 dark:bg-zinc-800 rounded-lg">
-                    <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">-34%</div>
-                    <div className="text-xs text-zinc-600 dark:text-zinc-400">
+                  <div className="text-center p-4 bg-muted rounded-lg">
+                    <div className="text-2xl font-bold text-foreground">-34%</div>
+                    <div className="text-xs text-muted-foreground">
                       Taux de rebond optimisé
                     </div>
                   </div>
-                  <div className="text-center p-4 bg-zinc-50 dark:bg-zinc-800 rounded-lg">
-                    <div className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">+89%</div>
-                    <div className="text-xs text-zinc-600 dark:text-zinc-400">
+                  <div className="text-center p-4 bg-muted rounded-lg">
+                    <div className="text-2xl font-bold text-foreground">+89%</div>
+                    <div className="text-xs text-muted-foreground">
                       ROI des campagnes
                     </div>
                   </div>
@@ -335,7 +335,7 @@ export function SolutionsIAPage() {
       {/* Content Creator IA */}
       <ThemeSection
         variant="light"
-        className="py-32 bg-zinc-50 dark:bg-zinc-900/30"
+        className="py-32 bg-muted"
         id="content-creator"
       >
         <div className="max-w-6xl mx-auto">
@@ -346,8 +346,8 @@ export function SolutionsIAPage() {
           />
 
           <div className="grid lg:grid-cols-2 gap-16 items-center mt-16">
-            <div className="bg-white dark:bg-zinc-900 rounded-3xl shadow-xl p-8">
-              <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-6">
+            <div className="bg-card rounded-3xl shadow-xl p-8">
+              <h3 className="text-2xl font-semibold text-foreground mb-6">
                 Exemple de génération de contenu
               </h3>
 
@@ -358,11 +358,11 @@ export function SolutionsIAPage() {
                       className="w-2 h-2 rounded-full"
                       style={{ backgroundColor: "#7C3AED" }}
                     ></div>
-                    <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                    <span className="text-sm font-medium text-foreground">
                       Prompt utilisateur
                     </span>
                   </div>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                  <p className="text-sm text-muted-foreground">
                     "Créez un email de bienvenue pour nos nouveaux clients avec un ton professionnel
                     et engageant"
                   </p>
@@ -374,14 +374,14 @@ export function SolutionsIAPage() {
                       className="w-2 h-2 rounded-full animate-pulse"
                       style={{ backgroundColor: "#7C3AED" }}
                     ></div>
-                    <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                    <span className="text-sm font-medium text-foreground">
                       IA en cours de génération...
                     </span>
                   </div>
                   <div className="space-y-2">
-                    <div className="h-2 bg-zinc-100 dark:bg-zinc-800 rounded animate-pulse"></div>
-                    <div className="h-2 bg-zinc-100 dark:bg-zinc-800 rounded animate-pulse w-3/4"></div>
-                    <div className="h-2 bg-zinc-100 dark:bg-zinc-800 rounded animate-pulse w-1/2"></div>
+                    <div className="h-2 bg-muted rounded animate-pulse"></div>
+                    <div className="h-2 bg-muted rounded animate-pulse w-3/4"></div>
+                    <div className="h-2 bg-muted rounded animate-pulse w-1/2"></div>
                   </div>
                 </div>
 
@@ -391,11 +391,11 @@ export function SolutionsIAPage() {
                       className="w-2 h-2 rounded-full"
                       style={{ backgroundColor: "#10B981" }}
                     ></div>
-                    <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                    <span className="text-sm font-medium text-foreground">
                       Contenu généré
                     </span>
                   </div>
-                  <div className="text-sm text-zinc-600 dark:text-zinc-400">
+                  <div className="text-sm text-muted-foreground">
                     <p className="mb-2">
                       <strong>Sujet :</strong> Bienvenue chez Nouvelle Ère Digital ! 🚀
                     </p>
@@ -407,7 +407,7 @@ export function SolutionsIAPage() {
             </div>
 
             <div>
-              <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-6">
+              <h3 className="text-2xl font-semibold text-foreground mb-6">
                 Fonctionnalités avancées
               </h3>
 
@@ -420,10 +420,10 @@ export function SolutionsIAPage() {
                     ✍️
                   </div>
                   <div>
-                    <h4 className="font-medium text-zinc-900 dark:text-zinc-100">
+                    <h4 className="font-medium text-foreground">
                       Génération automatique
                     </h4>
-                    <p className="text-zinc-600 dark:text-zinc-400">
+                    <p className="text-muted-foreground">
                       Créez du contenu personnalisé en quelques secondes
                     </p>
                   </div>
@@ -437,10 +437,10 @@ export function SolutionsIAPage() {
                     🎯
                   </div>
                   <div>
-                    <h4 className="font-medium text-zinc-900 dark:text-zinc-100">
+                    <h4 className="font-medium text-foreground">
                       Optimisation SEO
                     </h4>
-                    <p className="text-zinc-600 dark:text-zinc-400">
+                    <p className="text-muted-foreground">
                       Intégration automatique des mots-clés et balises
                     </p>
                   </div>
@@ -454,8 +454,8 @@ export function SolutionsIAPage() {
                     🌍
                   </div>
                   <div>
-                    <h4 className="font-medium text-zinc-900 dark:text-zinc-100">Multilingue</h4>
-                    <p className="text-zinc-600 dark:text-zinc-400">
+                    <h4 className="font-medium text-foreground">Multilingue</h4>
+                    <p className="text-muted-foreground">
                       Génération de contenu dans plusieurs langues
                     </p>
                   </div>
@@ -469,8 +469,8 @@ export function SolutionsIAPage() {
                     📱
                   </div>
                   <div>
-                    <h4 className="font-medium text-zinc-900 dark:text-zinc-100">Multi-formats</h4>
-                    <p className="text-zinc-600 dark:text-zinc-400">
+                    <h4 className="font-medium text-foreground">Multi-formats</h4>
+                    <p className="text-muted-foreground">
                       Adaptation automatique pour différents canaux
                     </p>
                   </div>
@@ -484,11 +484,11 @@ export function SolutionsIAPage() {
       {/* CTA Section */}
       <ThemeSection variant="gradient" className="py-32">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 mb-6">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
             Prêt à découvrir l'IA au service de votre communication ?
           </h2>
 
-          <p className="text-xl text-zinc-600 dark:text-zinc-300 mb-12 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
             Réservez une démonstration personnalisée de nos solutions IA et découvrez comment elles
             peuvent transformer votre stratégie digitale.
           </p>
@@ -503,7 +503,7 @@ export function SolutionsIAPage() {
           </div>
 
           <div className="mt-8 text-center">
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+            <p className="text-sm text-muted-foreground">
               Démonstration gratuite • Mise en place rapide • Support personnalisé
             </p>
           </div>

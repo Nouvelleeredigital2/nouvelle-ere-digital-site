@@ -21,6 +21,7 @@ import { useEditorStore } from '@/stores/editorStore';
 import { DraggableBlock } from './DraggableBlock';
 import { BlockPreview } from './BlockPreview';
 import { BlockPalette } from './BlockPalette/BlockPalette';
+import { ColumnsBlock } from '@/components/blocks/ColumnsBlock';
 import type { Block } from '@/lib/types/blocks';
 import { Plus } from 'lucide-react';
 
@@ -65,7 +66,7 @@ export function Canvas() {
 
   if (!page) {
     return (
-      <div className="flex items-center justify-center h-full text-gray-500">
+      <div className="flex items-center justify-center h-full text-muted-foreground0">
         <p>Chargement de la page...</p>
       </div>
     );
@@ -74,13 +75,13 @@ export function Canvas() {
   if (page.blocks.length === 0) {
     return (
       <>
-        <div className="flex flex-col items-center justify-center h-full text-gray-500 space-y-4">
+        <div className="flex flex-col items-center justify-center h-full text-muted-foreground0 space-y-4">
           <div className="text-center">
             <h3 className="text-xl font-semibold mb-2">Page vide</h3>
             <p className="text-sm">Ajoutez votre premier bloc pour commencer</p>
           </div>
           <button
-            className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2"
+            className="px-6 py-3 bg-indigo-600 text-card-foreground rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2"
             onClick={() => setShowPalette(true)}
           >
             <Plus className="w-5 h-5" />
@@ -111,13 +112,14 @@ export function Canvas() {
                 block={block}
                 index={index}
                 isSelected={selectedBlockId === block.id}
+                isNested={false}
               />
             ))}
             
             {/* Bouton pour ajouter un nouveau bloc */}
             <button
               onClick={() => setShowPalette(true)}
-              className="w-full py-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-indigo-500 hover:bg-indigo-50 transition-colors flex items-center justify-center gap-2 text-gray-600 hover:text-indigo-600"
+              className="w-full py-4 border-2 border-dashed border-border rounded-lg hover:border-indigo-500 hover:bg-indigo-50 transition-colors flex items-center justify-center gap-2 text-muted-foreground hover:text-indigo-600"
             >
               <Plus className="w-5 h-5" />
               <span className="font-medium">Ajouter un bloc</span>

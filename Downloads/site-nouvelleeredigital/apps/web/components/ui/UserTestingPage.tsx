@@ -60,10 +60,16 @@ export function UserTestingPage() {
     // Ici, on pourrait envoyer les données à un service d'analytics
     console.log("Données de test utilisateur:", completeData);
 
-    // Sauvegarder localement pour démonstration
-    const existingTests = JSON.parse(localStorage.getItem("user-tests") || "[]");
-    existingTests.push(completeData);
-    localStorage.setItem("user-tests", JSON.stringify(existingTests));
+    // Sauvegarder localement pour démonstration (seulement côté client)
+    if (typeof window !== 'undefined') {
+      try {
+        const existingTests = JSON.parse(localStorage.getItem("user-tests") || "[]");
+        existingTests.push(completeData);
+        localStorage.setItem("user-tests", JSON.stringify(existingTests));
+      } catch (error) {
+        console.error("Erreur lors de la sauvegarde locale:", error);
+      }
+    }
 
     setIsSubmitted(true);
   };
@@ -78,8 +84,8 @@ export function UserTestingPage() {
             className={cn(
               "transition-colors duration-200",
               star <= value
-                ? "text-yellow-400 hover:text-yellow-500"
-                : "text-gray-300 hover:text-yellow-400",
+                ? "text-warning hover:text-warning"
+                : "text-muted-foreground hover:text-warning",
             )}
           >
             <Star className="w-6 h-6 fill-current" />
@@ -196,7 +202,7 @@ export function UserTestingPage() {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-8">
         <Card className="max-w-md w-full p-8 text-center">
-          <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+          <CheckCircle className="w-16 h-16 text-success mx-auto mb-4" />
           <h2 className="text-2xl font-bold mb-4">Merci pour votre feedback !</h2>
           <p className="text-muted-foreground mb-6">
             Vos commentaires nous aident à améliorer le système de Creative Personas.

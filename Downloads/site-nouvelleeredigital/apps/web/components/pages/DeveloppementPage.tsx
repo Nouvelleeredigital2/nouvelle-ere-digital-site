@@ -8,10 +8,10 @@ export function DeveloppementPage() {
       {/* Héro */}
       <ThemeSection variant="gradient" className="py-32 md:py-40">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-4">
+          <p className="text-sm uppercase tracking-wide text-muted-foreground mb-4">
             Développement Web & Expériences Numériques
           </p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.1] mb-6">
             Des plateformes performantes,
             <br />
             évolutives et souveraines.
@@ -22,7 +22,7 @@ export function DeveloppementPage() {
       {/* Introduction */}
       <ThemeSection variant="light" className="py-20">
         <div className="max-w-4xl mx-auto">
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground">
             <p>
               Nous concevons et développons des expériences numériques sur mesure, alliant
               performance, design et sécurité.
@@ -32,7 +32,7 @@ export function DeveloppementPage() {
               : sites, applications, outils métiers ou expériences interactives.
             </p>
             <div className="text-center py-6">
-              <p className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+              <p className="text-xl font-semibold text-foreground">
                 « Un code propre, un design clair, une expérience fluide : le trio gagnant. »
               </p>
             </div>
@@ -41,14 +41,14 @@ export function DeveloppementPage() {
       </ThemeSection>
 
       {/* Notre mission */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-4xl mx-auto">
           <SectionHeading
             eyebrow="Notre mission"
             title="Créer des outils digitaux générateurs de valeur"
             align="center"
           />
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300 text-center">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground text-center">
             <p>
               Créer des outils digitaux capables de renforcer votre image, fluidifier vos processus
               et générer de la valeur mesurable.
@@ -58,7 +58,7 @@ export function DeveloppementPage() {
               pour vos équipes, et souveraine pour vos données.
             </p>
             <blockquote
-              className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8"
+              className="border-l-4 pl-6 py-4 text-muted-foreground italic text-xl mt-8"
               style={{ borderColor: "#7C3AED" }}
             >
               « La technologie n'a de sens que lorsqu'elle simplifie et relie. »
@@ -82,24 +82,24 @@ export function DeveloppementPage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     1
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Sites web & plateformes métiers
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Conception de sites vitrines, institutionnels, e-commerce et portails métiers.
                     Création de plateformes interactives (simulateurs, configurateurs, extranets).
                     UX/UI design intégré à chaque étape. Optimisation des performances (chargement,
                     accessibilité, SEO). Maintenance et évolutivité garanties.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « Un site n'est pas une vitrine : c'est un point de contact vivant. »
@@ -113,17 +113,17 @@ export function DeveloppementPage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     2
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Applications sur mesure
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Développement d'outils internes (CRM, intranet, gestion de contenus). Solutions
                     spécifiques à vos métiers : simulateurs, plateformes événementielles, portails
                     de formation. Interfaçage avec vos systèmes existants (ERP, CRM, API tierces).
@@ -131,7 +131,7 @@ export function DeveloppementPage() {
                     agiles : du prototype à la mise en production.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « Nous traduisons vos besoins métier en solutions fonctionnelles. »
@@ -145,17 +145,17 @@ export function DeveloppementPage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     3
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Automatisations & intégrations intelligentes
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Connexion d'outils marketing et data (HubSpot, Notion, Airtable, Zapier).
                     Automatisation de flux (emails, devis, formulaires, CRM). Synchronisation de
                     bases de données et suivi d'interactions. Intégration de copilotes IA pour la
@@ -163,7 +163,7 @@ export function DeveloppementPage() {
                     optimisant temps et fiabilité.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « Automatiser, c'est libérer du temps pour créer plus de valeur. »
@@ -177,24 +177,24 @@ export function DeveloppementPage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     4
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Hébergement souverain & sécurité
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Hébergements RGPD conformes, serveurs européens certifiés. Solutions cloud
                     hybrides : sécurité, redondance, scalabilité. Sauvegardes automatiques et
                     surveillance 24/7. Protocoles HTTPS, authentification multi-facteur,
                     chiffrement. Tableaux de bord de sécurité et suivi en temps réel.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « Vos données sont précieuses : nous les hébergeons avec exigence. »
@@ -208,24 +208,24 @@ export function DeveloppementPage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     5
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Expériences numériques & innovation
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Interfaces immersives : webGL, 3D, vidéo interactive. Outils d'interactivité
                     événementielle et gamification. Parcours IA-guidés (formulaires intelligents,
                     chatbots, recommandation). Dashboards interactifs et visualisations de données.
                     Connexion directe avec le pôle audiovisuel et IA pour expériences mixtes.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « De l'interaction à la relation : nous créons des expériences vivantes. »
@@ -238,7 +238,7 @@ export function DeveloppementPage() {
       </ThemeSection>
 
       {/* Méthodologie */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Notre méthodologie"
@@ -276,20 +276,20 @@ export function DeveloppementPage() {
             ].map((item, i) => (
               <div key={i} className="card text-center group hover:shadow-lg transition-shadow">
                 <div
-                  className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl font-bold text-white"
+                  className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl font-bold text-card-foreground"
                   style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                 >
                   {item.num}
                 </div>
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">{item.desc}</p>
+                <p className="text-sm text-muted-foreground">{item.desc}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto">
             « Notre exigence technique s'allie à la rigueur créative du design. »
           </p>
         </div>
@@ -317,15 +317,15 @@ export function DeveloppementPage() {
               },
             ].map((item, i) => (
               <div key={i} className="card group hover:shadow-lg transition-shadow">
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                <h3 className="font-semibold text-foreground mb-3">
                   {item.category}
                 </h3>
-                <p className="text-zinc-600 dark:text-zinc-400">{item.items}</p>
+                <p className="text-muted-foreground">{item.items}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto mt-12">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto mt-12">
             « Nous choisissons les technologies les plus adaptées à votre besoin, pas les plus à la
             mode. »
           </p>
@@ -333,7 +333,7 @@ export function DeveloppementPage() {
       </ThemeSection>
 
       {/* Réalisations récentes */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Nos réalisations récentes"
@@ -362,12 +362,12 @@ export function DeveloppementPage() {
                     className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
-                    <div className="w-8 h-8 bg-white/20 rounded-lg"></div>
+                    <div className="w-8 h-8 bg-background/20 rounded-lg"></div>
                   </div>
-                  <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                  <h3 className="font-semibold text-foreground mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-zinc-600 dark:text-zinc-400">{item.desc}</p>
+                  <p className="text-muted-foreground">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -388,10 +388,10 @@ export function DeveloppementPage() {
             <table className="w-full max-w-4xl mx-auto">
               <thead>
                 <tr className="border-b-2" style={{ borderColor: "#7C3AED" }}>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-foreground">
                     Atout clé
                   </th>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-foreground">
                     Bénéfice client
                   </th>
                 </tr>
@@ -421,12 +421,12 @@ export function DeveloppementPage() {
                 ].map((row, i) => (
                   <tr
                     key={i}
-                    className="hover:bg-zinc-50 dark:hover:bg-zinc-900/30 transition-colors"
+                    className="hover:bg-muted transition-colors"
                   >
-                    <td className="py-4 px-6 font-semibold text-zinc-900 dark:text-zinc-100">
+                    <td className="py-4 px-6 font-semibold text-foreground">
                       {row.atout}
                     </td>
-                    <td className="py-4 px-6 text-zinc-700 dark:text-zinc-300">{row.benefice}</td>
+                    <td className="py-4 px-6 text-foreground">{row.benefice}</td>
                   </tr>
                 ))}
               </tbody>
@@ -438,10 +438,10 @@ export function DeveloppementPage() {
       {/* Philosophie */}
       <ThemeSection variant="dark" className="py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <blockquote className="text-2xl md:text-3xl font-medium text-white leading-relaxed">
+          <blockquote className="text-2xl md:text-3xl font-medium text-card-foreground leading-relaxed">
             « La performance est notre matière, l'humain notre architecture. »
           </blockquote>
-          <p className="mt-8 text-zinc-300 max-w-2xl mx-auto">
+          <p className="mt-8 text-muted-foreground max-w-2xl mx-auto">
             Nous voyons le web comme une expérience vivante et évolutive. Nos développeurs,
             designers et stratèges travaillent ensemble pour que chaque ligne de code serve une
             idée, chaque interaction serve une émotion, et chaque donnée serve une décision.
@@ -453,10 +453,10 @@ export function DeveloppementPage() {
       <ThemeSection variant="gradient" className="py-32">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
               Concevoir. Connecter. Performer.
             </h2>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto">
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
               Une interface web en pleine création : code à gauche, maquette design à droite, une
               équipe collaborant sur grand écran.
             </p>
@@ -476,7 +476,7 @@ export function DeveloppementPage() {
                 className="card text-center group hover:shadow-xl transition-all hover:scale-105"
               >
                 <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                <h3 className="text-lg font-semibold text-foreground">
                   {item.title}
                 </h3>
               </div>
@@ -486,12 +486,12 @@ export function DeveloppementPage() {
       </ThemeSection>
 
       {/* CTA */}
-      <ThemeSection variant="light" className="py-32 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-32 bg-muted">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 mb-6">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
             Prêt à digitaliser votre vision ?
           </h2>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
             Découvrez nos réalisations digitales et demandez un audit technique ou UX pour votre
             prochain projet.
           </p>

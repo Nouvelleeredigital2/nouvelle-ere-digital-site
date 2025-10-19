@@ -58,8 +58,8 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   };
 
   const variants: Record<Variant, string> = {
-    default: "bg-[var(--couleur-light)] border-b border-gray-200",
-    hero: "bg-gradient-to-r from-blue-500 to-purple-600 text-white",
+    default: "bg-[var(--couleur-light)] border-b border-border",
+    hero: "bg-gradient-to-r from-blue-500 to-purple-600 text-card-foreground",
     minimal: "bg-transparent border-b border-gray-100",
   };
 
@@ -111,7 +111,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
           </span>
         ))}
         {onCollapse && (
-          <button onClick={onCollapse} className="text-gray-500">
+          <button onClick={onCollapse} className="text-muted-foreground0">
             −
           </button>
         )}

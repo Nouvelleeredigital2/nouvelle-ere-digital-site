@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  nouvelle-ere-digital:
+    build: .
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=file:./dev.db
+      - NEXTAUTH_SECRET=test-secret-key-for-development
+      - NEXTAUTH_URL=http://localhost:3001
+    volumes:
+      - ./dev.db:/app/dev.db
+    restart: unless-stopped
+
+networks:
+  default:
+    name: nouvelle-ere-digital-network

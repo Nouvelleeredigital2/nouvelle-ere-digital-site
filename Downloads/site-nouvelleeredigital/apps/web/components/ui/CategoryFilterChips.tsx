@@ -61,7 +61,7 @@ export const CategoryFilterChips: React.FC<CategoryFilterChipsProps> = ({
   const variants: Record<Variant, string> = {
     default: "bg-[var(--couleur-light)] border border-[var(--color-primary)]",
     outlined: "border border-[var(--color-primary)] bg-transparent",
-    filled: "bg-[var(--color-primary)] text-white",
+    filled: "bg-[var(--color-primary)] text-card-foreground",
   };
 
   const stateClasses: Record<State, string> = {

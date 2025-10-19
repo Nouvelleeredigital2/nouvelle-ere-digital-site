@@ -107,7 +107,7 @@ export const ColorLegend: React.FC<ColorLegendProps> = ({
         >
           <div
             className={cn(
-              "w-4 h-4 border border-gray-300",
+              "w-4 h-4 border border-border",
               item.shape === "circle" ? "rounded-full" : "rounded",
             )}
             style={{ backgroundColor: item.color }}

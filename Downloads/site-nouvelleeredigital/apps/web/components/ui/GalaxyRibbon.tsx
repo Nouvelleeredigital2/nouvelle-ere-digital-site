@@ -71,7 +71,7 @@ export const GalaxyRibbon: React.FC<GalaxyRibbonProps> = ({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-full text-white shadow-lg",
+        "relative overflow-hidden rounded-full text-card-foreground shadow-lg",
         sizes[size],
         variants[variant],
         animated && "transition-transform duration-300",

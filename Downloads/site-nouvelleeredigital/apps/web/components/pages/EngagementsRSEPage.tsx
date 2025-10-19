@@ -8,10 +8,10 @@ export function EngagementsRSEPage() {
       {/* Héro */}
       <ThemeSection variant="gradient" className="py-32 md:py-40">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-4">
+          <p className="text-sm uppercase tracking-wide text-muted-foreground mb-4">
             Engagements & RSE
           </p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.1] mb-6">
             Innover, oui —<br />
             mais toujours
             <br />
@@ -23,7 +23,7 @@ export function EngagementsRSEPage() {
       {/* Introduction */}
       <ThemeSection variant="light" className="py-20">
         <div className="max-w-4xl mx-auto">
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground">
             <p>
               Notre vision du numérique repose sur un équilibre : créer, innover et mesurer sans
               jamais compromettre l'humain ni l'environnement.
@@ -37,7 +37,7 @@ export function EngagementsRSEPage() {
               la confiance.
             </p>
             <div className="text-center py-6">
-              <p className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+              <p className="text-xl font-semibold text-foreground">
                 « La responsabilité n'est pas une contrainte : c'est notre boussole. »
               </p>
             </div>
@@ -46,21 +46,21 @@ export function EngagementsRSEPage() {
       </ThemeSection>
 
       {/* Philosophie RSE */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-4xl mx-auto">
           <SectionHeading
             eyebrow="Notre philosophie RSE"
             title="Un équilibre entre innovation et responsabilité"
             align="center"
           />
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300 text-center">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground text-center">
             <p>
               Nous concevons des solutions écologiques, inclusives et transparentes, en alignant nos
               engagements avec les piliers de notre marque : simplicité, créativité, transparence,
               souveraineté, excellence et accompagnement humain.
             </p>
             <blockquote
-              className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8"
+              className="border-l-4 pl-6 py-4 text-muted-foreground italic text-xl mt-8"
               style={{ borderColor: "#7C3AED" }}
             >
               « Notre impact se mesure en émissions évitées autant qu'en émotions créées. »
@@ -92,19 +92,19 @@ export function EngagementsRSEPage() {
                   className="w-2 h-2 rounded-full flex-shrink-0 mt-2"
                   style={{ backgroundColor: "#7C3AED" }}
                 ></div>
-                <p className="flex-1 text-zinc-700 dark:text-zinc-300">{item}</p>
+                <p className="flex-1 text-foreground">{item}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto">
             « Nous réduisons notre empreinte pour amplifier la vôtre. »
           </p>
         </div>
       </ThemeSection>
 
       {/* Engagement social & humain */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Engagement social & humain"
@@ -125,12 +125,12 @@ export function EngagementsRSEPage() {
                   className="w-2 h-2 rounded-full flex-shrink-0 mt-2"
                   style={{ backgroundColor: "#7C3AED" }}
                 ></div>
-                <p className="flex-1 text-zinc-700 dark:text-zinc-300">{item}</p>
+                <p className="flex-1 text-foreground">{item}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto">
             « La performance durable est avant tout humaine. »
           </p>
         </div>
@@ -160,19 +160,19 @@ export function EngagementsRSEPage() {
                   className="w-2 h-2 rounded-full flex-shrink-0 mt-2"
                   style={{ backgroundColor: "#7C3AED" }}
                 ></div>
-                <p className="flex-1 text-zinc-700 dark:text-zinc-300">{item}</p>
+                <p className="flex-1 text-foreground">{item}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto">
             « Une IA souveraine, responsable et centrée sur l'humain. »
           </p>
         </div>
       </ThemeSection>
 
       {/* Gouvernance & transparence */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-4xl mx-auto">
           <SectionHeading
             eyebrow="Gouvernance & transparence"
@@ -193,12 +193,12 @@ export function EngagementsRSEPage() {
                   className="w-2 h-2 rounded-full flex-shrink-0 mt-2"
                   style={{ backgroundColor: "#7C3AED" }}
                 ></div>
-                <p className="flex-1 text-zinc-700 dark:text-zinc-300">{item}</p>
+                <p className="flex-1 text-foreground">{item}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto">
             « Nous mesurons ce que nous promettons. »
           </p>
         </div>
@@ -217,13 +217,13 @@ export function EngagementsRSEPage() {
             <table className="w-full max-w-4xl mx-auto">
               <thead>
                 <tr className="border-b-2" style={{ borderColor: "#7C3AED" }}>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-foreground">
                     Axe
                   </th>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-foreground">
                     Objectif
                   </th>
-                  <th className="text-left py-4 px-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  <th className="text-left py-4 px-6 text-lg font-semibold text-foreground">
                     Résultat attendu
                   </th>
                 </tr>
@@ -258,27 +258,27 @@ export function EngagementsRSEPage() {
                 ].map((row, i) => (
                   <tr
                     key={i}
-                    className="hover:bg-zinc-50 dark:hover:bg-zinc-900/30 transition-colors"
+                    className="hover:bg-muted transition-colors"
                   >
-                    <td className="py-4 px-6 font-semibold text-zinc-900 dark:text-zinc-100">
+                    <td className="py-4 px-6 font-semibold text-foreground">
                       {row.axe}
                     </td>
-                    <td className="py-4 px-6 text-zinc-700 dark:text-zinc-300">{row.objectif}</td>
-                    <td className="py-4 px-6 text-zinc-700 dark:text-zinc-300">{row.resultat}</td>
+                    <td className="py-4 px-6 text-foreground">{row.objectif}</td>
+                    <td className="py-4 px-6 text-foreground">{row.resultat}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto mt-12">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto mt-12">
             « Notre responsabilité, c'est d'anticiper et d'accompagner durablement. »
           </p>
         </div>
       </ThemeSection>
 
       {/* Témoignages */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Témoignages"
@@ -305,10 +305,10 @@ export function EngagementsRSEPage() {
               },
             ].map((item, i) => (
               <div key={i} className="card group hover:shadow-lg transition-shadow">
-                <blockquote className="text-zinc-700 dark:text-zinc-300 mb-4 italic">
+                <blockquote className="text-foreground mb-4 italic">
                   "{item.quote}"
                 </blockquote>
-                <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                <p className="text-sm font-medium text-foreground">
                   — {item.author}
                 </p>
               </div>
@@ -320,10 +320,10 @@ export function EngagementsRSEPage() {
       {/* Vision de l'avenir */}
       <ThemeSection variant="dark" className="py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <blockquote className="text-2xl md:text-3xl font-medium text-white leading-relaxed">
+          <blockquote className="text-2xl md:text-3xl font-medium text-card-foreground leading-relaxed">
             « L'avenir sera digital, mais il sera aussi conscient. »
           </blockquote>
-          <p className="mt-8 text-zinc-300 max-w-2xl mx-auto">
+          <p className="mt-8 text-muted-foreground max-w-2xl mx-auto">
             Nous avançons vers un modèle d'agence éthique, verte et augmentée, où chaque action —
             créative, technique ou technologique — est alignée avec nos responsabilités sociales et
             environnementales. Notre ambition : prouver que la modernité peut être durable et
@@ -336,10 +336,10 @@ export function EngagementsRSEPage() {
       <ThemeSection variant="gradient" className="py-32">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
               Innover sans renier le sens.
             </h2>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto">
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
               Photographie lumineuse d'une équipe en pleine installation scénique dans un lieu
               naturel, symbolisant équilibre et technologie.
             </p>
@@ -358,7 +358,7 @@ export function EngagementsRSEPage() {
                 className="card text-center group hover:shadow-xl transition-all hover:scale-105"
               >
                 <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                <h3 className="text-lg font-semibold text-foreground">
                   {item.title}
                 </h3>
               </div>
@@ -376,7 +376,7 @@ export function EngagementsRSEPage() {
                 className="w-3 h-3 rounded-full animate-pulse"
                 style={{ backgroundColor: "#7C3AED" }}
               ></div>
-              <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+              <span className="text-sm font-medium text-foreground">
                 RSE Intégrée
               </span>
               <div
@@ -389,12 +389,12 @@ export function EngagementsRSEPage() {
       </ThemeSection>
 
       {/* CTA */}
-      <ThemeSection variant="light" className="py-32 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-32 bg-muted">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 mb-6">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
             Découvrez nos engagements en action
           </h2>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
             Téléchargez notre charte RSE & IA éthique et découvrez nos initiatives durables pour
             comprendre comment nous intégrons la responsabilité dans chaque projet.
           </p>

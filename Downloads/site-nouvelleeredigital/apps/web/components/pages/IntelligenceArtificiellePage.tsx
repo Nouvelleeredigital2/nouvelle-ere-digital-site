@@ -8,10 +8,10 @@ export function IntelligenceArtificiellePage() {
       {/* Héro */}
       <ThemeSection variant="gradient" className="py-32 md:py-40">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-4">
+          <p className="text-sm uppercase tracking-wide text-muted-foreground mb-4">
             Intelligence Artificielle & Innovation
           </p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.1] mb-6">
             L'intelligence artificielle
             <br />
             au service de la créativité,
@@ -24,7 +24,7 @@ export function IntelligenceArtificiellePage() {
       {/* Introduction */}
       <ThemeSection variant="light" className="py-20">
         <div className="max-w-4xl mx-auto">
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground">
             <p>
               Chez Nouvelle Ère Digital, l'intelligence artificielle n'est pas un effet de mode.
             </p>
@@ -34,7 +34,7 @@ export function IntelligenceArtificiellePage() {
               pour augmenter l'humain, jamais pour le remplacer.
             </p>
             <div className="text-center py-6">
-              <p className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+              <p className="text-xl font-semibold text-foreground">
                 « L'IA doit amplifier la créativité, pas la remplacer. »
               </p>
             </div>
@@ -43,14 +43,14 @@ export function IntelligenceArtificiellePage() {
       </ThemeSection>
 
       {/* Notre mission */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-4xl mx-auto">
           <SectionHeading
             eyebrow="Notre mission"
             title="Rendre l'IA utile, accessible et responsable"
             align="center"
           />
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300 text-center">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground text-center">
             <p>Rendre l'IA utile, accessible et responsable.</p>
             <p>
               Nous concevons des solutions et des copilotes qui simplifient vos processus,
@@ -58,7 +58,7 @@ export function IntelligenceArtificiellePage() {
               sécurité et la maîtrise de vos données.
             </p>
             <blockquote
-              className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8"
+              className="border-l-4 pl-6 py-4 text-muted-foreground italic text-xl mt-8"
               style={{ borderColor: "#7C3AED" }}
             >
               « De la scène à l'écran, du pixel à la donnée, chaque action devient intelligente. »
@@ -82,17 +82,17 @@ export function IntelligenceArtificiellePage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     1
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     IA appliquée à la communication
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Génération de contenus texte, image et vidéo cohérents avec la charte de marque.
                     Automatisation de publications et analyse de performances. Recommandation de
                     formats et planification éditoriale IA-assistée. IA de modération et d'analyse
@@ -100,7 +100,7 @@ export function IntelligenceArtificiellePage() {
                     dynamiques.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « Nous transformons la donnée en narration et la narration en engagement. »
@@ -114,17 +114,17 @@ export function IntelligenceArtificiellePage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     2
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Copilotes métiers & automatisations
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Copilotes IA sur mesure pour marketing, audiovisuel, RH et formation.
                     Automatisations de workflows et de reporting. Analyse prédictive des KPIs et
                     suggestions d'optimisation. Connecteurs intelligents entre CRM, ERP et
@@ -132,7 +132,7 @@ export function IntelligenceArtificiellePage() {
                     d'activité.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « Votre IA devient un collaborateur, pas une boîte noire. »
@@ -146,17 +146,17 @@ export function IntelligenceArtificiellePage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     3
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Innovation & R&D
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Développement de prototypes IA internes et expérimentation continue. Exploration
                     de modèles d'analyse comportementale et de recommandation. R&D sur la création
                     visuelle augmentée (IA générative + direction artistique). Études sur la
@@ -164,7 +164,7 @@ export function IntelligenceArtificiellePage() {
                     recherche appliquée.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « Innover, oui — mais toujours de manière responsable. »
@@ -178,17 +178,17 @@ export function IntelligenceArtificiellePage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     4
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Acculturation & formation IA
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Programmes d'acculturation IA pour dirigeants, communicants, formateurs.
                     Ateliers de découverte : Prompt design, automatisations, copilotes métiers.
                     Formations sur les usages concrets : marketing, audiovisuel, événementiel, RH.
@@ -196,7 +196,7 @@ export function IntelligenceArtificiellePage() {
                     expliquer avant d'automatiser.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « Apprendre, c'est s'émanciper à l'ère digitale. »
@@ -210,25 +210,25 @@ export function IntelligenceArtificiellePage() {
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <div className="flex-shrink-0">
                   <div
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-white"
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-bold text-card-foreground"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
                     5
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Application phare : Journey Composer
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Une application interactive et tactile pour composer visuellement vos parcours
                     de services, guidée par l'IA.
                   </p>
                   <div className="mb-4">
-                    <p className="font-medium text-zinc-900 dark:text-zinc-100 mb-2">
+                    <p className="font-medium text-foreground mb-2">
                       Fonctionnalités clés :
                     </p>
-                    <ul className="space-y-2 text-zinc-700 dark:text-zinc-300">
+                    <ul className="space-y-2 text-foreground">
                       <li className="flex items-start gap-2">
                         <div className="w-2 h-2 rounded-full bg-brand flex-shrink-0 mt-2"></div>
                         <span>
@@ -261,7 +261,7 @@ export function IntelligenceArtificiellePage() {
                     </ul>
                   </div>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « De la brochure au jeu : on ne lit plus nos offres, on les compose. »
@@ -274,7 +274,7 @@ export function IntelligenceArtificiellePage() {
       </ThemeSection>
 
       {/* Méthodologie d'intégration IA */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Notre méthodologie d'intégration IA"
@@ -307,20 +307,20 @@ export function IntelligenceArtificiellePage() {
             ].map((item, i) => (
               <div key={i} className="card text-center group hover:shadow-lg transition-shadow">
                 <div
-                  className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl font-bold text-white"
+                  className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl font-bold text-card-foreground"
                   style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                 >
                   {item.num}
                 </div>
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                <h3 className="font-semibold text-foreground mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">{item.desc}</p>
+                <p className="text-sm text-muted-foreground">{item.desc}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto">
             « Nous allions la rigueur du code, la créativité du design et la pédagogie du sens. »
           </p>
         </div>
@@ -348,21 +348,21 @@ export function IntelligenceArtificiellePage() {
                   className="w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center"
                   style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                 >
-                  <div className="w-6 h-6 bg-white/20 rounded-lg"></div>
+                  <div className="w-6 h-6 bg-background/20 rounded-lg"></div>
                 </div>
-                <p className="text-zinc-700 dark:text-zinc-300">{item}</p>
+                <p className="text-foreground">{item}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto">
             « La confiance est la première des intelligences. »
           </p>
         </div>
       </ThemeSection>
 
       {/* Réalisations et cas d'usage */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Nos réalisations et cas d'usage"
@@ -395,18 +395,18 @@ export function IntelligenceArtificiellePage() {
                     className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center"
                     style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)" }}
                   >
-                    <div className="w-8 h-8 bg-white/20 rounded-lg"></div>
+                    <div className="w-8 h-8 bg-background/20 rounded-lg"></div>
                   </div>
-                  <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                  <h3 className="font-semibold text-foreground mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-zinc-600 dark:text-zinc-400">{item.desc}</p>
+                  <p className="text-muted-foreground">{item.desc}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto mt-12">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto mt-12">
             « Nous faisons de l'IA un vecteur d'impact et non de complexité. »
           </p>
         </div>
@@ -415,10 +415,10 @@ export function IntelligenceArtificiellePage() {
       {/* Philosophie */}
       <ThemeSection variant="dark" className="py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <blockquote className="text-2xl md:text-3xl font-medium text-white leading-relaxed">
+          <blockquote className="text-2xl md:text-3xl font-medium text-card-foreground leading-relaxed">
             « Nous concevons des IA à visage humain, capables d'expliquer ce qu'elles suggèrent. »
           </blockquote>
-          <p className="mt-8 text-zinc-300 max-w-2xl mx-auto">
+          <p className="mt-8 text-muted-foreground max-w-2xl mx-auto">
             L'intelligence artificielle n'est pas une fin, mais un moyen d'éclairer l'action
             humaine. Nous la plaçons là où elle simplifie, mesure et valorise. Son pouvoir n'est pas
             dans la vitesse, mais dans la justesse.
@@ -430,10 +430,10 @@ export function IntelligenceArtificiellePage() {
       <ThemeSection variant="gradient" className="py-32">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
               L'intelligence artificielle, concrète, souveraine et humaine.
             </h2>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto">
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
               Une interface IA épurée : à gauche, un chat intelligent avec suggestions ; à droite,
               un canvas où les services se connectent automatiquement.
             </p>
@@ -453,7 +453,7 @@ export function IntelligenceArtificiellePage() {
                 className="card text-center group hover:shadow-xl transition-all hover:scale-105"
               >
                 <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                <h3 className="text-lg font-semibold text-foreground">
                   {item.title}
                 </h3>
               </div>
@@ -463,12 +463,12 @@ export function IntelligenceArtificiellePage() {
       </ThemeSection>
 
       {/* CTA */}
-      <ThemeSection variant="light" className="py-32 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-32 bg-muted">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 mb-6">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
             Prêt à intégrer l'IA dans votre stratégie ?
           </h2>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
             Découvrez l'application Journey Composer et explorez nos formations IA pour transformer
             votre approche digitale.
           </p>

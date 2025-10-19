@@ -58,7 +58,7 @@ export const H2Dots: React.FC<H2DotsProps> = ({
   const variants: Record<Variant, string> = {
     default: "bg-[var(--color-primary)]",
     colored: "bg-gradient-to-r from-blue-500 to-purple-500",
-    minimal: "bg-gray-500",
+    minimal: "bg-muted0",
   };
 
   const stateClasses: Record<State, string> = {
@@ -68,7 +68,7 @@ export const H2Dots: React.FC<H2DotsProps> = ({
     focus: "ring-2 ring-[var(--color-primary)]",
     disabled: "opacity-50 cursor-not-allowed",
     selected: "ring-2 ring-yellow-400",
-    invalid: "bg-red-500",
+    invalid: "bg-error",
     dragging: "cursor-grabbing",
   };
 

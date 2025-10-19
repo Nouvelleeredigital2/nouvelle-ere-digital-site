@@ -135,7 +135,7 @@ export const NeedCaptureForm: React.FC<NeedCaptureFormProps> = ({
               aria-invalid={!!errors[field.id]}
             />
           )}
-          {errors[field.id] && <Text className="text-red-500 text-sm">{errors[field.id]}</Text>}
+          {errors[field.id] && <Text className="text-error text-sm">{errors[field.id]}</Text>}
         </div>
       ))}
       <div className="flex gap-2">

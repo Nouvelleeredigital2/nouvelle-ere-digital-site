@@ -34,7 +34,7 @@ export function CTAInspector({ data, onUpdate }: CTAInspectorProps) {
 
   return (
     <div className="space-y-4">
-      <h4 className="font-semibold text-gray-900 border-b pb-2">
+      <h4 className="font-semibold text-muted-foreground border-b pb-2">
         Bloc Call-to-Action
       </h4>
 
@@ -58,7 +58,7 @@ export function CTAInspector({ data, onUpdate }: CTAInspectorProps) {
       />
 
       <div className="border-t pt-4">
-        <h5 className="text-sm font-medium text-gray-700 mb-3">
+        <h5 className="text-sm font-medium text-muted-foreground mb-3">
           Bouton Principal
         </h5>
         
@@ -82,7 +82,7 @@ export function CTAInspector({ data, onUpdate }: CTAInspectorProps) {
       </div>
 
       <div className="border-t pt-4">
-        <h5 className="text-sm font-medium text-gray-700 mb-3">
+        <h5 className="text-sm font-medium text-muted-foreground mb-3">
           Bouton Secondaire (Optionnel)
         </h5>
         

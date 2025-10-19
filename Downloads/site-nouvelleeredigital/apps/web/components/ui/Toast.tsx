@@ -61,10 +61,10 @@ export const Toast: React.FC<ToastProps> = ({
   if (!visible) return null;
 
   const types: Record<Type, string> = {
-    success: "bg-green-500 text-white",
-    error: "bg-red-500 text-white",
-    warning: "bg-yellow-500 text-black",
-    info: "bg-blue-500 text-white",
+    success: "bg-success text-card-foreground",
+    error: "bg-error text-card-foreground", 
+    warning: "bg-warning text-foreground",
+    info: "bg-primary text-primary-foreground",
   };
 
   const sizes: Record<Size, string> = {

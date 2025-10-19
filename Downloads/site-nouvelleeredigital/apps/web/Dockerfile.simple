@@ -1,0 +1,26 @@
+# Dockerfile simplifié pour Nouvelle Ère Digital
+FROM node:18-alpine
+
+# Installer les dépendances système nécessaires
+RUN apk add --no-cache libc6-compat
+
+# Définir le répertoire de travail
+WORKDIR /app
+
+# Copier les fichiers de dépendances
+COPY package*.json ./
+
+# Installer les dépendances
+RUN npm ci
+
+# Copier le code source
+COPY . .
+
+# Construire l'application
+RUN npm run build
+
+# Exposer le port
+EXPOSE 3001
+
+# Démarrer l'application
+CMD ["npm", "start"]

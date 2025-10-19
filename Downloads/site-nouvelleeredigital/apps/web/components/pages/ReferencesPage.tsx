@@ -8,10 +8,10 @@ export function ReferencesPage() {
       {/* Héro */}
       <ThemeSection variant="gradient" className="py-32 md:py-40">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-4">
+          <p className="text-sm uppercase tracking-wide text-muted-foreground mb-4">
             Références & Réalisations
           </p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground leading-[1.1] mb-6">
             Des expériences concrètes,
             <br />
             des résultats mesurables.
@@ -22,7 +22,7 @@ export function ReferencesPage() {
       {/* Introduction */}
       <ThemeSection variant="light" className="py-20">
         <div className="max-w-4xl mx-auto">
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground">
             <p>
               Depuis plus de quinze ans, Nouvelle Ère Digital accompagne des entreprises,
               institutions, marques et créateurs dans leurs projets de communication, de
@@ -32,7 +32,7 @@ export function ReferencesPage() {
               Chaque réalisation est une rencontre, une histoire partagée et une preuve d'impact.
             </p>
             <div className="text-center py-6">
-              <p className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+              <p className="text-xl font-semibold text-foreground">
                 « De l'idée à l'impact, chaque projet raconte une transformation. »
               </p>
             </div>
@@ -41,14 +41,14 @@ export function ReferencesPage() {
       </ThemeSection>
 
       {/* Philosophie projet */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-4xl mx-auto">
           <SectionHeading
             eyebrow="Notre philosophie projet"
             title="La valeur réelle au-delà de l'esthétique"
             align="center"
           />
-          <div className="max-w-3xl mx-auto space-y-6 text-lg text-zinc-700 dark:text-zinc-300 text-center">
+          <div className="max-w-3xl mx-auto space-y-6 text-lg text-foreground text-center">
             <p>
               Nous croyons que la réussite ne se mesure pas uniquement à la beauté d'un rendu, mais
               à la valeur réelle créée pour le public, les équipes et la marque.
@@ -58,7 +58,7 @@ export function ReferencesPage() {
               produire des expériences qui inspirent et engagent.
             </p>
             <blockquote
-              className="border-l-4 pl-6 py-4 text-zinc-600 dark:text-zinc-400 italic text-xl mt-8"
+              className="border-l-4 pl-6 py-4 text-muted-foreground italic text-xl mt-8"
               style={{ borderColor: "#7C3AED" }}
             >
               « L'émotion attire, la mesure confirme. »
@@ -108,22 +108,22 @@ export function ReferencesPage() {
               },
             ].map((item, i) => (
               <div key={i} className="card group hover:shadow-lg transition-shadow">
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                <h3 className="font-semibold text-foreground mb-3">
                   {item.title}
                 </h3>
-                <p className="text-zinc-600 dark:text-zinc-400">{item.desc}</p>
+                <p className="text-muted-foreground">{item.desc}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto">
             « Nous concevons, produisons et mesurons l'ensemble de vos expériences. »
           </p>
         </div>
       </ThemeSection>
 
       {/* Réalisations marquantes */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Quelques réalisations marquantes"
@@ -144,19 +144,19 @@ export function ReferencesPage() {
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Événement hybride &quot;Corporate 360&quot;
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Captation multicam + régie live + diffusion LinkedIn & YouTube. Scénographie IA
                     + mur LED + branding digital.
                   </p>
-                  <p className="text-zinc-600 dark:text-zinc-400 mb-4">
-                    <strong className="text-zinc-900 dark:text-zinc-100">Reporting :</strong> +220 %
+                  <p className="text-muted-foreground mb-4">
+                    <strong className="text-foreground">Reporting :</strong> +220 %
                     de portée sociale, +38 % d'engagement qualifié.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « De la scène à l'écran, un storytelling sans rupture. »
@@ -177,19 +177,19 @@ export function ReferencesPage() {
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Stratégie de communication – Institution publique
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Audit global et repositionnement d'image. Création d'un plan de communication
                     intégré : print, web, audiovisuel.
                   </p>
-                  <p className="text-zinc-600 dark:text-zinc-400 mb-4">
-                    <strong className="text-zinc-900 dark:text-zinc-100">Lancement :</strong> +1,8M
+                  <p className="text-muted-foreground mb-4">
+                    <strong className="text-foreground">Lancement :</strong> +1,8M
                     impressions organiques.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « Une stratégie claire, des résultats transparents. »
@@ -210,19 +210,19 @@ export function ReferencesPage() {
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Plateforme digitale sur mesure – PME B2B
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Conception d'un site e-commerce + CRM intégré. Automatisation du parcours client
                     via copilote IA.
                   </p>
-                  <p className="text-zinc-600 dark:text-zinc-400 mb-4">
-                    <strong className="text-zinc-900 dark:text-zinc-100">KPI :</strong> -60 % de
+                  <p className="text-muted-foreground mb-4">
+                    <strong className="text-foreground">KPI :</strong> -60 % de
                     saisies manuelles / +35 % de conversion.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « L'efficacité commence quand les outils parlent entre eux. »
@@ -243,19 +243,19 @@ export function ReferencesPage() {
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Formation IA & communication pour grands comptes
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Ateliers sur l'IA appliquée au marketing. Formation des équipes commerciales et
                     créatives.
                   </p>
-                  <p className="text-zinc-600 dark:text-zinc-400 mb-4">
-                    <strong className="text-zinc-900 dark:text-zinc-100">Résultats :</strong> +200 %
+                  <p className="text-muted-foreground mb-4">
+                    <strong className="text-foreground">Résultats :</strong> +200 %
                     de gain de temps sur la production de contenus, 98 % de satisfaction.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « Former, c'est renforcer la performance humaine. »
@@ -276,16 +276,16 @@ export function ReferencesPage() {
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                  <h3 className="text-2xl font-semibold text-foreground mb-3">
                     Identité visuelle & direction artistique
                   </h3>
-                  <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-4">
+                  <p className="text-lg text-foreground mb-4">
                     Refonte complète d'une marque institutionnelle. Création de logo, charte
                     graphique et univers digital. Intégration UX/UI sur le site et cohérence sur les
                     supports événementiels.
                   </p>
                   <blockquote
-                    className="border-l-2 pl-4 py-2 italic text-zinc-600 dark:text-zinc-400"
+                    className="border-l-2 pl-4 py-2 italic text-muted-foreground"
                     style={{ borderColor: "#7C3AED" }}
                   >
                     « La cohérence visuelle est le premier signe de crédibilité. »
@@ -330,22 +330,22 @@ export function ReferencesPage() {
               },
             ].map((item, i) => (
               <div key={i} className="card group hover:shadow-lg transition-shadow">
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                <h3 className="font-semibold text-foreground mb-3">
                   {item.title}
                 </h3>
-                <p className="text-zinc-600 dark:text-zinc-400">{item.desc}</p>
+                <p className="text-muted-foreground">{item.desc}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto">
             « Notre savoir-faire s'adapte à vos univers, sans jamais dénaturer votre ADN. »
           </p>
         </div>
       </ThemeSection>
 
       {/* Notre différence */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-4xl mx-auto">
           <SectionHeading
             eyebrow="Notre différence"
@@ -365,12 +365,12 @@ export function ReferencesPage() {
                   className="w-2 h-2 rounded-full flex-shrink-0 mt-2"
                   style={{ backgroundColor: "#7C3AED" }}
                 ></div>
-                <p className="flex-1 text-zinc-700 dark:text-zinc-300">{item}</p>
+                <p className="flex-1 text-foreground">{item}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto">
             « Nous mesurons l'émotion autant que la performance. »
           </p>
         </div>
@@ -403,10 +403,10 @@ export function ReferencesPage() {
               },
             ].map((item, i) => (
               <div key={i} className="card group hover:shadow-lg transition-shadow">
-                <blockquote className="text-zinc-700 dark:text-zinc-300 mb-4 italic">
+                <blockquote className="text-foreground mb-4 italic">
                   "{item.quote}"
                 </blockquote>
-                <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                <p className="text-sm font-medium text-foreground">
                   — {item.author}
                 </p>
               </div>
@@ -416,7 +416,7 @@ export function ReferencesPage() {
       </ThemeSection>
 
       {/* Chiffres clés */}
-      <ThemeSection variant="light" className="py-20 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-20 bg-muted">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             eyebrow="Chiffres clés de nos réalisations"
@@ -448,16 +448,16 @@ export function ReferencesPage() {
                 key={i}
                 className="card text-center group hover:shadow-lg transition-all hover:scale-105"
               >
-                <div className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-zinc-100 mb-2">
+                <div className="text-4xl md:text-5xl font-bold text-foreground mb-2">
                   {item.number}
                 </div>
-                <p className="font-semibold text-zinc-900 dark:text-zinc-100 mb-1">{item.label}</p>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">{item.desc}</p>
+                <p className="font-semibold text-foreground mb-1">{item.label}</p>
+                <p className="text-sm text-muted-foreground">{item.desc}</p>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-lg text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto mt-12">
+          <p className="text-center text-lg text-foreground max-w-3xl mx-auto mt-12">
             « Notre croissance repose sur la confiance et la constance. »
           </p>
         </div>
@@ -467,10 +467,10 @@ export function ReferencesPage() {
       <ThemeSection variant="gradient" className="py-32">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
               Des preuves. Pas des promesses.
             </h2>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 max-w-2xl mx-auto">
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
               Une mosaïque dynamique : tournage, scène, table de montage, interface web et formation
               IA.
             </p>
@@ -490,7 +490,7 @@ export function ReferencesPage() {
                 className="card text-center group hover:shadow-xl transition-all hover:scale-105"
               >
                 <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                <h3 className="text-lg font-semibold text-foreground">
                   {item.title}
                 </h3>
               </div>
@@ -508,7 +508,7 @@ export function ReferencesPage() {
                 className="w-3 h-3 rounded-full animate-pulse"
                 style={{ backgroundColor: "#7C3AED" }}
               ></div>
-              <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+              <span className="text-sm font-medium text-foreground">
                 Projets Réussis
               </span>
               <div
@@ -521,12 +521,12 @@ export function ReferencesPage() {
       </ThemeSection>
 
       {/* CTA */}
-      <ThemeSection variant="light" className="py-32 bg-zinc-50 dark:bg-zinc-900/30">
+      <ThemeSection variant="light" className="py-32 bg-muted">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 mb-6">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-6">
             Découvrez l'impact de notre approche
           </h2>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
             Explorez nos études de cas complètes et découvrez nos chiffres d'impact pour comprendre
             comment nous pouvons transformer vos projets.
           </p>

@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
 
       return NextResponse.json({
         ...page,
-        layout: JSON.parse(page.layout),
+        content: page.content,
       });
     }
 
@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(
       pages.map(page => ({
         ...page,
-        layout: JSON.parse(page.layout),
+        content: page.content,
       }))
     );
   } catch (error) {
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { slug, title, layout, status = 'DRAFT' } = body;
+    const { slug, title, content, status = 'DRAFT' } = body;
 
     if (!slug || !title) {
       return NextResponse.json(
@@ -60,23 +60,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const layoutString = typeof layout === 'string' 
-      ? layout 
-      : JSON.stringify(layout || { blocks: [] });
-
     const page = await prisma.page.create({
       data: {
         slug,
         title,
-        layout: layoutString,
+        content: content || { blocks: [] },
         status,
-        locale: 'fr',
+        authorId: 'default-user', // TODO: Récupérer depuis la session
       },
     });
 
     return NextResponse.json({
       ...page,
-      layout: JSON.parse(page.layout),
+      content: page.content,
     });
   } catch (error) {
     console.error('Erreur POST /api/pages:', error);
@@ -92,7 +88,7 @@ export async function PUT(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { id, slug, title, layout, status } = body;
+    const { id, slug, title, content, status } = body;
 
     if (!id && !slug) {
       return NextResponse.json(
@@ -101,10 +97,6 @@ export async function PUT(request: NextRequest) {
       );
     }
 
-    const layoutString = typeof layout === 'string' 
-      ? layout 
-      : JSON.stringify(layout || { blocks: [] });
-
     let page;
 
     if (id) {
@@ -112,14 +104,14 @@ export async function PUT(request: NextRequest) {
         where: { id },
         data: {
           title,
-          layout: layoutString,
+          content: content || { blocks: [] },
           status,
         },
       });
     } else {
       // Si pas d'ID, chercher par slug ou créer
       const existing = await prisma.page.findFirst({
-        where: { slug, locale: 'fr' },
+        where: { slug },
       });
 
       if (existing) {
@@ -127,7 +119,7 @@ export async function PUT(request: NextRequest) {
           where: { id: existing.id },
           data: {
             title,
-            layout: layoutString,
+            content: content || { blocks: [] },
             status,
           },
         });
@@ -136,9 +128,9 @@ export async function PUT(request: NextRequest) {
           data: {
             slug,
             title,
-            layout: layoutString,
+            content: content || { blocks: [] },
             status: status || 'DRAFT',
-            locale: 'fr',
+            authorId: 'default-user', // TODO: Récupérer depuis la session
           },
         });
       }
@@ -146,7 +138,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({
       ...page,
-      layout: JSON.parse(page.layout),
+      content: page.content,
     });
   } catch (error) {
     console.error('Erreur PUT /api/pages:', error);

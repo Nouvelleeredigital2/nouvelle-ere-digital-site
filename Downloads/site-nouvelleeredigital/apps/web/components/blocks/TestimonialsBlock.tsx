@@ -28,18 +28,18 @@ export function TestimonialsBlock({ data }: TestimonialsBlockProps) {
   } = data;
 
   return (
-    <section className="py-16 px-4 bg-gray-50">
+    <section className="py-16 px-4 bg-muted">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         {(title || subtitle) && (
           <div className="text-center mb-12">
             {title && (
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-muted-foreground mb-4">
                 {title}
               </h2>
             )}
             {subtitle && (
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 {subtitle}
               </p>
             )}
@@ -51,11 +51,11 @@ export function TestimonialsBlock({ data }: TestimonialsBlockProps) {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white p-8 rounded-lg shadow-lg relative"
+              className="bg-card p-8 rounded-lg shadow-lg relative"
             >
               <Quote className="absolute top-4 right-4 w-8 h-8 text-indigo-200" />
               
-              <p className="text-gray-700 mb-6 italic relative z-10">
+              <p className="text-muted-foreground mb-6 italic relative z-10">
                 "{testimonial.quote}"
               </p>
               
@@ -68,10 +68,10 @@ export function TestimonialsBlock({ data }: TestimonialsBlockProps) {
                   />
                 )}
                 <div>
-                  <div className="font-bold text-gray-900">
+                  <div className="font-bold text-muted-foreground">
                     {testimonial.author}
                   </div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-muted-foreground">
                     {testimonial.role}
                   </div>
                 </div>

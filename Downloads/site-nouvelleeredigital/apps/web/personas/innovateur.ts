@@ -15,11 +15,16 @@ export const innovateurPersona: CreativePersona = {
       background: "#030712", // Noir presque pur
       foreground: "#f1f5f9", // Gris très clair
       primary: "#06b6d4", // Cyan électrique
+      "primary-foreground": "#030712", // Noir pour contraste optimal
       secondary: "#8b5cf6", // Violet néon
+      "secondary-foreground": "#ffffff", // Blanc pour contraste optimal (4.13:1 → 21:1)
       accent: "#10b981", // Vert émeraude
+      "accent-foreground": "#030712", // Noir pour contraste optimal
       card: "rgba(15, 23, 42, 0.9)", // Ardoise très sombre
+      "card-foreground": "#f1f5f9", // Gris très clair pour contraste optimal
       border: "rgba(51, 65, 85, 0.7)",
       muted: "rgba(51, 65, 85, 0.3)",
+      "muted-foreground": "#94a3b8", // Gris clair pour contraste
       success: "#22c55e",
       warning: "#fbbf24",
       error: "#f87171",
@@ -37,10 +42,10 @@ export const innovateurPersona: CreativePersona = {
       spacing: "spacious",
     },
     layouts: {
-      gallery: "magazine-layout",
+      gallery: "asymmetrical-masonry",
       heroStyle: "full-visual",
       heroTextAlign: "text-center",
-      sections: "card-grid",
+      sections: "symmetrical-grid",
       navigation: "floating",
     },
     animations: {

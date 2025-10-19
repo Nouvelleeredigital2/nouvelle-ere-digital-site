@@ -63,7 +63,7 @@ const NavDropdown = ({ item, mobile = false }: { item: NavItem; mobile?: boolean
       <li>
         <Link
           href={item.href}
-          className="text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white transition-colors font-medium block py-2"
+          className="text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-card-foreground transition-colors font-medium block py-2"
           style={{ textDecoration: "none" }}
         >
           {item.label}
@@ -76,7 +76,7 @@ const NavDropdown = ({ item, mobile = false }: { item: NavItem; mobile?: boolean
     <li className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white transition-colors font-medium flex items-center gap-1 py-2"
+        className="text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-card-foreground transition-colors font-medium flex items-center gap-1 py-2"
       >
         {item.label}
         <svg
@@ -92,7 +92,7 @@ const NavDropdown = ({ item, mobile = false }: { item: NavItem; mobile?: boolean
       {isOpen && (
         <ul
           className={clsx(
-            "bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg shadow-lg mt-1",
+            "bg-card dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg shadow-lg mt-1",
             mobile ? "relative" : "absolute top-full left-0 min-w-48 z-50",
           )}
         >
@@ -101,7 +101,7 @@ const NavDropdown = ({ item, mobile = false }: { item: NavItem; mobile?: boolean
               {child.href ? (
                 <Link
                   href={child.href}
-                  className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors font-medium block px-4 py-3 first:rounded-t-lg last:rounded-b-lg hover:bg-zinc-50 dark:hover:bg-zinc-700"
+                  className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-card-foreground transition-colors font-medium block px-4 py-3 first:rounded-t-lg last:rounded-b-lg hover:bg-zinc-50 dark:hover:bg-zinc-700"
                   style={{ textDecoration: "none" }}
                 >
                   {child.label}

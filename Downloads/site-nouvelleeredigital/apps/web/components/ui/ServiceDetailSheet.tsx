@@ -56,9 +56,9 @@ export const ServiceDetailSheet: React.FC<ServiceDetailSheetProps> = ({
   };
 
   const variants: Record<Variant, string> = {
-    sheet: "fixed right-0 top-0 h-full bg-white shadow-lg",
-    modal: "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50",
-    drawer: "fixed bottom-0 left-0 right-0 bg-white rounded-t-lg shadow-lg",
+    sheet: "fixed right-0 top-0 h-full bg-card shadow-lg",
+    modal: "fixed inset-0 bg-background bg-opacity-50 flex items-center justify-center z-50",
+    drawer: "fixed bottom-0 left-0 right-0 bg-card rounded-t-lg shadow-lg",
   };
 
   const stateClasses: Record<State, string> = {
