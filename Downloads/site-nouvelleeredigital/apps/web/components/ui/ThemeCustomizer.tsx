@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useTheme } from "@/components/context/PersonaProvider";
+import { usePersona } from "@/components/context/PersonaProvider";
 import { Button } from "./Button";
 import { Palette, Save, RotateCcw, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -13,8 +13,30 @@ interface ThemeCustomizerProps {
 }
 
 export const ThemeCustomizer = ({ isOpen, onClose }: ThemeCustomizerProps) => {
-  const { currentTheme, setCustomTheme } = useTheme();
-  const [customTheme, setLocalCustomTheme] = useState<Theme>(currentTheme);
+  const { persona } = usePersona();
+  const [customTheme, setLocalCustomTheme] = useState<Theme>({
+    id: persona.id,
+    name: persona.name,
+    description: persona.description,
+    settings: {
+      colors: {
+        background: persona.settings.colors.background,
+        foreground: persona.settings.colors.foreground,
+      },
+      typography: {
+        fontFamilySans: persona.settings.typography.fontFamilySans,
+        fontFamilySerif: persona.settings.typography.fontFamilySerif,
+      },
+      styles: {
+        borderRadius: persona.settings.styles.borderRadius,
+      },
+      layouts: {
+        gallery: persona.settings.layouts.gallery,
+        heroStyle: persona.settings.layouts.heroStyle,
+        heroTextAlign: persona.settings.layouts.heroTextAlign,
+      },
+    },
+  });
 
   // Mettre à jour le thème local
   const updateCustomTheme = (updates: Partial<Theme>) => {
@@ -23,13 +45,38 @@ export const ThemeCustomizer = ({ isOpen, onClose }: ThemeCustomizerProps) => {
 
   // Appliquer le thème personnalisé
   const applyCustomTheme = () => {
-    setCustomTheme(customTheme);
+    // Ici, en absence de gestion globale de thème, on applique via CSS vars de base
+    const root = document.documentElement;
+    root.style.setProperty("--background", customTheme.settings.colors.background);
+    root.style.setProperty("--foreground", customTheme.settings.colors.foreground);
     onClose();
   };
 
   // Réinitialiser aux valeurs par défaut
   const resetToDefault = () => {
-    setLocalCustomTheme(currentTheme);
+    setLocalCustomTheme({
+      id: persona.id,
+      name: persona.name,
+      description: persona.description,
+      settings: {
+        colors: {
+          background: persona.settings.colors.background,
+          foreground: persona.settings.colors.foreground,
+        },
+        typography: {
+          fontFamilySans: persona.settings.typography.fontFamilySans,
+          fontFamilySerif: persona.settings.typography.fontFamilySerif,
+        },
+        styles: {
+          borderRadius: persona.settings.styles.borderRadius,
+        },
+        layouts: {
+          gallery: persona.settings.layouts.gallery,
+          heroStyle: persona.settings.layouts.heroStyle,
+          heroTextAlign: persona.settings.layouts.heroTextAlign,
+        },
+      },
+    });
   };
 
   if (!isOpen) return null;
@@ -76,7 +123,7 @@ export const ThemeCustomizer = ({ isOpen, onClose }: ThemeCustomizerProps) => {
                 Couleurs principales
               </h3>
               <div className="grid grid-cols-2 gap-4">
-                {Object.entries(customTheme.colors).map(([key, value]) => (
+                {Object.entries(customTheme.settings.colors).map(([key, value]) => (
                   <div key={key}>
                     <label className="block text-sm font-medium text-muted-foreground dark:text-muted-foreground mb-2 capitalize">
                       {key === "primary"
@@ -96,20 +143,26 @@ export const ThemeCustomizer = ({ isOpen, onClose }: ThemeCustomizerProps) => {
                     <div className="flex items-center gap-3">
                       <input
                         type="color"
-                        value={value}
+                        value={value as string}
                         onChange={(e) =>
                           updateCustomTheme({
-                            colors: { ...customTheme.colors, [key]: e.target.value },
+                            settings: {
+                              ...customTheme.settings,
+                              colors: { ...customTheme.settings.colors, [key]: e.target.value },
+                            },
                           })
                         }
                         className="w-12 h-12 rounded-lg cursor-pointer border-2 border-border"
                       />
                       <input
                         type="text"
-                        value={value}
+                        value={value as string}
                         onChange={(e) =>
                           updateCustomTheme({
-                            colors: { ...customTheme.colors, [key]: e.target.value },
+                            settings: {
+                              ...customTheme.settings,
+                              colors: { ...customTheme.settings.colors, [key]: e.target.value },
+                            },
                           })
                         }
                         className="flex-1 px-3 py-2 border border-border dark:border-zinc-600 rounded-lg bg-card dark:bg-zinc-800 text-muted-foreground dark:text-card-foreground text-sm font-mono"
@@ -131,14 +184,14 @@ export const ThemeCustomizer = ({ isOpen, onClose }: ThemeCustomizerProps) => {
                     Police Sans-serif
                   </label>
                   <select
-                    value={customTheme.typography.fontFamily.sans}
+                    value={customTheme.settings.typography.fontFamilySans}
                     onChange={(e) =>
                       updateCustomTheme({
-                        typography: {
-                          ...customTheme.typography,
-                          fontFamily: {
-                            ...customTheme.typography.fontFamily,
-                            sans: e.target.value,
+                        settings: {
+                          ...customTheme.settings,
+                          typography: {
+                            ...customTheme.settings.typography,
+                            fontFamilySans: e.target.value,
                           },
                         },
                       })
@@ -155,14 +208,14 @@ export const ThemeCustomizer = ({ isOpen, onClose }: ThemeCustomizerProps) => {
                     Police Serif
                   </label>
                   <select
-                    value={customTheme.typography.fontFamily.serif}
+                    value={customTheme.settings.typography.fontFamilySerif}
                     onChange={(e) =>
                       updateCustomTheme({
-                        typography: {
-                          ...customTheme.typography,
-                          fontFamily: {
-                            ...customTheme.typography.fontFamily,
-                            serif: e.target.value,
+                        settings: {
+                          ...customTheme.settings,
+                          typography: {
+                            ...customTheme.settings.typography,
+                            fontFamilySerif: e.target.value,
                           },
                         },
                       })
@@ -186,10 +239,13 @@ export const ThemeCustomizer = ({ isOpen, onClose }: ThemeCustomizerProps) => {
                     Arrondi des bordures
                   </label>
                   <select
-                    value={customTheme.styles.borderRadius}
+                    value={customTheme.settings.styles.borderRadius}
                     onChange={(e) =>
                       updateCustomTheme({
-                        styles: { ...customTheme.styles, borderRadius: e.target.value },
+                        settings: {
+                          ...customTheme.settings,
+                          styles: { ...customTheme.settings.styles, borderRadius: e.target.value },
+                        },
                       })
                     }
                     className="w-full px-3 py-2 border border-border dark:border-zinc-600 rounded-lg bg-card dark:bg-zinc-800 text-muted-foreground dark:text-card-foreground"
@@ -212,9 +268,9 @@ export const ThemeCustomizer = ({ isOpen, onClose }: ThemeCustomizerProps) => {
               <div
                 className="p-4 rounded-lg text-card-foreground text-center"
                 style={{
-                  backgroundColor: customTheme.colors.primary,
-                  fontFamily: customTheme.typography.fontFamily.sans,
-                  borderRadius: customTheme.styles.borderRadius,
+                  backgroundColor: customTheme.settings.colors.background,
+                  fontFamily: customTheme.settings.typography.fontFamilySans,
+                  borderRadius: customTheme.settings.styles.borderRadius,
                 }}
               >
                 <div className="text-lg font-bold">Titre Principal</div>

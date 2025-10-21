@@ -26,17 +26,23 @@ class PersonaAnalytics {
   private sessionId: string;
   private sessionStartTime: number;
   private events: AnalyticsEvent[] = [];
-  private isEnabled: boolean;
+  private _isEnabled: boolean;
 
   constructor() {
     this.sessionId = this.generateSessionId();
     this.sessionStartTime = Date.now();
-    this.isEnabled =
+    this._isEnabled =
       process.env.NODE_ENV === "production" || localStorage.getItem("analytics-enabled") === "true";
 
-    // Écouter les événements de changement de persona
-    window.addEventListener("personaChanged", this.handlePersonaChange.bind(this));
-    window.addEventListener("userPreferencesChanged", this.handlePreferencesChange.bind(this));
+    // Écouter les événements de changement de persona (caster en any pour CustomEvent)
+    window.addEventListener(
+      "personaChanged",
+      (this.handlePersonaChange.bind(this) as unknown) as EventListener,
+    );
+    window.addEventListener(
+      "userPreferencesChanged",
+      (this.handlePreferencesChange.bind(this) as unknown) as EventListener,
+    );
   }
 
   private generateSessionId(): string {
@@ -49,7 +55,7 @@ class PersonaAnalytics {
     personaName: string,
     metadata?: Record<string, any>,
   ) {
-    if (!this.isEnabled) return;
+    if (!this._isEnabled) return;
 
     const analyticsEvent: AnalyticsEvent = {
       event,
@@ -77,6 +83,10 @@ class PersonaAnalytics {
         ...metadata,
       });
     }
+  }
+
+  public get isEnabled(): boolean {
+    return this._isEnabled;
   }
 
   private handlePersonaChange(event: CustomEvent) {

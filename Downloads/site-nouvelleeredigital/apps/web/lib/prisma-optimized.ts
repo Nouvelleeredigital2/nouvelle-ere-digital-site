@@ -136,8 +136,8 @@ export const optimizedPageQueries = {
           status: 'PUBLISHED',
           publishedAt: { lte: new Date() },
           OR: [
-            { title: { contains: query, mode: 'insensitive' } },
-            { metaDescription: { contains: query, mode: 'insensitive' } },
+            { title: { contains: query } },
+            { metaDescription: { contains: query } },
           ],
         },
         select: PageSelect,
@@ -461,12 +461,3 @@ export async function withTimeout<T>(
   
   return Promise.race([operation, timeoutPromise]);
 }
-
-// Export des fonctions optimisées
-export {
-  optimizedPageQueries,
-  optimizedServiceQueries,
-  optimizedMediaQueries,
-  optimizedUserQueries,
-  optimizedStatsQueries,
-};

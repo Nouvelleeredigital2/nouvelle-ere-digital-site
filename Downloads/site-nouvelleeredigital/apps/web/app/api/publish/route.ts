@@ -12,42 +12,20 @@ export async function POST() {
     const pages = await prisma.page.findMany({
       where: {
         status: 'PUBLISHED',
-        locale: 'fr',
       },
     });
 
-    // Créer le snapshot
-    const siteJson = {
+    // Pour l'instant, on retourne juste les pages publiées
+    // TODO: Implémenter un système de snapshots avec la base de données
+    return NextResponse.json({ 
+      success: true,
       pages: pages.map(page => ({
         id: page.id,
         slug: page.slug,
         title: page.title,
-        layout: JSON.parse(page.layout),
+        content: page.content,
       })),
-      publishedAt: new Date().toISOString(),
-    };
-
-    // Désactiver tous les anciens snapshots
-    await prisma.publishSnapshot.updateMany({
-      where: { isActive: true },
-      data: { isActive: false },
-    });
-
-    // Créer le nouveau snapshot actif
-    const snapshot = await prisma.publishSnapshot.create({
-      data: {
-        siteJson: JSON.stringify(siteJson),
-        isActive: true,
-      },
-    });
-
-    return NextResponse.json({ 
-      success: true,
-      snapshot: {
-        id: snapshot.id,
-        createdAt: snapshot.createdAt,
-        pagesCount: pages.length,
-      }
+      pagesCount: pages.length,
     });
   } catch (error) {
     console.error('Erreur POST /api/publish:', error);
@@ -55,21 +33,23 @@ export async function POST() {
   }
 }
 
-// GET - Récupérer le snapshot actif
+// GET - Récupérer les pages publiées
 export async function GET() {
   try {
-    const snapshot = await prisma.publishSnapshot.findFirst({
-      where: { isActive: true },
-      orderBy: { createdAt: 'desc' },
+    const pages = await prisma.page.findMany({
+      where: { status: 'PUBLISHED' },
+      orderBy: { updatedAt: 'desc' },
     });
 
-    if (!snapshot) {
-      return NextResponse.json({ error: 'Aucun snapshot publié' }, { status: 404 });
-    }
-
     return NextResponse.json({
-      ...snapshot,
-      siteJson: JSON.parse(snapshot.siteJson),
+      pages: pages.map(page => ({
+        id: page.id,
+        slug: page.slug,
+        title: page.title,
+        content: page.content,
+        publishedAt: page.publishedAt,
+      })),
+      pagesCount: pages.length,
     });
   } catch (error) {
     console.error('Erreur GET /api/publish:', error);

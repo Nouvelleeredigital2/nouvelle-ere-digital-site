@@ -26,7 +26,7 @@ interface Post {
 export default function EditBlogPostPage() {
   const router = useRouter();
   const params = useParams();
-  const postId = params.id as string;
+  const postId = params?.['id'] as string;
   
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);

@@ -8,13 +8,16 @@ export const ThemeSection = ({
   variant = "light",
   className,
   children,
+  id,
 }: {
   variant?: "light" | "dark" | "gradient";
   className?: string;
   children: ReactNode;
+  id?: string;
 }) => {
   return (
     <section
+      id={id}
       className={clsx(
         "py-24 transition-colors duration-300",
         variant === "dark" && "bg-zinc-950 text-zinc-100 dark:bg-zinc-950",

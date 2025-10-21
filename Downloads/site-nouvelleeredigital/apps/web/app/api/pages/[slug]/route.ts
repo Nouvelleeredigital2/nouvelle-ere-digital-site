@@ -3,7 +3,7 @@ import { prisma } from '@/lib/prisma';
 import { z } from 'zod';
 
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: { slug: string } }
 ) {
   try {
@@ -68,10 +68,10 @@ export async function PATCH(
       where: { slug },
       data: {
         content: validation.data.content,
-        title: validation.data.title,
-        status: validation.data.status,
-        metaTitle: validation.data.metaTitle,
-        metaDescription: validation.data.metaDescription,
+        title: validation.data.title || '',
+        status: validation.data.status || 'DRAFT',
+        metaTitle: validation.data.metaTitle || '',
+        metaDescription: validation.data.metaDescription || '',
         updatedAt: new Date(),
       },
     });

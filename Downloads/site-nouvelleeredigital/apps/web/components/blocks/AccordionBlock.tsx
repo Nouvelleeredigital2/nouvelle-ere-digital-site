@@ -4,13 +4,8 @@
 import React, { useState } from 'react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { ChevronDown, ChevronRight } from 'lucide-react';
-import { BlockRenderer } from './BlockRenderer';
-
-interface Block {
-  id: string;
-  type: string;
-  data: any;
-}
+import { BlocksRenderer } from './BlocksRenderer';
+import type { Block } from '@/lib/types/blocks';
 
 interface AccordionSection {
   id: string;
@@ -148,7 +143,7 @@ export function AccordionBlock({ data }: AccordionBlockProps) {
 
                   <CollapsibleContent className="px-6 py-4 bg-card">
                     <div className="prose prose-lg max-w-none">
-                      <BlockRenderer blocks={section.content} />
+                      <BlocksRenderer blocks={section.content} />
                     </div>
                   </CollapsibleContent>
                 </Collapsible>

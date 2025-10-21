@@ -2,7 +2,7 @@
 
 import { prisma } from './prisma';
 import { cache } from './cache';
-import { performanceMonitor } from './performance-monitor';
+import { performanceMonitor, measureFunction } from './performance-monitor';
 
 // Types pour la génération statique
 interface StaticGenerationOptions {
@@ -29,7 +29,7 @@ export async function generateStaticPages(
 ): Promise<StaticPage[]> {
   const { force = false, cache: useCache = true, revalidate = 3600 } = options;
 
-  return performanceMonitor.measureFunction('static_generation', async () => {
+  return await measureFunction<StaticPage[]>('static_generation', async () => {
     // Récupérer toutes les pages publiées
     const pages = await prisma.page.findMany({
       where: {
@@ -65,7 +65,7 @@ export async function generateStaticPages(
         content: page.content,
         metadata: {
           title: page.metaTitle || page.title,
-          description: page.metaDescription,
+          description: page.metaDescription || undefined,
           lastModified: page.updatedAt,
           priority: calculatePagePriority(page),
         },
@@ -109,7 +109,7 @@ export async function generateSitemap(
 ): Promise<string> {
   const { force = false, cache: useCache = true } = options;
 
-  return performanceMonitor.measureFunction('sitemap_generation', async () => {
+  return await measureFunction<string>('sitemap_generation', async () => {
     const cacheKey = 'sitemap:xml';
     
     if (useCache && !force) {
@@ -175,11 +175,29 @@ export async function generateSEOMetadata(
 }> {
   const { force = false, cache: useCache = true } = options;
 
-  return performanceMonitor.measureFunction('seo_metadata_generation', async () => {
+  return await measureFunction<{
+    title: string;
+    description: string;
+    keywords: string[];
+    ogTitle: string;
+    ogDescription: string;
+    ogImage: string;
+    twitterCard: string;
+    canonical: string;
+  }>('seo_metadata_generation', async () => {
     const cacheKey = `seo_metadata:${page.slug}`;
     
     if (useCache && !force) {
-      const cached = await cache.get(cacheKey);
+      const cached = await cache.get<{
+        title: string;
+        description: string;
+        keywords: string[];
+        ogTitle: string;
+        ogDescription: string;
+        ogImage: string;
+        twitterCard: string;
+        canonical: string;
+      }>(cacheKey);
       if (cached) return cached;
     }
 
@@ -231,7 +249,7 @@ function generateKeywords(page: any): string[] {
   // Ajouter des mots-clés basés sur le titre
   if (page.title) {
     const titleWords = page.title.toLowerCase().split(/\s+/);
-    keywords.push(...titleWords.filter(word => word.length > 3));
+    keywords.push(...titleWords.filter((word: string) => word.length > 3));
   }
   
   // Ajouter des mots-clés basés sur le contenu
@@ -290,11 +308,19 @@ export async function preloadData(
 }> {
   const { force = false, cache: useCache = true } = options;
 
-  return performanceMonitor.measureFunction('data_preload', async () => {
+  return await measureFunction<{
+    pages: any[];
+    services: any[];
+    media: any[];
+  }>('data_preload', async () => {
     const cacheKey = 'preloaded_data';
     
     if (useCache && !force) {
-      const cached = await cache.get(cacheKey);
+      const cached = await cache.get<{
+        pages: any[];
+        services: any[];
+        media: any[];
+      }>(cacheKey);
       if (cached) return cached;
     }
 
@@ -375,11 +401,3 @@ export function monitorStaticGeneration(): void {
 
 // Export des types et fonctions
 export type { StaticGenerationOptions, StaticPage };
-export {
-  generateStaticPages,
-  generateSitemap,
-  generateSEOMetadata,
-  preloadData,
-  invalidateStaticCache,
-  monitorStaticGeneration,
-};

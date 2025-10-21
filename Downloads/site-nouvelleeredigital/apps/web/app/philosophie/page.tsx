@@ -35,9 +35,6 @@ export default function PhilosophiePage() {
           <SectionHeader
             title="Simplifier l'Innovation"
             subtitle="Rendre la complexité accessible"
-            description="Nous croyons que la technologie la plus avancée doit être simple à utiliser et à comprendre. Notre approche consiste à démystifier les outils complexes pour les rendre accessibles à tous."
-            align="center"
-            size="lg"
           />
 
           <FadeIn className="mt-16">
@@ -130,9 +127,6 @@ export default function PhilosophiePage() {
           <SectionHeader
             title="Créer l'Exceptionnel"
             subtitle="Excellence dans chaque détail"
-            description="Nous nous engageons à dépasser les attentes, en combinant créativité, technologie et expertise pour créer des expériences digitales qui marquent les esprits et génèrent des résultats tangibles."
-            align="center"
-            size="md"
           />
 
           <FadeIn className="mt-16">

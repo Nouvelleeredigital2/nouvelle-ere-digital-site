@@ -4,15 +4,13 @@ services:
   # Application Next.js
   web:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ../..
+      dockerfile: apps/web/Dockerfile
+    env_file:
+      - docker-compose.env
     ports:
       - "3000:3000"
-    environment:
-      - NODE_ENV=production
-      - DATABASE_URL=file:./prisma/dev.db
-      - NEXTAUTH_URL=http://localhost:3000
-      - NEXTAUTH_SECRET=your-secret-key-change-in-production
+    # environment variables moved to env_file for cleanliness
     volumes:
       # Persister la base de données
       - ./prisma/dev.db:/app/prisma/dev.db

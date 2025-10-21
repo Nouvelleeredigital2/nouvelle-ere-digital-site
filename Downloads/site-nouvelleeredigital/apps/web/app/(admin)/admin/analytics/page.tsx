@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
-import { Badge } from '@/components/ui/Badge';
 import { 
   BarChart3, 
   TrendingUp, 
@@ -16,7 +15,6 @@ import {
   Smartphone,
   Monitor,
   Tablet,
-  Calendar,
   Download,
   RefreshCw
 } from 'lucide-react';
@@ -119,16 +117,6 @@ export default function AnalyticsAdmin() {
     } finally {
       setLoading(false);
     }
-  };
-
-  const getTimeRangeLabel = (range: string) => {
-    const labels = {
-      '1d': 'Dernière 24h',
-      '7d': '7 derniers jours',
-      '30d': '30 derniers jours',
-      '90d': '90 derniers jours',
-    };
-    return labels[range as keyof typeof labels] || range;
   };
 
   const getDeviceIcon = (device: string) => {

@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 import { personas, type PersonaId } from '@/personas';
 import { usePersona } from '@/hooks/usePersona';
 import { Button } from '@/components/ui/Button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Badge } from '@/components/ui/Badge';
 import { Eye, Palette, Type, Layout, Check } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -20,22 +20,22 @@ export function PersonaSelector({
   showPreview = true, 
   className = '' 
 }: PersonaSelectorProps) {
-  const { activePersona, setActivePersona } = usePersona();
+  const { currentPersona, switchPersona } = usePersona();
   const [previewPersona, setPreviewPersona] = useState<PersonaId | null>(null);
   const [isPreviewMode, setIsPreviewMode] = useState(false);
 
   // Appliquer le persona de prévisualisation
   useEffect(() => {
     if (previewPersona && isPreviewMode) {
-      setActivePersona(previewPersona);
+      switchPersona(previewPersona);
     }
-  }, [previewPersona, isPreviewMode, setActivePersona]);
+  }, [previewPersona, isPreviewMode, switchPersona]);
 
   const handlePersonaSelect = (personaId: PersonaId) => {
     if (isPreviewMode) {
       setPreviewPersona(personaId);
     } else {
-      setActivePersona(personaId);
+      switchPersona(personaId);
       onPersonaChange?.(personaId);
       toast.success(`Persona "${personas.find(p => p.id === personaId)?.name}" appliqué`);
     }
@@ -44,19 +44,19 @@ export function PersonaSelector({
   const handlePreviewToggle = () => {
     if (isPreviewMode) {
       // Sortir du mode preview
-      setActivePersona(activePersona);
+      switchPersona(currentPersona?.id || 'naturel');
       setPreviewPersona(null);
       setIsPreviewMode(false);
     } else {
       // Entrer en mode preview
-      setPreviewPersona(activePersona);
+      setPreviewPersona(currentPersona?.id || 'naturel');
       setIsPreviewMode(true);
     }
   };
 
   const handleApplyPreview = () => {
     if (previewPersona) {
-      setActivePersona(previewPersona);
+      switchPersona(previewPersona);
       onPersonaChange?.(previewPersona);
       setIsPreviewMode(false);
       setPreviewPersona(null);
@@ -65,7 +65,7 @@ export function PersonaSelector({
   };
 
   const handleCancelPreview = () => {
-    setActivePersona(activePersona);
+    switchPersona(currentPersona?.id || 'naturel');
     setPreviewPersona(null);
     setIsPreviewMode(false);
   };
@@ -95,7 +95,7 @@ export function PersonaSelector({
         {showPreview && (
           <div className="flex items-center space-x-2">
             <Button
-              variant={isPreviewMode ? "default" : "outline"}
+              variant={isPreviewMode ? "primary" : "outline"}
               onClick={handlePreviewToggle}
               className="flex items-center space-x-2"
             >
@@ -129,7 +129,7 @@ export function PersonaSelector({
       {/* Personas Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {personas.map((persona) => {
-          const isActive = (isPreviewMode ? previewPersona : activePersona) === persona.id;
+          const isActive = (isPreviewMode ? previewPersona : currentPersona?.id) === persona.id;
           const colors = getPersonaColors(persona);
           
           return (
@@ -202,7 +202,7 @@ export function PersonaSelector({
 
                 {/* Bouton de sélection */}
                 <Button
-                  variant={isActive ? "default" : "outline"}
+                  variant={isActive ? "primary" : "outline"}
                   size="sm"
                   className="w-full"
                   onClick={(e) => {
@@ -248,13 +248,13 @@ export function PersonaSelector({
               <h4 className="font-medium text-gray-700">Informations</h4>
               <div className="text-sm space-y-2">
                 <div>
-                  <span className="font-medium">Nom:</span> {personas.find(p => p.id === activePersona)?.name}
+                  <span className="font-medium">Nom:</span> {personas.find(p => p.id === currentPersona?.id)?.name}
                 </div>
                 <div>
-                  <span className="font-medium">Description:</span> {personas.find(p => p.id === activePersona)?.description}
+                  <span className="font-medium">Description:</span> {personas.find(p => p.id === currentPersona?.id)?.description}
                 </div>
                 <div>
-                  <span className="font-medium">Archetype:</span> {personas.find(p => p.id === activePersona)?.archetype}
+                  <span className="font-medium">Archetype:</span> {personas.find(p => p.id === currentPersona?.id)?.archetype}
                 </div>
               </div>
             </div>

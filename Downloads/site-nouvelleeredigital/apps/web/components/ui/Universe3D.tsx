@@ -558,6 +558,7 @@ export function Universe3D({
       console.error("Erreur 3D:", error);
       setWebGLError("Erreur lors de l'initialisation de la scène 3D.");
     }
+    return () => {};
   }, [hoveredPole]);
 
   return (

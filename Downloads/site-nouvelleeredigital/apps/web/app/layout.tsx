@@ -31,15 +31,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={personaClasses}>
       <body>
-        <HydrationFix />
-        <PersonaProvider>
-          <ServiceModalProvider>
-            <Header />
-            <main>{children}</main>
-            <Footer />
-            <ServiceModal />
-          </ServiceModalProvider>
-        </PersonaProvider>
+        <HydrationFix>
+          <PersonaProvider>
+            <ServiceModalProvider>
+              <Header />
+              <main>{children}</main>
+              <Footer />
+              <ServiceModal />
+            </ServiceModalProvider>
+          </PersonaProvider>
+        </HydrationFix>
       </body>
     </html>
   );

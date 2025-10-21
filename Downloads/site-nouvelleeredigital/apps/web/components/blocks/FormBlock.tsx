@@ -154,7 +154,7 @@ export function FormBlock({ data }: FormBlockProps) {
               }`}
               rows={4}
             />
-            {error && <p className="mt-1 text-sm text-error">{error.message}</p>}
+            {error && <p className="mt-1 text-sm text-error">{(error as any).message}</p>}
           </div>
         );
 
@@ -177,7 +177,7 @@ export function FormBlock({ data }: FormBlockProps) {
                 <option key={option} value={option}>{option}</option>
               ))}
             </select>
-            {error && <p className="mt-1 text-sm text-error">{error.message}</p>}
+            {error && <p className="mt-1 text-sm text-error">{(error as any).message}</p>}
           </div>
         );
 
@@ -198,7 +198,7 @@ export function FormBlock({ data }: FormBlockProps) {
                 {field.required && <span className="text-error ml-1">*</span>}
               </label>
             </div>
-            {error && <p className="mt-1 text-sm text-error">{error.message}</p>}
+            {error && <p className="mt-1 text-sm text-error">{(error as any).message}</p>}
           </div>
         );
 
@@ -227,7 +227,7 @@ export function FormBlock({ data }: FormBlockProps) {
                 </div>
               ))}
             </div>
-            {error && <p className="mt-1 text-sm text-error">{error.message}</p>}
+            {error && <p className="mt-1 text-sm text-error">{(error as any).message}</p>}
           </div>
         );
 
@@ -247,7 +247,7 @@ export function FormBlock({ data }: FormBlockProps) {
                 error ? 'border-red-500' : 'border-border'
               }`}
             />
-            {error && <p className="mt-1 text-sm text-error">{error.message}</p>}
+            {error && <p className="mt-1 text-sm text-error">{(error as any).message}</p>}
           </div>
         );
     }

@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { BlockRenderer } from '@/components/blocks/BlockRenderer';
+import { BlocksRenderer } from '@/components/blocks/BlocksRenderer';
 import { generatePageMetadata } from '@/lib/seo-utils';
 import { getPreviewDraft } from '@/lib/preview-utils';
 import type { Metadata } from 'next';
@@ -81,7 +81,7 @@ export default async function PreviewPage({ params, searchParams }: PreviewPageP
         </div>
 
         {/* Contenu de la page */}
-        <BlockRenderer blocks={layout.blocks || []} />
+        <BlocksRenderer blocks={layout.blocks || []} />
 
         {/* Footer de prévisualisation */}
         <div className="bg-gray-100 px-4 py-3 text-center text-sm text-gray-600 border-t">

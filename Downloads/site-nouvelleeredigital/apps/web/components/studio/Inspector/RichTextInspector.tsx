@@ -10,11 +10,11 @@ import { RichTextEditor } from '../RichTextEditor';
 import type { RichTextBlock } from '@/lib/types/blocks';
 
 interface RichTextInspectorProps {
-  block: RichTextBlock;
+  data: RichTextBlock['data'];
   onUpdate: (data: Partial<RichTextBlock['data']>) => void;
 }
 
-export function RichTextInspector({ block, onUpdate }: RichTextInspectorProps) {
+export function RichTextInspector({ data, onUpdate }: RichTextInspectorProps) {
   const {
     register,
     handleSubmit,
@@ -23,7 +23,7 @@ export function RichTextInspector({ block, onUpdate }: RichTextInspectorProps) {
     formState: { errors },
   } = useForm<RichTextBlock['data']>({
     resolver: zodResolver(RichTextBlockDataSchema),
-    defaultValues: block.data,
+    defaultValues: data,
   });
 
   const currentValues = watch();

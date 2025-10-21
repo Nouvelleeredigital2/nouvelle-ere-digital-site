@@ -79,6 +79,7 @@ export default function MediaAdminPage() {
               onClick={() => setShowLibrary(true)}
               icon={<Upload className="w-4 h-4" />}
               className="bg-blue-600 hover:bg-blue-700 text-white"
+              loading={false}
             >
               Uploader des fichiers
             </LoadingButton>
@@ -162,6 +163,7 @@ export default function MediaAdminPage() {
                 onClick={() => setShowLibrary(true)}
                 icon={<Upload className="w-4 h-4" />}
                 className="mt-4 bg-blue-600 hover:bg-blue-700 text-white"
+                loading={false}
               >
                 Uploader des fichiers
               </LoadingButton>

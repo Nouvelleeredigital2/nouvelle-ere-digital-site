@@ -56,6 +56,7 @@ export const Toast: React.FC<ToastProps> = ({
       }, duration);
       return () => clearTimeout(timer);
     }
+    return () => {};
   }, [duration, onClose]);
 
   if (!visible) return null;

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     // Créer quelques pages d'exemple
     const samplePages = [
@@ -129,11 +129,7 @@ export async function POST(request: NextRequest) {
     ];
 
     // Supprimer les pages existantes (optionnel)
-    await prisma.page.deleteMany({
-      where: {
-        locale: 'fr'
-      }
-    });
+    await prisma.page.deleteMany({});
 
     // Créer les nouvelles pages
     const createdPages = [];
@@ -141,7 +137,7 @@ export async function POST(request: NextRequest) {
       const page = await prisma.page.create({
         data: {
           ...pageData,
-          locale: 'fr',
+          status: pageData.status as any,
           authorId: 'admin-user',
           metaTitle: pageData.title,
           metaDescription: `Page ${pageData.title} - Nouvelle Ère Digital`,

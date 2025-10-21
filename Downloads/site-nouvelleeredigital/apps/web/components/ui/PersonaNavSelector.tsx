@@ -26,6 +26,7 @@ export function PersonaNavSelector() {
       }, 800);
       return () => clearTimeout(timer);
     }
+    return () => {};
   }, [isTransitioning]);
 
   const getPersonaIcon = (archetype: string) => {

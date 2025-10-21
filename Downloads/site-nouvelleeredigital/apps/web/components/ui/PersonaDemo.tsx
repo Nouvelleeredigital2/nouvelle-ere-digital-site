@@ -90,13 +90,13 @@ export function PersonaDemo() {
               <h3 className="font-medium mb-2">Identité Visuelle</h3>
               <div className="space-y-1 text-sm">
                 <p>
-                  <strong>Mood:</strong> {persona.mood}
+                  <strong>Mood:</strong> {persona.visualIdentity?.mood}
                 </p>
                 <p>
-                  <strong>Energy:</strong> {persona.energy}
+                  <strong>Energy:</strong> {persona.visualIdentity?.energy}
                 </p>
                 <p>
-                  <strong>Archétype:</strong> {persona.name}
+                  <strong>Archétype:</strong> {persona.archetype || persona.name}
                 </p>
               </div>
             </div>
@@ -106,9 +106,11 @@ export function PersonaDemo() {
                 <p>
                   <strong>Galerie:</strong> {persona.settings.layouts.gallery}
                 </p>
-                <p>
-                  <strong>Sections:</strong> {persona.settings.layouts.sections}
-                </p>
+                {persona.settings.layouts.sections && (
+                  <p>
+                    <strong>Sections:</strong> {persona.settings.layouts.sections}
+                  </p>
+                )}
                 <p>
                   <strong>Navigation:</strong> {persona.settings.layouts.navigation}
                 </p>

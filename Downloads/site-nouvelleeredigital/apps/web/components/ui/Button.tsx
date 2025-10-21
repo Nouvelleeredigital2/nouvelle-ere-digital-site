@@ -3,8 +3,8 @@
 import { ButtonHTMLAttributes, ReactElement, isValidElement, cloneElement } from "react";
 import { cn } from "@/lib/utils";
 
-type Variant = "primary" | "outline" | "ghost" | "secondaire";
-type Size = "sm" | "md" | "lg";
+type Variant = "primary" | "outline" | "ghost" | "secondaire" | "destructive";
+type Size = "sm" | "md" | "lg" | "xl";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
@@ -26,12 +26,14 @@ export const Button = ({
     outline: "border border-border bg-background hover:bg-accent hover:text-accent-foreground",
     ghost: "hover:bg-accent hover:text-accent-foreground",
     secondaire: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+    destructive: "bg-red-600 text-white hover:bg-red-700",
   };
 
   const sizes: Record<Size, string> = {
     sm: "h-9 px-3 text-sm",
     md: "h-10 px-4 py-2",
     lg: "h-11 px-8 text-lg",
+    xl: "h-12 px-10 text-xl",
   };
 
   const buttonClasses = cn(

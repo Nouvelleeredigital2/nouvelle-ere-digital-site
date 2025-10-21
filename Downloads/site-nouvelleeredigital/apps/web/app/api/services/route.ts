@@ -1,52 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { CreateServiceSchema, type CreateServiceData } from '@/lib/types/services';
-import { withValidation, createPaginatedResponse, PaginationSchema } from '@/lib/api-middleware';
-import { ConflictError } from '@/lib/errors';
-import { optimizedServiceQueries } from '@/lib/prisma-optimized-simple';
-import { createOptimizedResponse, createSuccessResponse } from '@/lib/api-optimization-simple';
-import { performanceMonitor } from '@/lib/performance-monitor-simple';
 
-export const GET = withValidation(
-  undefined, // Pas de body pour GET
-  PaginationSchema, // Query parameters avec pagination
-  { required: false } // Pas d'auth requise pour la lecture
-)(async (request, { query }) => {
-  return performanceMonitor.measureFunction('api_services_get', async () => {
-    // Utiliser les requêtes optimisées
-    const [services, total] = await Promise.all([
-      optimizedServiceQueries.findManyActive({
-        limit: query.limit,
-        offset: (query.page - 1) * query.limit,
-        orderBy: 'order',
-        order: 'asc',
-      }),
-      optimizedServiceQueries.countActive(),
-    ]);
-
-    const response = createPaginatedResponse(services, total, {
-      page: query.page,
-      limit: query.limit,
-      totalPages: Math.ceil(total / query.limit),
+export async function GET(request: NextRequest) {
+  try {
+    const services = await prisma.service.findMany({
+      where: { status: 'ACTIVE' },
+      orderBy: { order: 'asc' },
     });
 
-    // Créer une réponse optimisée avec cache
-    return createOptimizedResponse(response, 200, {
-      cache: {
-        maxAge: 3600, // 1 heure
-        staleWhileRevalidate: 7200, // 2 heures
-      },
-      etag: true,
-    });
-  }, { operation: 'get_services' });
-});
+    return NextResponse.json(services);
+  } catch (error) {
+    console.error('Erreur GET /api/services:', error);
+    return NextResponse.json({ error: 'Erreur serveur' }, { status: 500 });
+  }
+}
 
-export const POST = withValidation(
-  CreateServiceSchema, // Validation du body
-  undefined, // Pas de query params
-  { required: true, roles: ['ADMIN', 'EDITOR'] } // Auth requise avec rôles
-)(async (request, { body }) => {
-  return performanceMonitor.measureFunction('api_services_post', async () => {
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
     const { title, description, icon, image, features, status, order } = body;
     
     // Générer un slug à partir du titre
@@ -63,7 +34,7 @@ export const POST = withValidation(
     });
 
     if (existingService) {
-      throw new ConflictError('Un service avec ce titre existe déjà');
+      return NextResponse.json({ error: 'Un service avec ce titre existe déjà' }, { status: 409 });
     }
 
     const service = await prisma.service.create({
@@ -73,47 +44,26 @@ export const POST = withValidation(
         icon,
         image,
         features: features || [],
-        status,
-        order,
+        status: status || 'ACTIVE',
+        order: order || 0,
         slug,
       },
-      select: {
-        id: true,
-        slug: true,
-        title: true,
-        description: true,
-        icon: true,
-        image: true,
-        features: true,
-        status: true,
-        order: true,
-        createdAt: true,
-        updatedAt: true,
-      },
     });
 
-    // Invalider le cache des services
-    await cache.invalidateByTags(['services', 'preloaded_data']);
+    return NextResponse.json(service);
+  } catch (error) {
+    console.error('Erreur POST /api/services:', error);
+    return NextResponse.json({ error: 'Erreur serveur' }, { status: 500 });
+  }
+}
 
-    return createSuccessResponse(service, 'Service créé avec succès', {
-      cache: {
-        maxAge: 0, // Pas de cache pour les créations
-      },
-    });
-  }, { operation: 'create_service' });
-});
-
-export const DELETE = withValidation(
-  undefined, // Pas de body pour DELETE
-  undefined, // Pas de query params
-  { required: true, roles: ['ADMIN'] } // Seuls les admins peuvent supprimer
-)(async (request, { query }) => {
-  return performanceMonitor.measureFunction('api_services_delete', async () => {
+export async function DELETE(request: NextRequest) {
+  try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
 
     if (!id) {
-      throw new Error('ID du service requis');
+      return NextResponse.json({ error: 'ID du service requis' }, { status: 400 });
     }
 
     // Vérifier que le service existe
@@ -122,20 +72,16 @@ export const DELETE = withValidation(
     });
 
     if (!existingService) {
-      throw new Error('Service non trouvé');
+      return NextResponse.json({ error: 'Service non trouvé' }, { status: 404 });
     }
 
     await prisma.service.delete({
       where: { id },
     });
 
-    // Invalider le cache des services
-    await cache.invalidateByTags(['services', 'preloaded_data']);
-
-    return createSuccessResponse(null, 'Service supprimé avec succès', {
-      cache: {
-        maxAge: 0, // Pas de cache pour les suppressions
-      },
-    });
-  }, { operation: 'delete_service' });
-});
+    return NextResponse.json({ success: true, message: 'Service supprimé avec succès' });
+  } catch (error) {
+    console.error('Erreur DELETE /api/services:', error);
+    return NextResponse.json({ error: 'Erreur serveur' }, { status: 500 });
+  }
+}

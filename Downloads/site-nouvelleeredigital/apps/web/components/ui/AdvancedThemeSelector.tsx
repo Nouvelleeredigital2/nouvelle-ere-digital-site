@@ -145,7 +145,7 @@ export function AdvancedThemeSelector({ onThemeChange }: ThemeSelectorProps) {
 
         <div className="flex items-center justify-center gap-4 text-sm">
           <span className="text-muted-foreground">Thème actuel:</span>
-          <Badge tone="primary" className="font-medium">
+          <Badge className="font-medium" variant="default">
             {contrastThemes[selectedTheme as keyof typeof contrastThemes]?.name || "Personnalisé"}
           </Badge>
           {selectedTheme !== "system" && (
@@ -221,7 +221,7 @@ export function AdvancedThemeSelector({ onThemeChange }: ThemeSelectorProps) {
                 <div className="flex gap-2">
                   <Button
                     size="sm"
-                    variant={isSelected ? "default" : "outline"}
+                    variant={isSelected ? "primary" : "outline"}
                     className="flex-1"
                     onClick={(e: React.MouseEvent) => {
                       e.stopPropagation();

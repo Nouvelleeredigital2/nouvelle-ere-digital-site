@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { MediaQuerySchema, UpdateMediaSchema, validateMediaQuery, validateUpdateMedia, type MediaQuery, type UpdateMediaData } from '@/lib/types/media';
+import { validateMediaQuery, type MediaQuery } from '@/lib/types/media';
+import { z } from 'zod';
 
 export async function GET(request: NextRequest) {
   try {

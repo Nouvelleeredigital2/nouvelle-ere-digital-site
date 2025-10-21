@@ -40,7 +40,7 @@ export function createOptimizedResponse(
   const buffer = Buffer.from(jsonString, 'utf8');
 
   // Créer la réponse
-  const response = new NextResponse(buffer, {
+  const response = new NextResponse(new Uint8Array(buffer), {
     status,
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
@@ -106,7 +106,7 @@ export async function createCompressedResponse(
   // Compresser avec gzip
   const compressed = await gzipAsync(buffer);
   
-  const response = new NextResponse(compressed, {
+  const response = new NextResponse(new Uint8Array(compressed), {
     status,
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
@@ -327,17 +327,3 @@ export function createPerformanceResponse<T>(
 
 // Export des types et fonctions
 export type { OptimizationOptions };
-export {
-  createOptimizedResponse,
-  createCompressedResponse,
-  createPaginatedResponse,
-  createErrorResponse,
-  createSuccessResponse,
-  validateCacheHeaders,
-  createNotModifiedResponse,
-  createPreloadResponse,
-  createPrefetchResponse,
-  createAdvancedCacheResponse,
-  createSecureResponse,
-  createPerformanceResponse,
-};

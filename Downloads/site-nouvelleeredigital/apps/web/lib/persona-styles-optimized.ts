@@ -1,6 +1,8 @@
 // Système de styles optimisé pour les personas
 // Utilise des variables CSS au lieu de classes JavaScript pour de meilleures performances
 
+import { useState, useEffect } from 'react';
+
 export interface PersonaTheme {
   name: string;
   colors: {

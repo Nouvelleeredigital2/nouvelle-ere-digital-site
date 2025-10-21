@@ -68,7 +68,7 @@ export const GalleryImageSchema = z.object({
 export const GalleryBlockDataSchema = z.object({
   images: z.array(GalleryImageSchema).optional(),
   layout: z.enum(['grid', 'masonry', 'carousel']).optional(),
-  columns: z.enum([2, 3, 4]).optional(),
+  columns: z.enum(['2', '3', '4']).optional(),
   gap: z.enum(['sm', 'md', 'lg']).optional(),
   aspectRatio: z.enum(['16/9', '4/3', '1/1', 'auto']).optional(),
 });
@@ -115,27 +115,27 @@ export const FormBlockDataSchema = z.object({
 export const ColumnDataSchema = z.object({
   id: z.string(),
   blocks: z.array(z.any()), // Array de blocs (récursif)
-  width: z.number().min(1).max(12).default(6), // Largeur en colonnes (système 12 colonnes)
+  width: z.number().min(1).max(12), // Largeur en colonnes (système 12 colonnes)
 });
 
 export const ColumnsBlockDataSchema = z.object({
   columns: z.array(ColumnDataSchema).min(2).max(4), // 2 à 4 colonnes
-  gap: z.enum(['none', 'sm', 'md', 'lg', 'xl']).default('md'),
-  alignment: z.enum(['start', 'center', 'end', 'stretch']).default('stretch'),
+  gap: z.enum(['none', 'sm', 'md', 'lg', 'xl']),
+  alignment: z.enum(['start', 'center', 'end', 'stretch']),
   responsive: z.object({
-    mobile: z.enum(['stack', 'columns']).default('stack'),
-    tablet: z.enum(['stack', 'columns']).default('columns'),
-    desktop: z.enum(['stack', 'columns']).default('columns'),
+    mobile: z.enum(['stack', 'columns']),
+    tablet: z.enum(['stack', 'columns']),
+    desktop: z.enum(['stack', 'columns']),
   }).optional(),
 });
 
 // Schéma pour les icônes
 export const IconBlockDataSchema = z.object({
   icon: z.string(), // Nom de l'icône (ex: "home", "user", "star")
-  size: z.enum(['xs', 'sm', 'md', 'lg', 'xl', '2xl']).default('md'),
+  size: z.enum(['xs', 'sm', 'md', 'lg', 'xl', '2xl']),
   color: z.string().optional(),
   backgroundColor: z.string().optional(),
-  shape: z.enum(['none', 'circle', 'square', 'rounded']).default('none'),
+  shape: z.enum(['none', 'circle', 'square', 'rounded']),
   animation: z.enum(['none', 'spin', 'pulse', 'bounce']).optional(),
   link: z.string().url().optional(),
   tooltip: z.string().optional(),

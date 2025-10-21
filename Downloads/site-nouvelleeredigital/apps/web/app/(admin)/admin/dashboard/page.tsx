@@ -4,9 +4,8 @@ import { useState, useEffect } from 'react';
 import { ResponsiveAdminLayout } from '@/components/admin/ResponsiveAdminLayout';
 import { PersonaSelector } from '@/components/admin/PersonaSelector';
 import { AdvancedMediaManager } from '@/components/admin/AdvancedMediaManager';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/Button';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/Card';
+import { Badge } from '@/components/ui/Badge';
 import { 
   TrendingUp, 
   Users, 
@@ -50,14 +49,11 @@ export default function AdminDashboard() {
     siteViews: 0,
     recentActivity: [],
   });
-  const [loading, setLoading] = useState(true);
 
   // Charger les statistiques
   useEffect(() => {
     const loadStats = async () => {
       try {
-        setLoading(true);
-        
         // Charger les statistiques des pages
         const pagesResponse = await fetch('/api/pages');
         const pagesData = await pagesResponse.json();
@@ -104,8 +100,6 @@ export default function AdminDashboard() {
       } catch (error) {
         console.error('Erreur lors du chargement des statistiques:', error);
         toast.error('Erreur lors du chargement des statistiques');
-      } finally {
-        setLoading(false);
       }
     };
 

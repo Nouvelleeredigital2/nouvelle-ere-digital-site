@@ -65,8 +65,26 @@ export function applyPersonaStyles(persona: CreativePersona): void {
     ] as const;
 
     tailwindColorKeys.forEach(key => {
-      if (colors[key]) {
-        const value = colors[key];
+      // Mapping des clés Tailwind vers les propriétés de l'objet colors
+      const colorMap: Record<string, keyof typeof colors> = {
+        'background': 'background',
+        'foreground': 'foreground', 
+        'primary': 'primary',
+        'primary-foreground': 'primary',
+        'secondary': 'secondary',
+        'secondary-foreground': 'secondary',
+        'card': 'card',
+        'card-foreground': 'card',
+        'accent': 'accent',
+        'accent-foreground': 'accent',
+        'muted': 'muted',
+        'muted-foreground': 'muted',
+        'border': 'border'
+      };
+      
+      const colorKey = colorMap[key];
+      if (colorKey && colors[colorKey]) {
+        const value = colors[colorKey];
         // Convertir les couleurs hex en HSL pour Tailwind
         if (typeof value === 'string' && value.startsWith('#')) {
           const hsl = hexToHsl(value);

@@ -203,7 +203,7 @@ export function PersonaAnalyticsDashboard() {
                 <div key={stat.personaId} className="space-y-2">
                   <div className="flex justify-between items-center">
                     <span className="font-medium">{stat.personaName}</span>
-                    <Badge tone="secondary">{stat.totalSessions} sessions</Badge>
+                    <Badge variant="secondary">{stat.totalSessions} sessions</Badge>
                   </div>
                   <div className="w-full bg-muted rounded-full h-2">
                     <div

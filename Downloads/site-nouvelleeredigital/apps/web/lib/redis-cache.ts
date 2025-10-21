@@ -301,15 +301,3 @@ export function cleanupRedis(): void {
   }, 300000); // Toutes les 5 minutes
 }
 
-// Export des types et fonctions
-export type { Redis };
-export {
-  initializeRedis,
-  getRedis,
-  closeRedis,
-  RedisUtils,
-  initializeRedisUtils,
-  getRedisUtils,
-  monitorRedis,
-  cleanupRedis,
-};

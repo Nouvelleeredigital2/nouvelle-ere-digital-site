@@ -10,8 +10,6 @@ import { RichTextBlock } from './RichTextBlock';
 import { GalleryBlock } from './GalleryBlock';
 import { ColumnsBlock } from './ColumnsBlock';
 import { VideoBlock } from './VideoBlock';
-import { TabsBlock } from './TabsBlock';
-import { AccordionBlock } from './AccordionBlock';
 import { FormBlock } from './FormBlock';
 import { IconBlock } from './IconBlock';
 
@@ -55,21 +53,26 @@ export function BlockRenderer({ block, isNested = false }: BlockRendererProps) {
     case 'richtext':
       return (
         <div className={baseClasses}>
-          <RichTextBlock data={block.data} />
+          <RichTextBlock block={block} />
         </div>
       );
     
     case 'gallery':
       return (
         <div className={baseClasses}>
-          <GalleryBlock data={block.data} />
+          <GalleryBlock data={{ 
+            ...block.data, 
+            images: block.data.images || [],
+            layout: block.data.layout || 'grid',
+            columns: (typeof block.data.columns === 'string' ? parseInt(block.data.columns) as 2 | 3 | 4 : block.data.columns) || 3
+          }} />
         </div>
       );
     
     case 'columns':
       return (
         <div className={baseClasses}>
-          <ColumnsBlock data={block.data} />
+          <ColumnsBlock block={block} />
         </div>
       );
     
@@ -77,20 +80,6 @@ export function BlockRenderer({ block, isNested = false }: BlockRendererProps) {
       return (
         <div className={baseClasses}>
           <VideoBlock data={block.data} />
-        </div>
-      );
-    
-    case 'tabs':
-      return (
-        <div className={baseClasses}>
-          <TabsBlock data={block.data} />
-        </div>
-      );
-    
-    case 'accordion':
-      return (
-        <div className={baseClasses}>
-          <AccordionBlock data={block.data} />
         </div>
       );
     
@@ -117,8 +106,8 @@ export function BlockRenderer({ block, isNested = false }: BlockRendererProps) {
     
     default:
       return (
-        <div className={`${baseClasses} p-4 border-2 border-dashed border-border rounded-lg text-center text-muted-foreground0`}>
-          Bloc non reconnu: {block.type}
+        <div className={`${baseClasses} p-4 border-2 border-dashed border-border rounded-lg text-center text-muted-foreground`}>
+          Bloc non reconnu: {(block as any).type}
         </div>
       );
   }

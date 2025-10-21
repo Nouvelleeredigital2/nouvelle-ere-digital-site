@@ -3,9 +3,9 @@
 import { useState, useEffect, useMemo } from 'react';
 import { MediaLibrary } from '@/components/media/MediaLibrary';
 import { Button } from '@/components/ui/Button';
-import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/Input';
+import { Badge } from '@/components/ui/Badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card';
 import { 
   Search, 
   Filter, 
@@ -541,6 +541,7 @@ export function AdvancedMediaManager() {
       {/* Modales */}
       {showLibrary && (
         <MediaLibrary
+          isOpen={showLibrary}
           onClose={() => setShowLibrary(false)}
           onSelect={(media) => {
             setShowLibrary(false);
@@ -593,7 +594,11 @@ function MediaMetadataEditor({ media, onClose, onSave }: MediaMetadataEditorProp
 
       if (!response.ok) throw new Error('Erreur lors de la sauvegarde');
 
-      onSave({ ...media, ...formData });
+      onSave({ 
+        ...media, 
+        ...formData,
+        tags: formData.tags.split(',').map(tag => tag.trim()).filter(Boolean)
+      });
       toast.success('Métadonnées sauvegardées');
     } catch (error) {
       toast.error('Erreur lors de la sauvegarde');

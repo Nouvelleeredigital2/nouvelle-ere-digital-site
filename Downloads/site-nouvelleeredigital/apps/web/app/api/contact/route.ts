@@ -49,10 +49,10 @@ export async function POST(request: NextRequest) {
     await simulateEmailSending({
       name,
       email,
-      company,
-      phone,
+      company: company || '',
+      phone: phone || '',
       service,
-      budget,
+      budget: budget || '',
       message,
     });
 
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
 }
 
 // Fonction de simulation d'envoi d'email
-async function simulateEmailSending(data: {
+async function simulateEmailSending(_data: {
   name: string;
   email: string;
   company?: string;

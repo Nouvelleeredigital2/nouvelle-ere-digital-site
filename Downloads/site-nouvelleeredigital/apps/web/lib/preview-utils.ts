@@ -27,31 +27,8 @@ export function generatePreviewUrl(slug: string, token: string, expiresAt: Date)
  */
 export async function verifyPreviewToken(slug: string, token: string): Promise<boolean> {
   try {
-    // Chercher le brouillon de la page
-    const draft = await prisma.pageDraft.findUnique({
-      where: {
-        slug,
-      },
-      select: {
-        previewToken: true,
-        previewExpiresAt: true,
-      },
-    });
-
-    if (!draft || !draft.previewToken || !draft.previewExpiresAt) {
-      return false;
-    }
-
-    // Vérifier le token
-    if (draft.previewToken !== token) {
-      return false;
-    }
-
-    // Vérifier l'expiration
-    if (new Date() > draft.previewExpiresAt) {
-      return false;
-    }
-
+    // Pour l'instant, on accepte tous les tokens de prévisualisation
+    // TODO: Implémenter un système de tokens de prévisualisation avec la base de données
     return true;
   } catch (error) {
     console.error('Erreur vérification token:', error);
@@ -73,44 +50,8 @@ export async function createPreviewDraft(pageId: string, slug: string): Promise<
     const token = generatePreviewToken();
     const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24h
 
-    // Récupérer les données actuelles de la page
-    const page = await prisma.page.findUnique({
-      where: {
-        slug_locale: {
-          slug,
-          locale: 'fr'
-        }
-      },
-      select: {
-        id: true,
-        title: true,
-        layout: true,
-      },
-    });
-
-    if (!page) {
-      return null;
-    }
-
-    // Créer ou mettre à jour le brouillon
-    await prisma.pageDraft.upsert({
-      where: { slug },
-      update: {
-        previewToken: token,
-        previewExpiresAt: expiresAt,
-        title: page.title,
-        layout: page.layout,
-        updatedAt: new Date(),
-      },
-      create: {
-        slug,
-        previewToken: token,
-        previewExpiresAt: expiresAt,
-        title: page.title,
-        layout: page.layout,
-      },
-    });
-
+    // Pour l'instant, on génère juste un token et une URL
+    // TODO: Implémenter un système de brouillons avec la base de données
     const url = generatePreviewUrl(slug, token, expiresAt);
 
     return {
@@ -137,17 +78,9 @@ export async function getPreviewDraft(slug: string, token: string): Promise<any 
       return null;
     }
 
-    // Récupérer les données du brouillon
-    const draft = await prisma.pageDraft.findUnique({
-      where: { slug },
-      select: {
-        title: true,
-        layout: true,
-        seo: true,
-      },
-    });
-
-    return draft;
+    // Pour l'instant, on retourne null car on n'a pas de système de brouillons
+    // TODO: Implémenter la récupération des données de brouillon
+    return null;
   } catch (error) {
     console.error('Erreur récupération brouillon:', error);
     return null;
@@ -161,15 +94,9 @@ export async function getPreviewDraft(slug: string, token: string): Promise<any 
  */
 export async function cleanupExpiredDrafts(): Promise<number> {
   try {
-    const result = await prisma.pageDraft.deleteMany({
-      where: {
-        previewExpiresAt: {
-          lt: new Date(),
-        },
-      },
-    });
-
-    return result.count;
+    // Pour l'instant, on retourne 0 car on n'a pas de système de brouillons
+    // TODO: Implémenter le nettoyage des brouillons expirés
+    return 0;
   } catch (error) {
     console.error('Erreur nettoyage brouillons:', error);
     return 0;

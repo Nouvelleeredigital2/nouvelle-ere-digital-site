@@ -218,9 +218,10 @@ export function useOnboarding() {
       }, 2000); // 2 secondes après le chargement
 
       return () => clearTimeout(timer);
-    } else {
-      setHasCompletedOnboarding(true);
     }
+
+    setHasCompletedOnboarding(true);
+    return undefined;
   }, []);
 
   const completeOnboarding = () => {

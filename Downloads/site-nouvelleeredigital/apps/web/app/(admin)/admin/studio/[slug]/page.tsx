@@ -14,25 +14,20 @@ import { ToastProvider } from '@/components/studio/ToastProvider';
 import { LoadingButton } from '@/components/ui/LoadingStates';
 import { toast } from 'sonner';
 import { Undo2, Redo2, Save } from 'lucide-react';
-import type { Block } from '@/lib/types/blocks';
 
 export default function StudioPage() {
   const params = useParams();
-  const slug = (params?.slug as string) || '';
+  const slug = (params?.['slug'] as string) || '';
   
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   
   const {
     page,
-    selectedBlockId,
     hasUnsavedChanges,
-    isSaving: storeIsSaving,
     setPage,
-    setBlocks,
     markAsSaving,
     markAsSaved,
-    selectBlock,
   } = useEditorStore();
 
   const { undo, redo, canUndo, canRedo } = useHistory();
@@ -98,7 +93,7 @@ export default function StudioPage() {
         throw new Error(errorData.error || 'Échec de la sauvegarde');
       }
 
-      const result = await response.json();
+      await response.json();
       markAsSaved();
       toast.success('Page sauvegardée avec succès !');
       
@@ -176,7 +171,11 @@ export default function StudioPage() {
                         <Redo2 className="w-4 h-4" />
                       </Button>
                     </div>
-                    <SaveIndicator />
+                    <SaveIndicator 
+                      isSaving={isSaving}
+                      hasUnsavedChanges={hasUnsavedChanges}
+                      lastSaved={new Date()}
+                    />
                     <LoadingButton
                       loading={isSaving}
                       onClick={handleSave}
@@ -194,7 +193,7 @@ export default function StudioPage() {
         <div className="flex-1 flex overflow-hidden">
           {/* Sidebar gauche - Palette de blocs */}
           <aside className="w-80 bg-white border-r border-gray-200 overflow-y-auto">
-            <BlockPalette />
+            <BlockPalette onClose={() => {}} />
           </aside>
 
           {/* Zone centrale - Canvas */}
@@ -211,7 +210,17 @@ export default function StudioPage() {
         </div>
 
         {/* Panel SEO (optionnel, peut être dans un modal) */}
-        <SEOPanel />
+        <SEOPanel 
+          data={{
+            title: page?.title || '',
+            description: '',
+            keywords: '',
+            ogImage: '',
+            ogTitle: '',
+            ogDescription: ''
+          }}
+          onUpdate={() => {}}
+        />
       </div>
     </ToastProvider>
   );

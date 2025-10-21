@@ -5,7 +5,7 @@ import { getMockVersions } from '@/lib/version-utils';
  * GET /api/pages/[slug]/versions - Récupérer l'historique des versions (MOCK)
  */
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: { slug: string } }
 ) {
   try {
@@ -75,7 +75,7 @@ export async function POST(
  * PUT /api/pages/[slug]/versions/[version]/restore - Restaurer une version (MOCK)
  */
 export async function PUT(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: { slug: string; version: string } }
 ) {
   try {
@@ -106,7 +106,7 @@ export async function PUT(
  * DELETE /api/pages/[slug]/versions/cleanup - Nettoyer les anciennes versions (MOCK)
  */
 export async function DELETE(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: { slug: string } }
 ) {
   try {

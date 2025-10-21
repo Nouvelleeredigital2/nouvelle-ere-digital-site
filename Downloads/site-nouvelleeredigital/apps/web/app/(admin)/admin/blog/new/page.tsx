@@ -51,7 +51,7 @@ export default function NewBlogPostPage() {
       });
 
       if (response.ok) {
-        const data = await response.json();
+        await response.json();
         toast.success('Article créé avec succès !');
         router.push('/admin/blog');
       } else {

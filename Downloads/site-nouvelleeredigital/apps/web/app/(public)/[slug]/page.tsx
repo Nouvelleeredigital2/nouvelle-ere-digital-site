@@ -1,4 +1,3 @@
-import { notFound } from 'next/navigation';
 import { getPageBySlug, getAllPages } from '@/lib/snapshot';
 import { BlocksRenderer } from '@/components/blocks/BlocksRenderer';
 
@@ -60,7 +59,7 @@ export default async function DynamicPage({ params }: { params: { slug: string }
 
   return (
     <main className="min-h-screen">
-      <BlocksRenderer blocks={pageData.layout.blocks || []} />
+      <BlocksRenderer blocks={(pageData.layout.blocks || []) as any} />
     </main>
   );
 }

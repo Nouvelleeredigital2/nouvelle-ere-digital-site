@@ -264,23 +264,30 @@ export async function measureFunction<T>(
 }
 
 // Fonction pour mesurer les performances d'une requête HTTP
-export function measureRequest(req: Request, res: Response): void {
+export function measureRequest(req: any, res: any): void {
   const start = Date.now();
-  const method = req.method;
-  const url = req.url;
+  const method: string = req?.method || "GET";
+  const url: string = req?.url || "";
 
-  res.on('finish', () => {
+  const finalize = () => {
     const duration = Date.now() - start;
-    const success = res.statusCode < 400;
-    
+    const statusCode: number = typeof res?.statusCode === 'number' ? res.statusCode : 200;
+    const success = statusCode < 400;
+
     performanceMonitor.recordRequest(duration, success);
     performanceMonitor.recordMetric('http_request', duration, 'ms', {
       method,
       url,
-      status: res.statusCode.toString(),
+      status: String(statusCode),
       success: success.toString(),
     });
-  });
+  };
+
+  if (res && typeof res.on === 'function') {
+    res.on('finish', finalize);
+  } else {
+    // En environnement où `res.on` n'est pas disponible (Web Response), on ne s'abonne pas
+  }
 }
 
 // Fonction pour mesurer les performances d'une requête de base de données
@@ -339,6 +346,5 @@ export function startPerformanceMonitoring(intervalMs: number = 60000): NodeJS.T
 }
 
 // Export des types et classes
-export { PerformanceMonitor, PerformanceMetric, PerformanceReport };
-export { measurePerformance, measureFunction, measureRequest, measureDatabaseQuery, measureCacheOperation };
-export { getRealTimeMetrics, startPerformanceMonitoring };
+export { PerformanceMonitor };
+export type { PerformanceMetric, PerformanceReport };

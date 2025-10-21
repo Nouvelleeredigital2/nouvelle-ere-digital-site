@@ -74,7 +74,7 @@ export default function NewServicePage() {
       });
 
       if (response.ok) {
-        const data = await response.json();
+        await response.json();
         toast.success('Service créé avec succès !');
         router.push('/admin/services');
       } else {

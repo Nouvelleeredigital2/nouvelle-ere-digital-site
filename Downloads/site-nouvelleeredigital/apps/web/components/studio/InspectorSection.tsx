@@ -34,7 +34,7 @@ export function InspectorSection({
         <div className="flex items-center gap-2">
           <h4 className="font-medium text-gray-900">{title}</h4>
           {info && (
-            <Info className="w-4 h-4 text-gray-400" title={info} />
+            <Info className="w-4 h-4 text-gray-400" />
           )}
         </div>
         {isOpen ? (

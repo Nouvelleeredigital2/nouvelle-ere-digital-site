@@ -3,15 +3,12 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { AdminNav } from '@/components/layout/AdminNav';
-import { Button } from '@/components/ui/Button';
 import { 
   Edit3, 
   Image, 
   FileText, 
   Settings, 
-  Eye,
-  TrendingUp,
-  Users,
+  Eye, 
   Clock
 } from 'lucide-react';
 

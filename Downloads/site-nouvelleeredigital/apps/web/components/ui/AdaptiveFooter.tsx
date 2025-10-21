@@ -16,7 +16,13 @@ export function AdaptiveFooter({ className }: AdaptiveFooterProps) {
 
   // Adapter le footer selon le style du persona
   const footerStyle = persona.settings.styles.borderRadius;
-  const layoutStyle = persona.settings.layouts.sections;
+  // Étendre le type de mise en page pour couvrir toutes les variantes utilisées ici
+  const layoutStyle = persona.settings.layouts.sections as
+    | "symmetrical-grid"
+    | "asymmetrical-masonry"
+    | "single-column"
+    | "magazine-layout"
+    | "card-grid";
 
   const footerSections = [
     {

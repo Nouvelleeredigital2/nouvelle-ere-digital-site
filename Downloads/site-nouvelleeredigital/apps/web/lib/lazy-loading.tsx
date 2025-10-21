@@ -1,4 +1,4 @@
-import { lazy, Suspense, ComponentType } from 'react';
+import { lazy, Suspense, ComponentType, useState, useRef, useEffect } from 'react';
 import { LoadingSpinner } from '@/components/ui/LoadingStates';
 
 // Interface pour les options de lazy loading

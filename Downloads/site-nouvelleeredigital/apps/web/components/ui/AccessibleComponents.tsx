@@ -122,9 +122,13 @@ export function AccessibleModal({
         const cleanup = trapFocus(modalRef.current);
         return cleanup;
       }
-    } else if (previousActiveElement) {
+      return () => {};
+    }
+
+    if (previousActiveElement) {
       restoreFocus(previousActiveElement);
     }
+    return () => {};
   }, [isOpen, trapFocus, restoreFocus, previousActiveElement]);
 
   useEffect(() => {
